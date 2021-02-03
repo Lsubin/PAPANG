@@ -24,4 +24,6 @@
     <color name="colorFilter13">#AFABAB</color>
     <color name="colorFilter14">#000000</color>
     <color name="colorFilter15">#7F6000</color>
+
+    <color name="cardViewBackground">#FAFAFA</color>
 </resources>

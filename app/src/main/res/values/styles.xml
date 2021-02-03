@@ -17,7 +17,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">#D2BBFF</item>
+        <item name="android:statusBarColor">#F3D4FF</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -39,6 +39,5 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-
 
 </resources>
