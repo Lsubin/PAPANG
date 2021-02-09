@@ -1,10 +1,12 @@
 package com.example.perfume.main.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.perfume.R;
+import com.example.perfume.RecommendationActivity;
 
 import java.util.ArrayList;
 
@@ -23,10 +26,20 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     ArrayList<String> name;
     ArrayList<String> des;
+    ImageButton find_btn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        find_btn = (ImageButton)root.findViewById(R.id.perfume_find_btn);
+        find_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent recommendation = new Intent(getContext(), RecommendationActivity.class);
+                startActivity(recommendation);
+            }
+        });
 
         name = new ArrayList<>();
         des = new ArrayList<>();
