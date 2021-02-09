@@ -33,34 +33,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:layout_width="86.86dp"
-                    android:layout_height="18dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="21dp"
-                    android:src="@mipmap/logo"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="182dp"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="69dp"
-                    android:src="@mipmap/text1"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/perfume_find_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="81dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@mipmap/find_perfume"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,13 +50,14 @@
                         android:orientation="horizontal">
 
                         <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginLeft="15dp"
                                 android:layout_marginTop="15dp"
                                 android:src="@mipmap/circle"
                                 app:layout_constraintLeft_toLeftOf="parent"
@@ -93,7 +66,7 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="27dp"
                                 android:src="@mipmap/miss_perfume1"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -101,13 +74,14 @@
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginLeft="15dp"
                                 android:layout_marginTop="15dp"
                                 android:src="@mipmap/circle"
                                 app:layout_constraintLeft_toLeftOf="parent"
@@ -116,7 +90,31 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="7dp"
+                                android:src="@mipmap/miss_perfume2"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@mipmap/circle"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="27dp"
                                 android:src="@mipmap/miss_perfume1"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -124,8 +122,33 @@
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@mipmap/circle"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
+                                android:src="@mipmap/miss_perfume2"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -139,7 +162,7 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="23dp"
                                 android:src="@mipmap/miss_perfume1"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -147,8 +170,9 @@
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -162,63 +186,45 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:src="@mipmap/miss_perfume1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:src="@mipmap/miss_perfume1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:src="@mipmap/miss_perfume1"
+                                android:layout_marginLeft="1dp"
+                                android:src="@mipmap/miss_perfume2"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                         </FrameLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
+
+                <ImageButton
+                    android:id="@+id/perfume_find_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="81dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@mipmap/find_perfume"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="86.86dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="21dp"
+                    android:src="@mipmap/logo"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="182dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="69dp"
+                    android:src="@mipmap/text1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frame2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -302,6 +308,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="샤넬"
+                            android:fontFamily="@font/arial"
                             android:textStyle="bold"
                             android:textSize="14sp"
                             android:layout_marginTop="3dp"
@@ -310,6 +317,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="넘버 5 오드빠르펭"
+                            android:fontFamily="@font/arial"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             android:layout_marginTop="2dp" />
@@ -341,12 +349,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="디올"
+                            android:fontFamily="@font/arial"
                             android:textStyle="bold"
                             android:textSize="14sp"
                             android:layout_marginTop="3dp" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/arial"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             android:text="미스 디올 로즈 앤 로지스"
@@ -379,6 +389,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="디올"
+                            android:fontFamily="@font/arial"
                             android:textStyle="bold"
                             android:textSize="14sp"
                             android:layout_marginTop="3dp" />
@@ -386,6 +397,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="미스 디올 르 퍼퓸"
+                            android:fontFamily="@font/arial"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             android:layout_marginTop="2dp"/>
