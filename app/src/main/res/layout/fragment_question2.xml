@@ -7,7 +7,7 @@
     tools:context=".Question2">
 
     <ImageView
-        android:id="@+id/q1_frame"
+        android:id="@+id/q2_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/question2"
@@ -18,25 +18,25 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageView
-        android:id="@+id/q1_frame2"
+        android:id="@+id/q2_frame2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/question_2_bar"
         android:layout_marginTop="28dp"
         android:background="#00fff000"
-        app:layout_constraintTop_toBottomOf="@id/q1_frame"
+        app:layout_constraintTop_toBottomOf="@id/q2_frame"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageView
-        android:id="@+id/q1_frame3"
+        android:id="@+id/q2_frame3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/question_2_text"
         android:layout_marginTop="28dp"
         android:layout_marginLeft="16dp"
         android:background="#00fff000"
-        app:layout_constraintTop_toBottomOf="@id/q1_frame2"
+        app:layout_constraintTop_toBottomOf="@id/q2_frame2"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageView
@@ -60,8 +60,6 @@
         app:layout_constraintLeft_toRightOf="@id/q_scrollbar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

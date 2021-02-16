@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,7 +88,7 @@ public class Question3 extends Fragment {
 
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.style_1_btn :
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1_c));
