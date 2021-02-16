@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ public class Question3 extends Fragment {
 
     Context context;
     View v;
+
+    Question4 fragment_q4 = new Question4();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,6 +103,7 @@ public class Question3 extends Fragment {
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q1_state = true;
+
                         break;
 
                     case R.id.style_2_btn :
@@ -112,6 +116,7 @@ public class Question3 extends Fragment {
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q1_state = true;
+
                         break;
 
                     case R.id.style_3_btn :
