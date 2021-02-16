@@ -25,6 +25,7 @@ public class Question7 extends Fragment {
     TextView price_max;
 
     View v;
+    public RangeSeekBar.OnRangeSeekBarPostListener mOnRangeListener = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

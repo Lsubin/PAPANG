@@ -22,6 +22,7 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
         mData.add(new Question1());
         mData.add(new Question2());
         mData.add(new Question3());
+        mData.add(new Question6());
         mData.add(new Question7());
     }
 
