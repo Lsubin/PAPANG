@@ -40,70 +40,23 @@
         app:layout_constraintTop_toBottomOf="@id/q5_frame2"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <ImageButton
-        android:id="@+id/add_flavor1"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="280dp"
-        android:src="@mipmap/flavor_green"
-        android:background="#00fff000"
+        app:layout_constraintTop_toBottomOf="@id/q5_frame4"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <ImageButton
-        android:id="@+id/add_flavor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="280dp"
-        android:src="@mipmap/flavor_fruity"
-        android:background="#00fff000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/add_flavor_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
 
-    <ImageButton
-        android:id="@+id/add_flavor3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="268dp"
-        android:layout_marginTop="280dp"
-        android:src="@mipmap/flavor_floral"
-        android:background="#00fff000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/add_flavor4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="460dp"
-        android:src="@mipmap/flavor_spicy"
-        android:background="#00fff000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/add_flavor5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="460dp"
-        android:src="@mipmap/flavor_aromatic"
-        android:background="#00fff000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/add_flavor6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="268dp"
-        android:layout_marginTop="460dp"
-        android:src="@mipmap/flavor_chypre"
-        android:background="#00fff000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,12 +43,25 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
         return drawables.size();
     }
 }
+
 class Holder extends RecyclerView.ViewHolder {
     ImageView theme_image;
 
-    public Holder(@NonNull View itemView) {
+    public Holder(@NonNull final View itemView) {
         super(itemView);
         theme_image = itemView.findViewById(R.id.flavor2_item);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION)
+                {
+                    Toast.makeText(view.getContext(), "클릭된 아이템 번호 "+pos , Toast.LENGTH_SHORT).show();
+                    
+                }
+            }
+        });
     }
 }
 
