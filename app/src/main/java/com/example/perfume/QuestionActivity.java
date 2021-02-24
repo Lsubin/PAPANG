@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -20,6 +22,16 @@ public class QuestionActivity extends AppCompatActivity {
         final ViewPager questionPager = (ViewPager)findViewById(R.id.question_View);
         final QuestionPagerAdapter qAdapter = new QuestionPagerAdapter(getSupportFragmentManager());
         questionPager.setAdapter(qAdapter);
+
+        /*
+        // 좌우스크롤 막아버림
+        questionPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+        */
 
         questionPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

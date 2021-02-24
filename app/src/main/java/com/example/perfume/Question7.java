@@ -1,15 +1,18 @@
 package com.example.perfume;
 
+import android.content.Context;
 import android.icu.number.IntegerWidth;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Debug;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rizlee.rangeseekbar.RangeSeekBar;
 
@@ -18,14 +21,15 @@ import com.rizlee.rangeseekbar.RangeSeekBar;
  * Use the {@link Question7#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Question7 extends Fragment {
+public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRealTimeListener {
 
     RangeSeekBar price_seekbar;
     TextView price_min;
     TextView price_max;
+    private Context context;
 
     View v;
-    public RangeSeekBar.OnRangeSeekBarPostListener mOnRangeListener = null;
+    public RangeSeekBar.OnRangeSeekBarRealTimeListener mOnRangeListener = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,35 +78,25 @@ public class Question7 extends Fragment {
                              Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.fragment_question7, container, false);
+        context = container.getContext();
 
         price_max = (TextView)v.findViewById(R.id.price_tag_max);
         price_min = (TextView)v.findViewById(R.id.price_tag_min);
         price_seekbar = (RangeSeekBar)v.findViewById(R.id.price_seekbar);
 
-        price_seekbar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                price_min.setText(price_seekbar.getLeftText());
-                price_max.setText(price_seekbar.getRightText());
-                return false;
-            }
-        });
-
-        /*
-        price_seekbar.OnRangeSeekBarPostListener(new RangeSeekBar.OnRangeSeekBarRealTimeListener(){
-            @Override
-            public void onValuesChanging(float v, float v1) {
-                price_min.setText(Float.toString(v));
-                price_max.setText(Float.toString(v1));
-            }
-
-            @Override
-            public void onValuesChanging(int i, int i1) {
-                price_min.setText(i);
-                price_max.setText(i1);
-            }
-        });
-        */
+        price_seekbar.setListenerRealTime(this);
         return v;
+    }
+
+    @Override
+    public void onValuesChanging(float v, float v1) {
+        price_min.setText(Float.toString(v));
+        price_max.setText(Float.toString(v1));
+    }
+
+    @Override
+    public void onValuesChanging(int i, int i1) {
+        price_min.setText(Integer.toString(i));
+        price_max.setText(Integer.toString(i1));
     }
 }

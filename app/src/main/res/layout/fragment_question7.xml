@@ -99,7 +99,6 @@
             app:stepValue="10000"
             app:sideColor="#EFEFEF"
             app:centerColor="#8A40FF"
-            app:showThumbsText="below"
             app:thumbsNormal="@mipmap/thumb_image"
             app:thumbsPressed="@mipmap/thumb_image"
             app:roundedCorners="true"

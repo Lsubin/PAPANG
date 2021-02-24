@@ -1,5 +1,7 @@
 package com.example.perfume;
 
+import android.view.MotionEvent;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -44,4 +46,7 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mData.size();
     }
+
+
+
 }
