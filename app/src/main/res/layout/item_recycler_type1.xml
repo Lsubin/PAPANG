@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:fontFamily="@font/arial"
+            android:fontFamily="@font/kopubworlddotumbold"
             android:text="산토리니의 추억"/>
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="13sp"
-            android:fontFamily="@font/arial"
+            android:fontFamily="@font/kopubworlddotumedium"
             android:text="그리스 산토리니 여행을 떠올리게 하는 향수 모음집"/>
 
     </LinearLayout>

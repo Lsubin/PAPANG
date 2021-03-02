@@ -24,6 +24,7 @@ public class Question1 extends Fragment {
     ImageButton ode_c;
     ImageButton ode_d;
     ImageButton ode_p;
+    ImageButton ode_pp;
 
     ImageView ode_c_text;
     ImageView ode_d_text;
@@ -81,10 +82,12 @@ public class Question1 extends Fragment {
         ode_c = (ImageButton)v.findViewById(R.id.ode_c);        // 오대 코롱
         ode_d = (ImageButton)v.findViewById(R.id.ode_d);        // 오드 뚜왈렛
         ode_p = (ImageButton)v.findViewById(R.id.ode_p);        // 오드 퍼퓸
+        ode_pp = (ImageButton)v.findViewById(R.id.ode_pp);      // 퍼퓸
 
+        /*
         ode_c_text = (ImageView)v.findViewById(R.id.ode_c_text);        // 오대 코롱
         ode_d_text = (ImageView)v.findViewById(R.id.ode_d_text);        // 오드 뚜왈렛
-        ode_p_text = (ImageView)v.findViewById(R.id.ode_p_text);        // 오드 퍼퓸
+        ode_p_text = (ImageView)v.findViewById(R.id.ode_p_text);        // 오드 퍼퓸*/
 
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener(){
             @Override
@@ -93,48 +96,73 @@ public class Question1 extends Fragment {
                     case R.id.ode_c :
                         if(q1_state == true){
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
-                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
+                            //ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
                             q1_state = false;
                         }
                         else{
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.circle_c_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                            ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                            /*
                             ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text_c));
                             ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
+                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));*/
                             q1_state = true;
                         }
                         break;
                     case R.id.ode_d :
                         if(q1_state == true){
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
-                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
+                            //ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
                             q1_state = false;
                         }
                         else {
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.circle_d_click));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                            ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                            /*
                             ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
                             ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text_c));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
+                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));*/
                             q1_state = true;
                         }
                         break;
                     case R.id.ode_p :
                         if(q1_state == true){
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
+                            //ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
                             q1_state = false;
                         }
                         else {
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.circle_p_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
+                            ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                            /*
                             ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
                             ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text_c));
+                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text_c));*/
+                            q1_state = true;
+                        }
+                        break;
+
+                    case R.id.ode_pp :
+                        if(q1_state == true){
+                            ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                            //ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
+                            q1_state = false;
+                        }
+                        else {
+                            ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.circle_pp_click));
+                            ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
+                            ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
+                            ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                            /*
+                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
+                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
+                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text_c));*/
                             q1_state = true;
                         }
                         break;
@@ -145,6 +173,7 @@ public class Question1 extends Fragment {
         ode_c.setOnClickListener(btnClickListener);
         ode_d.setOnClickListener(btnClickListener);
         ode_p.setOnClickListener(btnClickListener);
+        ode_pp.setOnClickListener(btnClickListener);
 
         return v;
     }

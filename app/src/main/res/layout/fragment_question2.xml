@@ -10,7 +10,7 @@
         android:id="@+id/q2_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/question2"
+        android:src="@mipmap/question_2"
         android:background="#00fff000"
         android:layout_marginTop="38dp"
         android:layout_marginLeft="16dp"

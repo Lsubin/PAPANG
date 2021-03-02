@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--regular-->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/kopubworlddotumedium"/>
+
+    <!--bold-->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="1000"
+        android:font="@font/kopubworlddotumbold"/>
+
+    <!--light-->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="300"
+        android:font="@font/kopubworlddotumlight"/>
+
+
+</font-family>

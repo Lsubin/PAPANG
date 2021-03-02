@@ -30,6 +30,7 @@
 
     <ImageView
         android:id="@+id/q1_frame3"
+        android:padding="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/question_1_text"
@@ -39,97 +40,77 @@
         app:layout_constraintTop_toBottomOf="@id/q1_frame2"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/q1_frame3"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintVertical_bias="0.4">
 
-        <LinearLayout
-            android:id="@+id/circle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/circle2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:rowCount="2"
+            android:columnCount="2">
 
             <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/ode_c"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:background="#00fff000"
-                android:src="@mipmap/circle_c" />
-
-            <ImageView
-                android:id="@+id/ode_c_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00fff000"
-                android:src="@mipmap/ode_c_text"
-                android:layout_marginTop="24dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/circle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/circle1"
-            app:layout_constraintRight_toLeftOf="@id/circle3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical">
+                android:src="@mipmap/circle_c"
+                android:padding="20dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_gravity="fill"/>
 
             <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/ode_d"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/circle_c"
-                android:background="#00fff000"/>
-
-            <ImageView
-                android:id="@+id/ode_d_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:background="#00fff000"
-                android:src="@mipmap/ode_d_text"
-                android:layout_marginTop="24dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/circle3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/circle2"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
+                android:src="@mipmap/circle_d"
+                android:padding="20dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_gravity="fill"/>
 
             <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/ode_p"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/circle_c"
-                android:background="#00fff000"/>
-
-            <ImageView
-                android:id="@+id/ode_p_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:background="#00fff000"
-                android:src="@mipmap/ode_p_text"
-                android:layout_marginTop="24dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
+                android:src="@mipmap/circle_c"
+                android:padding="20dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_gravity="fill"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ode_pp"
+                android:background="#00fff000"
+                android:src="@mipmap/circle_c"
+                android:padding="20dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_gravity="fill"/>
 
+        </GridLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
