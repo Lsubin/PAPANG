@@ -20,17 +20,13 @@ import android.widget.ImageView;
 public class Question1 extends Fragment {
 
     public Boolean q1_state = false;       // 선택했는지 상태 값
+    public String q1_result;
 
     ImageButton ode_c;
     ImageButton ode_d;
     ImageButton ode_p;
     ImageButton ode_pp;
 
-    ImageView ode_c_text;
-    ImageView ode_d_text;
-    ImageView ode_p_text;
-
-    Context context;
     View v;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -84,86 +80,77 @@ public class Question1 extends Fragment {
         ode_p = (ImageButton)v.findViewById(R.id.ode_p);        // 오드 퍼퓸
         ode_pp = (ImageButton)v.findViewById(R.id.ode_pp);      // 퍼퓸
 
-        /*
-        ode_c_text = (ImageView)v.findViewById(R.id.ode_c_text);        // 오대 코롱
-        ode_d_text = (ImageView)v.findViewById(R.id.ode_d_text);        // 오드 뚜왈렛
-        ode_p_text = (ImageView)v.findViewById(R.id.ode_p_text);        // 오드 퍼퓸*/
-
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener(){
             @Override
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.ode_c :
-                        if(q1_state == true){
+                        if(q1_state == true && q1_result == "ode_c"){
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
-                            //ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
                             q1_state = false;
+                            q1_result = "";
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
-                        else{
+                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_c")){
+                            q1_result = "ode_c";
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.circle_c_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
-                            /*
-                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text_c));
-                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));*/
                             q1_state = true;
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
                     case R.id.ode_d :
-                        if(q1_state == true){
+                        if(q1_state == true && q1_result == "ode_d"){
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
-                            //ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
                             q1_state = false;
+                            q1_result = "";
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
-                        else {
+                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_d")){
+                            q1_result = "ode_d";
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.circle_d_click));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
-                            /*
-                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
-                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text_c));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));*/
                             q1_state = true;
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
                     case R.id.ode_p :
-                        if(q1_state == true){
+                        if(q1_state == true && q1_result == "ode_p"){
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
-                            //ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
                             q1_state = false;
+                            q1_result = "";
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
-                        else {
+                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_p")){
+                            q1_result = "ode_p";
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.circle_p_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
-                            /*
-                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
-                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text_c));*/
                             q1_state = true;
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
 
                     case R.id.ode_pp :
-                        if(q1_state == true){
+                        if(q1_state == true && q1_result == "ode_pp"){
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
-                            //ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text));
                             q1_state = false;
+                            q1_result = "";
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
-                        else {
+                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_pp")){
+                            q1_result = "ode_pp";
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.circle_pp_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
-                            /*
-                            ode_c_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_c_text));
-                            ode_d_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_d_text));
-                            ode_p_text.setImageDrawable(getResources().getDrawable(R.mipmap.ode_p_text_c));*/
                             q1_state = true;
+                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
                 }

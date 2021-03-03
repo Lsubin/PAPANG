@@ -3,6 +3,7 @@ package com.example.perfume;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,16 +15,23 @@ public class QuestionActivity extends AppCompatActivity {
     ImageButton nextQ;
     int mCurrentPosition;
 
+    public static Context context;
+
+    // 각 페이지의 state, result를 저장하는 배열 선언 및 초기화
+    String[] q_state = new String[7];
+    String[] q_result = new String[7];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
+        context = this;
+
         final ViewPager questionPager = (ViewPager)findViewById(R.id.question_View);
         final QuestionPagerAdapter qAdapter = new QuestionPagerAdapter(getSupportFragmentManager());
         questionPager.setAdapter(qAdapter);
 
-        /*
         // 좌우스크롤 막아버림
         questionPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -31,9 +39,10 @@ public class QuestionActivity extends AppCompatActivity {
                 return true;
             }
         });
-        */
 
+        // 페이지 바뀔때 불러와지는 리스너
         questionPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            //이건 안쓸거임(스크롤 기능)
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -42,7 +51,6 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 mCurrentPosition = position;
-                Toast.makeText(getApplicationContext(), String.valueOf(mCurrentPosition), 0).show();
             }
 
             @Override
@@ -50,22 +58,33 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
-
-        /*
         nextQ = (ImageButton)findViewById(R.id.nextQ);
+
         nextQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch(mCurrentPosition){
-                    case 0 :
-                        Question1 mainFragment = (Question1) getFragmentManager().findFragmentById(R.id.);
-                        mainFragment.changeFragmentTextView("호호호");
+                // 넥스트 버튼이 활성화 된 상태라면
+                if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
+                    questionPager.setCurrentItem(mCurrentPosition+1, true);
+                    nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
+                    Toast.makeText(v.getContext(), String.valueOf(mCurrentPosition), 0).show();
                 }
             }
         });
-         */
     }
 
-    public static class FlavorAdapter {
+    // 넥스트 버튼을 활성화 시키기 위한 함수
+    public void nextPage(int index, Boolean state, String result){
+        if(state == true && mCurrentPosition == index){
+            q_state[index] = state.toString();
+            q_result[index] = result;
+
+            nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn_c));
+        }
+        else{
+            nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
+            q_state[index] = state.toString();
+            q_result[index] = result;
+        }
     }
 }
