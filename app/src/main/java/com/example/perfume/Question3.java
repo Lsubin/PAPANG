@@ -20,7 +20,8 @@ import android.widget.Toast;
  */
 public class Question3 extends Fragment {
 
-    public Boolean q1_state = false;       // 선택했는지 상태 값
+    public Boolean q3_state = false;       // 선택했는지 상태 값
+    public String q3_result;
 
     ImageButton style_1_btn;
     ImageButton style_2_btn;
@@ -34,9 +35,6 @@ public class Question3 extends Fragment {
     Context context;
     View v;
     String style_name;
-
-    Question4 fragment_q4;
-    Bundle bundle;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -105,10 +103,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_1";
+                        q3_state = true;
+                        q3_result = "1";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_2_btn :
@@ -120,10 +117,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_2";
+                        q3_state = true;
+                        q3_result = "2";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_3_btn :
@@ -135,10 +131,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_3";
+                        q3_state = true;
+                        q3_result = "3";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_4_btn :
@@ -150,10 +145,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_4";
+                        q3_state = true;
+                        q3_result = "4";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_5_btn :
@@ -165,10 +159,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_5";
+                        q3_state = true;
+                        q3_result = "5";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_6_btn :
@@ -180,10 +173,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6_c));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_6";
+                        q3_state = true;
+                        q3_result = "6";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_7_btn :
@@ -195,10 +187,9 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7_c));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_7";
+                        q3_state = true;
+                        q3_result = "7";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
 
                     case R.id.style_8_btn :
@@ -210,20 +201,10 @@ public class Question3 extends Fragment {
                         style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
                         style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8_c));
-                        q1_state = true;
-
-                        // q4로 고른 스타일 전달
-                        style_name = "style_8";
+                        q3_state = true;
+                        q3_result = "8";
+                        ((QuestionActivity)QuestionActivity.context).nextPage(2, q3_state, q3_result);
                         break;
-                }
-
-                if(q1_state == true)
-                {
-                    bundle = new Bundle();
-                    bundle.putString("style", style_name);
-                    fragment_q4 = new Question4();
-                    fragment_q4.setArguments(bundle);
-                    Log.d("스타일", style_name);
                 }
             }
         };

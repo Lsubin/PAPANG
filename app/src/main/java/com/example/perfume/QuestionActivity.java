@@ -50,12 +50,11 @@ public class QuestionActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                mCurrentPosition = position;
+                mCurrentPosition = position;;
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         nextQ = (ImageButton)findViewById(R.id.nextQ);
@@ -65,9 +64,14 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
+                    Toast.makeText(getApplicationContext(), String.valueOf(mCurrentPosition)+"흥", 0).show();
+                    if(mCurrentPosition == 2){
+                        Question4 question4 = new Question4(q_result[2]);
+                        qAdapter.addPage(question4);
+                        qAdapter.notifyDataSetChanged();
+                    }
                     questionPager.setCurrentItem(mCurrentPosition+1, true);
                     nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
-                    Toast.makeText(v.getContext(), String.valueOf(mCurrentPosition), 0).show();
                 }
             }
         });
@@ -78,7 +82,6 @@ public class QuestionActivity extends AppCompatActivity {
         if(state == true && mCurrentPosition == index){
             q_state[index] = state.toString();
             q_result[index] = result;
-
             nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn_c));
         }
         else{

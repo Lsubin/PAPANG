@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,12 @@ import java.util.ArrayList;
  */
 public class Question4 extends Fragment {
 
+    public static String q4_style;
+    public static Context q4_context;
+
+    public Boolean q4_state;
+    public String q4_result;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,9 +40,6 @@ public class Question4 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    String style = "style_4";
-
-    Context context;
     View v;
 
     RecyclerView main_flavor_grid;
@@ -54,7 +58,7 @@ public class Question4 extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static Question4 newInstance(String param1, String param2) {
-        Question4 fragment = new Question4();
+        Question4 fragment = new Question4(q4_style);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,8 +66,9 @@ public class Question4 extends Fragment {
         return fragment;
     }
 
-    public Question4() {
+    public Question4(String style) {
         // Required empty public constructor
+        q4_style = style;
     }
 
     @Override
@@ -72,7 +77,6 @@ public class Question4 extends Fragment {
         if (getArguments() != null) {
             //mParam1 = getArguments().getString(ARG_PARAM1);
             //mParam2 = getArguments().getString(ARG_PARAM2);
-            style = getArguments().getString("style");
 
         }
     }
@@ -80,35 +84,31 @@ public class Question4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context = container.getContext();
         v = inflater.inflate(R.layout.fragment_question4, container, false);
+        q4_context = v.getContext();
         q4_frame4 = (ImageView)v.findViewById(R.id.q4_frame4);
-
         // 스타일 따라 이미지 다르게 뿌려주기
-        if(style.equals("style_1"))
+        if(q4_style.equals("1"))
             style_1(v);
-        if(style.equals("style_2"))
+        if(q4_style.equals("2"))
             style_2(v);
-        if(style.equals("style_3"))
+        if(q4_style.equals("3"))
             style_3(v);
-        if(style.equals("style_4"))
+        if(q4_style.equals("4"))
             style_4(v);
-        if(style.equals("style_5"))
+        if(q4_style.equals("5"))
             style_5(v);
-        if(style.equals("style_6"))
+        if(q4_style.equals("6"))
             style_6(v);
-        if(style.equals("style_7"))
+        if(q4_style.equals("7"))
             style_7(v);
-        if(style.equals("style_8"))
+        if(q4_style.equals("8"))
             style_8(v);
 
-
-
-        Log.v("스타일", style);
+        Log.v("스타일", q4_style);
 
         return v;
     }
-
 
     // 처음 포근한, 차분한, 따듯한, 순수한 스타일
     private void style_1(View v) {
@@ -133,6 +133,7 @@ public class Question4 extends Fragment {
             public void onClick(View view) {
             }
         });
+        flavorAdapter.notifyDataSetChanged();
 
     }
 
@@ -152,6 +153,7 @@ public class Question4 extends Fragment {
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(drawables);
         main_flavor_grid.setAdapter(flavorAdapter);
+        flavorAdapter.notifyDataSetChanged();
     }
 
     // 관능적인, 화려한 스타일
@@ -170,6 +172,7 @@ public class Question4 extends Fragment {
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(drawables);
         main_flavor_grid.setAdapter(flavorAdapter);
+        flavorAdapter.notifyDataSetChanged();
     }
 
     // 환상적인, 황홀한, 몽환적인, 신비로운 스타일

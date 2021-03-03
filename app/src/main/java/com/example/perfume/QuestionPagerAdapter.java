@@ -24,10 +24,6 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
         mData.add(new Question1());
         mData.add(new Question2());
         mData.add(new Question3());
-        mData.add(new Question4());
-        mData.add(new Question5());
-        mData.add(new Question6());
-        mData.add(new Question7());
     }
 
     @Nullable
@@ -47,6 +43,8 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
         return mData.size();
     }
 
-
+    public void addPage(Fragment fragment){
+        mData.add(fragment);
+    }
 
 }
