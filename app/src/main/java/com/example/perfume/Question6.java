@@ -4,7 +4,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -92,10 +94,9 @@ public class Question6 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_chypre));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_nope));
 
+
         flavor2_grid = (RecyclerView)v.findViewById(R.id.flavor2_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
-        flavor2_grid.setLayoutManager(mLayoutManager);
-        flavor2_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(drawables);
         flavor2_grid.setAdapter(flavorAdapter);
     }

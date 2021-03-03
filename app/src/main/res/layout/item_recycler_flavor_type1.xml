@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="15dp">
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/flavor2_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/flavor_aldehyde"/>
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_gravity="fill"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/flavor_floral"/>
 
 </LinearLayout>
