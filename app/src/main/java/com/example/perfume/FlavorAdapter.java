@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Holder> {
     ArrayList<Drawable> drawables;
     ArrayList<String> des;
+    Context context;
 
     FlavorAdapter(ArrayList<Drawable> drawables){
         this.drawables = drawables;
@@ -42,7 +43,16 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
     public int getItemCount() {
         return drawables.size();
     }
+
+    public Drawable getDrawable(int position){
+        return drawables.get(position);
+    }
+
+    public void setDrawable(int position, Drawable drawable){
+        drawables.set(2, context.getResources().getDrawable(R.mipmap.flavor_woody));
+    }
 }
+
 
 class Holder extends RecyclerView.ViewHolder {
     ImageView theme_image;
@@ -58,7 +68,7 @@ class Holder extends RecyclerView.ViewHolder {
                 if (pos != RecyclerView.NO_POSITION)
                 {
                     Toast.makeText(view.getContext(), "클릭된 아이템 번호 "+pos , Toast.LENGTH_SHORT).show();
-                    
+
                 }
             }
         });

@@ -3,6 +3,8 @@ package com.example.perfume;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -128,11 +131,30 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(drawables);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        main_flavor_grid.setOnClickListener(new View.OnClickListener() {
+        main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    Log.d("아이템 번호:", String.valueOf(position));
+                    
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
             }
         });
+
         flavorAdapter.notifyDataSetChanged();
 
     }
