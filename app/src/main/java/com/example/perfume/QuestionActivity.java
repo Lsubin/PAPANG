@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class QuestionActivity extends AppCompatActivity {
 
     ImageButton nextQ;
+    ImageButton check_Result_btn;
+
     int mCurrentPosition;
 
     public static Context context;
@@ -58,16 +60,33 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
         nextQ = (ImageButton)findViewById(R.id.nextQ);
+        check_Result_btn = (ImageButton)findViewById(R.id.check_Result_btn);
 
         nextQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
-                    Toast.makeText(getApplicationContext(), String.valueOf(mCurrentPosition)+"흥", 0).show();
                     if(mCurrentPosition == 2){
                         Question4 question4 = new Question4(q_result[2]);
                         qAdapter.addPage(question4);
+                        qAdapter.notifyDataSetChanged();
+                    }
+                    else if(mCurrentPosition == 3){
+                        Question5 question5 = new Question5(q_result[3]);
+                        qAdapter.addPage(question5);
+                        qAdapter.notifyDataSetChanged();
+                    }
+                    else if(mCurrentPosition == 4){
+                        Question6 question6 = new Question6();
+                        qAdapter.addPage(question6);
+                        qAdapter.notifyDataSetChanged();
+                    }
+                    else if(mCurrentPosition == 5){
+                        nextQ.setVisibility(View.INVISIBLE);
+                        check_Result_btn.setVisibility(View.VISIBLE);
+                        Question7 question7 = new Question7();
+                        qAdapter.addPage(question7);
                         qAdapter.notifyDataSetChanged();
                     }
                     questionPager.setCurrentItem(mCurrentPosition+1, true);

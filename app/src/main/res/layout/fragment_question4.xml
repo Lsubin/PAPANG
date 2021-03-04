@@ -50,10 +50,10 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="30dp"
             android:id="@+id/main_flavor_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:overScrollMode="never"
             android:scrollbars="none" />

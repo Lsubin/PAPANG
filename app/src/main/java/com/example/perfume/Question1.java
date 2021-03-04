@@ -14,12 +14,12 @@ import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Question1#newInstance} factory method to
+
+  * Use the {@link Question1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Question1 extends Fragment {
-
-    public Boolean q1_state = false;       // 선택했는지 상태 값
+    public class Question1 extends Fragment {
+        public Boolean q1_state = false;       // 선택했는지 상태 값
     public String q1_result;
 
     ImageButton ode_c;

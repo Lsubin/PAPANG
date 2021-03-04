@@ -16,19 +16,49 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Holder> {
-    ArrayList<Drawable> drawables;
-    ArrayList<Integer> drawables_Num;
-    Context context;
+    Context mContext;
 
-    FlavorAdapter(ArrayList<Drawable> drawables, ArrayList<Integer> drawables_Num){
-        this.drawables = drawables;
+    ArrayList<Drawable> drawables;          // 기본 이미지
+    ArrayList<Integer> drawables_Num;       // 매칭 넘버
+
+    FlavorAdapter(Context context, ArrayList<Integer> drawables_Num){
+        this.mContext = context;
+
+        drawables = new ArrayList<>();
+
+        // drawable 이미지들 추가
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde));    //알데하이드 1번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic));    //애니멀릭 2번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic));    //아로마틱 3번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam));      //발삼 4번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre));      //시프레 5번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus));      //시트러스 6번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green));       //그린 7번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral));      //플로럴 8번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity));      //프루티 9번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy));       //스파이시 10번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody));       //우디 11번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope));       //없음 12번
+        // click 이미지들 추가
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 13번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 14번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 15번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 16번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 17번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 18번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 19번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 20번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 21번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 22번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 23번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope_click));       //없음 24번
+
         this.drawables_Num = drawables_Num;
     }
 
     @NonNull
     @Override
     public com.example.perfume.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_flavor_type1, parent, false);
         com.example.perfume.Holder holder = new com.example.perfume.Holder(view);
         return holder;
@@ -36,21 +66,26 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
 
     @Override public void onBindViewHolder(@NonNull com.example.perfume.Holder holder, int position)
     {
-        holder.theme_image.setImageDrawable(drawables.get(position));
+        //Toast.makeText(mContext, String.valueOf(position), 0).show();
+        holder.theme_image.setImageDrawable(drawables.get(drawables_Num.get(position)-1));
     }
 
 
     @Override
     public int getItemCount() {
-        return drawables.size();
+        return drawables_Num.size();
     }
 
-    public Drawable getDrawable(int position){
-        return drawables.get(position);
+    // click으로 바꾸는거
+    public void setDrawable(int position){
+        int num = drawables_Num.get(position);
+        drawables_Num.set(position, num+12);
+        notifyDataSetChanged();
     }
 
-    public void setDrawable(int position, Drawable drawable){
-        drawables.set(position, drawable);
+    public void setBackDrawable(int position){
+        int num = drawables_Num.get(position);
+        drawables_Num.set(position, num-12);
         notifyDataSetChanged();
     }
 

@@ -3,6 +3,7 @@ package com.example.perfume;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -24,13 +26,14 @@ public class Question6 extends Fragment {
 
     View v;
 
-    // Flavor_click_drawables
-    ArrayList<Drawable> drawables_click;
-
     RecyclerView flavor2_grid;
     FlavorAdapter flavorAdapter;
-    ArrayList<Drawable> drawables;
+
     ArrayList<Integer> drawables_Num;
+
+    public Boolean q6_state = false;
+    public String q6_result;
+    public Integer q6_position;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,19 +80,6 @@ public class Question6 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question6, container, false);
-        // click 이미지들 추가
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 1번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 2번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 3번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 4번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 5번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 6번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 7번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 8번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 9번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 10번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 11번
-        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_nope_click));       //없음 12번
 
         init(v);
 
@@ -97,20 +87,7 @@ public class Question6 extends Fragment {
     }
 
     private void init(View v) {
-
-        drawables = new ArrayList<>();
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_green));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_citrus));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_fruity));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_floral));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_aldehyde));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_woody));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_animalic));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_balsam));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_spicy));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_chypre));
-        drawables.add(getResources().getDrawable(R.mipmap.flavor_nope));
+        drawables_Num = new ArrayList<>();
 
         drawables_Num.add(7);
         drawables_Num.add(6);
@@ -128,8 +105,45 @@ public class Question6 extends Fragment {
 
         flavor2_grid = (RecyclerView)v.findViewById(R.id.flavor2_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
-        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
+        flavor2_grid.setLayoutManager(mLayoutManager);
+        flavor2_grid.addItemDecoration(new ItemDecoration(getActivity()));
+        flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         flavor2_grid.setAdapter(flavorAdapter);
+
+        flavor2_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if(position >= 0) {
+                        String num = String.valueOf(flavorAdapter.getNum(position));
+                        if (q6_state == false) {
+                            flavorAdapter.setDrawable(position);
+                            q6_result = num;
+                            q6_position = position;
+                            q6_state = true;
+                        } else if (q6_state == true && (!num.equals(q6_result))) {
+                            flavorAdapter.setBackDrawable(q6_position);
+                            flavorAdapter.setDrawable(position);
+                            q6_result = num;
+                            q6_position = position;
+                        }
+                        ((QuestionActivity) QuestionActivity.context).nextPage(5, q6_state, q6_result);
+                    }
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            }
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
+
+        flavorAdapter.notifyDataSetChanged();
     }
 
 }
