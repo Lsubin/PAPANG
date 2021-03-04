@@ -28,6 +28,10 @@ public class Question5 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
+    // Flavor_click_drawables
+    ArrayList<Drawable> drawables_click;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -39,6 +43,7 @@ public class Question5 extends Fragment {
     RecyclerView add_flavor_grid;
     FlavorAdapter flavorAdapter;
     ArrayList<Drawable> drawables;
+    ArrayList<Integer> drawables_Num;
 
     ImageView q5_frame4;
 
@@ -79,6 +84,19 @@ public class Question5 extends Fragment {
         context = container.getContext();
         v = inflater.inflate(R.layout.fragment_question5, container, false);
         q5_frame4 = (ImageView)v.findViewById(R.id.q5_frame4);
+
+        // click 이미지들 추가
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 1번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 2번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 3번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 4번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 5번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 6번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 7번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 8번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 9번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 10번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 11번
 
         // 고른 향료에 따라 이미지 다르게 뿌려주기
         if(flavor.equals("flavor_citrus"))
@@ -122,11 +140,18 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_animalic));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_balsam));
 
+        drawables_Num.add(7);
+        drawables_Num.add(8);
+        drawables_Num.add(1);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -139,11 +164,16 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_animalic));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_balsam));
 
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -158,11 +188,18 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_spicy));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
 
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(3);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -174,11 +211,15 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_citrus));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_floral));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(8);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -197,11 +238,22 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_spicy));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_chypre));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(1);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(5);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -215,11 +267,17 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_animalic));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_balsam));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -234,11 +292,18 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_balsam));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
 
+        drawables_Num.add(7);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(3);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -253,11 +318,18 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_woody));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_animalic));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -273,11 +345,19 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_spicy));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
 
+        drawables_Num.add(7);
+        drawables_Num.add(8);
+        drawables_Num.add(2);
+        drawables_Num.add(11);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(3);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -293,11 +373,19 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_chypre));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(3);
+        drawables_Num.add(5);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 
@@ -312,11 +400,18 @@ public class Question5 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_spicy));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_aromatic));
 
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(3);
+
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
     }
 

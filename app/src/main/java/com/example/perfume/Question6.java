@@ -24,9 +24,13 @@ public class Question6 extends Fragment {
 
     View v;
 
+    // Flavor_click_drawables
+    ArrayList<Drawable> drawables_click;
+
     RecyclerView flavor2_grid;
     FlavorAdapter flavorAdapter;
     ArrayList<Drawable> drawables;
+    ArrayList<Integer> drawables_Num;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,6 +77,20 @@ public class Question6 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question6, container, false);
+        // click 이미지들 추가
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 1번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 2번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 3번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 4번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 5번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 6번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 7번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 8번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 9번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 10번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 11번
+        drawables_click.add(getResources().getDrawable(R.mipmap.flavor_nope_click));       //없음 12번
+
         init(v);
 
         return v;
@@ -94,10 +112,23 @@ public class Question6 extends Fragment {
         drawables.add(getResources().getDrawable(R.mipmap.flavor_chypre));
         drawables.add(getResources().getDrawable(R.mipmap.flavor_nope));
 
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(1);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(3);
+        drawables_Num.add(10);
+        drawables_Num.add(5);
+        drawables_Num.add(12);
+
 
         flavor2_grid = (RecyclerView)v.findViewById(R.id.flavor2_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
-        flavorAdapter = new FlavorAdapter(drawables);
+        flavorAdapter = new FlavorAdapter(drawables, drawables_Num);
         flavor2_grid.setAdapter(flavorAdapter);
     }
 

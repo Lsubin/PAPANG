@@ -17,11 +17,12 @@ import java.util.ArrayList;
 
 public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Holder> {
     ArrayList<Drawable> drawables;
-    ArrayList<String> des;
+    ArrayList<Integer> drawables_Num;
     Context context;
 
-    FlavorAdapter(ArrayList<Drawable> drawables){
+    FlavorAdapter(ArrayList<Drawable> drawables, ArrayList<Integer> drawables_Num){
         this.drawables = drawables;
+        this.drawables_Num = drawables_Num;
     }
 
     @NonNull
@@ -49,7 +50,12 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
     }
 
     public void setDrawable(int position, Drawable drawable){
-        drawables.set(2, context.getResources().getDrawable(R.mipmap.flavor_woody));
+        drawables.set(position, drawable);
+        notifyDataSetChanged();
+    }
+
+    public int getNum(int position){
+        return drawables_Num.get(position);
     }
 }
 
