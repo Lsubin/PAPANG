@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
 
@@ -27,10 +29,21 @@ public class HomeFragment extends Fragment {
     ArrayList<String> name;
     ArrayList<String> des;
     ImageButton find_btn;
+    LinearLayout product1_layout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        product1_layout = (LinearLayout)root.findViewById(R.id.product1_layout);
+        // 상품 누르면 상세페이지로 넘어가기
+        product1_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProductDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         find_btn = (ImageButton)root.findViewById(R.id.perfume_find_btn);
         find_btn.setOnClickListener(new View.OnClickListener() {
