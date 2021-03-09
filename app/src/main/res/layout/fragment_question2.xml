@@ -39,47 +39,151 @@
         app:layout_constraintTop_toBottomOf="@id/q2_frame2"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <com.jaygoo.widget.VerticalRangeSeekBar
-        android:id="@+id/size_seekbar"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/size_bar"
         android:layout_width="wrap_content"
-        android:layout_height="450dp"
-        app:rsb_max="6"
-        app:rsb_min="0"
-        app:rsb_min_interval="1"
-        app:rsb_mode="single"
-        app:rsb_gravity="bottom"
-        app:rsb_orientation="left"
-        app:rsb_steps="6"
-        app:rsb_step_width="90dp"
-        app:rsb_step_height="10dp"
-        app:rsb_step_color="#00fff000"
-        app:rsb_step_auto_bonding="true"
-        app:rsb_tick_mark_orientation="vertical"
-        app:rsb_tick_mark_mode="other"
-        app:rsb_tick_mark_text_margin="30dp"
-        app:rsb_tick_mark_layout_gravity="bottom"
-        app:rsb_tick_mark_text_color="#4B4B4B"
-        app:rsb_tick_mark_text_array="@array/size_seekbar"
-        app:rsb_progress_color="#6557FF"
-        app:rsb_progress_default_color="#EFEFEF"
-        app:rsb_progress_height="16dp"
-        app:rsb_thumb_width="32dp"
-        app:rsb_thumb_height="32dp"
-        app:rsb_thumb_drawable="@mipmap/thumb_image"
-        app:rsb_thumb_scale_ratio="1.2"
-        android:layout_marginTop="193dp"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/q_bottle_size"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="256dp"
+        android:layout_marginLeft="44dp">
+
+        <ImageButton
+            android:id="@+id/size_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/q2_text_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 100ml 이상"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintLeft_toRightOf="@id/size_6"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/size_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_6"/>
+
+        <TextView
+            android:id="@+id/q2_text_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 75ml"
+            android:layout_marginTop="105dp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            app:layout_constraintStart_toStartOf="@id/q2_text_6"
+            app:layout_constraintLeft_toRightOf="@id/size_5"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/size_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_5"/>
+
+        <TextView
+            android:id="@+id/q2_text_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 50ml"
+            android:layout_marginTop="165dp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            app:layout_constraintStart_toStartOf="@id/q2_text_6"
+            app:layout_constraintLeft_toRightOf="@id/size_4"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/size_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_4"/>
+
+        <TextView
+            android:id="@+id/q2_text_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 30ml"
+            android:layout_marginTop="225dp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            app:layout_constraintStart_toStartOf="@id/q2_text_6"
+            app:layout_constraintLeft_toRightOf="@id/size_3"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/size_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_3"/>
+
+        <TextView
+            android:id="@+id/q2_text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 15ml"
+            android:layout_marginTop="290dp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            app:layout_constraintStart_toStartOf="@id/q2_text_6"
+            app:layout_constraintLeft_toRightOf="@id/size_2"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/size_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_size"
+            android:background="#00fff000"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_2"/>
+
+        <TextView
+            android:id="@+id/q2_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- 0ml"
+            android:layout_marginTop="345dp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            app:layout_constraintStart_toStartOf="@id/q2_text_2"
+            app:layout_constraintLeft_toRightOf="@id/size_2"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/q_bottle_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/size5"
+        android:src="@mipmap/bottle"
         android:background="#00fff000"
         android:layout_marginTop="241dp"
-        app:layout_constraintLeft_toRightOf="@id/size_seekbar"
+        app:layout_constraintLeft_toRightOf="@id/size_bar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

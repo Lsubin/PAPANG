@@ -94,6 +94,15 @@ public class QuestionActivity extends AppCompatActivity {
                 }
             }
         });
+
+        check_Result_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), q_result[0] + " /  " +
+                        q_result[1] + " / " + q_result[2] + " / " + q_result[3] + " / " +
+                        q_result[4] + " / " + q_result[5] + " / " + q_result[6], 0).show();
+            }
+        });
     }
 
     // 넥스트 버튼을 활성화 시키기 위한 함수

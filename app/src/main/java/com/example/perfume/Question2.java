@@ -8,6 +8,8 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,7 +25,13 @@ public class Question2 extends Fragment {
 
     View v;
 
-    RangeSeekBar size_seekbar;
+    ImageButton size1;
+    ImageButton size2;
+    ImageButton size3;
+    ImageButton size4;
+    ImageButton size5;
+    ImageButton size6;
+
     ImageView bottle_size;
 
     Boolean q2_state;
@@ -76,63 +84,101 @@ public class Question2 extends Fragment {
         // Inflate the layout for this fragment
 
         bottle_size = (ImageView)v.findViewById(R.id.q_bottle_size);
-        size_seekbar = (RangeSeekBar)v.findViewById(R.id.size_seekbar);
-        size_seekbar.setOnRangeChangedListener(new OnRangeChangedListener() {
-            @Override
-            public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-            }
 
-            @Override
-            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {
+        size1 = (ImageButton)v.findViewById(R.id.size_1);
+        size2 = (ImageButton)v.findViewById(R.id.size_2);
+        size3 = (ImageButton)v.findViewById(R.id.size_3);
+        size4 = (ImageButton)v.findViewById(R.id.size_4);
+        size5 = (ImageButton)v.findViewById(R.id.size_5);
+        size6 = (ImageButton)v.findViewById(R.id.size_6);
 
-            }
-
+        Button.OnClickListener sizeClickListener = new View.OnClickListener() {
             @Override
-            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
-                float progress = view.getLeftSeekBar().getProgress();
-                switch(String.valueOf(progress)){
-                    case "0.0":
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.bottle));
-                        break;
-                    case "1.0":
+            public void onClick(View v) {
+                switch(v.getId()){
+                    case R.id.size_1:
+                       bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
-                        q2_result = "1";
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
+                        q2_result = "size1";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
-                    case "2.0":
-                        q2_state = true;
-                        q2_result = "2";
+                    case R.id.size_2:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size2));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        q2_state = true;
+                        q2_result = "size2";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
-                    case "3.0":
-                        q2_state = true;
-                        q2_result = "3";
+                    case R.id.size_3:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size3));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        q2_state = true;
+                        q2_result = "size3";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
-                    case "4.0":
-                        q2_state = true;
-                        q2_result = "4";
+                    case R.id.size_4:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size4));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        q2_state = true;
+                        q2_result = "size4";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
-                    case "5.0":
-                        q2_state = true;
-                        q2_result = "5";
+                    case R.id.size_5:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        q2_state = true;
+                        q2_result = "size5";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
-                    case "6.0":
+                    case R.id.size_6:
+                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size6));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
                         q2_state = true;
-                        q2_result = "6";
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
+                        q2_result = "size6";
                         ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                 }
             }
-        });
+        };
+
+        size1.setOnClickListener(sizeClickListener);
+        size2.setOnClickListener(sizeClickListener);
+        size3.setOnClickListener(sizeClickListener);
+        size4.setOnClickListener(sizeClickListener);
+        size5.setOnClickListener(sizeClickListener);
+        size6.setOnClickListener(sizeClickListener);
+
         return v;
     }
 }
