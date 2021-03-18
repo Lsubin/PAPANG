@@ -18,16 +18,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <ImageView
+    <ProgressBar
         android:id="@+id/q7_frame2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/question_7_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
         android:layout_marginTop="28dp"
-        android:background="#00fff000"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="false"
+        android:max="7"
+        android:progress="7"
+        android:progressDrawable="@drawable/gradient_progressbar"
         app:layout_constraintTop_toBottomOf="@id/q7_frame"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageView
         android:id="@+id/q7_frame3"
