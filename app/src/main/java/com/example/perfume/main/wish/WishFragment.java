@@ -45,10 +45,9 @@ public class WishFragment extends Fragment {
         setHasOptionsMenu(true);
 
         // 뷰페이저
-        viewPager = (ViewPager)view.findViewById(R.id.viewpager);
-        adapter = new WishPageAdapter(activity.getSupportFragmentManager());
+        viewPager = (ViewPager)view.findViewById(R.id.viewpager_wish);
+        adapter = new WishPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
 
         return view;
     }
