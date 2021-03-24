@@ -3,12 +3,23 @@ package com.example.perfume.main.wish;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.perfume.FlavorAdapter;
+import com.example.perfume.ItemDecoration;
 import com.example.perfume.R;
+import com.example.perfume.main.GridSpacingItemDecoration;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +36,14 @@ public class WishProudctFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    RecyclerView wish_product_grid;
+    WishProductAdapter adapter;
+    TextView wishcount_text;
+
+    int wishcount_value = 0;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    FragmentTransaction ft;
 
     public WishProudctFragment() {
         // Required empty public constructor
@@ -61,6 +80,58 @@ public class WishProudctFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wish_proudct, container, false);
+        View view = inflater.inflate(R.layout.fragment_wish_proudct, container, false);
+
+        wishcount_text = (TextView)view.findViewById(R.id.wishcount_text);
+
+
+        ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this);
+        // 새로고침
+        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_fresh);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ft.commit();
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 500);
+            }
+        });
+
+        // 예시
+        ArrayList<Integer> data1 = new ArrayList<>();
+        ArrayList<String> data2 = new ArrayList<>();
+        ArrayList<String> data3 = new ArrayList<>();
+        ArrayList<Integer> data4 = new ArrayList<>();
+
+        // 예시로 8개 추가
+        for(int i = 0; i < 8; i++)
+        {
+            data1.add(R.mipmap.ex_chanel_image);
+            data2.add("브랜드");
+            data3.add("향수 이름");
+            data4.add(R.mipmap.icon_full_heart);
+            wishcount_value++;
+        }
+        // 저장 목록 아이템 개수
+        wishcount_text.setText(String.valueOf(wishcount_value + " 개"));
+
+        int spancount = 2;
+        int spacing = 50;
+        boolean includeEdge = true;
+
+        wish_product_grid = (RecyclerView)view.findViewById(R.id.wish_perfume_grid);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(view.getContext(), 2);
+        wish_product_grid.setLayoutManager(mLayoutManager);
+        wish_product_grid.addItemDecoration(new GridSpacingItemDecoration(spancount, spacing, includeEdge));
+        adapter = new WishProductAdapter(view.getContext(), data1, data2, data3, data4);
+        wish_product_grid.setAdapter(adapter);
+
+        return view;
     }
 }
