@@ -6,26 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".main.wish.WishProudctFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/wishcount_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 개"
-        android:textSize="12sp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/kopubworlddotumedium"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_fresh">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wish_perfume_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wishcount_text"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/wishcount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 개"
+                android:textSize="12sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:textColor="#000000"
+                android:fontFamily="@font/kopubworlddotumedium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/wish_perfume_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="100dp"
+                android:clipToPadding="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wishcount_text"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
