@@ -92,6 +92,50 @@ public class Question2 extends Fragment {
         size5 = (ImageButton)v.findViewById(R.id.size_5);
         size6 = (ImageButton)v.findViewById(R.id.size_6);
 
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[1] != null){
+            String result = ((QuestionActivity)QuestionActivity.context).q_result[1];
+            switch (result){
+                case "size1":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
+                    size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+                case "size2":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size2));
+                    size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+                case "size3":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size3));
+                    size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+                case "size4":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size4));
+                    size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+                case "size5":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
+                    size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+                case "size6":
+                    bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size6));
+                    size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                    q2_state = true;
+                    q2_result = result;
+                    break;
+            }
+            ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+        }
+
         Button.OnClickListener sizeClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

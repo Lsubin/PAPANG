@@ -18,8 +18,9 @@ import android.widget.ImageView;
   * Use the {@link Question1#newInstance} factory method to
  * create an instance of this fragment.
  */
-    public class Question1 extends Fragment {
-        public Boolean q1_state = false;       // 선택했는지 상태 값
+public class Question1 extends Fragment {
+
+    public Boolean q1_state = false;       // 선택했는지 상태 값
     public String q1_result;
 
     ImageButton ode_c;
@@ -79,6 +80,45 @@ import android.widget.ImageView;
         ode_d = (ImageButton)v.findViewById(R.id.ode_d);        // 오드 뚜왈렛
         ode_p = (ImageButton)v.findViewById(R.id.ode_p);        // 오드 퍼퓸
         ode_pp = (ImageButton)v.findViewById(R.id.ode_pp);      // 퍼퓸
+
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[0] != null){
+            String result = ((QuestionActivity)QuestionActivity.context).q_result[0];
+            switch (result){
+                case "ode_c":
+                    ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.circle_c_click));
+                    ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
+                    ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                    ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                    q1_state = true;
+                    q1_result = result;
+                    break;
+                case "ode_d":
+                    ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.circle_d_click));
+                    ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
+                    ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                    ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                    q1_state = true;
+                    q1_result = result;
+                    break;
+                case "ode_p":
+                    ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.circle_p_click));
+                    ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
+                    ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
+                    ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
+                    q1_state = true;
+                    q1_result = result;
+                    break;
+                case "ode_pp":
+                    ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.circle_pp_click));
+                    ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
+                    ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
+                    ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
+                    q1_state = true;
+                    q1_result = result;
+                    break;
+            }
+        }
 
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener(){
             @Override

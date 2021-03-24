@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/back"
+                android:id="@+id/q_back_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -43,7 +43,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <com.example.perfume.NonSwipeViewPager
         android:id="@+id/question_View"
         android:layout_width="match_parent"
         android:layout_height="0dp"

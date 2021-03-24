@@ -23,7 +23,6 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
 
     FlavorAdapter(Context context, ArrayList<Integer> drawables_Num){
         this.mContext = context;
-
         drawables = new ArrayList<>();
 
         // drawable 이미지들 추가
