@@ -32,6 +32,7 @@ public class RecommendationActivity extends AppCompatActivity {
     ConstraintLayout guide_up_pannel;
     SlidingUpPanelLayout recommendation_slidinglayout;
     TextView guide_page_txt;
+    TextView guide_page_start;
 
     int mCurrentPosition;       // 현재 페이지
 
@@ -89,11 +90,47 @@ public class RecommendationActivity extends AppCompatActivity {
         guide_backpage = (ImageButton)findViewById(R.id.guide_backpage);        // 이전 페이지
         guide_nextpage = (ImageButton)findViewById(R.id.guide_nextpage);        // 다음 페이지
         guide_page_txt = (TextView)findViewById(R.id.guide_page_txt);           // 페이지 표시 텍스트뷰
+        guide_page_start = (TextView)findViewById(R.id.guide_page_start);       // START TEXT
 
         guide_nextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "뿅", 0).show();
+                if(guide_viewpager.getCurrentItem() == 0){
+                    guide_viewpager.setCurrentItem(1);
+                    guide_backpage.setVisibility(View.VISIBLE);
+                    guide_page_start.setVisibility(View.GONE);
+                    guide_page_txt.setVisibility(View.VISIBLE);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
+                else if(guide_viewpager.getCurrentItem() == 1){
+                    guide_viewpager.setCurrentItem(2);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
+                else if(guide_viewpager.getCurrentItem() == 2){
+                    guide_viewpager.setCurrentItem(3);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
+            }
+        });
+
+        guide_backpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(guide_viewpager.getCurrentItem() == 1){
+                    guide_viewpager.setCurrentItem(0);
+                    guide_backpage.setVisibility(View.GONE);
+                    guide_page_start.setVisibility(View.VISIBLE);
+                    guide_page_txt.setVisibility(View.GONE);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
+                else if(guide_viewpager.getCurrentItem() == 2){
+                    guide_viewpager.setCurrentItem(1);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
+                else if(guide_viewpager.getCurrentItem() == 3){
+                    guide_viewpager.setCurrentItem(2);
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+                }
             }
         });
 
@@ -107,6 +144,7 @@ public class RecommendationActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 mCurrentPosition = position;    // 현재 페이지 설정
+                ChangeGuidePage(mCurrentPosition);
             }
 
             @Override
@@ -115,6 +153,23 @@ public class RecommendationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void ChangeGuidePage(int mCurrentPosition) {
+        if(mCurrentPosition == 0){
+            guide_backpage.setVisibility(View.GONE);
+            guide_page_start.setVisibility(View.VISIBLE);
+            guide_page_txt.setVisibility(View.GONE);
+        } else if(mCurrentPosition == 1) {
+            guide_backpage.setVisibility(View.VISIBLE);
+            guide_page_start.setVisibility(View.GONE);
+            guide_page_txt.setVisibility(View.VISIBLE);
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+        } else if(mCurrentPosition == 2) {
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+        } else if(mCurrentPosition == 3) {
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 6");
+        }
     }
 
     public int getStatusBarHeight(Context context) {
