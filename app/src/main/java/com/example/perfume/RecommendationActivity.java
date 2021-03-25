@@ -50,6 +50,8 @@ public class RecommendationActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         recommendation_slidinglayout = (SlidingUpPanelLayout)findViewById(R.id.recommendation_slidinglayout);
 
+        recommendation_slidinglayout.getChildAt (1).setOnClickListener(null);
+
         recommendation_layout = (ConstraintLayout)findViewById(R.id.recommendation_layout);
         recommendation_layout.setPadding(0, getStatusBarHeight(getApplicationContext()), 0, 0);
 
@@ -87,6 +89,13 @@ public class RecommendationActivity extends AppCompatActivity {
         guide_backpage = (ImageButton)findViewById(R.id.guide_backpage);        // 이전 페이지
         guide_nextpage = (ImageButton)findViewById(R.id.guide_nextpage);        // 다음 페이지
         guide_page_txt = (TextView)findViewById(R.id.guide_page_txt);           // 페이지 표시 텍스트뷰
+
+        guide_nextpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "뿅", 0).show();
+            }
+        });
 
         // 페이지 바뀔 때 불러와지는 함수
         guide_viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
