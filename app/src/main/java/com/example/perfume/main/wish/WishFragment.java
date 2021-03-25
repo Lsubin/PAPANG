@@ -1,9 +1,15 @@
 package com.example.perfume.main.wish;
 
+import android.content.ClipData;
+import android.graphics.Color;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.BoringLayout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +41,9 @@ public class WishFragment extends Fragment {
     PagerAdapter adapter;
     int current_page;
     int p;
+    private Menu mOptionsMenu;
+    MenuItem theme;
+    MenuItem perfume;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,11 +70,10 @@ public class WishFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         super.onPrepareOptionsMenu(menu);
-
-        if(p == 0){
-        }
-        else if(p == 1){
-        }
+        mOptionsMenu = menu;
+        theme = mOptionsMenu.findItem(R.id.menu_theme);
+        perfume = mOptionsMenu.findItem(R.id.menu_perfume);
+        clickColor(perfume);
     }
 
     @Override
@@ -81,13 +89,33 @@ public class WishFragment extends Fragment {
             case R.id.menu_perfume:
                 // 향수 페이지라면
                 viewPager.setCurrentItem(0);
+                clickColor(item);
+                unclickColor(theme);
                 break;
             case R.id.menu_theme:
                 // 테마 페이지라면
                 viewPager.setCurrentItem(1);
+                clickColor(item);
+                unclickColor(perfume);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void clickColor(MenuItem item){
+        // Cast to a TextView instance if the menu item was found
+
+        SpannableString s = new SpannableString(item.getTitle().toString());
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#6557FF")), 0, s.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // provide whatever color you want here.
+        item.setTitle(s);
+    }
+
+    private void unclickColor(MenuItem item){
+        // Cast to a TextView instance if the menu item was found
+
+        SpannableString s = new SpannableString(item.getTitle().toString());
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, s.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // provide whatever color you want here.
+        item.setTitle(s);
     }
 
 }

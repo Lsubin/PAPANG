@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
-        app:itemTextAppearance="@style/MyItemFont"
+        android:theme="@style/AppTheme.Toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
@@ -49,11 +49,10 @@
         app:layout_constraintTop_toBottomOf="@id/line1"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <androidx.viewpager.widget.ViewPager
+        <com.example.perfume.NonSwipeViewPager
             android:id="@+id/viewpager_wish"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
