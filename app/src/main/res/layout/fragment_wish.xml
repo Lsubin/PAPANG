@@ -29,6 +29,7 @@
             android:textSize="20sp"
             android:paddingTop="4dp"
             android:layout_marginLeft="5dp"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <View

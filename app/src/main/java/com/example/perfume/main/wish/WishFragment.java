@@ -72,7 +72,6 @@ public class WishFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.wish_menu, menu);
-
     }
 
     @Override
@@ -80,16 +79,12 @@ public class WishFragment extends Fragment {
         switch(item.getItemId())
         {
             case R.id.menu_perfume:
-                p = 0;
-                if(p == 0){ // 향수 페이지라면
-                    viewPager.setCurrentItem(0);
-                }
+                // 향수 페이지라면
+                viewPager.setCurrentItem(0);
                 break;
             case R.id.menu_theme:
-                p = 1;
-                if(p == 1){ // 테마 페이지라면
-                    viewPager.setCurrentItem(1);
-                }
+                // 테마 페이지라면
+                viewPager.setCurrentItem(1);
                 break;
         }
         return super.onOptionsItemSelected(item);
