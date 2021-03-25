@@ -63,12 +63,8 @@ public class WishFragment extends Fragment {
         super.onPrepareOptionsMenu(menu);
 
         if(p == 0){
-            menu.getItem(0).setIcon(R.mipmap.perfume_text_c);
-            menu.getItem(1).setIcon(R.mipmap.theme_text);
         }
         else if(p == 1){
-            menu.getItem(0).setIcon(R.mipmap.perfume_text);
-            menu.getItem(1).setIcon(R.mipmap.theme_text_c);
         }
     }
 
@@ -77,8 +73,6 @@ public class WishFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.wish_menu, menu);
 
-        menu.getItem(0).setIcon(R.mipmap.perfume_text_c);
-        menu.getItem(1).setIcon(R.mipmap.theme_text);
     }
 
     @Override

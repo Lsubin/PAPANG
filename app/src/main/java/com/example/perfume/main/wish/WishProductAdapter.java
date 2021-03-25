@@ -79,7 +79,7 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
             wish_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    wish_ok.setImageResource(R.mipmap.wish);
+                    wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
                 }
             });
         }

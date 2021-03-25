@@ -5,14 +5,12 @@
     <item
         android:id="@+id/menu_perfume"
         android:title="향수"
-        android:icon="@mipmap/perfume_text"
         app:showAsAction="always"
         app:itemTextAppearance="@style/MyItemFont"/>
 
     <item
         android:id="@+id/menu_theme"
         android:title="테마"
-        android:icon="@mipmap/theme_text"
         app:showAsAction="always"
         app:itemTextAppearance="@style/MyItemFont"/>
 

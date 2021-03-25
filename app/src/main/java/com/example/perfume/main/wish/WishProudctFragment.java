@@ -41,7 +41,6 @@ public class WishProudctFragment extends Fragment {
     WishProductAdapter adapter;
     TextView wishcount_text;
 
-    int wishcount_value = 0;
     SwipeRefreshLayout mSwipeRefreshLayout;
     FragmentTransaction ft;
 
@@ -116,10 +115,9 @@ public class WishProudctFragment extends Fragment {
             data2.add("브랜드");
             data3.add("향수 이름");
             data4.add(R.mipmap.icon_full_heart);
-            wishcount_value++;
         }
         // 저장 목록 아이템 개수
-        wishcount_text.setText(String.valueOf(wishcount_value + " 개"));
+        wishcount_text.setText(String.valueOf(data1.size() + " 개"));
 
         int spancount = 2;
         int spacing = 50;
