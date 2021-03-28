@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
-import com.example.perfume.SearchActivity;
+import com.example.perfume.search.SearchActivity;
 
 import java.util.ArrayList;
 
