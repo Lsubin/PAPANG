@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,556 +28,266 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/frame1"
                 android:layout_width="match_parent"
-                android:layout_height="313dp"
-                android:background="@mipmap/background"
+                android:layout_height="395dp"
+                android:background="#FAFAFA"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/main_logo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="170dp"
-                    android:layout_marginRight="16dp"
-                    android:fadeScrollbars="true"
-                    android:scrollbars="@null"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="22dp"
+                    android:src="@mipmap/logo"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/main_search"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:padding="2dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/btn_search"
+                    android:background="#00fff000"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginRight="17dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
 
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="27dp"
-                                android:src="@mipmap/miss_perfume1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:src="@mipmap/miss_perfume2"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="27dp"
-                                android:src="@mipmap/miss_perfume1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:src="@mipmap/miss_perfume2"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="23dp"
-                                android:src="@mipmap/miss_perfume1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="15dp"
-                                android:src="@mipmap/circle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="1dp"
-                                android:src="@mipmap/miss_perfume2"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </FrameLayout>
-                    </LinearLayout>
-                </HorizontalScrollView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="130dp"
+                    android:src="@mipmap/main_txt"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/perfume_find_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="81dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@mipmap/find_perfume"
+                    android:src="@mipmap/find_perfume"
+                    android:background="#00fff000"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="25dp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <ImageView
-                    android:layout_width="86.86dp"
-                    android:layout_height="18dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="21dp"
-                    android:src="@mipmap/logo"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="182dp"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="69dp"
-                    android:src="@mipmap/text1"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/frame2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frame1">
-
-            <EditText
+                android:id="@+id/frame3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@mipmap/search"
-                android:hint="원하는 향수를 검색해보세요"
-                android:fontFamily="@font/kopubworlddotumedium"
-                android:paddingLeft="50dp"
-                android:textSize="13sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame1">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/frame3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frame2">
-
-            <ImageView
-                android:id="@+id/text1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/text2"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
-
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintTop_toBottomOf="@id/text1"
-                android:fadeScrollbars="true"
-                android:scrollbars="@null" >
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <LinearLayout
-                        android:id="@+id/product1_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        >
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="123dp"
-                            android:layout_height="183dp"
-                            app:cardBackgroundColor="@color/cardViewBackground"
-                            app:cardElevation="0.5dp">
-                            <ImageView
-                                android:layout_width="123dp"
-                                android:layout_height="123dp"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/chanel"
-                                android:scaleType="centerInside" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="샤넬"
-                            android:fontFamily="@font/kopubworlddotumbold"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:layout_marginTop="3dp"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="넘버 5 오드빠르펭"
-                            android:fontFamily="@font/kopubworlddotumedium"
-                            android:textSize="11sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="2dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        >
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="123dp"
-                            android:layout_height="183dp"
-                            app:cardBackgroundColor="@color/cardViewBackground"
-                            app:cardElevation="0.5dp">
-                            <ImageView
-                                android:layout_width="123dp"
-                                android:layout_height="123dp"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/dior"
-                                android:scaleType="centerInside" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="디올"
-                            android:fontFamily="@font/kopubworlddotumbold"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:layout_marginTop="3dp" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/kopubworlddotumedium"
-                            android:textSize="11sp"
-                            android:textStyle="bold"
-                            android:text="미스 디올 로즈 앤 로지스"
-                            android:layout_marginTop="2dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        >
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="123dp"
-                            android:layout_height="183dp"
-                            app:cardBackgroundColor="@color/cardViewBackground"
-                            app:cardElevation="0.5dp">
-                            <ImageView
-                                android:layout_width="123dp"
-                                android:layout_height="123dp"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/dior2"
-                                android:scaleType="centerInside" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="디올"
-                            android:fontFamily="@font/kopubworlddotumbold"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:layout_marginTop="3dp" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="미스 디올 르 퍼퓸"
-                            android:fontFamily="@font/kopubworlddotumedium"
-                            android:textSize="11sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="2dp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        >
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="123dp"
-                            android:layout_height="183dp"
-                            app:cardBackgroundColor="@color/cardViewBackground"
-                            app:cardElevation="0.5dp">
-                            <ImageView
-                                android:layout_width="123dp"
-                                android:layout_height="123dp"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/chanel"
-                                android:scaleType="centerCrop" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="상호명"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/kopubworlddotumbold"
-                            android:layout_marginTop="3dp" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="상품명"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/kopubworlddotumedium"
-                            android:textStyle="bold"
-                            android:layout_marginTop="2dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        >
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="123dp"
-                            android:layout_height="183dp"
-                            app:cardBackgroundColor="@color/cardViewBackground"
-                            app:cardElevation="0.5dp">
-                            <ImageView
-                                android:layout_width="123dp"
-                                android:layout_height="123dp"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/chanel"
-                                android:scaleType="centerCrop" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="상호명"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/kopubworlddotumbold"
-                            android:layout_marginTop="3dp"
-                           />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="상품명"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/kopubworlddotumedium"
-                            android:textStyle="bold"
-                            android:layout_marginTop="2dp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </HorizontalScrollView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/frame4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31.56dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frame3">
-
-            <ImageView
-                android:id="@+id/text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/text3"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/detail1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="25dp"
-                app:layout_constraintTop_toBottomOf="@id/text2">
+                    android:text="당신이 잊지 못할 향수는?"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recyclerview1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/themeRecyclerView"
-                    android:clipToPadding="false" />
-            </LinearLayout>
+                    android:scrollbars="horizontal"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/text1"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <ImageButton
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frame4"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@mipmap/more"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail1"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame3">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PAPANG MAGAZINE"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/main_magazine_viewpager"
+                    android:layout_width="335dp"
+                    android:layout_height="182dp"
+                    android:background="#00fff000"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text2"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/frame5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="40dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/frame4">
 
-                <ImageView
+                <TextView
                     android:id="@+id/text3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/speicalevent"
-                    android:layout_marginLeft="16dp"
+                    android:text="SPECIAL EVENT"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginLeft="32dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
-
-                <LinearLayout
-                    android:id="@+id/detail2"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recyclerview3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:scrollbars="vertical"
+                    android:layout_marginLeft="32dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="25dp"
-                    app:layout_constraintTop_toBottomOf="@id/text3">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/themeRecyclerView2"
-                        android:clipToPadding="false"/>
-                </LinearLayout>
-
+                    app:layout_constraintTop_toBottomOf="@id/text3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frame6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame5">
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PAPANG 추천 향수"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recyclerview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/text4"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frame7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame6">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:src="@mipmap/main_satisfaction_txt"
+                    android:background="#00fff000"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/btn_satisfaction_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_good"
+                    android:background="#00fff000"
+                    android:layout_marginRight="12dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/btn_satisfaction_bad"/>
+
+                <ImageButton
+                    android:id="@+id/btn_satisfaction_bad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_bad"
+                    android:background="#00fff000"
+                    android:layout_marginRight="32dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="77dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame7">
+
+                <ImageView
+                    android:id="@+id/text5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/main_txt2"
+                    android:background="#00fff000"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+                <ImageButton
+                    android:id="@+id/btn_provision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_provision"
+                    android:background="#00fff000"
+                    android:layout_marginTop="38dp"
+                    app:layout_constraintTop_toBottomOf="@id/text5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
