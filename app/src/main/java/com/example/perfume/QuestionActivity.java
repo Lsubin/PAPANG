@@ -59,7 +59,7 @@ public class QuestionActivity extends AppCompatActivity {
         nextQ = (ImageButton)findViewById(R.id.nextQ);
         check_Result_btn = (ImageButton)findViewById(R.id.check_Result_btn);
         guide_btn = (ImageButton)findViewById(R.id.guide_btn);
-        
+
         // 가이드 북 클릭 시
         guide_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,14 +76,16 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
-                    if(mCurrentPosition == 2){
+                    if(mCurrentPosition == 1){
                         guide_btn.setVisibility(View.GONE);
+                    }
+                    if(mCurrentPosition == 2){
+                        guide_btn.setVisibility(View.VISIBLE);
                         Question4 question4 = new Question4(q_result[2]);
                         qAdapter.addPage(question4);
                         qAdapter.notifyDataSetChanged();
                     }
                     else if(mCurrentPosition == 3){
-                        guide_btn.setVisibility(View.VISIBLE);
                         Question5 question5 = new Question5(q_result[3]);
                         qAdapter.addPage(question5);
                         qAdapter.notifyDataSetChanged();
@@ -94,6 +96,7 @@ public class QuestionActivity extends AppCompatActivity {
                         qAdapter.notifyDataSetChanged();
                     }
                     else if(mCurrentPosition == 5){
+                        guide_btn.setVisibility(View.GONE);
                         nextQ.setVisibility(View.INVISIBLE);
                         check_Result_btn.setVisibility(View.VISIBLE);
                         Question7 question7 = new Question7();

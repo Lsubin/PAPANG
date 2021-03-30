@@ -47,11 +47,7 @@ public class CustomGuideDialog {
         if(mCurrentPosition == 1){
             guide_img.setImageResource(R.mipmap.guide_book_4_1);
         }
-        if(mCurrentPosition == 2){
-            guide_img.setVisibility(View.GONE);
-        }
         if(mCurrentPosition == 3){
-            guide_img.setVisibility(View.VISIBLE);
             guide_img.setImageResource(R.mipmap.guide_img);
         }
         if(mCurrentPosition == 4){
