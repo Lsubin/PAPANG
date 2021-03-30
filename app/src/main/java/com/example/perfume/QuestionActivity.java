@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class QuestionActivity extends AppCompatActivity {
@@ -15,6 +17,7 @@ public class QuestionActivity extends AppCompatActivity {
     ImageButton nextQ;
     ImageButton check_Result_btn;
     ImageButton q_back_btn;
+    ImageButton guide_btn;
 
     int mCurrentPosition;
 
@@ -55,6 +58,17 @@ public class QuestionActivity extends AppCompatActivity {
 
         nextQ = (ImageButton)findViewById(R.id.nextQ);
         check_Result_btn = (ImageButton)findViewById(R.id.check_Result_btn);
+        guide_btn = (ImageButton)findViewById(R.id.guide_btn);
+        
+        // 가이드 북 클릭 시
+        guide_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomGuideDialog dlg = new CustomGuideDialog(context);
+                dlg.ShowDialog(mCurrentPosition);
+
+            }
+        });
 
         // 다음 페이지로 넘어가는 Next 버튼 클릭 이벤트
         nextQ.setOnClickListener(new View.OnClickListener() {
@@ -63,11 +77,13 @@ public class QuestionActivity extends AppCompatActivity {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
                     if(mCurrentPosition == 2){
+                        guide_btn.setVisibility(View.GONE);
                         Question4 question4 = new Question4(q_result[2]);
                         qAdapter.addPage(question4);
                         qAdapter.notifyDataSetChanged();
                     }
                     else if(mCurrentPosition == 3){
+                        guide_btn.setVisibility(View.VISIBLE);
                         Question5 question5 = new Question5(q_result[3]);
                         qAdapter.addPage(question5);
                         qAdapter.notifyDataSetChanged();
