@@ -40,6 +40,7 @@ public class RecommendationActivity extends AppCompatActivity {
 
     ImageButton guide_backpage;
     ImageButton guide_nextpage;
+    ImageButton guide_exit;
 
     ViewPager guide_viewpager;
 
@@ -86,6 +87,14 @@ public class RecommendationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recommendation_slidinglayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+            }
+        });
+
+        guide_exit = (ImageButton)findViewById(R.id.guide_exit);
+        guide_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

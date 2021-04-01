@@ -23,7 +23,6 @@
                 android:src="@mipmap/exit_btn"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
-
                 android:background="#00fff000"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

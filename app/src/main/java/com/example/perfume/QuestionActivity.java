@@ -115,6 +115,10 @@ public class QuestionActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), q_result[0] + " /  " +
                         q_result[1] + " / " + q_result[2] + " / " + q_result[3] + " / " +
                         q_result[4] + " / " + q_result[5] + " / " + q_result[6], 0).show();
+
+                // 임시로 결과 페이지 보기위해성
+                Intent intent = new Intent(getApplicationContext(), AllResultProductActivity.class);
+                startActivity(intent);
             }
         });
 

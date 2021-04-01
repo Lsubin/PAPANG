@@ -13,6 +13,11 @@ import java.util.ArrayList;
 public class QuestionPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> mData;
 
+    ArrayList<Integer> product_drawables;          // 상품 이미지
+    ArrayList<String> company_name;                 // 회사 이름
+    ArrayList<String> product_name;                 // 상품 이름
+    ArrayList<Integer> wish_drawable;              // 좋아요 표시
+
     @Override
     public int getItemPosition(@NonNull Object object) {
         return super.getItemPosition(object);
