@@ -6,7 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".main.wish.WishThemeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ment_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- 준비중!
     <TextView
         android:id="@+id/wishcount_text"
         android:layout_width="wrap_content"
@@ -26,6 +36,6 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wishcount_text"/>
+        app:layout_constraintTop_toBottomOf="@id/wishcount_text"/> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

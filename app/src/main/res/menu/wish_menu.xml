@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/menu_theme"
-        android:title="테마"
+        android:title="메거진"
         app:showAsAction="always"
         app:itemTextAppearance="@style/MyItemFont"/>
 

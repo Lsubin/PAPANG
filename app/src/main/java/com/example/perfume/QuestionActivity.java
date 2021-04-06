@@ -118,6 +118,13 @@ public class QuestionActivity extends AppCompatActivity {
 
                 // 임시로 결과 페이지 보기위해성
                 Intent intent = new Intent(getApplicationContext(), AllResultProductActivity.class);
+                intent.putExtra("1",q_result[0]);
+                intent.putExtra("2",q_result[1]);
+                intent.putExtra("3",q_result[2]);
+                intent.putExtra("4",q_result[3]);
+                intent.putExtra("5",q_result[4]);
+                intent.putExtra("6",q_result[5]);
+                intent.putExtra("7",q_result[6]);
                 startActivity(intent);
             }
         });
