@@ -57,9 +57,7 @@
                 android:layout_height="200dp"
                 android:src="@mipmap/style_2_img"
                 android:layout_marginTop="25dp"
-                android:scaleType="fitXY"
-                app:layout_constraintTop_toBottomOf="@id/name_text"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/result_1_text"
