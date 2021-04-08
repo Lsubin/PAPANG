@@ -1,14 +1,20 @@
 package com.example.perfume.main.my;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.example.perfume.EditMyinfoActivity;
+import com.example.perfume.ParticipatedEventActivity;
 import com.example.perfume.R;
+import com.example.perfume.RecommendationActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +22,10 @@ import com.example.perfume.R;
  * create an instance of this fragment.
  */
 public class MyPageFragment extends Fragment {
+
+    ConstraintLayout touch_event_zone;
+    ImageButton btn_findperfume;
+    ImageButton btn_eidtmyinfo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,36 @@ public class MyPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_page, container, false);
+
+        touch_event_zone = (ConstraintLayout)view.findViewById(R.id.touch_event_zone);
+        btn_findperfume = (ImageButton)view.findViewById(R.id.btn_findperfume);
+        btn_eidtmyinfo = (ImageButton)view.findViewById(R.id.btn_editmyinfo);
+
+        touch_event_zone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ParticipatedEventActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_findperfume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), RecommendationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_eidtmyinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), EditMyinfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }

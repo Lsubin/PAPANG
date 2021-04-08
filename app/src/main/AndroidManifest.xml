@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".AllResultProductActivity"></activity>
+        <activity android:name=".EditMyinfoActivity"></activity>
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".ParticipatedEventActivity" />
+        <activity android:name=".AllResultProductActivity" />
         <activity android:name=".search.SearchActivity" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".QuestionActivity" />

@@ -27,7 +27,8 @@
         app:layout_constraintLeft_toRightOf="@id/user_img"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/btn_editmyinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/btn_eidtmyinfo"
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/text_tryfindperfume"/>
             <ImageButton
-                android:id="@+id/findperfume_btn"
+                android:id="@+id/btn_findperfume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

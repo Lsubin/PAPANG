@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
-        android:id="@+id/setting_btn"
+        android:id="@+id/btn_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/icon_setting"
@@ -25,13 +25,13 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
-        android:id="@+id/alarm_btn"
+        android:id="@+id/btn_alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/icon_alarm"
         android:background="#00ff0000"
         android:layout_marginRight="10dp"
-        app:layout_constraintRight_toLeftOf="@id/setting_btn"
+        app:layout_constraintRight_toLeftOf="@id/btn_setting"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
