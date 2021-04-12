@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.perfume.NotificationActivity;
 import com.example.perfume.R;
+import com.example.perfume.SettingActivity;
 
 public class MyFragment extends Fragment {
 
@@ -37,6 +38,15 @@ public class MyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), SettingActivity.class);
                 startActivity(intent);
             }
         });
