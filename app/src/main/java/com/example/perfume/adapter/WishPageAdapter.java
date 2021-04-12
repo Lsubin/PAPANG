@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.adapter;
 
 import com.example.perfume.main.wish.WishProudctFragment;
 import com.example.perfume.main.wish.WishThemeFragment;

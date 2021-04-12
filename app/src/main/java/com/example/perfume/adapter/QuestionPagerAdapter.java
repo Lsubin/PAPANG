@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.adapter;
 
 import android.view.MotionEvent;
 
@@ -7,6 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.perfume.Question1;
+import com.example.perfume.Question2;
+import com.example.perfume.Question3;
 
 import java.util.ArrayList;
 

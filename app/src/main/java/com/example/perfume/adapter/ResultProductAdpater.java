@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.perfume.R;
+
 public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpater.ViewHolder> {
 
     Context context;
@@ -20,7 +22,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
     ArrayList<String> product_name;                 // 상품 이름
     ArrayList<Integer> wish_drawable;              // 좋아요 표시
 
-    ResultProductAdpater(Context context, ArrayList<Integer> mProduct_drawalbes, ArrayList<String> mCompany_name,
+    public ResultProductAdpater(Context context, ArrayList<Integer> mProduct_drawalbes, ArrayList<String> mCompany_name,
                          ArrayList<String> mProduct_name, ArrayList<Integer> mWish_drawable){
         this.context = context;
         this.product_drawables = mProduct_drawalbes;

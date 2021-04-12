@@ -35,6 +35,12 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
         notifyDataSetChanged();
     }
 
+    public void update(){
+        search_words.add("샤넬 넘버 5");
+        search_words.add("딥티크");
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RecentSearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

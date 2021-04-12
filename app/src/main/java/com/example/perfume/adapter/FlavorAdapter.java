@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -6,22 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.perfume.R;
+
 import java.util.ArrayList;
 
-public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Holder> {
+public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
     Context mContext;
 
     ArrayList<Drawable> drawables;          // 기본 이미지
     ArrayList<Integer> drawables_Num;       // 매칭 넘버
 
-    FlavorAdapter(Context context, ArrayList<Integer> drawables_Num){
+    public FlavorAdapter(Context context, ArrayList<Integer> drawables_Num){
         this.mContext = context;
         drawables = new ArrayList<>();
 
@@ -57,13 +57,13 @@ public class FlavorAdapter extends RecyclerView.Adapter<com.example.perfume.Hold
 
     @NonNull
     @Override
-    public com.example.perfume.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_flavor_type1, parent, false);
-        com.example.perfume.Holder holder = new com.example.perfume.Holder(view);
+        Holder holder = new Holder(view);
         return holder;
     }
 
-    @Override public void onBindViewHolder(@NonNull com.example.perfume.Holder holder, int position)
+    @Override public void onBindViewHolder(@NonNull Holder holder, int position)
     {
         //Toast.makeText(mContext, String.valueOf(position), 0).show();
         holder.theme_image.setImageDrawable(drawables.get(drawables_Num.get(position)-1));

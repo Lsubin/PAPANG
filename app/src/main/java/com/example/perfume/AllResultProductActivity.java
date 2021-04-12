@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+
+import com.example.perfume.adapter.ResultProductAdpater;
+
 import java.util.ArrayList;
 
 public class AllResultProductActivity extends AppCompatActivity {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
 import com.example.perfume.search.SearchActivity;
@@ -92,6 +94,25 @@ public class HomeFragment extends Fragment {
         adapter = new Product_RecyclerView_Adapter(root.getContext(), data1, data2, data3);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(decoration);
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
+                startActivity(gotoDetail);
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
         recyclerView2 = root.findViewById(R.id.main_recyclerview2);
         mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);

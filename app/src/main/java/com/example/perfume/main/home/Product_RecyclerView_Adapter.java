@@ -24,7 +24,7 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
     ArrayList<String> company_name;                 // 회사 이름
     ArrayList<String> product_name;                 // 상품 이름
 
-    Product_RecyclerView_Adapter(Context context, ArrayList<Drawable> mProduct_drawalbes, ArrayList<String> mCompany_name,
+    public Product_RecyclerView_Adapter(Context context, ArrayList<Drawable> mProduct_drawalbes, ArrayList<String> mCompany_name,
                        ArrayList<String> mProduct_name){
         this.context = context;
         this.product_drawables = mProduct_drawalbes;

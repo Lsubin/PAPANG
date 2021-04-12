@@ -1,6 +1,7 @@
 package com.example.perfume.search;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.perfume.R;
@@ -32,6 +34,10 @@ public class SearchActivity extends AppCompatActivity {
     ImageButton search_find_perfume_btn;        // 향수 추천 버튼
     ImageButton btn_all_delete;
 
+    TextView search_txt2;
+
+    ConstraintLayout search_frame3;
+
     FlexboxLayoutManager layoutManager;
     RecentSearchAdapter recent_adapter;
     RecommendationSearchAdapter recommendation_adapter;
@@ -41,6 +47,8 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        search_frame3 = (ConstraintLayout)findViewById(R.id.search_frame3);
 
         search_back_btn = (ImageButton)findViewById(R.id.search_back_btn);
         search_back_btn.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +91,19 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recent_adapter.allDelete();
+                search_frame3.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "전체삭제 했습니다", 0).show();
             }
         });
 
+        search_txt2 = (TextView)findViewById(R.id.search_txt2);
+        search_txt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recent_adapter.update();
+                search_frame3.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override

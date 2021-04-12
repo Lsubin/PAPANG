@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.perfume.R;
 
 import java.util.ArrayList;
 

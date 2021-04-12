@@ -1,38 +1,26 @@
 package com.example.perfume.main.wish;
 
-import android.content.ClipData;
 import android.graphics.Color;
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.BoringLayout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.perfume.MainActivity;
 import com.example.perfume.R;
-import com.example.perfume.WishPageAdapter;
+import com.example.perfume.adapter.WishPageAdapter;
 
 public class WishFragment extends Fragment {
 

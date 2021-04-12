@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.perfume.FlavorAdapter;
-import com.example.perfume.ItemDecoration;
 import com.example.perfume.R;
 import com.example.perfume.main.GridSpacingItemDecoration;
 
