@@ -3,13 +3,16 @@ package com.example.perfume.main.home;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment {
 
     ImageButton btn_satisfaction_good;
     ImageButton btn_satisfaction_bad;
+
+    private boolean itemTouch;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -102,9 +107,14 @@ public class HomeFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
-                startActivity(gotoDetail);
+                if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
+                    startActivity(gotoDetail);
+                } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
+                    itemTouch = true;
+                }
                 return false;
+
             }
 
             @Override
@@ -117,6 +127,20 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                itemTouch = false;
+            }
+        });
+
 
         recyclerView2 = root.findViewById(R.id.main_recyclerview2);
         mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
