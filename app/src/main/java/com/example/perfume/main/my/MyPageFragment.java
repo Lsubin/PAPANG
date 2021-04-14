@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.example.perfume.AppSatisfactionActivity;
 import com.example.perfume.EditMyinfoActivity;
 import com.example.perfume.ParticipatedEventActivity;
 import com.example.perfume.R;
@@ -24,8 +25,10 @@ import com.example.perfume.RecommendationActivity;
 public class MyPageFragment extends Fragment {
 
     ConstraintLayout touch_event_zone;
+    ConstraintLayout touch_add_zone;
     ImageButton btn_findperfume;
     ImageButton btn_eidtmyinfo;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +77,7 @@ public class MyPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_page, container, false);
 
         touch_event_zone = (ConstraintLayout)view.findViewById(R.id.touch_event_zone);
+        touch_add_zone = (ConstraintLayout)view.findViewById(R.id.touch_add_zone);
         btn_findperfume = (ImageButton)view.findViewById(R.id.btn_findperfume);
         btn_eidtmyinfo = (ImageButton)view.findViewById(R.id.btn_editmyinfo);
 
@@ -81,6 +85,14 @@ public class MyPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ParticipatedEventActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        touch_add_zone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AppSatisfactionActivity.class);
                 startActivity(intent);
             }
         });
