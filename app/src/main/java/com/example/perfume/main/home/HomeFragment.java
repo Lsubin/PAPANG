@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.perfume.AppSatisfactionActivity;
 import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
@@ -38,6 +39,9 @@ public class HomeFragment extends Fragment {
 
     ImageButton btn_search;
     ImageButton find_btn;
+
+    ImageButton btn_satisfaction_good;
+    ImageButton btn_satisfaction_bad;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -133,6 +137,25 @@ public class HomeFragment extends Fragment {
         MainViewPagerAdapter viewAdapter = new MainViewPagerAdapter(root.getContext());
         magazine_viewpager.setAdapter(viewAdapter);
 
+        // 앱 만족도 조사 넘어가기
+        btn_satisfaction_good = (ImageButton)root.findViewById(R.id.btn_satisfaction_good);
+        btn_satisfaction_bad = (ImageButton)root.findViewById(R.id.btn_satisfaction_bad);
+
+        btn_satisfaction_good.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AppSatisfactionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_satisfaction_bad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AppSatisfactionActivity.class);
+                startActivity(intent);
+            }
+        });
         return root;
     }
 }
