@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     ImageButton btn_detail_share;       // 공유 버튼
     ImageButton btn_size;               // 사이즈 변경(업 패널)
     ImageButton btn_shop;               // 웹 뷰 호출(쇼핑몰)
+    ImageButton btn_go_review;          // 리뷰쓰러가기
 
     SlidingUpPanelLayout product_slidinglayout;     // 슬라이딩 업 패널
     RecyclerView detail_size_item;                  // 용량 리싸이클러뷰
@@ -131,15 +133,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
         detail_price_item = (ExpandableLayout) findViewById(R.id.detail_price_item);
-        detail_price_item.setRenderer(new ExpandableLayout.Renderer<Product>() {
-            @Override
-            public void renderParent(View view, FruitCategory model, boolean isExpanded, int parentPosition) {
-                ((TextView) view.findViewById(R.id.tvParent)).setText(model.name);
-            }
 
+        btn_go_review = (ImageButton)findViewById(R.id.btn_go_review);
+        btn_go_review.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void renderChild(View view, Fruit model, int parentPosition, int childPosition) {
-                ((TextView) view.findViewById(R.id.tvChild)).setText(model.name);
+            public void onClick(View v) {
+                Intent review = new Intent(getApplicationContext(), ReviewWriteActivity.class);
+                startActivity(review);
             }
         });
     }

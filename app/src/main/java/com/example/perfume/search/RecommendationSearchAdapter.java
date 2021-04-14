@@ -20,7 +20,7 @@ public class RecommendationSearchAdapter extends RecyclerView.Adapter<Recommenda
     Context context;
     ArrayList<String> search_words;
 
-    RecommendationSearchAdapter(Context context){
+    public RecommendationSearchAdapter(Context context){
         this.context = context;
 
         search_words = new ArrayList<>();

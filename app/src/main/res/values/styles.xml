@@ -61,4 +61,11 @@
         <item name="android:fontFamily">@font/kopubworlddotumedium</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="ReviewRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_circle</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">30dip</item>
+    </style>
+
 </resources>
