@@ -111,6 +111,12 @@ public class Question5 extends Fragment {
             flavor_spicy(v);
         if(q5_flavor.equals("11"))
             flavor_woody(v);
+        if(q5_flavor.equals("12"))
+            flavor_aquatic(v);
+        if(q5_flavor.equals("13"))
+            flavor_nutty(v);
+        if(q5_flavor.equals("14"))
+            flavor_leather(v);
 
         return v;
     }
@@ -121,11 +127,15 @@ public class Question5 extends Fragment {
         drawables_Num = new ArrayList<>();
 
         drawables_Num.add(7);
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(1);
         drawables_Num.add(11);
         drawables_Num.add(2);
-        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(3);
+        drawables_Num.add(5);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -228,12 +238,15 @@ public class Question5 extends Fragment {
         q5_frame4.setImageResource(R.mipmap.question_5_text_animalic);
         drawables_Num = new ArrayList<>();
 
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(11);
-        drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(13);
         drawables_Num.add(10);
+        drawables_Num.add(14);
         drawables_Num.add(3);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -286,6 +299,12 @@ public class Question5 extends Fragment {
         drawables_Num.add(7);
         drawables_Num.add(6);
         drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(13);
+        drawables_Num.add(10);
+        drawables_Num.add(3);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -338,13 +357,15 @@ public class Question5 extends Fragment {
         drawables_Num.add(7);
         drawables_Num.add(6);
         drawables_Num.add(9);
-        drawables_Num.add(8);
         drawables_Num.add(1);
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(13);
         drawables_Num.add(10);
+        drawables_Num.add(3);
         drawables_Num.add(5);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -396,9 +417,13 @@ public class Question5 extends Fragment {
 
         drawables_Num.add(7);
         drawables_Num.add(6);
+        drawables_Num.add(9);
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(14);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -449,11 +474,14 @@ public class Question5 extends Fragment {
         drawables_Num = new ArrayList<>();
 
         drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
         drawables_Num.add(3);
+        drawables_Num.add(14);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -509,6 +537,7 @@ public class Question5 extends Fragment {
         drawables_Num.add(8);
         drawables_Num.add(11);
         drawables_Num.add(2);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -559,12 +588,15 @@ public class Question5 extends Fragment {
         drawables_Num = new ArrayList<>();
 
         drawables_Num.add(7);
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(2);
         drawables_Num.add(11);
         drawables_Num.add(4);
+        drawables_Num.add(13);
         drawables_Num.add(10);
         drawables_Num.add(3);
+        drawables_Num.add(14);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -614,13 +646,14 @@ public class Question5 extends Fragment {
         q5_frame4.setImageResource(R.mipmap.question_5_text_green);
         drawables_Num = new ArrayList<>();
 
-        drawables_Num.add(7);
         drawables_Num.add(6);
         drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(11);
+        drawables_Num.add(10);
         drawables_Num.add(3);
         drawables_Num.add(5);
+        drawables_Num.add(12);
 
         add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -670,6 +703,177 @@ public class Question5 extends Fragment {
         q5_frame4.setImageResource(R.mipmap.question_5_text_balsam);
         drawables_Num = new ArrayList<>();
 
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+        drawables_Num.add(14);
+        drawables_Num.add(3);
+
+        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
+        add_flavor_grid.setLayoutManager(mLayoutManager);
+        add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
+        flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
+        add_flavor_grid.setAdapter(flavorAdapter);
+
+        add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if (position >= 0) {
+                        String num = String.valueOf(flavorAdapter.getNum(position));
+                        if (q5_state == false) {
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                            q5_state = true;
+                        } else if (q5_state == true && (!num.equals(q5_result))) {
+                            flavorAdapter.setBackDrawable(q5_position);
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                        }
+                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                    }
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            }
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
+
+        flavorAdapter.notifyDataSetChanged();
+    }
+
+    // 아쿠아틱
+    private void flavor_aquatic(View v){
+        q5_frame4.setImageResource(R.mipmap.question_5_text_aquatic);
+        drawables_Num = new ArrayList<>();
+
+        drawables_Num.add(7);
+        drawables_Num.add(6);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(3);
+        drawables_Num.add(5);
+
+        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
+        add_flavor_grid.setLayoutManager(mLayoutManager);
+        add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
+        flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
+        add_flavor_grid.setAdapter(flavorAdapter);
+
+        add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if (position >= 0) {
+                        String num = String.valueOf(flavorAdapter.getNum(position));
+                        if (q5_state == false) {
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                            q5_state = true;
+                        } else if (q5_state == true && (!num.equals(q5_result))) {
+                            flavorAdapter.setBackDrawable(q5_position);
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                        }
+                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                    }
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            }
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
+
+        flavorAdapter.notifyDataSetChanged();
+    }
+
+    // 너티
+    private void flavor_nutty(View v){
+        q5_frame4.setImageResource(R.mipmap.question_5_text_nutty);
+        drawables_Num = new ArrayList<>();
+
+        drawables_Num.add(6);
+        drawables_Num.add(9);
+        drawables_Num.add(8);
+        drawables_Num.add(11);
+        drawables_Num.add(2);
+        drawables_Num.add(4);
+        drawables_Num.add(10);
+
+        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
+        add_flavor_grid.setLayoutManager(mLayoutManager);
+        add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
+        flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
+        add_flavor_grid.setAdapter(flavorAdapter);
+
+        add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if (position >= 0) {
+                        String num = String.valueOf(flavorAdapter.getNum(position));
+                        if (q5_state == false) {
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                            q5_state = true;
+                        } else if (q5_state == true && (!num.equals(q5_result))) {
+                            flavorAdapter.setBackDrawable(q5_position);
+                            flavorAdapter.setDrawable(position);
+                            q5_result = num;
+                            q5_position = position;
+                        }
+                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                    }
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            }
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
+
+        flavorAdapter.notifyDataSetChanged();
+    }
+
+    // 레더
+    private void flavor_leather(View v){
+        q5_frame4.setImageResource(R.mipmap.question_5_text_leather);
+        drawables_Num = new ArrayList<>();
+
+        drawables_Num.add(6);
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(11);
         drawables_Num.add(2);
@@ -719,7 +923,6 @@ public class Question5 extends Fragment {
 
         flavorAdapter.notifyDataSetChanged();
     }
-
 
 
 }

@@ -126,6 +126,7 @@ public class Question4 extends Fragment {
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(13);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -181,6 +182,7 @@ public class Question4 extends Fragment {
         drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(5);
+        drawables_Num.add(13);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -231,8 +233,10 @@ public class Question4 extends Fragment {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s3);
         drawables_Num = new ArrayList<>();
 
+        drawables_Num.add(9);
         drawables_Num.add(8);
         drawables_Num.add(1);
+        drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
         drawables_Num.add(10);
@@ -340,9 +344,13 @@ public class Question4 extends Fragment {
         drawables_Num = new ArrayList<>();
 
         drawables_Num.add(7);
+        drawables_Num.add(6);
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(3);
+        drawables_Num.add(14);
+        drawables_Num.add(13);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -398,6 +406,7 @@ public class Question4 extends Fragment {
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
+        drawables_Num.add(13);
         drawables_Num.add(5);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
@@ -452,7 +461,9 @@ public class Question4 extends Fragment {
         drawables_Num.add(6);
         drawables_Num.add(9);
         drawables_Num.add(3);
+        drawables_Num.add(10);
         drawables_Num.add(5);
+        drawables_Num.add(12);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
@@ -502,13 +513,14 @@ public class Question4 extends Fragment {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s8);
         drawables_Num = new ArrayList<>();
 
-        drawables_Num.add(5);
+        drawables_Num.add(6);
         drawables_Num.add(11);
         drawables_Num.add(2);
         drawables_Num.add(4);
         drawables_Num.add(3);
         drawables_Num.add(10);
-        drawables_Num.add(6);
+        drawables_Num.add(14);
+        drawables_Num.add(5);
 
         main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);

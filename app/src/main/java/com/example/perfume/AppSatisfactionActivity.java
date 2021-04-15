@@ -99,6 +99,8 @@ public class AppSatisfactionActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                Typeface externalFont=Typeface.createFromAsset(getAssets(), "font/kopubworlddotumbold.ttf");
+                ((TextView) view).setTypeface(externalFont);
                 ((TextView)parent.getChildAt(0)).setTextColor(Color.parseColor("#6557FF"));
             }
 

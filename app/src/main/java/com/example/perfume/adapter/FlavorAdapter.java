@@ -37,20 +37,26 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity));      //프루티 9번
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy));       //스파이시 10번
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody));       //우디 11번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope));       //없음 12번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aquatic));     //아쿠아틱 12번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nutty));       //너티 13번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_leather));     //레더 14번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope));        //없음 15번
         // click 이미지들 추가
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 13번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 14번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 15번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 16번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 17번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 18번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 19번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 20번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 21번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 22번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 23번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope_click));       //없음 24번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 16번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 17번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 18번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 19번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 20번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 21번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 22번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 23번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 24번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 25번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 26번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aquatic_click));     //아쿠아틱 27번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nutty_click));       //너티 28번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_leather_click));     //레더 29번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope_click));        //없음 30번
 
         this.drawables_Num = drawables_Num;
     }
@@ -78,13 +84,13 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
     // click으로 바꾸는거
     public void setDrawable(int position){
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num+12);
+        drawables_Num.set(position, num+15);
         notifyDataSetChanged();
     }
 
     public void setBackDrawable(int position){
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num-12);
+        drawables_Num.set(position, num-15);
         notifyDataSetChanged();
     }
 
