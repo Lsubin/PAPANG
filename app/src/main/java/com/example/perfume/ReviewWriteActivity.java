@@ -5,18 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +46,13 @@ import com.example.perfume.search.RecommendationSearchAdapter;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ReviewWriteActivity extends AppCompatActivity {
 
@@ -64,6 +85,12 @@ public class ReviewWriteActivity extends AppCompatActivity {
     FlexboxLayoutManager layoutManager;
     ReviewHashAdapter hashTag_adapter;
 
+    String mCurrentPhotoPath;
+    final static int REQUEST_TAKE_PHOTO = 1;
+    final static int REQUEST_TAKE_ALBUM = 2;
+
+    Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +104,12 @@ public class ReviewWriteActivity extends AppCompatActivity {
         btn_review_winter = (ImageButton)findViewById(R.id.btn_review_winter);
         btn_rw_ok = (ImageButton)findViewById(R.id.btn_rw_ok);
         btn_rw_exit = (ImageButton)findViewById(R.id.btn_rw_exit);
+        btn_rw_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         rw_hash_tag = (RecyclerView)findViewById(R.id.rw_hash_tag);
         layoutManager = new FlexboxLayoutManager(getApplicationContext());
@@ -127,9 +160,11 @@ public class ReviewWriteActivity extends AppCompatActivity {
         rw_tag_input.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP)
+                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
                     hashTag_adapter.saveHashtag(rw_tag_input.getText().toString());
-                return true;
+                    rw_tag_input.setText(null);
+                }
+                return false;
             }
         });
 
@@ -193,6 +228,10 @@ public class ReviewWriteActivity extends AppCompatActivity {
                         btn_review_fall.setImageDrawable(getResources().getDrawable(R.mipmap.review_fall));
                         btn_review_winter.setImageDrawable(getResources().getDrawable(R.mipmap.review_winter_click));
                         break;
+                    case R.id.rw_image1:
+                        makeDialog();
+                        break;
+
                 }
             }
         };
@@ -202,7 +241,42 @@ public class ReviewWriteActivity extends AppCompatActivity {
         btn_review_summer.setOnClickListener(imgBtnClickListener);
         btn_review_fall.setOnClickListener(imgBtnClickListener);
         btn_review_winter.setOnClickListener(imgBtnClickListener);
+        rw_image1.setOnClickListener(imgBtnClickListener);
+    }
 
+    // 다이얼로그 생성 함수
+    public void makeDialog(){
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog_photo);
+
+        dialog.show();
+
+        Button photo = (Button)dialog.findViewById(R.id.dialog_photo);
+        Button album = (Button)dialog.findViewById(R.id.dialog_album);
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                permissionCheck();
+                dispatchTakePictureIntent();
+                dialog.dismiss();
+            }
+        });
+        album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                permissionCheck();
+                selectAlbum();
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void selectAlbum(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_TAKE_ALBUM);
     }
 
     // 권한 요청
@@ -233,5 +307,111 @@ public class ReviewWriteActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode, resultCode, intent);
+        try
+        {
+            if(resultCode != RESULT_OK)
+                return;
+
+            switch (requestCode)
+            {
+                case REQUEST_TAKE_PHOTO:
+                    File file = new File(mCurrentPhotoPath);
+                    Bitmap bitmap;
+                    if (Build.VERSION.SDK_INT >= 29)
+                    {
+                        ImageDecoder.Source source = ImageDecoder.createSource(getContentResolver(), Uri.fromFile(file));
+                        try {
+                            bitmap = ImageDecoder.decodeBitmap(source);
+                            if (bitmap != null)
+                            {
+                                galleryAddPic();
+                                rw_image1.setImageBitmap(bitmap);
+                            }
+                        } catch (IOException e)
+                        { e.printStackTrace(); }
+                    }
+                    else
+                    { try
+                    {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));
+                        if (bitmap != null)
+                        {
+                            galleryAddPic();
+                            rw_image1.setImageBitmap(bitmap);
+                        }
+                    } catch (IOException e)
+                    { e.printStackTrace(); }
+                    }
+                    break;
+
+                case REQUEST_TAKE_ALBUM:
+                    if(intent.getData()!=null) {
+                        try{
+                             Uri photoURI = intent.getData();
+                             bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoURI);
+                            rw_image1.setImageBitmap(bitmap);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+            }
+        }
+        catch (Exception error)
+        {
+            error.printStackTrace();
+        }
+    }
+
+
+    private File createImageFile() throws IOException
+    {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = new File(Environment.getExternalStorageDirectory() + "/Pictures", "Papang");
+        if (!storageDir.exists()) {
+            Log.v("알림", "storageDir 존재 x " + storageDir.toString());
+            storageDir.mkdirs();
+        }
+        File image = File.createTempFile( imageFileName, ".jpg", storageDir );
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    private void dispatchTakePictureIntent()
+    {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(takePictureIntent.resolveActivity(getPackageManager()) != null)
+        {
+            File photoFile = null;
+            try
+            {
+                photoFile = createImageFile();
+            }
+            catch (IOException ex)
+            {
+            }
+            if(photoFile != null)
+            {
+                Uri photoURI = FileProvider.getUriForFile(getApplicationContext(), "com.papang.fileprovider", photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+
+    public void galleryAddPic(){
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(mCurrentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        sendBroadcast(mediaScanIntent);
+        Toast.makeText(getApplicationContext(),"사진이 저장되었습니다",Toast.LENGTH_SHORT).show();
     }
 }
