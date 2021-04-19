@@ -44,7 +44,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <com.example.perfume.NonSwipeViewPager
+    <com.example.perfume.custom.NonSwipeViewPager
         android:id="@+id/question_View"
         android:layout_width="match_parent"
         android:layout_height="0dp"

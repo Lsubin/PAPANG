@@ -17,7 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.perfume.adapter.PerfumeSizeAdapter;
+import com.example.perfume.adapter.ReviewListAdapter;
 import com.example.perfume.adapter.ReviewTabAdapter;
+import com.example.perfume.custom.WrapHeightViewPager;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
 import com.example.perfume.review.ReviewWriteActivity;
@@ -53,8 +55,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
     RecyclerView detail_product_tag;                // 향수 관련 태그
     RecyclerView detail_similar_product;            // 비슷한 향수
 
+    RecyclerView pd_review_list;                    // 리뷰 목록
+
     TabLayout review_tab;
-    ViewPager review_viewpager;
+    WrapHeightViewPager review_viewpager;
     ReviewTabAdapter rtAdapter;
 
     iammert.com.expandablelib.ExpandableLayout detail_price_item;           // 최저가 비교하기(확장 리스트뷰)
@@ -65,6 +69,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     LinearLayoutManager mLayoutManager;
     PerfumeSizeAdapter adapter;
     Product_Decoration decoration;
+    ReviewListAdapter  radapter;
 
     // 뒤로가기 버튼
     @Override
@@ -109,6 +114,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_product_tag.setAdapter(adapter);
         detail_product_tag.addItemDecoration(decoration);
 
+        pd_review_list = (RecyclerView)findViewById(R.id.pd_review_list);
+        mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        pd_review_list.setLayoutManager(mLayoutManager);
+        radapter = new ReviewListAdapter(getApplicationContext(), "김실버");
+        pd_review_list.setAdapter(radapter);
+
         // 예시
         ArrayList<Drawable> data1 = new ArrayList<>();
         ArrayList<String> data2 = new ArrayList<>();
@@ -149,9 +160,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
         review_tab = (TabLayout)findViewById(R.id.review_tab);
-        review_viewpager = (ViewPager)findViewById(R.id.review_viewpager);
+        review_viewpager = (WrapHeightViewPager)findViewById(R.id.review_viewpager);
         rtAdapter = new ReviewTabAdapter(getSupportFragmentManager());
         review_viewpager.setAdapter(rtAdapter);
+
+        review_tab.setupWithViewPager(review_viewpager);    // 리뷰 뷰페이저랑 탭 아이템이랑 연동
     }
 
 

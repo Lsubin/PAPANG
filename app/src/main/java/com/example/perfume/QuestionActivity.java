@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.perfume.adapter.QuestionPagerAdapter;
+import com.example.perfume.custom.NonSwipeViewPager;
 
 public class QuestionActivity extends AppCompatActivity {
 

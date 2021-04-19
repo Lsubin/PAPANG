@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;
