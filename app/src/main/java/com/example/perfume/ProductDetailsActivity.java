@@ -5,22 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.perfume.adapter.PerfumeSizeAdapter;
+import com.example.perfume.adapter.ReviewTabAdapter;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
+import com.example.perfume.review.ReviewWriteActivity;
+import com.google.android.material.tabs.TabLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
     RecyclerView detail_size_item;                  // 용량 리싸이클러뷰
     RecyclerView detail_product_tag;                // 향수 관련 태그
     RecyclerView detail_similar_product;            // 비슷한 향수
+
+    TabLayout review_tab;
+    ViewPager review_viewpager;
+    ReviewTabAdapter rtAdapter;
 
     iammert.com.expandablelib.ExpandableLayout detail_price_item;           // 최저가 비교하기(확장 리스트뷰)
 
@@ -142,6 +147,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 startActivity(review);
             }
         });
+
+        review_tab = (TabLayout)findViewById(R.id.review_tab);
+        review_viewpager = (ViewPager)findViewById(R.id.review_viewpager);
+        rtAdapter = new ReviewTabAdapter(getSupportFragmentManager());
+        review_viewpager.setAdapter(rtAdapter);
     }
 
 

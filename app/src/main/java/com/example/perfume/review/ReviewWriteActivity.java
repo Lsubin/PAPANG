@@ -1,4 +1,4 @@
-package com.example.perfume;
+package com.example.perfume.review;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +38,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.perfume.R;
 import com.example.perfume.adapter.FlavorAdapter;
 import com.example.perfume.adapter.ReviewFlavorAdapter;
 import com.example.perfume.adapter.ReviewHashAdapter;

@@ -41,6 +41,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/kopubworlddotumbold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontStyle">normal</item>
+    </style>
+
     <style name="AppBarMainFragment" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/colorServiceBackground</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -66,6 +72,12 @@
         <item name="android:progressDrawable">@drawable/rating_circle</item>
         <item name="android:minHeight">30dip</item>
         <item name="android:maxHeight">30dip</item>
+    </style>
+
+    <style name="BigReviewRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/b_rating_circle</item>
+        <item name="android:minHeight">32dip</item>
+        <item name="android:maxHeight">50dip</item>
     </style>
 
 </resources>

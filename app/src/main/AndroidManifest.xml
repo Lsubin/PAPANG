@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".ReviewWriteActivity"></activity>
+        <activity android:name=".review.ReviewWriteActivity"></activity>
         <activity android:name=".SettingDetail4Activity" />
         <activity android:name=".SettingDetail3Activity" />
         <activity android:name=".SettingDetail2Activity" />
