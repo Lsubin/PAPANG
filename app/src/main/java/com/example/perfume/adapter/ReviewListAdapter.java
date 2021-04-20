@@ -1,6 +1,7 @@
 package com.example.perfume.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Rating;
 import android.view.LayoutInflater;
@@ -16,10 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.perfume.R;
 import com.example.perfume.object.Review;
+import com.example.perfume.review.DetailReviewActivity;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.ViewHolder> {
     Context context;
@@ -92,6 +96,15 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Vi
 
             review_btn_heart = (ImageButton)itemView.findViewById(R.id.review_btn_heart);
             review_btn_detail = (ImageButton)itemView.findViewById(R.id.review_btn_detail);
+            review_btn_detail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent go_detail = new Intent(v.getContext(), DetailReviewActivity.class);
+                    // 여기서 Review 아이템 넣어서 Bundle로 상세 리뷰 페이지로 보내기
+                    //go_detail.putCharSequenceArrayListExtra("Data", review.get(getAdapterPosition()))
+                    context.startActivity(go_detail.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                }
+            });
         }
     }
 

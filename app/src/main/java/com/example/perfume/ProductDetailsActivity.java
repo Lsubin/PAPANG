@@ -22,6 +22,7 @@ import com.example.perfume.adapter.ReviewTabAdapter;
 import com.example.perfume.custom.WrapHeightViewPager;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
+import com.example.perfume.review.AllReviewActivity;
 import com.example.perfume.review.ReviewWriteActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -49,6 +50,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     ImageButton btn_size;               // 사이즈 변경(업 패널)
     ImageButton btn_shop;               // 웹 뷰 호출(쇼핑몰)
     ImageButton btn_go_review;          // 리뷰쓰러가기
+    ImageButton btn_more_review;        // 리뷰 전체 보기
 
     SlidingUpPanelLayout product_slidinglayout;     // 슬라이딩 업 패널
     RecyclerView detail_size_item;                  // 용량 리싸이클러뷰
@@ -165,6 +167,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
         review_viewpager.setAdapter(rtAdapter);
 
         review_tab.setupWithViewPager(review_viewpager);    // 리뷰 뷰페이저랑 탭 아이템이랑 연동
+
+        btn_more_review = (ImageButton)findViewById(R.id.btn_more_review);
+        btn_more_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent allReview = new Intent(getApplicationContext(), AllReviewActivity.class);
+                startActivity(allReview);
+            }
+        });
     }
 
 
