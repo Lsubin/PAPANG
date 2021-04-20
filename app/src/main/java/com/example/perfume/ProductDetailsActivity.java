@@ -12,16 +12,23 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.perfume.adapter.ExpandablePriceAdapter;
 import com.example.perfume.adapter.PerfumeSizeAdapter;
 import com.example.perfume.adapter.ReviewListAdapter;
 import com.example.perfume.adapter.ReviewTabAdapter;
 import com.example.perfume.custom.WrapHeightViewPager;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
+import com.example.perfume.review.AllReviewActivity;
+import com.example.perfume.review.ReviewWriteActivity;
+import com.google.android.material.tabs.TabLayout;
+import com.example.perfume.object.Product;
 import com.example.perfume.review.AllReviewActivity;
 import com.example.perfume.review.ReviewWriteActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -63,7 +70,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     WrapHeightViewPager review_viewpager;
     ReviewTabAdapter rtAdapter;
 
-    iammert.com.expandablelib.ExpandableLayout detail_price_item;           // 최저가 비교하기(확장 리스트뷰)
 
     ArrayList<String> sizes;
     ArrayList<String> tags;
@@ -72,6 +78,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     PerfumeSizeAdapter adapter;
     Product_Decoration decoration;
     ReviewListAdapter  radapter;
+    ExpandablePriceAdapter expandable_adpater;
+    ExpandableListView detail_price_item;
 
     // 뒤로가기 버튼
     @Override
@@ -150,7 +158,28 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
-        detail_price_item = (ExpandableLayout) findViewById(R.id.detail_price_item);
+        detail_price_item = (ExpandableListView) findViewById(R.id.detail_price_item);
+        ArrayList<Product> mData = new ArrayList<>();
+        ArrayList<String> shop_name = new ArrayList<>();
+        ArrayList<String> price = new ArrayList<>();
+
+        shop_name.add("판매처1");
+        price.add("10000원");
+
+        Product product = new Product(shop_name,price);
+        mData.add(product);
+
+        expandable_adpater = new ExpandablePriceAdapter(this, mData);
+        detail_price_item.setAdapter(expandable_adpater);
+        detail_price_item.setGroupIndicator(null);
+
+        detail_price_item.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),"클릭됨",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
         btn_go_review = (ImageButton)findViewById(R.id.btn_go_review);
         btn_go_review.setOnClickListener(new View.OnClickListener() {
