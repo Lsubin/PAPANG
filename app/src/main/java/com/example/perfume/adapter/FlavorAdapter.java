@@ -2,6 +2,7 @@ package com.example.perfume.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,10 +103,12 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
 
 class Holder extends RecyclerView.ViewHolder {
     ImageView theme_image;
+    ImageView select_image;
 
     public Holder(@NonNull final View itemView) {
         super(itemView);
         theme_image = itemView.findViewById(R.id.flavor2_item);
+        select_image = itemView.findViewById(R.id.select_flavor);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +116,13 @@ class Holder extends RecyclerView.ViewHolder {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION)
                 {
-                    Toast.makeText(view.getContext(), "클릭된 아이템 번호 "+pos , Toast.LENGTH_SHORT).show();
-
+                    /*
+                    if(select_image.getVisibility() == View.VISIBLE){
+                        select_image.setVisibility(View.INVISIBLE);
+                    }
+                    else{
+                        select_image.setVisibility(View.VISIBLE);
+                    }*/
                 }
             }
         });

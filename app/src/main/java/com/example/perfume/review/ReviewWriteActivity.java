@@ -28,6 +28,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -53,6 +54,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ReviewWriteActivity extends AppCompatActivity {
@@ -92,6 +94,8 @@ public class ReviewWriteActivity extends AppCompatActivity {
 
     Dialog dialog;
 
+    ArrayList<Boolean> isChecked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,8 +123,6 @@ public class ReviewWriteActivity extends AppCompatActivity {
         rw_hash_tag.setLayoutManager(layoutManager);
         hashTag_adapter = new ReviewHashAdapter(getApplicationContext());
         rw_hash_tag.setAdapter(hashTag_adapter);
-
-        rw_flavor_grid = (RecyclerView)findViewById(R.id.rw_flavor_grid);
 
         rw_rating_text = (TextView)findViewById(R.id.rw_rating_text);
         rw_text_count = (TextView)findViewById(R.id.rw_text_count);
@@ -188,10 +190,46 @@ public class ReviewWriteActivity extends AppCompatActivity {
             }
         });
 
+        isChecked = new ArrayList<>();
+        for(int i = 0; i < 14; i++){
+            isChecked.add(false);
+        }
+        rw_flavor_grid = (RecyclerView)findViewById(R.id.rw_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 5);
         rw_flavor_grid.setLayoutManager(mLayoutManager);
-        ReviewFlavorAdapter flavorAdapter = new ReviewFlavorAdapter(getApplicationContext());
+        final ReviewFlavorAdapter flavorAdapter = new ReviewFlavorAdapter(getApplicationContext(), isChecked);
         rw_flavor_grid.setAdapter(flavorAdapter);
+        rw_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if (position >= 0 && flavorAdapter.getCheck(position) == false) {
+                        flavorAdapter.setCheck(position, true);
+                    }
+                    else if(position >= 0 && flavorAdapter.getCheck(position) == true) {
+                        flavorAdapter.setCheck(position, false);
+                    }
+
+                    // 선택된 향료 개수
+                    Toast.makeText(getApplicationContext(),"선택된 향료 개수: " + flavorAdapter.getCheckCount(), Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+
+        });
+        flavorAdapter.notifyDataSetChanged();
 
         ImageButton.OnClickListener imgBtnClickListener = new View.OnClickListener() {
             @Override
