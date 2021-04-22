@@ -58,6 +58,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     ImageButton btn_shop;               // 웹 뷰 호출(쇼핑몰)
     ImageButton btn_go_review;          // 리뷰쓰러가기
     ImageButton btn_more_review;        // 리뷰 전체 보기
+    ImageButton btn_back_detail_page;   // 상세페이지 뒤로가기
 
     SlidingUpPanelLayout product_slidinglayout;     // 슬라이딩 업 패널
     RecyclerView detail_size_item;                  // 용량 리싸이클러뷰
@@ -203,6 +204,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allReview = new Intent(getApplicationContext(), AllReviewActivity.class);
                 startActivity(allReview);
+            }
+        });
+
+        // 뒤로가기
+        btn_back_detail_page = (ImageButton)findViewById(R.id.btn_back_detail_page);
+        btn_back_detail_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

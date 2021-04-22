@@ -10,8 +10,12 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.perfume.R;
 import com.example.perfume.adapter.ReviewListAdapter;
@@ -35,6 +39,8 @@ public class AllReviewActivity extends AppCompatActivity {
     RecyclerView all_review_list;               // 리뷰 목록
     LinearLayoutManager mLayoutManager;
     ReviewListAdapter alladapter;
+
+    Spinner spinner_filter;                     // 필터 스피너
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +78,25 @@ public class AllReviewActivity extends AppCompatActivity {
         all_review_list.setLayoutManager(mLayoutManager);
         alladapter = new ReviewListAdapter(getApplicationContext(), "김실버");
         all_review_list.setAdapter(alladapter);
+
+        // 필터
+        final String[] filter = {"추천순", "최신순", "사진리뷰"};
+        spinner_filter = (Spinner)findViewById(R.id.spinner_filter);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_spinner_filter, filter);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_filter.setAdapter(adapter);
+
+        spinner_filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //Toast.makeText(getApplicationContext(),"선택된 거: " + filter[i] , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }
