@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingRight="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -44,5 +47,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⁕ 일시적으로 가격이 변동 할 수 있으니 판매처에서 자세한 가격을 한번 더 확인해주세요!"
+        android:fontFamily="@font/kopubworlddotumbold"
+        android:textSize="8sp"
+        android:textColor="#949494"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price_name"/> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

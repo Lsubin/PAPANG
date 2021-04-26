@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.perfume.R;
@@ -73,7 +74,7 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
         }
 
         TextView text = (TextView)view.findViewById(R.id.text);
-        ImageButton arrow = (ImageButton)view.findViewById(R.id.arrow);
+        ImageView arrow = (ImageView)view.findViewById(R.id.arrow);
         text.setText("최저가 비교하기");
         arrow.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.group_indicator));
         return view;

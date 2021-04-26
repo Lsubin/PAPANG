@@ -164,8 +164,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
         ArrayList<String> shop_name = new ArrayList<>();
         ArrayList<String> price = new ArrayList<>();
 
-        shop_name.add("판매처1");
-        price.add("10000원");
+        shop_name.add("판매처");
+        price.add("200,000원");
+
+        shop_name.add("판매처");
+        price.add("210,000원");
+
+        shop_name.add("판매처");
+        price.add("220,000원");
 
         Product product = new Product(shop_name,price);
         mData.add(product);
