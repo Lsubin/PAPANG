@@ -105,11 +105,4 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed()
-    {
-        //super.onBackPressed();
-    }
-
 }

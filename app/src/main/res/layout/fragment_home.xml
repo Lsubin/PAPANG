@@ -45,8 +45,8 @@
 
                 <ImageButton
                     android:id="@+id/main_search"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:scaleType="fitXY"
                     android:src="@mipmap/btn_search"
