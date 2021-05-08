@@ -102,7 +102,7 @@
             app:barHeight="4dp"
             app:minValue="0"
             app:maxValue="300000"
-            app:stepValue="10000"
+            app:stepValue="50000"
             app:sideColor="#EFEFEF"
             app:centerColor="#6266FF"
             app:thumbsNormal="@mipmap/thumb_image"

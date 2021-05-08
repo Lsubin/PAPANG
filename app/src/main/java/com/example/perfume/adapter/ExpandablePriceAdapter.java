@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -98,6 +100,23 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
         price_shop_name.setText(mProduct.get(groupPosition).shops.get(childPosition));
         TextView price_name = (TextView)view.findViewById(R.id.price_name);
         price_name.setText(mProduct.get(groupPosition).prices.get(childPosition));
+
+        // 맨 처음에만 최저가 태그 보이게
+        TextView price_lower_tag = (TextView)view.findViewById(R.id.price_lower_tag);
+        if(childPosition == 0)
+        {
+            price_lower_tag.setVisibility(View.VISIBLE);
+        }
+
+        // 마지막 아이템 구분선 사라지고 멘트 나오게 하기!
+        View line = (View)view.findViewById(R.id.line);
+        TextView text_comment = (TextView)view.findViewById(R.id.text_comment);
+        if(isLastChild)
+        {
+            line.setVisibility(View.GONE);
+            text_comment.setVisibility(View.VISIBLE);
+        }
+
         return view;
     }
 
@@ -115,5 +134,40 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean areAllItemsEnabled() {
         return super.areAllItemsEnabled();
+    }
+
+    public void setListViewHeight(ExpandableListView listView,
+                                   int group) {
+        ExpandableListAdapter listAdapter = (ExpandableListAdapter) listView.getExpandableListAdapter();
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(),
+                View.MeasureSpec.EXACTLY);
+        for (int i = 0; i < listAdapter.getGroupCount(); i++) {
+            View groupItem = listAdapter.getGroupView(i, false, null, listView);
+            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+            totalHeight += groupItem.getMeasuredHeight();
+
+            if (((listView.isGroupExpanded(i)) && (i != group))
+                    || ((!listView.isGroupExpanded(i)) && (i == group))) {
+                for (int j = 0; j < listAdapter.getChildrenCount(i); j++) {
+                    View listItem = listAdapter.getChildView(i, j, false, null,
+                            listView);
+                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+                    totalHeight += listItem.getMeasuredHeight();
+
+                }
+            }
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        int height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getGroupCount() - 1));
+        if (height < 10)
+            height = 200;
+        params.height = height;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 }

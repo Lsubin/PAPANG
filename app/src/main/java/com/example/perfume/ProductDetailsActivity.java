@@ -182,7 +182,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         detail_price_item.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+            public boolean onGroupClick(ExpandableListView parent, View view, int groupPosition, long l) {
+                expandable_adpater.setListViewHeight(parent, groupPosition);
                 Toast.makeText(getApplicationContext(),"클릭됨",Toast.LENGTH_SHORT).show();
                 return false;
             }

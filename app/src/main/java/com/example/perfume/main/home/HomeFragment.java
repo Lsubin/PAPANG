@@ -88,12 +88,30 @@ public class HomeFragment extends Fragment {
         ArrayList<String> data3 = new ArrayList<>();
 
         // 예시로 8개 추가
+        /*
         for(int i = 0; i < 4; i++)
         {
             data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
             data2.add("샤넬");
             data3.add("넘버 5 오뜨빠르펭");
-        }
+        }*/
+        // 예시 이미지 깨지나
+
+        data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
+        data2.add("샤넬");
+        data3.add("넘버 5 오뜨빠르펭");
+
+        data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
+        data2.add("샤넬");
+        data3.add("넘버 5 오뜨빠르펭");
+
+        data1.add(getResources().getDrawable(R.mipmap.ex1));
+        data2.add("샤넬");
+        data3.add("넘버 5 오뜨빠르펭");
+
+        data1.add(getResources().getDrawable(R.mipmap.ex2));
+        data2.add("샤넬");
+        data3.add("넘버 5 오뜨빠르펭");
 
         decoration = new Product_Decoration();
 

@@ -229,7 +229,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/d_frame3"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     app:layout_constraintBottom_toTopOf="@id/d_frame4"
                     app:layout_constraintHorizontal_bias="0.0"
