@@ -24,7 +24,10 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        return super.getItemPosition(object);
+        if(mData.contains(object))
+            return mData.indexOf(object);
+        else
+            return POSITION_NONE;
     }
 
     public QuestionPagerAdapter(@NonNull FragmentManager fm){
@@ -56,4 +59,10 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
         mData.add(fragment);
     }
 
+    public void deletePage(int index){
+        int all = mData.size() - 1;
+        for(int i = all; i > index; i--)
+            mData.remove(i);
+        notifyDataSetChanged();
+    }
 }

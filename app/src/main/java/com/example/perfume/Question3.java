@@ -45,6 +45,7 @@ public class Question3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    String result;
     public Question3() {
         // Required empty public constructor
     }
@@ -90,11 +91,118 @@ public class Question3 extends Fragment {
         style_7_btn = (ImageButton)v.findViewById(R.id.style_7_btn);
         style_8_btn = (ImageButton)v.findViewById(R.id.style_8_btn);
 
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[2] != false) {
+            result = ((QuestionActivity) QuestionActivity.context).q_result[2];
+            Toast.makeText(v.getContext(), result, 0).show();
+            switch(result){
+                case "1":
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1_c));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "2":
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "3":
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "4":
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "5":
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "6":
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "7":
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+                case "8":
+                    style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8_c));
+                    style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
+                    style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
+                    style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
+                    style_4_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_4));
+                    style_5_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_5));
+                    style_6_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_6));
+                    style_7_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_7));
+                    q3_state = true;
+                    q3_result = result;
+                    break;
+            }
+        }
+        else result = "null";
+
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.style_1_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1_c));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -109,6 +217,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_2_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2_c));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -123,6 +233,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_3_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3_c));
@@ -137,6 +249,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_4_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -151,6 +265,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_5_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -165,6 +281,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_6_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -179,6 +297,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_7_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));
@@ -193,6 +313,8 @@ public class Question3 extends Fragment {
                         break;
 
                     case R.id.style_8_btn :
+                        if(!result.equals("null"))
+                            ((QuestionActivity) QuestionActivity.context).deletePage(2);
                         style_1_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_1));
                         style_2_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_2));
                         style_3_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_3));

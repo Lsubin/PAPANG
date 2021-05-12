@@ -49,6 +49,7 @@ public class Question5 extends Fragment {
     public String q5_result;
     public Integer q5_position;
 
+    int result;
 
     public Question5(String flavor) {
         q5_flavor = flavor;
@@ -88,41 +89,50 @@ public class Question5 extends Fragment {
         v = inflater.inflate(R.layout.fragment_question5, container, false);
         q5_frame4 = (ImageView)v.findViewById(R.id.q5_frame4);
 
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[4] != false) {
+            result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[4]);
+            q5_result = String.valueOf(result);
+            q5_state = true;
+        }
+        else
+            result = 0;
+
         // 고른 향료에 따라 이미지 다르게 뿌려주기
         if(q5_flavor.equals("1"))
-            flavor_aldehyde(v);
+            flavor_aldehyde(v, result);
         if(q5_flavor.equals("2"))
-            flavor_animalic(v);
+            flavor_animalic(v, result);
         if(q5_flavor.equals("3"))
-            flavor_aromatic(v);
+            flavor_aromatic(v, result);
         if(q5_flavor.equals("4"))
-            flavor_balsam(v);
+            flavor_balsam(v, result);
         if(q5_flavor.equals("5"))
-            flavor_chypre(v);
+            flavor_chypre(v, result);
         if(q5_flavor.equals("6"))
-            flavor_citrus(v);
+            flavor_citrus(v, result);
         if(q5_flavor.equals("7"))
-            flavor_green(v);
+            flavor_green(v, result);
         if(q5_flavor.equals("8"))
-            flavor_floral(v);
+            flavor_floral(v, result);
         if(q5_flavor.equals("9"))
-            flavor_fruity(v);
+            flavor_fruity(v, result);
         if(q5_flavor.equals("10"))
-            flavor_spicy(v);
+            flavor_spicy(v, result);
         if(q5_flavor.equals("11"))
-            flavor_woody(v);
+            flavor_woody(v, result);
         if(q5_flavor.equals("12"))
-            flavor_aquatic(v);
+            flavor_aquatic(v, result);
         if(q5_flavor.equals("13"))
-            flavor_nutty(v);
+            flavor_nutty(v, result);
         if(q5_flavor.equals("14"))
-            flavor_leather(v);
+            flavor_leather(v, result);
 
         return v;
     }
 
     // 시트러스
-    private void flavor_citrus(View v) {
+    private void flavor_citrus(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_citrus);
         drawables_Num = new ArrayList<>();
 
@@ -144,6 +154,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -159,6 +176,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -181,7 +200,7 @@ public class Question5 extends Fragment {
     }
 
     // 알데하이드
-    private void flavor_aldehyde(View v) {
+    private void flavor_aldehyde(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_aldehyde);
         drawables_Num = new ArrayList<>();
 
@@ -196,6 +215,13 @@ public class Question5 extends Fragment {
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
+
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
 
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -212,6 +238,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -234,7 +262,7 @@ public class Question5 extends Fragment {
     }
 
     // 애니멀
-    private void flavor_animalic(View v) {
+    private void flavor_animalic(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_animalic);
         drawables_Num = new ArrayList<>();
 
@@ -255,6 +283,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -270,6 +305,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -292,7 +329,7 @@ public class Question5 extends Fragment {
     }
 
     // 프루티
-    private void flavor_fruity(View v) {
+    private void flavor_fruity(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_fruity);
         drawables_Num = new ArrayList<>();
 
@@ -313,6 +350,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -328,6 +372,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -350,7 +396,7 @@ public class Question5 extends Fragment {
     }
 
     // 플로럴
-    private void flavor_floral(View v) {
+    private void flavor_floral(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_floral);
         drawables_Num = new ArrayList<>();
 
@@ -374,6 +420,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -389,6 +442,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -411,7 +466,7 @@ public class Question5 extends Fragment {
     }
 
     // 아로마틱
-    private void flavor_aromatic(View v) {
+    private void flavor_aromatic(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_aromatic);
         drawables_Num = new ArrayList<>();
 
@@ -432,6 +487,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -447,6 +509,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -469,7 +533,7 @@ public class Question5 extends Fragment {
     }
 
     // 스파이시
-    private void flavor_spicy(View v) {
+    private void flavor_spicy(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_spicy);
         drawables_Num = new ArrayList<>();
 
@@ -490,6 +554,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -505,6 +576,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -527,7 +600,7 @@ public class Question5 extends Fragment {
     }
 
     // 시프레
-    private void flavor_chypre(View v) {
+    private void flavor_chypre(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_chypre);
         drawables_Num = new ArrayList<>();
 
@@ -546,6 +619,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -561,6 +641,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -583,7 +665,7 @@ public class Question5 extends Fragment {
     }
 
     // 우디
-    private void flavor_woody(View v) {
+    private void flavor_woody(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_woody);
         drawables_Num = new ArrayList<>();
 
@@ -605,6 +687,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -620,6 +709,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -642,7 +733,7 @@ public class Question5 extends Fragment {
     }
 
     // 그린
-    private void flavor_green(View v) {
+    private void flavor_green(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_green);
         drawables_Num = new ArrayList<>();
 
@@ -662,6 +753,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -677,6 +775,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -699,7 +799,7 @@ public class Question5 extends Fragment {
     }
 
     // 발삼
-    private void flavor_balsam(View v) {
+    private void flavor_balsam(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_balsam);
         drawables_Num = new ArrayList<>();
 
@@ -719,6 +819,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -734,6 +841,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -756,7 +865,7 @@ public class Question5 extends Fragment {
     }
 
     // 아쿠아틱
-    private void flavor_aquatic(View v){
+    private void flavor_aquatic(View v, final int result){
         q5_frame4.setImageResource(R.mipmap.question_5_text_aquatic);
         drawables_Num = new ArrayList<>();
 
@@ -775,6 +884,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -790,6 +906,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -812,7 +930,7 @@ public class Question5 extends Fragment {
     }
 
     // 너티
-    private void flavor_nutty(View v){
+    private void flavor_nutty(View v, final int result){
         q5_frame4.setImageResource(R.mipmap.question_5_text_nutty);
         drawables_Num = new ArrayList<>();
 
@@ -831,6 +949,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -846,6 +971,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;
@@ -868,7 +995,7 @@ public class Question5 extends Fragment {
     }
 
     // 레더
-    private void flavor_leather(View v){
+    private void flavor_leather(View v, final int result){
         q5_frame4.setImageResource(R.mipmap.question_5_text_leather);
         drawables_Num = new ArrayList<>();
 
@@ -888,6 +1015,13 @@ public class Question5 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q5_state = true;
+            q5_result = String.valueOf(result);
+        }
+
         add_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -903,6 +1037,8 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
                             q5_result = num;

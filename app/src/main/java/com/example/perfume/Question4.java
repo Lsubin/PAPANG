@@ -33,6 +33,7 @@ public class Question4 extends Fragment {
     public Boolean q4_state = false;
     public String q4_result;
     public Integer q4_position;
+    int result;
 
     View v;
 
@@ -92,23 +93,32 @@ public class Question4 extends Fragment {
         q4_context = v.getContext();
         q4_frame4 = (ImageView) v.findViewById(R.id.q4_frame4);
 
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[3] != false) {
+            result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[3]);
+            q4_result = String.valueOf(result);
+            q4_state = true;
+        }
+        else
+            result = 0;
+
         // 스타일 따라 이미지 다르게 뿌려주기
         if (q4_style.equals("1"))
-            style_1(v);
+            style_1(v, result);
         if (q4_style.equals("2"))
-            style_2(v);
+            style_2(v, result);
         if (q4_style.equals("3"))
-            style_3(v);
+            style_3(v, result);
         if (q4_style.equals("4"))
-            style_4(v);
+            style_4(v, result);
         if (q4_style.equals("5"))
-            style_5(v);
+            style_5(v, result);
         if (q4_style.equals("6"))
-            style_6(v);
+            style_6(v, result);
         if (q4_style.equals("7"))
-            style_7(v);
+            style_7(v, result);
         if (q4_style.equals("8"))
-            style_8(v);
+            style_8(v, result);
 
         Log.v("스타일", q4_style);
 
@@ -116,7 +126,7 @@ public class Question4 extends Fragment {
     }
 
     // 처음 포근한, 차분한, 따듯한, 순수한 스타일
-    private void style_1(View v) {
+    private void style_1(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s1);
         drawables_Num = new ArrayList<>();
 
@@ -135,6 +145,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(q4_context, drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -150,6 +167,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -173,7 +192,7 @@ public class Question4 extends Fragment {
     }
 
     // 발랄한, 귀여운, 사랑스러운 스타일
-    private void style_2(View v) {
+    private void style_2(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s2);
         drawables_Num = new ArrayList<>();
 
@@ -191,6 +210,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -206,6 +232,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -229,7 +257,7 @@ public class Question4 extends Fragment {
     }
 
     // 관능적인, 화려한 스타일
-    private void style_3(View v) {
+    private void style_3(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s3);
         drawables_Num = new ArrayList<>();
 
@@ -248,6 +276,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -263,6 +298,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -285,7 +322,7 @@ public class Question4 extends Fragment {
     }
 
     // 환상적인, 황홀한, 몽환적인, 신비로운 스타일
-    private void style_4(View v) {
+    private void style_4(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s4);
         drawables_Num = new ArrayList<>();
 
@@ -302,6 +339,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -317,6 +361,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -339,7 +385,7 @@ public class Question4 extends Fragment {
     }
 
     // 젠틀한, 클래식한, 깊이있는 스타일
-    private void style_5(View v) {
+    private void style_5(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s5);
         drawables_Num = new ArrayList<>();
 
@@ -359,6 +405,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -374,6 +427,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -396,7 +451,7 @@ public class Question4 extends Fragment {
     }
 
     // 세련된, 우아한, 도시적인, 모던한 스타일
-    private void style_6(View v) {
+    private void style_6(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s6);
         drawables_Num = new ArrayList<>();
 
@@ -415,6 +470,14 @@ public class Question4 extends Fragment {
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
+
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -430,6 +493,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -453,7 +518,7 @@ public class Question4 extends Fragment {
     }
 
     // 산뜻한, 시원한, 활기찬 스타일
-    private void style_7(View v) {
+    private void style_7(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s7);
         drawables_Num = new ArrayList<>();
 
@@ -472,6 +537,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -487,6 +559,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;
@@ -509,7 +583,7 @@ public class Question4 extends Fragment {
     }
 
     // 강렬한, 파워풀한, 존재감있는, 대담한 스타일
-    private void style_8(View v) {
+    private void style_8(View v, final int result) {
         q4_frame4.setImageResource(R.mipmap.question_4_text_s8);
         drawables_Num = new ArrayList<>();
 
@@ -529,6 +603,13 @@ public class Question4 extends Fragment {
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q4_state = true;
+            q4_result = String.valueOf(result);
+        }
+
         main_flavor_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -544,6 +625,8 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
                             q4_result = num;

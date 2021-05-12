@@ -42,9 +42,9 @@ public class Question6 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    int result;
 
     public Question6() {
-        // Required empty public constructor
     }
 
     /**
@@ -80,6 +80,16 @@ public class Question6 extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question6, container, false);
 
+
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[5] != false){
+            result = Integer.parseInt(((QuestionActivity)QuestionActivity.context).q_result[5]);
+            q6_result = String.valueOf(result);
+            q6_state = true;
+        }
+        else
+            result = 0;
+
         init(v);
 
         return v;
@@ -112,6 +122,13 @@ public class Question6 extends Fragment {
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         flavor2_grid.setAdapter(flavorAdapter);
 
+        if(result != 0) {
+            int num = drawables_Num.indexOf(result);
+            flavorAdapter.setDrawable(num);
+            q6_state = true;
+            q6_result = String.valueOf(result);
+        }
+
         flavor2_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -127,6 +144,8 @@ public class Question6 extends Fragment {
                             q6_position = position;
                             q6_state = true;
                         } else if (q6_state == true && (!num.equals(q6_result))) {
+                            if(result != 0)
+                                ((QuestionActivity) QuestionActivity.context).deletePage(5);
                             flavorAdapter.setBackDrawable(q6_position);
                             flavorAdapter.setDrawable(position);
                             q6_result = num;

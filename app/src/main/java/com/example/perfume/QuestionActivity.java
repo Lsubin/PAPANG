@@ -24,9 +24,12 @@ public class QuestionActivity extends AppCompatActivity {
 
     public static Context context;
 
+    QuestionPagerAdapter qAdapter;
+    NonSwipeViewPager questionPager;
+
     // 각 페이지의 state, result를 저장하는 배열 선언 및 초기화
-    public String[] q_state = new String[7];
-    public String[] q_result = new String[7];
+    public String[] q_result = new String[8];
+    public Boolean[] q_state = {false, false, false, false, false, false, false, false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,8 @@ public class QuestionActivity extends AppCompatActivity {
 
         context = this;
 
-        final NonSwipeViewPager questionPager = (NonSwipeViewPager)findViewById(R.id.question_View);
-        final QuestionPagerAdapter qAdapter = new QuestionPagerAdapter(getSupportFragmentManager());
+        questionPager = (NonSwipeViewPager)findViewById(R.id.question_View);
+        qAdapter = new QuestionPagerAdapter(getSupportFragmentManager());
         questionPager.setAdapter(qAdapter);
 
         // 페이지 바뀔때 불러와지는 리스너
@@ -77,26 +80,26 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
-                    if(mCurrentPosition == 1){
+                    if(mCurrentPosition == 1 && !q_state[mCurrentPosition + 1].equals(false)){
                         guide_btn.setVisibility(View.GONE);
                     }
-                    if(mCurrentPosition == 2){
+                    if(mCurrentPosition == 2 && q_state[mCurrentPosition + 1].equals(false)){
                         guide_btn.setVisibility(View.VISIBLE);
                         Question4 question4 = new Question4(q_result[2]);
                         qAdapter.addPage(question4);
                         qAdapter.notifyDataSetChanged();
                     }
-                    else if(mCurrentPosition == 3){
+                    else if(mCurrentPosition == 3 && q_state[mCurrentPosition + 1].equals(false)){
                         Question5 question5 = new Question5(q_result[3]);
                         qAdapter.addPage(question5);
                         qAdapter.notifyDataSetChanged();
                     }
-                    else if(mCurrentPosition == 4){
+                    else if(mCurrentPosition == 4 && q_state[mCurrentPosition + 1].equals(false)){
                         Question6 question6 = new Question6();
                         qAdapter.addPage(question6);
                         qAdapter.notifyDataSetChanged();
                     }
-                    else if(mCurrentPosition == 5){
+                    else if(mCurrentPosition == 5 && q_state[mCurrentPosition + 1].equals(false)){
                         guide_btn.setVisibility(View.GONE);
                         nextQ.setVisibility(View.INVISIBLE);
                         check_Result_btn.setVisibility(View.VISIBLE);
@@ -161,6 +164,8 @@ public class QuestionActivity extends AppCompatActivity {
                         break;
                     case 6:
                         questionPager.setCurrentItem(5, false);
+                        nextQ.setVisibility(View.VISIBLE);
+                        check_Result_btn.setVisibility(View.INVISIBLE);
                         nextPageOn();
                         break;
                 }
@@ -171,13 +176,13 @@ public class QuestionActivity extends AppCompatActivity {
     // 넥스트 버튼을 활성화 시키기 위한 함수
     public void nextPage(int index, Boolean state, String result){
         if(state == true && mCurrentPosition == index){
-            q_state[index] = state.toString();
+            q_state[index] = state;
             q_result[index] = result;
             nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn_c));
         }
         else{
             nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
-            q_state[index] = state.toString();
+            q_state[index] = state;
             q_result[index] = result;
         }
     }
@@ -185,5 +190,13 @@ public class QuestionActivity extends AppCompatActivity {
     // 넥스트 버튼을 활성화 시키기 위한 함수
     public void nextPageOn(){
         nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn_c));
+    }
+
+    public void deletePage(int index){
+        qAdapter.deletePage(index);
+        for(int i = index+1; i < 8; i++){
+            q_state[i] = false;
+            q_result[i] = "";
+        }
     }
 }

@@ -40,6 +40,8 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
     private String mParam1;
     private String mParam2;
 
+    int max;
+    int min;
     public Question7() {
         // Required empty public constructor
     }
@@ -84,6 +86,20 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
         price_min = (TextView)v.findViewById(R.id.price_tag_min);
         price_seekbar = (RangeSeekBar)v.findViewById(R.id.price_seekbar);
 
+        // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
+        if(((QuestionActivity)QuestionActivity.context).q_state[6] != false) {
+            min = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[6]);
+            max = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[7]);
+            price_min.setText(Integer.toString(min));
+            price_max.setText(Integer.toString(max));
+            price_seekbar.setLeft(min);
+            price_seekbar.setRight(max);
+        }
+        else{
+            min = 0;
+            max = 0;
+        }
+
         price_seekbar.setListenerRealTime(this);
         return v;
     }
@@ -92,11 +108,15 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
     public void onValuesChanging(float v, float v1) {
         price_min.setText(Float.toString(v));
         price_max.setText(Float.toString(v1));
+        ((QuestionActivity) QuestionActivity.context).nextPage(6, true, String.valueOf(v));
+        ((QuestionActivity) QuestionActivity.context).nextPage(7, true, String.valueOf(v1));
     }
 
     @Override
     public void onValuesChanging(int i, int i1) {
         price_min.setText(Integer.toString(i));
         price_max.setText(Integer.toString(i1));
+        ((QuestionActivity) QuestionActivity.context).nextPage(6, true, String.valueOf(i));
+        ((QuestionActivity) QuestionActivity.context).nextPage(7, true, String.valueOf(i1));
     }
 }

@@ -82,7 +82,7 @@ public class Question1 extends Fragment {
         ode_pp = (ImageButton)v.findViewById(R.id.ode_pp);      // 퍼퓸
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[0] != null){
+        if(((QuestionActivity)QuestionActivity.context).q_state[0] != false){
             String result = ((QuestionActivity)QuestionActivity.context).q_result[0];
             switch (result){
                 case "ode_c":
