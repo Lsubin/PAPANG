@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
         data2.add("샤넬");
         data3.add("넘버 5 오뜨빠르펭");
 
-        data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
+        data1.add(getResources().getDrawable(R.mipmap.ex3));
         data2.add("샤넬");
         data3.add("넘버 5 오뜨빠르펭");
 
