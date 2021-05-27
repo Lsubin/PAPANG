@@ -70,8 +70,8 @@ public class ReviewRatingFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_review_rating, container, false);
 
-        average_rating = (TextView)v.findViewById(R.id.average_rating);
-        ratingBar = (RatingBar)v.findViewById(R.id.average_ratingbar);
+        average_rating = (TextView) v.findViewById(R.id.average_rating);
+        ratingBar = (RatingBar) v.findViewById(R.id.average_ratingbar);
 
         return v;
     }

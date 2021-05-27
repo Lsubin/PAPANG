@@ -24,13 +24,13 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        if(mData.contains(object))
+        if (mData.contains(object))
             return mData.indexOf(object);
         else
             return POSITION_NONE;
     }
 
-    public QuestionPagerAdapter(@NonNull FragmentManager fm){
+    public QuestionPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         mData = new ArrayList<>();
         mData.add(new Question1());
@@ -55,13 +55,13 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
         return mData.size();
     }
 
-    public void addPage(Fragment fragment){
+    public void addPage(Fragment fragment) {
         mData.add(fragment);
     }
 
-    public void deletePage(int index){
+    public void deletePage(int index) {
         int all = mData.size() - 1;
-        for(int i = all; i > index; i--)
+        for (int i = all; i > index; i--)
             mData.remove(i);
         notifyDataSetChanged();
     }

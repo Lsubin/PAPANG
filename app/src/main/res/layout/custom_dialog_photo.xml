@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="160dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/draw_detail_size_item">
+                                                   android:layout_width="300dp"
+                                                   android:layout_height="160dp"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:background="@drawable/draw_detail_size_item">
 
     <Button
-        android:id="@+id/dialog_photo"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="사진 촬영"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:textColor="#000"
-        android:textSize="13sp"
-        android:gravity="left|center"
-        android:background="#00fff000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/dialog_album"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+            android:id="@+id/dialog_photo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="사진 촬영"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:gravity="left|center"
+            android:background="#00fff000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dialog_album"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/dialog_album"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="앨범에서 사진 선택"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:textColor="#000"
-        android:textSize="13sp"
-        android:gravity="left|center"
-        android:background="#00fff000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+            android:id="@+id/dialog_album"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="앨범에서 사진 선택"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:gravity="left|center"
+            android:background="#00fff000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

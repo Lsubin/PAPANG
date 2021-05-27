@@ -14,7 +14,7 @@ public class CustomGuideDialog {
     private ImageButton exit_btn;
     private ImageView guide_img;
 
-    public CustomGuideDialog(Context context){
+    public CustomGuideDialog(Context context) {
         this.context = context;
     }
 
@@ -29,7 +29,7 @@ public class CustomGuideDialog {
         // 커스텀 다이얼로그를 노출한다.
         dlg.show();
 
-        exit_btn = (ImageButton)dlg.findViewById(R.id.exit_btn);
+        exit_btn = (ImageButton) dlg.findViewById(R.id.exit_btn);
         exit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,21 +39,21 @@ public class CustomGuideDialog {
     }
 
     private void GuidePosition(int mCurrentPosition, Dialog dlg) {
-        guide_img = (ImageView)dlg.findViewById(R.id.guide_img);
+        guide_img = (ImageView) dlg.findViewById(R.id.guide_img);
 
-        if(mCurrentPosition == 0){
+        if (mCurrentPosition == 0) {
             guide_img.setImageResource(R.mipmap.guide_book_3_1);
         }
-        if(mCurrentPosition == 1){
+        if (mCurrentPosition == 1) {
             guide_img.setImageResource(R.mipmap.guide_book_4_1);
         }
-        if(mCurrentPosition == 3){
+        if (mCurrentPosition == 3) {
             guide_img.setImageResource(R.mipmap.guide_img);
         }
-        if(mCurrentPosition == 4){
+        if (mCurrentPosition == 4) {
             guide_img.setImageResource(R.mipmap.guide_img);
         }
-        if(mCurrentPosition == 5){
+        if (mCurrentPosition == 5) {
             guide_img.setImageResource(R.mipmap.guide_img);
         }
     }

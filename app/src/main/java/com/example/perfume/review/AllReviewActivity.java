@@ -54,8 +54,8 @@ public class AllReviewActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
         actionBar.setDisplayHomeAsUpEnabled(false);
 
-        all_review_btn_back = (ImageButton)findViewById(R.id.all_review_btn_back);
-        all_review_btn_write = (ImageButton)findViewById(R.id.all_review_btn_write);
+        all_review_btn_back = (ImageButton) findViewById(R.id.all_review_btn_back);
+        all_review_btn_write = (ImageButton) findViewById(R.id.all_review_btn_write);
         all_review_btn_write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,10 +65,10 @@ public class AllReviewActivity extends AppCompatActivity {
             }
         });
 
-        all_review_count = (TextView)findViewById(R.id.all_review_count);
-        all_review_tab = (TabLayout)findViewById(R.id.all_review_tab);
-        all_review_viewpager = (WrapHeightViewPager)findViewById(R.id.all_review_viewpager);
-        all_review_list = (RecyclerView)findViewById(R.id.all_review_list);
+        all_review_count = (TextView) findViewById(R.id.all_review_count);
+        all_review_tab = (TabLayout) findViewById(R.id.all_review_tab);
+        all_review_viewpager = (WrapHeightViewPager) findViewById(R.id.all_review_viewpager);
+        all_review_list = (RecyclerView) findViewById(R.id.all_review_list);
 
         allreviewAdapter = new ReviewTabAdapter(getSupportFragmentManager());
         all_review_viewpager.setAdapter(allreviewAdapter);
@@ -81,7 +81,7 @@ public class AllReviewActivity extends AppCompatActivity {
 
         // 필터
         final String[] filter = {"추천순", "최신순", "사진리뷰"};
-        spinner_filter = (Spinner)findViewById(R.id.spinner_filter);
+        spinner_filter = (Spinner) findViewById(R.id.spinner_filter);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_spinner_filter, filter);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

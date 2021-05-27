@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class ReviewHashAdapter extends RecyclerView.Adapter<ReviewHashAdapter.ViewHolder> {
 
-        Context context;
-        ArrayList<String> search_words;
+    Context context;
+    ArrayList<String> search_words;
 
     public ReviewHashAdapter(Context context) {
         this.context = context;
@@ -35,15 +35,15 @@ public class ReviewHashAdapter extends RecyclerView.Adapter<ReviewHashAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ReviewHashAdapter.ViewHolder holder, int position) {
-            holder.rw_hash_tag_text.setText(search_words.get(position));
+        holder.rw_hash_tag_text.setText(search_words.get(position));
     }
 
     @Override
     public int getItemCount() {
-            return search_words.size();
+        return search_words.size();
     }
 
-    public void saveHashtag(String hash_tag){
+    public void saveHashtag(String hash_tag) {
         search_words.add(hash_tag);
         notifyDataSetChanged();
     }
@@ -54,7 +54,7 @@ public class ReviewHashAdapter extends RecyclerView.Adapter<ReviewHashAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            rw_hash_tag_text = (TextView)itemView.findViewById(R.id.rw_hash_tag_text);
+            rw_hash_tag_text = (TextView) itemView.findViewById(R.id.rw_hash_tag_text);
         }
     }
 

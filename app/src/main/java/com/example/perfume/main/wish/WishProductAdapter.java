@@ -29,7 +29,7 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
     ArrayList<Integer> wish_drawable;              // 좋아요 표시
 
     WishProductAdapter(Context context, ArrayList<Integer> mProduct_drawalbes, ArrayList<String> mCompany_name,
-                       ArrayList<String> mProduct_name, ArrayList<Integer> mWish_drawable){
+                       ArrayList<String> mProduct_name, ArrayList<Integer> mWish_drawable) {
         this.context = context;
         this.product_drawables = mProduct_drawalbes;
         this.company_name = mCompany_name;
@@ -38,6 +38,7 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
 
 
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -71,10 +72,10 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            product_image = (ImageView)itemView.findViewById(R.id.product_image);
-            company_name = (TextView)itemView.findViewById(R.id.company_name);
-            product_name = (TextView)itemView.findViewById(R.id.product_name);
-            wish_ok = (ImageView)itemView.findViewById(R.id.wish_ok);
+            product_image = (ImageView) itemView.findViewById(R.id.product_image);
+            company_name = (TextView) itemView.findViewById(R.id.company_name);
+            product_name = (TextView) itemView.findViewById(R.id.product_name);
+            wish_ok = (ImageView) itemView.findViewById(R.id.wish_ok);
 
             wish_ok.setOnClickListener(new View.OnClickListener() {
                 @Override

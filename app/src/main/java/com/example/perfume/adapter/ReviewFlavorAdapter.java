@@ -58,27 +58,26 @@ public class ReviewFlavorAdapter extends RecyclerView.Adapter<Holder> {
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         //Toast.makeText(mContext, String.valueOf(position), 0).show();
         holder.theme_image.setImageDrawable(drawables.get(position));
-        if(check.get(position) ==  true){
+        if (check.get(position) == true) {
             holder.select_image.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             holder.select_image.setVisibility(View.INVISIBLE);
         }
     }
 
-    public void setCheck(int position, boolean isChecked){
+    public void setCheck(int position, boolean isChecked) {
         check.set(position, isChecked);
         notifyDataSetChanged();
     }
 
-    public Boolean getCheck(int position){
+    public Boolean getCheck(int position) {
         return check.get(position);
     }
 
-    public int getCheckCount(){
+    public int getCheckCount() {
         int count = 0;
-        for(int i = 0; i < check.size(); i++){
-            if(check.get(i) == true)
+        for (int i = 0; i < check.size(); i++) {
+            if (check.get(i) == true)
                 count++;
         }
         return count;

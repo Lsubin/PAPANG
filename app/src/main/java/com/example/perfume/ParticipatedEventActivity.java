@@ -15,7 +15,7 @@ public class ParticipatedEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participated_event);
 
-        btn_back = (ImageButton)findViewById(R.id.btn_back);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

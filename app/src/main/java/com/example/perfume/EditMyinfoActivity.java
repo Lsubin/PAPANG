@@ -16,7 +16,7 @@ public class EditMyinfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_myinfo);
 
-        btn_back = (ImageButton)findViewById(R.id.btn_back);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

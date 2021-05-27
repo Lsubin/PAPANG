@@ -19,7 +19,7 @@ public class SettingDetail4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_detail_4);
 
-        btn_back = (ImageButton)findViewById(R.id.btn_back);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +27,7 @@ public class SettingDetail4Activity extends AppCompatActivity {
             }
         });
 
-        btn_goto_plusfriend = (ImageButton)findViewById(R.id.btn_goto_plusfriend);
+        btn_goto_plusfriend = (ImageButton) findViewById(R.id.btn_goto_plusfriend);
         btn_goto_plusfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

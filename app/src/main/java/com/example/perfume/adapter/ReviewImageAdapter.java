@@ -20,7 +20,7 @@ public class ReviewImageAdapter extends RecyclerView.Adapter<ReviewImageAdapter.
     Context context;
     ArrayList<Integer> review_drawables;          // 상품 이미지
 
-    public ReviewImageAdapter(Context context){
+    public ReviewImageAdapter(Context context) {
         this.context = context;
 
         review_drawables = new ArrayList<>();
@@ -32,11 +32,11 @@ public class ReviewImageAdapter extends RecyclerView.Adapter<ReviewImageAdapter.
     @NonNull
     @Override
     public ReviewImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_review_image, parent, false);
-            ReviewImageAdapter.ViewHolder holder = new ReviewImageAdapter.ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_review_image, parent, false);
+        ReviewImageAdapter.ViewHolder holder = new ReviewImageAdapter.ViewHolder(view);
 
-            return holder;
-        }
+        return holder;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ReviewImageAdapter.ViewHolder holder, int position) {
@@ -54,7 +54,7 @@ public class ReviewImageAdapter extends RecyclerView.Adapter<ReviewImageAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            dr_review_images = (ImageView)itemView.findViewById(R.id.dr_review_images);
+            dr_review_images = (ImageView) itemView.findViewById(R.id.dr_review_images);
         }
     }
 

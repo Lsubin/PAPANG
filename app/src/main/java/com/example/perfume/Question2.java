@@ -83,19 +83,19 @@ public class Question2 extends Fragment {
         v = inflater.inflate(R.layout.fragment_question2, container, false);
         // Inflate the layout for this fragment
 
-        bottle_size = (ImageView)v.findViewById(R.id.q_bottle_size);
+        bottle_size = (ImageView) v.findViewById(R.id.q_bottle_size);
 
-        size1 = (ImageButton)v.findViewById(R.id.size_1);
-        size2 = (ImageButton)v.findViewById(R.id.size_2);
-        size3 = (ImageButton)v.findViewById(R.id.size_3);
-        size4 = (ImageButton)v.findViewById(R.id.size_4);
-        size5 = (ImageButton)v.findViewById(R.id.size_5);
-        size6 = (ImageButton)v.findViewById(R.id.size_6);
+        size1 = (ImageButton) v.findViewById(R.id.size_1);
+        size2 = (ImageButton) v.findViewById(R.id.size_2);
+        size3 = (ImageButton) v.findViewById(R.id.size_3);
+        size4 = (ImageButton) v.findViewById(R.id.size_4);
+        size5 = (ImageButton) v.findViewById(R.id.size_5);
+        size6 = (ImageButton) v.findViewById(R.id.size_6);
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[1] != false){
-            String result = ((QuestionActivity)QuestionActivity.context).q_result[1];
-            switch (result){
+        if (((QuestionActivity) QuestionActivity.context).q_state[1] != false) {
+            String result = ((QuestionActivity) QuestionActivity.context).q_result[1];
+            switch (result) {
                 case "size1":
                     bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
                     size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
@@ -133,15 +133,15 @@ public class Question2 extends Fragment {
                     q2_result = result;
                     break;
             }
-            ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+            ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
         }
 
         Button.OnClickListener sizeClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch(v.getId()){
+                switch (v.getId()) {
                     case R.id.size_1:
-                       bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
+                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
                         size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
                         size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
@@ -150,7 +150,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size1";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                     case R.id.size_2:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size2));
@@ -162,7 +162,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size2";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                     case R.id.size_3:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size3));
@@ -174,7 +174,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size3";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                     case R.id.size_4:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size4));
@@ -186,7 +186,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size4";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                     case R.id.size_5:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
@@ -198,7 +198,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size5";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                     case R.id.size_6:
                         bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size6));
@@ -210,7 +210,7 @@ public class Question2 extends Fragment {
                         size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
                         q2_state = true;
                         q2_result = "size6";
-                        ((QuestionActivity)QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
                         break;
                 }
             }

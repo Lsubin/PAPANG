@@ -177,7 +177,7 @@ public class SearchActivity extends AppCompatActivity {
 
         // 향수 검색 결과
         result_search_item = (RecyclerView)findViewById(R.id.result_search_item);
-        result_product_adapter = new ResultProductAdpater(this, data1, data2, data3, data4);
+        //result_product_adapter = new ResultProductAdpater(this, data1, data2, data3, data4);
         result_search_item.setLayoutManager(new LinearLayoutManager(this));
         result_search_item.setAdapter(result_product_adapter);
 

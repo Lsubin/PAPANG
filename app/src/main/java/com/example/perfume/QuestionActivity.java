@@ -96,9 +96,11 @@ public class QuestionActivity extends AppCompatActivity {
                     }
                     else if(mCurrentPosition == 4 && q_state[mCurrentPosition + 1].equals(false)){
                         Question6 question6 = new Question6();
+                        nextQ.setVisibility(View.INVISIBLE);
                         qAdapter.addPage(question6);
                         qAdapter.notifyDataSetChanged();
                     }
+                    /*
                     else if(mCurrentPosition == 5 && q_state[mCurrentPosition + 1].equals(false)){
                         guide_btn.setVisibility(View.GONE);
                         nextQ.setVisibility(View.INVISIBLE);
@@ -107,6 +109,7 @@ public class QuestionActivity extends AppCompatActivity {
                         qAdapter.addPage(question7);
                         qAdapter.notifyDataSetChanged();
                     }
+                     */
                     questionPager.setCurrentItem(mCurrentPosition+1, false);
                     nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
                 }
@@ -118,7 +121,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), q_result[0] + " /  " +
                         q_result[1] + " / " + q_result[2] + " / " + q_result[3] + " / " +
-                        q_result[4] + " / " + q_result[5] + " / " + q_result[6], 0).show();
+                        q_result[4] + " / " + q_result[5], 0).show();
 
                 // 임시로 결과 페이지 보기위해성
                 Intent intent = new Intent(getApplicationContext(), AllResultProductActivity.class);
@@ -128,7 +131,7 @@ public class QuestionActivity extends AppCompatActivity {
                 intent.putExtra("4",q_result[3]);
                 intent.putExtra("5",q_result[4]);
                 intent.putExtra("6",q_result[5]);
-                intent.putExtra("7",q_result[6]);
+                //intent.putExtra("7",q_result[6]);
                 startActivity(intent);
             }
         });
@@ -160,14 +163,19 @@ public class QuestionActivity extends AppCompatActivity {
                         break;
                     case 5:
                         questionPager.setCurrentItem(4, false);
+                        nextQ.setVisibility(View.VISIBLE);
+                        check_Result_btn.setVisibility(View.INVISIBLE);
                         nextPageOn();
                         break;
+
+                        /* 가격 체크하는 Question7은 베타에서 사용하지 않기로 결정 - 주석 처리
                     case 6:
                         questionPager.setCurrentItem(5, false);
                         nextQ.setVisibility(View.VISIBLE);
                         check_Result_btn.setVisibility(View.INVISIBLE);
                         nextPageOn();
                         break;
+                         */
                 }
             }
         });
@@ -184,6 +192,12 @@ public class QuestionActivity extends AppCompatActivity {
             nextQ.setImageDrawable(getResources().getDrawable(R.mipmap.nextbtn));
             q_state[index] = state;
             q_result[index] = result;
+        }
+        if(state == true && mCurrentPosition == 5){
+            check_Result_btn.setVisibility(View.VISIBLE);
+        }
+        else if(state == false && mCurrentPosition == 5){
+            check_Result_btn.setVisibility(View.INVISIBLE);
         }
     }
 

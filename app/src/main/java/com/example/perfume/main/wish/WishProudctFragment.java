@@ -79,13 +79,13 @@ public class WishProudctFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_wish_proudct, container, false);
 
-        wishcount_text = (TextView)view.findViewById(R.id.wishcount_text);
+        wishcount_text = (TextView) view.findViewById(R.id.wishcount_text);
 
 
         ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this);
         // 새로고침
-        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_fresh);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_fresh);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -107,8 +107,7 @@ public class WishProudctFragment extends Fragment {
         ArrayList<Integer> data4 = new ArrayList<>();
 
         // 예시로 8개 추가
-        for(int i = 0; i < 8; i++)
-        {
+        for (int i = 0; i < 8; i++) {
             data1.add(R.mipmap.ex_chanel_image);
             data2.add("브랜드");
             data3.add("향수 이름");
@@ -121,7 +120,7 @@ public class WishProudctFragment extends Fragment {
         int spacing = 50;
         boolean includeEdge = true;
 
-        wish_product_grid = (RecyclerView)view.findViewById(R.id.wish_perfume_grid);
+        wish_product_grid = (RecyclerView) view.findViewById(R.id.wish_perfume_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(view.getContext(), 2);
         wish_product_grid.setLayoutManager(mLayoutManager);
         wish_product_grid.addItemDecoration(new GridSpacingItemDecoration(spancount, spacing, includeEdge));

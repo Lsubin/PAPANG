@@ -31,8 +31,8 @@ public class MyFragment extends Fragment {
                 .replace(R.id.fragment_layout, fragment)
                 .commit();
 
-        btn_alarm = (ImageButton)view.findViewById(R.id.btn_alarm);
-        btn_setting = (ImageButton)view.findViewById(R.id.btn_setting);
+        btn_alarm = (ImageButton) view.findViewById(R.id.btn_alarm);
+        btn_setting = (ImageButton) view.findViewById(R.id.btn_setting);
 
         btn_alarm.setOnClickListener(new View.OnClickListener() {
             @Override

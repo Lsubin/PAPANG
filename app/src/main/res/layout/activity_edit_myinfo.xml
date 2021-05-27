@@ -1,437 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="25dp"
-    tools:context=".EditMyinfoActivity">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:padding="25dp"
+                                                   tools:context=".EditMyinfoActivity">
 
     <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/back"
-        android:layout_marginTop="7.5dp"
-        android:background="#00ff0000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back"
+            android:layout_marginTop="7.5dp"
+            android:background="#00ff0000"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="내정보 수정"
-        android:textColor="#000"
-        android:textSize="22sp"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_back"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내정보 수정"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/btn_back"/>
 
     <TextView
-        android:id="@+id/btn_change"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="변경"
-        android:textSize="22sp"
-        android:textColor="#6557FF"
-        android:fontFamily="@font/kopubworlddotumbold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="변경"
+            android:textSize="22sp"
+            android:textColor="#6557FF"
+            android:fontFamily="@font/kopubworlddotumbold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
-        android:id="@+id/user_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/user_img"
-        android:layout_marginTop="55dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"/>
+            android:id="@+id/user_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/user_img"
+            android:layout_marginTop="55dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"/>
 
     <ImageButton
-        android:id="@+id/btn_change_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/btn_change_profile"
-        android:background="#00ff0000"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/user_img"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+            android:id="@+id/btn_change_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_change_profile"
+            android:background="#00ff0000"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/user_img"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_change_profile"
-        app:layout_constraintLeft_toLeftOf="parent">
+            android:id="@+id/layout_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_change_profile"
+            app:layout_constraintLeft_toLeftOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:paddingRight="15dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:paddingRight="15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/info_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="기본정보"
-                    android:textSize="19sp"
-                    android:textColor="#4B4B4B"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/info_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기본정보"
+                        android:textSize="19sp"
+                        android:textColor="#4B4B4B"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
-                    android:id="@+id/nickname_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="닉네임"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginTop="60dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                        android:id="@+id/nickname_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="닉네임"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                 <TextView
-                    android:id="@+id/birthday_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="생일"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/nickname_text"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                        android:id="@+id/birthday_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생일"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/nickname_text"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                 <TextView
-                    android:id="@+id/gender_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="성별"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/birthday_text"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                        android:id="@+id/gender_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="성별"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/birthday_text"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                 <TextView
-                    android:id="@+id/phone_num_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="휴대폰 번호"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/gender_text"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                        android:id="@+id/phone_num_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="휴대폰 번호"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/gender_text"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                 <TextView
-                    android:id="@+id/address_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="주소"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/phone_num_text"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                        android:id="@+id/address_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="주소"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/phone_num_text"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:paddingLeft="15dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:paddingLeft="15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="한글/영문/2-10자 이내"
-                    android:textSize="10sp"
-                    android:textColor="#767676"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="한글/영문/2-10자 이내"
+                        android:textSize="10sp"
+                        android:textColor="#767676"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kopubworlddotumbold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <EditText
-                    android:id="@+id/edit_nickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="설빈"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="62dp"
-                    android:background="@null"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/edit_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="설빈"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="62dp"
+                        android:background="@null"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <EditText
-                    android:id="@+id/edit_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="1998"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/edit_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="1998"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
-                    android:id="@+id/text_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="년"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toRightOf="@id/edit_year"/>
+                        android:id="@+id/text_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="년"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toRightOf="@id/edit_year"/>
 
                 <EditText
-                    android:id="@+id/edit_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="4"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toRightOf="@id/text_year"/>
+                        android:id="@+id/edit_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="4"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toRightOf="@id/text_year"/>
 
                 <TextView
-                    android:id="@+id/text_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="월"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toRightOf="@id/edit_month"/>
+                        android:id="@+id/text_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="월"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toRightOf="@id/edit_month"/>
 
                 <EditText
-                    android:id="@+id/edit_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="16"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toRightOf="@id/text_month"/>
+                        android:id="@+id/edit_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="16"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toRightOf="@id/text_month"/>
 
                 <TextView
-                    android:id="@+id/text_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="일"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_nickname"
-                    app:layout_constraintLeft_toRightOf="@id/edit_day"/>
+                        android:id="@+id/text_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="일"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_nickname"
+                        app:layout_constraintLeft_toRightOf="@id/edit_day"/>
 
                 <TextView
-                    android:id="@+id/btn_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="여성"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_year"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/btn_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="여성"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_year"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
-                    android:id="@+id/btn_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="남성"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="12dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_year"
-                    app:layout_constraintLeft_toRightOf="@id/btn_female"/>
+                        android:id="@+id/btn_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="남성"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_year"
+                        app:layout_constraintLeft_toRightOf="@id/btn_female"/>
 
                 <TextView
-                    android:id="@+id/btn_not_select"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="선택안함"
-                    android:textSize="14sp"
-                    android:textColor="#767676"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="12dp"
-                    app:layout_constraintTop_toBottomOf="@id/edit_year"
-                    app:layout_constraintLeft_toRightOf="@id/btn_male"/>
+                        android:id="@+id/btn_not_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="선택안함"
+                        android:textSize="14sp"
+                        android:textColor="#767676"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/edit_year"
+                        app:layout_constraintLeft_toRightOf="@id/btn_male"/>
 
                 <EditText
-                    android:id="@+id/edit_phone_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="01011112222"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLength="11"
-                    app:layout_constraintTop_toBottomOf="@id/btn_female"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:id="@+id/edit_phone_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="01011112222"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        app:layout_constraintTop_toBottomOf="@id/btn_female"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <EditText
-                    android:id="@+id/edit_adress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="서울시 광진구 광장동"
-                    android:textSize="14sp"
-                    android:textColor="#000"
-                    android:fontFamily="@font/kopubworlddotumedium"
-                    android:layout_marginTop="30dp"
-                    android:background="@null"
-                    android:inputType="number"
-                    android:maxLength="11"
-                    app:layout_constraintTop_toBottomOf="@id/edit_phone_num"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
-
-
+                        android:id="@+id/edit_adress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="서울시 광진구 광장동"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/kopubworlddotumedium"
+                        android:layout_marginTop="30dp"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        app:layout_constraintTop_toBottomOf="@id/edit_phone_num"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D0D0D0"
-        android:layout_marginTop="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_info"/>
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D0D0D0"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_info"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="연동 로그인"
-        android:textSize="19sp"
-        android:textColor="#4B4B4B"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/line1"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="연동 로그인"
+            android:textSize="19sp"
+            android:textColor="#4B4B4B"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-        android:id="@+id/text_login_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카카오 연동을 통해 로그인 하셨습니다."
-        android:textSize="15sp"
-        android:textColor="#000"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/line1"
-        app:layout_constraintRight_toRightOf="parent"/>
-    
+            android:id="@+id/text_login_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카카오 연동을 통해 로그인 하셨습니다."
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintRight_toRightOf="parent"/>
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icon_kakao_small"
-        android:layout_marginTop="33dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintRight_toLeftOf="@id/text_login_link"
-        app:layout_constraintTop_toBottomOf="@id/line1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_kakao_small"
+            android:layout_marginTop="33dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintRight_toLeftOf="@id/text_login_link"
+            app:layout_constraintTop_toBottomOf="@id/line1"/>
 
 
     <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그아웃"
-        android:textSize="14sp"
-        android:textColor="#D0D0D0"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:background="#00ff0000"
-        android:layout_marginLeft="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/line2"/>
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:textSize="14sp"
+            android:textColor="#D0D0D0"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:background="#00ff0000"
+            android:layout_marginLeft="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/line2"/>
 
     <TextView
-        android:id="@+id/line2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/"
-        android:textSize="12sp"
-        android:textColor="#D0D0D0"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_withdrawal"
-        app:layout_constraintLeft_toRightOf="@id/btn_logout"/>
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="12sp"
+            android:textColor="#D0D0D0"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_withdrawal"
+            app:layout_constraintLeft_toRightOf="@id/btn_logout"/>
 
     <Button
-        android:id="@+id/btn_withdrawal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원탈퇴"
-        android:textSize="14sp"
-        android:textColor="#D0D0D0"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:background="#00ff0000"
-        android:layout_marginRight="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/line2"
-        app:layout_constraintRight_toRightOf="parent"/>
+            android:id="@+id/btn_withdrawal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원탈퇴"
+            android:textSize="14sp"
+            android:textColor="#D0D0D0"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:background="#00ff0000"
+            android:layout_marginRight="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/line2"
+            app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

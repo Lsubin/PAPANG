@@ -40,7 +40,7 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Vi
     }
     */
 
-    public ReviewListAdapter(Context context, String name){
+    public ReviewListAdapter(Context context, String name) {
         this.context = context;
         review.add(name);
     }
@@ -84,18 +84,18 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            user_name = (TextView)itemView.findViewById(R.id.review_user_name);
-            review_type = (TextView)itemView.findViewById(R.id.review_type);
-            review_tag = (TextView)itemView.findViewById(R.id.review_tag);
-            review_text = (TextView)itemView.findViewById(R.id.review_text);
-            review_date = (TextView)itemView.findViewById(R.id.review_date);
-            review_heart_count = (TextView)itemView.findViewById(R.id.review_heart_count);
+            user_name = (TextView) itemView.findViewById(R.id.review_user_name);
+            review_type = (TextView) itemView.findViewById(R.id.review_type);
+            review_tag = (TextView) itemView.findViewById(R.id.review_tag);
+            review_text = (TextView) itemView.findViewById(R.id.review_text);
+            review_date = (TextView) itemView.findViewById(R.id.review_date);
+            review_heart_count = (TextView) itemView.findViewById(R.id.review_heart_count);
 
-            user_image = (ImageView)itemView.findViewById(R.id.review_user_img);
-            review_rating = (RatingBar)itemView.findViewById(R.id.review_rating);
+            user_image = (ImageView) itemView.findViewById(R.id.review_user_img);
+            review_rating = (RatingBar) itemView.findViewById(R.id.review_rating);
 
-            review_btn_heart = (ImageButton)itemView.findViewById(R.id.review_btn_heart);
-            review_btn_detail = (ImageButton)itemView.findViewById(R.id.review_btn_detail);
+            review_btn_heart = (ImageButton) itemView.findViewById(R.id.review_btn_heart);
+            review_btn_detail = (ImageButton) itemView.findViewById(R.id.review_btn_detail);
             review_btn_detail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

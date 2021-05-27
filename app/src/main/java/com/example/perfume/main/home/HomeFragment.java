@@ -1,15 +1,20 @@
 package com.example.perfume.main.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
@@ -18,22 +23,57 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferNetworkLossHandler;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.bumptech.glide.Glide;
 import com.example.perfume.AppSatisfactionActivity;
 import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
+import com.example.perfume.data.Perfume;
 import com.example.perfume.search.SearchActivity;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
     View root;
+
+    List<Perfume> r_perfumes;       // 파팡 추천 향수
+    DataService dataService;
+    DataApi dataApi;
+    Retrofit retrofit;
 
     RecyclerView recyclerView;      // 당신이 잊지 못할 향수
     RecyclerView recyclerView2;     // 파팡 추천 향수
     RecyclerView recyclerview3;     // 파팡 이벤트
 
     Product_RecyclerView_Adapter adapter;
+    Product_RecyclerView_Adapter adapter2;
     Event_RecyclerView_Adapter event_adapter;
     RecyclerView.LayoutManager mLayoutManager;
     Product_Decoration decoration;
@@ -52,19 +92,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        /*
-        product1_layout = (LinearLayout)root.findViewById(R.id.product1_layout);
-        // 상품 누르면 상세페이지로 넘어가기
-        product1_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProductDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-         */
-
-        find_btn = (ImageButton)root.findViewById(R.id.perfume_find_btn);
+        find_btn = (ImageButton) root.findViewById(R.id.perfume_find_btn);
         find_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +101,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        btn_search = (ImageButton)root.findViewById(R.id.main_search);
+        btn_search = (ImageButton) root.findViewById(R.id.main_search);
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,51 +110,48 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // 예시
-        ArrayList<Drawable> data1 = new ArrayList<>();
-        ArrayList<String> data2 = new ArrayList<>();
-        ArrayList<String> data3 = new ArrayList<>();
-
-        // 예시로 8개 추가
-        /*
-        for(int i = 0; i < 4; i++)
-        {
-            data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
-            data2.add("샤넬");
-            data3.add("넘버 5 오뜨빠르펭");
-        }*/
-        // 예시 이미지 깨지나
-
-        data1.add(getResources().getDrawable(R.mipmap.ex_chanel_image));
-        data2.add("샤넬");
-        data3.add("넘버 5 오뜨빠르펭");
-
-        data1.add(getResources().getDrawable(R.mipmap.ex3));
-        data2.add("샤넬");
-        data3.add("넘버 5 오뜨빠르펭");
-
-        data1.add(getResources().getDrawable(R.mipmap.ex1));
-        data2.add("샤넬");
-        data3.add("넘버 5 오뜨빠르펭");
-
-        data1.add(getResources().getDrawable(R.mipmap.ex2));
-        data2.add("샤넬");
-        data3.add("넘버 5 오뜨빠르펭");
-
         decoration = new Product_Decoration();
+
+        dataService = new DataService();
+        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
+        r_perfumes = new ArrayList<>();     // 파팡 추천 향수
 
         recyclerView = root.findViewById(R.id.main_recyclerview1);
         mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
-        adapter = new Product_RecyclerView_Adapter(root.getContext(), data1, data2, data3);
-        recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(decoration);
+
+        recyclerView2 = root.findViewById(R.id.main_recyclerview2);
+        mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(mLayoutManager);
+        recyclerView2.addItemDecoration(decoration);
+
+        dataApi.selectAll().enqueue(new Callback<List<Perfume>>() {
+            @Override
+            public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
+                r_perfumes = response.body();
+                adapter = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes);
+                recyclerView.setAdapter(adapter);
+
+                adapter2 = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes);
+                recyclerView2.setAdapter(adapter2);
+            }
+
+            @Override
+            public void onFailure(Call<List<Perfume>> call, Throwable t) {
+
+                Log.e("연결", t.getMessage());
+            }
+        });
 
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
                 if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    String p_name = adapter.getName(rv.getChildAdapterPosition(reV));
                     Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
+                    gotoDetail.putExtra("name", p_name);
                     startActivity(gotoDetail);
                 } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
                     itemTouch = true;
@@ -159,14 +184,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-        recyclerView2 = root.findViewById(R.id.main_recyclerview2);
-        mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView2.setLayoutManager(mLayoutManager);
-        adapter = new Product_RecyclerView_Adapter(root.getContext(), data1, data2, data3);
-        recyclerView2.setAdapter(adapter);
-        recyclerView2.addItemDecoration(decoration);
-
         recyclerview3 = root.findViewById(R.id.main_recyclerview3);
         mLayoutManager = new LinearLayoutManager(root.getContext());
         recyclerview3.setLayoutManager(mLayoutManager);
@@ -180,8 +197,8 @@ public class HomeFragment extends Fragment {
         magazine_viewpager.setAdapter(viewAdapter);
 
         // 앱 만족도 조사 넘어가기
-        btn_satisfaction_good = (ImageButton)root.findViewById(R.id.btn_satisfaction_good);
-        btn_satisfaction_bad = (ImageButton)root.findViewById(R.id.btn_satisfaction_bad);
+        btn_satisfaction_good = (ImageButton) root.findViewById(R.id.btn_satisfaction_good);
+        btn_satisfaction_bad = (ImageButton) root.findViewById(R.id.btn_satisfaction_bad);
 
         btn_satisfaction_good.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,4 +217,5 @@ public class HomeFragment extends Fragment {
         });
         return root;
     }
+
 }

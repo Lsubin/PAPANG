@@ -1,243 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    tools:context=".main.my.MyPageFragment">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:paddingTop="40dp"
+                                                   tools:context=".main.my.MyPageFragment">
 
     <ImageView
-        android:id="@+id/user_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/user_img"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/user_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="안녕하세요! 설빈 님, \n파팡을 통해 다영한 서비스를 이용해 보세요:)"
-        android:textSize="13sp"
-        android:textColor="#000"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:layout_marginLeft="15dp"
-        app:layout_constraintLeft_toRightOf="@id/user_img"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageButton
-        android:id="@+id/btn_editmyinfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/btn_eidtmyinfo"
-        android:background="#00ff0000"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        app:layout_constraintTop_toBottomOf="@id/user_name_text"
-        app:layout_constraintLeft_toRightOf="@id/user_img"/>
-
-    <TextView
-        android:id="@+id/text_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="최근에 한 향수테스트 결과"
-        android:textSize="13sp"
-        android:textColor="#000"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toBottomOf="@id/user_img"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_1"
-        app:layout_constraintLeft_toLeftOf="parent">
-
-        <ImageView
-            android:id="@+id/style_img"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@mipmap/try_background_img"
-            android:layout_marginTop="25dp"
-            android:scaleType="fitXY"/>
-
-        <LinearLayout
+            android:id="@+id/user_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="13dp"
-            android:orientation="vertical">
+            android:src="@mipmap/user_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/user_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="안녕하세요! 설빈 님, \n파팡을 통해 다영한 서비스를 이용해 보세요:)"
+            android:textSize="13sp"
+            android:textColor="#000"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintLeft_toRightOf="@id/user_img"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+            android:id="@+id/btn_editmyinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_eidtmyinfo"
+            android:background="#00ff0000"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintTop_toBottomOf="@id/user_name_text"
+            app:layout_constraintLeft_toRightOf="@id/user_img"/>
+
+    <TextView
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최근에 한 향수테스트 결과"
+            android:textSize="13sp"
+            android:textColor="#000"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@id/user_img"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_1"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+        <ImageView
+                android:id="@+id/style_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@mipmap/try_background_img"
+                android:layout_marginTop="25dp"
+                android:scaleType="fitXY"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/text_tryfindperfume"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/text_tryfindperfume"/>
             <ImageButton
-                android:id="@+id/btn_findperfume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:src="@mipmap/btn_findperfum"
-                android:background="#00ff0000"/>
+                    android:id="@+id/btn_findperfume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/btn_findperfum"
+                    android:background="#00ff0000"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/result_1_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:text="오 드 뚜왈렛"
-            android:textColor="#fff"
-            android:textSize="13sp"
-            android:fontFamily="@font/kopubworlddotumbold"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"/>
+                android:id="@+id/result_1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="오 드 뚜왈렛"
+                android:textColor="#fff"
+                android:textSize="13sp"
+                android:fontFamily="@font/kopubworlddotumbold"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"/>
 
         <TextView
-            android:id="@+id/result_2_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:text="100ml"
-            android:textColor="#fff"
-            android:textSize="13sp"
-            android:fontFamily="@font/kopubworlddotumbold"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="60dp"/>
+                android:id="@+id/result_2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="100ml"
+                android:textColor="#fff"
+                android:textSize="13sp"
+                android:fontFamily="@font/kopubworlddotumbold"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="60dp"/>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:id="@+id/result_456_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:text="Flower, Fruity, None"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="@font/montserratbold"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/result_3_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:text="발랄한, 귀여운, 사랑스러운"
-                android:textColor="#fff"
-                android:textSize="13sp"
-                android:fontFamily="@font/kopubworlddotumbold"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentLeft="@id/result_456_text"
-                android:layout_gravity="center"/>
+                    android:id="@+id/result_456_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="Flower, Fruity, None"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/montserratbold"
+                    android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/result_7_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:text="10만원 ~ 30만원"
-                android:textColor="#fff"
-                android:textSize="13sp"
-                android:fontFamily="@font/kopubworlddotumbold"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentLeft="@id/result_456_text"
-                android:layout_gravity="center"/>
+                    android:id="@+id/result_3_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="발랄한, 귀여운, 사랑스러운"
+                    android:textColor="#fff"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginTop="30dp"
+                    android:layout_alignParentLeft="@id/result_456_text"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:id="@+id/result_7_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="10만원 ~ 30만원"
+                    android:textColor="#fff"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:layout_marginTop="50dp"
+                    android:layout_alignParentLeft="@id/result_456_text"
+                    android:layout_gravity="center"/>
 
         </RelativeLayout>
 
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/touch_event_zone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@id/frame_layout"
-        app:layout_constraintLeft_toLeftOf="parent">
+            android:id="@+id/touch_event_zone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_layout"
+            app:layout_constraintLeft_toLeftOf="parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ment_event"
-            android:layout_marginLeft="13dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ment_event"
+                android:layout_marginLeft="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
-            android:id="@+id/next_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/right_btn"
-            android:background="#00ff0000"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+                android:id="@+id/next_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/right_btn"
+                android:background="#00ff0000"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/event_num_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1개"
-            android:textSize="18sp"
-            android:textColor="#6557FF"
-            android:layout_marginRight="5dp"
-            android:fontFamily="@font/kopubworlddotumbold"
-            android:paddingTop="3dp"
-            app:layout_constraintRight_toLeftOf="@id/next_btn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+                android:id="@+id/event_num_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1개"
+                android:textSize="18sp"
+                android:textColor="#6557FF"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/kopubworlddotumbold"
+                android:paddingTop="3dp"
+                app:layout_constraintRight_toLeftOf="@id/next_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D0D0D0"
-        android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/touch_event_zone"/>
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D0D0D0"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/touch_event_zone"/>
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:id="@+id/touch_add_zone"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:paddingTop="20dp"
-       android:paddingBottom="20dp"
-       app:layout_constraintTop_toBottomOf="@id/line1"
-       app:layout_constraintLeft_toLeftOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/touch_add_zone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-       <ImageView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@mipmap/addfunc_img"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintLeft_toLeftOf="parent"
-           app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/addfunc_img"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-       <ImageButton
-           android:id="@+id/next_btn2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@mipmap/right_btn"
-           android:background="#00ff0000"
-           app:layout_constraintRight_toRightOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageButton
+                android:id="@+id/next_btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/right_btn"
+                android:background="#00ff0000"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

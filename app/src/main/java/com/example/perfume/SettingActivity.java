@@ -33,7 +33,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        btn_back = (ImageButton)findViewById(R.id.btn_back);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +41,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        list_setting = (ListView)findViewById(R.id.list_setting);
+        list_setting = (ListView) findViewById(R.id.list_setting);
         adapter = new SettingAdpater();
         list_setting.setAdapter(adapter);
 
@@ -54,19 +54,16 @@ public class SettingActivity extends AppCompatActivity {
         list_setting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if(position == 0){
+                if (position == 0) {
                     Intent intent = new Intent(getApplicationContext(), SettingDetail1Activity.class);
                     startActivity(intent);
-                }
-                else if(position == 1){
+                } else if (position == 1) {
                     Intent intent = new Intent(getApplicationContext(), SettingDetail2Activity.class);
                     startActivity(intent);
-                }
-                else if(position == 2){
+                } else if (position == 2) {
                     Intent intent = new Intent(getApplicationContext(), SettingDetail3Activity.class);
                     startActivity(intent);
-                }
-                else if(position == 3){
+                } else if (position == 3) {
                     Intent intent = new Intent(getApplicationContext(), SettingDetail4Activity.class);
                     startActivity(intent);
                 }
@@ -85,7 +82,7 @@ public class SettingActivity extends AppCompatActivity {
             return items.size();
         }
 
-        public void addItem(String item){
+        public void addItem(String item) {
             items.add(item);
         }
 
@@ -104,12 +101,12 @@ public class SettingActivity extends AppCompatActivity {
             final int pos = position;
             final Context context = parent.getContext();
 
-            if (convertView == null){
+            if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.item_list_setting, parent, false);
             }
 
-            text_setting = (TextView)convertView.findViewById(R.id.text_setting);
+            text_setting = (TextView) convertView.findViewById(R.id.text_setting);
             btn_right = (ImageView) convertView.findViewById(R.id.btn_right);
 
             String setting_name = items.get(position);

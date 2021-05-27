@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.perfume.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ReviewGenderFragment#newInstance} factory method to
@@ -74,13 +75,13 @@ public class ReviewGenderFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_review_gender, container, false);
 
-        woman_gage = (TextView)v.findViewById(R.id.woman_gage);
-        man_gage = (TextView)v.findViewById(R.id.man_gage);
-        none_gage = (TextView)v.findViewById(R.id.none_gage);
+        woman_gage = (TextView) v.findViewById(R.id.woman_gage);
+        man_gage = (TextView) v.findViewById(R.id.man_gage);
+        none_gage = (TextView) v.findViewById(R.id.none_gage);
 
-        woman = (ProgressBar)v.findViewById(R.id.woman_progressbar);
-        man = (ProgressBar)v.findViewById(R.id.man_progressbar);
-        none = (ProgressBar)v.findViewById(R.id.none_progressbar);
+        woman = (ProgressBar) v.findViewById(R.id.woman_progressbar);
+        man = (ProgressBar) v.findViewById(R.id.man_progressbar);
+        none = (ProgressBar) v.findViewById(R.id.none_progressbar);
 
         return v;
     }

@@ -20,7 +20,7 @@ public class RecommendationSearchAdapter extends RecyclerView.Adapter<Recommenda
     Context context;
     ArrayList<String> search_words;
 
-    public RecommendationSearchAdapter(Context context){
+    public RecommendationSearchAdapter(Context context) {
         this.context = context;
 
         search_words = new ArrayList<>();
@@ -46,12 +46,12 @@ public class RecommendationSearchAdapter extends RecyclerView.Adapter<Recommenda
     @Override
     public void onBindViewHolder(@NonNull RecommendationSearchAdapter.ViewHolder holder, int position) {
 
-            holder.recommendation_search_word.setText(search_words.get(position));
+        holder.recommendation_search_word.setText(search_words.get(position));
     }
 
     @Override
     public int getItemCount() {
-            return search_words.size();
+        return search_words.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,7 +60,7 @@ public class RecommendationSearchAdapter extends RecyclerView.Adapter<Recommenda
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            recommendation_search_word = (TextView)itemView.findViewById(R.id.recommendation_search_word);
+            recommendation_search_word = (TextView) itemView.findViewById(R.id.recommendation_search_word);
         }
     }
 

@@ -22,7 +22,7 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
     ArrayList<Drawable> drawables;          // 기본 이미지
     ArrayList<Integer> drawables_Num;       // 매칭 넘버
 
-    public FlavorAdapter(Context context, ArrayList<Integer> drawables_Num){
+    public FlavorAdapter(Context context, ArrayList<Integer> drawables_Num) {
         this.mContext = context;
         drawables = new ArrayList<>();
 
@@ -70,10 +70,10 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
         return holder;
     }
 
-    @Override public void onBindViewHolder(@NonNull Holder holder, int position)
-    {
+    @Override
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
         //Toast.makeText(mContext, String.valueOf(position), 0).show();
-        holder.theme_image.setImageDrawable(drawables.get(drawables_Num.get(position)-1));
+        holder.theme_image.setImageDrawable(drawables.get(drawables_Num.get(position) - 1));
     }
 
 
@@ -83,19 +83,19 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
     }
 
     // click으로 바꾸는거
-    public void setDrawable(int position){
+    public void setDrawable(int position) {
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num+15);
+        drawables_Num.set(position, num + 15);
         notifyDataSetChanged();
     }
 
-    public void setBackDrawable(int position){
+    public void setBackDrawable(int position) {
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num-15);
+        drawables_Num.set(position, num - 15);
         notifyDataSetChanged();
     }
 
-    public int getNum(int position){
+    public int getNum(int position) {
         return drawables_Num.get(position);
     }
 }
@@ -114,8 +114,7 @@ class Holder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 int pos = getAdapterPosition();
-                if (pos != RecyclerView.NO_POSITION)
-                {
+                if (pos != RecyclerView.NO_POSITION) {
                     /*
                     if(select_image.getVisibility() == View.VISIBLE){
                         select_image.setVisibility(View.INVISIBLE);

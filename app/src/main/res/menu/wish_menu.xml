@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_perfume"
-        android:title="향수"
-        app:showAsAction="always"
-        app:itemTextAppearance="@style/MyItemFont"/>
+            android:id="@+id/menu_perfume"
+            android:title="향수"
+            app:showAsAction="always"
+            app:itemTextAppearance="@style/MyItemFont"/>
 
     <item
-        android:id="@+id/menu_theme"
-        android:title="메거진"
-        app:showAsAction="always"
-        app:itemTextAppearance="@style/MyItemFont"/>
+            android:id="@+id/menu_theme"
+            android:title="메거진"
+            app:showAsAction="always"
+            app:itemTextAppearance="@style/MyItemFont"/>
 
 </menu>

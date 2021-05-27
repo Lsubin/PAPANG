@@ -22,7 +22,7 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
 
     ArrayList<String> search_words;          // 상품 이미지
 
-    RecentSearchAdapter(Context context){
+    RecentSearchAdapter(Context context) {
         this.context = context;
 
         search_words = new ArrayList<>();
@@ -30,12 +30,12 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
         search_words.add("딥티크");
     }
 
-    public void allDelete(){
+    public void allDelete() {
         this.search_words.clear();
         notifyDataSetChanged();
     }
 
-    public void update(){
+    public void update() {
         search_words.add("샤넬 넘버 5");
         search_words.add("딥티크");
         notifyDataSetChanged();
@@ -68,8 +68,8 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            recent_search_word = (TextView)itemView.findViewById(R.id.recent_search_word);
-            delete_recent_search_word = (ImageButton)itemView.findViewById(R.id.delete_recent_search_word);
+            recent_search_word = (TextView) itemView.findViewById(R.id.recent_search_word);
+            delete_recent_search_word = (ImageButton) itemView.findViewById(R.id.delete_recent_search_word);
         }
     }
 

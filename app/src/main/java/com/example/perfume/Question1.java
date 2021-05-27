@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
-
-  * Use the {@link Question1#newInstance} factory method to
+ * <p>
+ * Use the {@link Question1#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Question1 extends Fragment {
@@ -76,15 +76,15 @@ public class Question1 extends Fragment {
         v = inflater.inflate(R.layout.fragment_question1, container, false);
         // Inflate the layout for this fragment
 
-        ode_c = (ImageButton)v.findViewById(R.id.ode_c);        // 오대 코롱
-        ode_d = (ImageButton)v.findViewById(R.id.ode_d);        // 오드 뚜왈렛
-        ode_p = (ImageButton)v.findViewById(R.id.ode_p);        // 오드 퍼퓸
-        ode_pp = (ImageButton)v.findViewById(R.id.ode_pp);      // 퍼퓸
+        ode_c = (ImageButton) v.findViewById(R.id.ode_c);        // 오대 코롱
+        ode_d = (ImageButton) v.findViewById(R.id.ode_d);        // 오드 뚜왈렛
+        ode_p = (ImageButton) v.findViewById(R.id.ode_p);        // 오드 퍼퓸
+        ode_pp = (ImageButton) v.findViewById(R.id.ode_pp);      // 퍼퓸
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[0] != false){
-            String result = ((QuestionActivity)QuestionActivity.context).q_result[0];
-            switch (result){
+        if (((QuestionActivity) QuestionActivity.context).q_state[0] != false) {
+            String result = ((QuestionActivity) QuestionActivity.context).q_result[0];
+            switch (result) {
                 case "ode_c":
                     ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.circle_c_click));
                     ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
@@ -120,77 +120,73 @@ public class Question1 extends Fragment {
             }
         }
 
-        ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener(){
+        ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch(v.getId()){
-                    case R.id.ode_c :
-                        if(q1_state == true && q1_result == "ode_c"){
+                switch (v.getId()) {
+                    case R.id.ode_c:
+                        if (q1_state == true && q1_result == "ode_c") {
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             q1_state = false;
                             q1_result = "";
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
-                        }
-                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_c")){
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                        } else if ((q1_state == false) || (q1_state == true && q1_result != "ode_c")) {
                             q1_result = "ode_c";
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.circle_c_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
                             q1_state = true;
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
-                    case R.id.ode_d :
-                        if(q1_state == true && q1_result == "ode_d"){
+                    case R.id.ode_d:
+                        if (q1_state == true && q1_result == "ode_d") {
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             q1_state = false;
                             q1_result = "";
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
-                        }
-                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_d")){
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                        } else if ((q1_state == false) || (q1_state == true && q1_result != "ode_d")) {
                             q1_result = "ode_d";
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.circle_d_click));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
                             q1_state = true;
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
-                    case R.id.ode_p :
-                        if(q1_state == true && q1_result == "ode_p"){
+                    case R.id.ode_p:
+                        if (q1_state == true && q1_result == "ode_p") {
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             q1_state = false;
                             q1_result = "";
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
-                        }
-                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_p")){
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                        } else if ((q1_state == false) || (q1_state == true && q1_result != "ode_p")) {
                             q1_result = "ode_p";
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.circle_p_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
                             q1_state = true;
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
 
-                    case R.id.ode_pp :
-                        if(q1_state == true && q1_result == "ode_pp"){
+                    case R.id.ode_pp:
+                        if (q1_state == true && q1_result == "ode_pp") {
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_pp));
                             q1_state = false;
                             q1_result = "";
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
-                        }
-                        else if((q1_state == false) || (q1_state == true && q1_result != "ode_pp")){
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                        } else if ((q1_state == false) || (q1_state == true && q1_result != "ode_pp")) {
                             q1_result = "ode_pp";
                             ode_pp.setImageDrawable(getResources().getDrawable(R.mipmap.circle_pp_click));
                             ode_d.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_d));
                             ode_c.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_c));
                             ode_p.setImageDrawable(getResources().getDrawable(R.mipmap.uncircle_p));
                             q1_state = true;
-                            ((QuestionActivity)QuestionActivity.context).nextPage(0, q1_state, q1_result);
+                            ((QuestionActivity) QuestionActivity.context).nextPage(0, q1_state, q1_result);
                         }
                         break;
                 }

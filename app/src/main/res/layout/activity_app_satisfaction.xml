@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="25dp"
-    tools:context=".AppSatisfactionActivity">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:padding="25dp"
+                                                   tools:context=".AppSatisfactionActivity">
 
     <ImageButton
-        android:id="@+id/btn_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00fff000"
-        android:src="@mipmap/exit"
-        android:tint="#C4C4C4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00fff000"
+            android:src="@mipmap/exit"
+            android:tint="#C4C4C4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/text_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PAPANG 앱 만족도"
-        android:textColor="#545454"
-        android:textSize="20sp"
-        android:fontFamily="@font/kopubworlddotumbold"
-        android:layout_marginTop="35dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_close"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAPANG 앱 만족도"
+            android:textColor="#545454"
+            android:textSize="20sp"
+            android:fontFamily="@font/kopubworlddotumbold"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_close"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-        android:id="@+id/text_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="서비스를 이용하면서 느낀 불편한 점이나 원하는 추가 기능이나 향수 브랜드가 있다면 알려주세요!"
-        android:textColor="#545454"
-        android:textSize="9sp"
-        android:singleLine="true"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/text_1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            android:id="@+id/text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서비스를 이용하면서 느낀 불편한 점이나 원하는 추가 기능이나 향수 브랜드가 있다면 알려주세요!"
+            android:textColor="#545454"
+            android:textSize="9sp"
+            android:singleLine="true"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/text_1"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="5dp"
-        android:background="@mipmap/spinner_img"
-        app:layout_constraintTop_toBottomOf="@id/text_2"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+            android:id="@+id/spinner"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+            android:background="@mipmap/spinner_img"
+            app:layout_constraintTop_toBottomOf="@id/text_2"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
-        android:id="@+id/edit_content"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:hint="앱에 대한 다양한 의견 남겨주세요!"
-        android:textColorHint="#545454"
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:fontFamily="@font/kopubworlddotumlight"
-        android:layout_marginTop="20dp"
-        android:background="@null"
-        android:gravity="start"
-        android:paddingTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/spinner"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            android:id="@+id/edit_content"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:hint="앱에 대한 다양한 의견 남겨주세요!"
+            android:textColorHint="#545454"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:fontFamily="@font/kopubworlddotumlight"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:gravity="start"
+            android:paddingTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageButton
-        android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/btn_unsubmit"
-        android:background="#00ff0000"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/btn_unsubmit"
+            android:background="#00ff0000"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

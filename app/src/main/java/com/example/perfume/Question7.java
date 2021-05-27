@@ -42,6 +42,7 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
 
     int max;
     int min;
+
     public Question7() {
         // Required empty public constructor
     }
@@ -74,7 +75,6 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,20 +82,19 @@ public class Question7 extends Fragment implements RangeSeekBar.OnRangeSeekBarRe
         v = inflater.inflate(R.layout.fragment_question7, container, false);
         context = container.getContext();
 
-        price_max = (TextView)v.findViewById(R.id.price_tag_max);
-        price_min = (TextView)v.findViewById(R.id.price_tag_min);
-        price_seekbar = (RangeSeekBar)v.findViewById(R.id.price_seekbar);
+        price_max = (TextView) v.findViewById(R.id.price_tag_max);
+        price_min = (TextView) v.findViewById(R.id.price_tag_min);
+        price_seekbar = (RangeSeekBar) v.findViewById(R.id.price_seekbar);
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[6] != false) {
+        if (((QuestionActivity) QuestionActivity.context).q_state[6] != false) {
             min = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[6]);
             max = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[7]);
             price_min.setText(Integer.toString(min));
             price_max.setText(Integer.toString(max));
             price_seekbar.setLeft(min);
             price_seekbar.setRight(max);
-        }
-        else{
+        } else {
             min = 0;
             max = 0;
         }

@@ -82,12 +82,11 @@ public class Question6 extends Fragment {
 
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[5] != false){
-            result = Integer.parseInt(((QuestionActivity)QuestionActivity.context).q_result[5]);
+        if (((QuestionActivity) QuestionActivity.context).q_state[5] != false) {
+            result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[5]);
             q6_result = String.valueOf(result);
             q6_state = true;
-        }
-        else
+        } else
             result = 0;
 
         init(v);
@@ -115,14 +114,14 @@ public class Question6 extends Fragment {
         drawables_Num.add(15);
 
 
-        flavor2_grid = (RecyclerView)v.findViewById(R.id.flavor2_grid);
+        flavor2_grid = (RecyclerView) v.findViewById(R.id.flavor2_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         flavor2_grid.setLayoutManager(mLayoutManager);
         flavor2_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         flavor2_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q6_state = true;
@@ -136,7 +135,7 @@ public class Question6 extends Fragment {
                 if (e.getAction() == MotionEvent.ACTION_DOWN) {
                     View reV = rv.findChildViewUnder(e.getX(), e.getY());
                     int position = rv.getChildAdapterPosition(reV);
-                    if(position >= 0) {
+                    if (position >= 0) {
                         String num = String.valueOf(flavorAdapter.getNum(position));
                         if (q6_state == false) {
                             flavorAdapter.setDrawable(position);
@@ -144,7 +143,7 @@ public class Question6 extends Fragment {
                             q6_position = position;
                             q6_state = true;
                         } else if (q6_state == true && (!num.equals(q6_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(5);
                             flavorAdapter.setBackDrawable(q6_position);
                             flavorAdapter.setDrawable(position);
@@ -156,9 +155,11 @@ public class Question6 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }

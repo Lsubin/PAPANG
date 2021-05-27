@@ -1,201 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recommendation_slidinglayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    app:umanoDragView="@id/guide_up_pannel"
-    app:umanoPanelHeight="0dp"
-    app:umanoOverlay="true"
-    app:umanoShadowHeight="0dp"
-    tools:context=".RecommendationActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recommendation_slidinglayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/recommendation_b">
+        android:gravity="bottom"
+        app:umanoDragView="@id/guide_up_pannel"
+        app:umanoPanelHeight="0dp"
+        app:umanoOverlay="true"
+        app:umanoShadowHeight="0dp"
+        tools:context=".RecommendationActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/recommendation_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            android:background="@mipmap/recommendation_b">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommendation_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
 
             <ImageButton
-                android:id="@+id/recommendation_exit"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="24dp"
-                android:background="#00fff000"
-                android:src="@mipmap/exit"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/recommendation_exit"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#00fff000"
+                    android:src="@mipmap/exit"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
-                android:id="@+id/recommendation_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/recommendation_title"
-                android:background="#00fff000"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="61dp"
-                android:layout_marginRight="135dp"
-                app:layout_constraintTop_toBottomOf="@id/recommendation_exit"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/recommendation_guide"/>
+                    android:id="@+id/recommendation_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/recommendation_title"
+                    android:background="#00fff000"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="61dp"
+                    android:layout_marginRight="135dp"
+                    app:layout_constraintTop_toBottomOf="@id/recommendation_exit"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/recommendation_guide"/>
 
             <ImageButton
-                android:id="@+id/recommendation_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/recommendation_guide"
-                android:layout_marginLeft="83dp"
-                android:layout_marginTop="116dp"
-                android:layout_marginRight="82dp"
-                android:layout_marginBottom="254dp"
-                android:background="#00fff000"
-                app:layout_constraintTop_toBottomOf="@id/recommendation_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                    android:id="@+id/recommendation_guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/recommendation_guide"
+                    android:layout_marginLeft="83dp"
+                    android:layout_marginTop="116dp"
+                    android:layout_marginRight="82dp"
+                    android:layout_marginBottom="254dp"
+                    android:background="#00fff000"
+                    app:layout_constraintTop_toBottomOf="@id/recommendation_title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
 
             <ImageView
-                android:id="@+id/recommendation_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/recommendation_text"
-                android:background="#00fff000"
-                android:layout_marginLeft="83dp"
-                android:layout_marginTop="120dp"
-                android:layout_marginRight="82dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintTop_toBottomOf="@id/recommendation_guide"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/recommendation_start"/>
+                    android:id="@+id/recommendation_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/recommendation_text"
+                    android:background="#00fff000"
+                    android:layout_marginLeft="83dp"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="82dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/recommendation_guide"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/recommendation_start"/>
 
             <ImageButton
-                android:id="@+id/recommendation_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/recommendation_btn"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="60dp"
-                android:background="#00fff000"
-                app:layout_constraintTop_toBottomOf="@id/recommendation_text"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                    android:id="@+id/recommendation_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/recommendation_btn"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="#00fff000"
+                    app:layout_constraintTop_toBottomOf="@id/recommendation_text"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/guide_up_pannel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_radius">
-
-        <ImageButton
-            android:id="@+id/guide_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/exit"
-            android:background="#00fff000"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-
-        <ImageView
-            android:id="@+id/guide_txt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/guide_txt"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@id/guide_exit"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/guide_View"
-            android:layout_width="303dp"
-            android:layout_height="480dp"
-            android:layout_marginTop="40dp"
-            android:background="#fff"
-            app:layout_constraintTop_toBottomOf="@id/guide_txt1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/guide_up_pannel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="80dp"
-            app:layout_constraintTop_toBottomOf="@id/guide_View"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:background="@drawable/corner_radius">
 
-            <ImageButton
-                android:id="@+id/guide_backpage"
-                android:visibility="invisible"
+        <ImageButton
+                android:id="@+id/guide_exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/btn_backpage"
+                android:src="@mipmap/exit"
                 android:background="#00fff000"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <ImageView
+                android:id="@+id/guide_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/guide_txt"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@id/guide_exit"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/guide_View"
+                android:layout_width="303dp"
+                android:layout_height="480dp"
+                android:layout_marginTop="40dp"
+                android:background="#fff"
+                app:layout_constraintTop_toBottomOf="@id/guide_txt1"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"/>
 
-
-            <ImageButton
-                android:id="@+id/guide_nextpage"
-                android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/btn_nextpage"
-                android:background="#00fff000"
-                android:layout_marginRight="40dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/guide_page_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="START"
-                android:fontFamily="@font/kopubworlddotumbold"
-                android:textSize="13sp"
-                android:textColor="#000"
-                android:layout_marginRight="20dp"
-                android:textAlignment="center"
-                app:layout_constraintRight_toLeftOf="@id/guide_nextpage"
-                app:layout_constraintTop_toTopOf="@id/guide_nextpage"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/guide_page_txt"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1 / 6"
-                android:fontFamily="@font/kopubworlddotumbold"
-                android:textSize="12sp"
-                android:textColor="#000"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="80dp"
+                app:layout_constraintTop_toBottomOf="@id/guide_View"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                    android:id="@+id/guide_backpage"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_backpage"
+                    android:background="#00fff000"
+                    android:layout_marginLeft="40dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <ImageButton
+                    android:id="@+id/guide_nextpage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_nextpage"
+                    android:background="#00fff000"
+                    android:layout_marginRight="40dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                    android:id="@+id/guide_page_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="START"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:textSize="13sp"
+                    android:textColor="#000"
+                    android:layout_marginRight="20dp"
+                    android:textAlignment="center"
+                    app:layout_constraintRight_toLeftOf="@id/guide_nextpage"
+                    app:layout_constraintTop_toTopOf="@id/guide_nextpage"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                    android:id="@+id/guide_page_txt"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 / 6"
+                    android:fontFamily="@font/kopubworlddotumbold"
+                    android:textSize="12sp"
+                    android:textColor="#000"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

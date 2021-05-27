@@ -14,7 +14,7 @@ public class Product {
         prices.add(price);
     }*/
 
-    public Product(ArrayList<String> shop, ArrayList<String> price){
+    public Product(ArrayList<String> shop, ArrayList<String> price) {
         shops = shop;
         prices = price;
     }

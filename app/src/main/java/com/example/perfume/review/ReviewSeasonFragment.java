@@ -78,15 +78,15 @@ public class ReviewSeasonFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_review_season, container, false);
 
-        spring_gage = (TextView)v.findViewById(R.id.spring_gage);
-        summer_gage = (TextView)v.findViewById(R.id.summer_gage);
-        fall_gage = (TextView)v.findViewById(R.id.fall_gage);
-        winter_gage = (TextView)v.findViewById(R.id.winter_gage);
+        spring_gage = (TextView) v.findViewById(R.id.spring_gage);
+        summer_gage = (TextView) v.findViewById(R.id.summer_gage);
+        fall_gage = (TextView) v.findViewById(R.id.fall_gage);
+        winter_gage = (TextView) v.findViewById(R.id.winter_gage);
 
-        spring = (ProgressBar)v.findViewById(R.id.spring_progressbar);
-        summer = (ProgressBar)v.findViewById(R.id.summer_progressbar);
-        fall = (ProgressBar)v.findViewById(R.id.fall_progressbar);
-        winter = (ProgressBar)v.findViewById(R.id.winter_progressbar);
+        spring = (ProgressBar) v.findViewById(R.id.spring_progressbar);
+        summer = (ProgressBar) v.findViewById(R.id.summer_progressbar);
+        fall = (ProgressBar) v.findViewById(R.id.fall_progressbar);
+        winter = (ProgressBar) v.findViewById(R.id.winter_progressbar);
 
         return v;
     }

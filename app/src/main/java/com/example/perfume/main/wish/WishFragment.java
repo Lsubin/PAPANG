@@ -38,7 +38,7 @@ public class WishFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_wish, container, false);
 
         //상단바 툴바 셋팅
-        toolbar=(Toolbar)view.findViewById(R.id.toolbar);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
         activity.setTitle("");
         activity.setSupportActionBar(toolbar);
@@ -46,7 +46,7 @@ public class WishFragment extends Fragment {
         setHasOptionsMenu(true);
 
         // 뷰페이저
-        viewPager = (ViewPager)view.findViewById(R.id.viewpager_wish);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager_wish);
         adapter = new WishPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
 
@@ -72,8 +72,7 @@ public class WishFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menu_perfume:
                 // 향수 페이지라면
                 viewPager.setCurrentItem(0);
@@ -90,7 +89,7 @@ public class WishFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void clickColor(MenuItem item){
+    private void clickColor(MenuItem item) {
         // Cast to a TextView instance if the menu item was found
 
         SpannableString s = new SpannableString(item.getTitle().toString());
@@ -98,7 +97,7 @@ public class WishFragment extends Fragment {
         item.setTitle(s);
     }
 
-    private void unclickColor(MenuItem item){
+    private void unclickColor(MenuItem item) {
         // Cast to a TextView instance if the menu item was found
 
         SpannableString s = new SpannableString(item.getTitle().toString());

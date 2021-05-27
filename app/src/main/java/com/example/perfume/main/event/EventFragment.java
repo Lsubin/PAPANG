@@ -25,7 +25,7 @@ public class EventFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
 
         //상단바 툴바 셋팅
-        toolbar=(androidx.appcompat.widget.Toolbar)view.findViewById(R.id.toolbar);
+        toolbar = (androidx.appcompat.widget.Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
         activity.setTitle("");
         activity.setSupportActionBar(toolbar);

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class ReviewTabAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> tabItems;
     private ArrayList<String> tabText;
+
     public ReviewTabAdapter(@NonNull FragmentManager fm) {
         super(fm);
 

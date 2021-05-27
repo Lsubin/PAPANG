@@ -76,10 +76,10 @@ public class MyPageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_page, container, false);
 
-        touch_event_zone = (ConstraintLayout)view.findViewById(R.id.touch_event_zone);
-        touch_add_zone = (ConstraintLayout)view.findViewById(R.id.touch_add_zone);
-        btn_findperfume = (ImageButton)view.findViewById(R.id.btn_findperfume);
-        btn_eidtmyinfo = (ImageButton)view.findViewById(R.id.btn_editmyinfo);
+        touch_event_zone = (ConstraintLayout) view.findViewById(R.id.touch_event_zone);
+        touch_add_zone = (ConstraintLayout) view.findViewById(R.id.touch_add_zone);
+        btn_findperfume = (ImageButton) view.findViewById(R.id.btn_findperfume);
+        btn_eidtmyinfo = (ImageButton) view.findViewById(R.id.btn_editmyinfo);
 
         touch_event_zone.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,7 +23,6 @@ public class WrapHeightViewPager extends ViewPager {
         if (mode == MeasureSpec.UNSPECIFIED || mode == MeasureSpec.AT_MOST) {
 
 
-
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             int height = 0;
             for (int i = 0; i < getChildCount(); i++) {
@@ -32,7 +31,6 @@ public class WrapHeightViewPager extends ViewPager {
                 int h = child.getMeasuredHeight();
                 if (h > height) height = h;
             }
-
 
 
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);

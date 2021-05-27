@@ -12,9 +12,9 @@
             <scale android:scaleWidth="100%">
                 <shape>
                     <gradient
-                        android:endColor="#9082FF"
-                        android:startColor="#6557FF"
-                        />
+                            android:endColor="#9082FF"
+                            android:startColor="#6557FF"
+                    />
                     <corners android:radius="60dp"/>
                 </shape>
             </scale>

@@ -23,7 +23,6 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  * Use the {@link Question4#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class Question4 extends Fragment {
 
@@ -94,12 +93,11 @@ public class Question4 extends Fragment {
         q4_frame4 = (ImageView) v.findViewById(R.id.q4_frame4);
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[3] != false) {
+        if (((QuestionActivity) QuestionActivity.context).q_state[3] != false) {
             result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[3]);
             q4_result = String.valueOf(result);
             q4_state = true;
-        }
-        else
+        } else
             result = 0;
 
         // 스타일 따라 이미지 다르게 뿌려주기
@@ -138,14 +136,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(4);
         drawables_Num.add(13);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(q4_context, drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -167,7 +165,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -179,9 +177,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -203,14 +203,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(5);
         drawables_Num.add(13);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -232,7 +232,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -244,9 +244,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -269,14 +271,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(4);
         drawables_Num.add(10);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -298,7 +300,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -310,9 +312,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -332,14 +336,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(2);
         drawables_Num.add(4);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -361,7 +365,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -373,9 +377,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -398,14 +404,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(14);
         drawables_Num.add(13);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -427,7 +433,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -439,9 +445,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -464,14 +472,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(13);
         drawables_Num.add(5);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -493,7 +501,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -505,9 +513,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -530,14 +540,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(5);
         drawables_Num.add(12);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -559,7 +569,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -571,9 +581,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -596,14 +608,14 @@ public class Question4 extends Fragment {
         drawables_Num.add(14);
         drawables_Num.add(5);
 
-        main_flavor_grid = (RecyclerView)v.findViewById(R.id.main_flavor_grid);
+        main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         main_flavor_grid.setLayoutManager(mLayoutManager);
         main_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(getActivity(), drawables_Num);
         main_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q4_state = true;
@@ -625,7 +637,7 @@ public class Question4 extends Fragment {
                             q4_position = position;
                             q4_state = true;
                         } else if (q4_state == true && (!num.equals(q4_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(3);
                             flavorAdapter.setBackDrawable(q4_position);
                             flavorAdapter.setDrawable(position);
@@ -637,9 +649,11 @@ public class Question4 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }

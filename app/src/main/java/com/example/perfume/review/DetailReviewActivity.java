@@ -46,7 +46,7 @@ public class DetailReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_review);
 
-        dr_btn_exit = (ImageButton)findViewById(R.id.dr_btn_exit);
+        dr_btn_exit = (ImageButton) findViewById(R.id.dr_btn_exit);
         dr_btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,16 +54,16 @@ public class DetailReviewActivity extends AppCompatActivity {
             }
         });
 
-        dr_user_img = (ImageView)findViewById(R.id.dr_user_img);
+        dr_user_img = (ImageView) findViewById(R.id.dr_user_img);
 
-        dr_user_name = (TextView)findViewById(R.id.dr_user_name);
-        dr_type = (TextView)findViewById(R.id.dr_type);
-        dr_date = (TextView)findViewById(R.id.dr_date);
-        dr_review_text = (TextView)findViewById(R.id.dr_review_text);
+        dr_user_name = (TextView) findViewById(R.id.dr_user_name);
+        dr_type = (TextView) findViewById(R.id.dr_type);
+        dr_date = (TextView) findViewById(R.id.dr_date);
+        dr_review_text = (TextView) findViewById(R.id.dr_review_text);
 
-        dr_ratingbar = (RatingBar)findViewById(R.id.dr_ratingbar);
+        dr_ratingbar = (RatingBar) findViewById(R.id.dr_ratingbar);
 
-        dr_image_list = (RecyclerView)findViewById(R.id.dr_image_list);
+        dr_image_list = (RecyclerView) findViewById(R.id.dr_image_list);
         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         dr_image_list.setLayoutManager(mLayoutManager);
         ReviewImageAdapter r_adapter = new ReviewImageAdapter(getApplicationContext());
@@ -71,10 +71,10 @@ public class DetailReviewActivity extends AppCompatActivity {
         decoration = new Product_Decoration();
         dr_image_list.addItemDecoration(decoration);
 
-        dr_review_tag = (RecyclerView)findViewById(R.id.dr_review_tag);
+        dr_review_tag = (RecyclerView) findViewById(R.id.dr_review_tag);
         layoutManager = new FlexboxLayoutManager(getApplicationContext());
-        layoutManager.setFlexDirection (FlexDirection.ROW);
-        layoutManager.setJustifyContent (JustifyContent.FLEX_START);
+        layoutManager.setFlexDirection(FlexDirection.ROW);
+        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
         dr_review_tag.setLayoutManager(layoutManager);
         tag_adapter = new RecommendationSearchAdapter(getApplicationContext());
         dr_review_tag.setAdapter(tag_adapter);

@@ -42,20 +42,20 @@ public class RecommendationActivity extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        recommendation_slidinglayout = (SlidingUpPanelLayout)findViewById(R.id.recommendation_slidinglayout);
+        recommendation_slidinglayout = (SlidingUpPanelLayout) findViewById(R.id.recommendation_slidinglayout);
 
-        recommendation_slidinglayout.getChildAt (1).setOnClickListener(null);
+        recommendation_slidinglayout.getChildAt(1).setOnClickListener(null);
 
-        recommendation_layout = (ConstraintLayout)findViewById(R.id.recommendation_layout);
+        recommendation_layout = (ConstraintLayout) findViewById(R.id.recommendation_layout);
         recommendation_layout.setPadding(0, getStatusBarHeight(getApplicationContext()), 0, 0);
 
-        guide_viewpager = (ViewPager)findViewById(R.id.guide_View);
+        guide_viewpager = (ViewPager) findViewById(R.id.guide_View);
         GuidePagerAdapter gAdapter = new GuidePagerAdapter(getApplicationContext());
         guide_viewpager.setAdapter(gAdapter);
 
-        guide_up_pannel = (ConstraintLayout)findViewById(R.id.guide_up_pannel);
+        guide_up_pannel = (ConstraintLayout) findViewById(R.id.guide_up_pannel);
 
-        recommendation_exit = (ImageButton)findViewById(R.id.recommendation_exit);
+        recommendation_exit = (ImageButton) findViewById(R.id.recommendation_exit);
         recommendation_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class RecommendationActivity extends AppCompatActivity {
             }
         });
 
-        recommendation_start = (ImageButton)findViewById(R.id.recommendation_start);
+        recommendation_start = (ImageButton) findViewById(R.id.recommendation_start);
         recommendation_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +72,7 @@ public class RecommendationActivity extends AppCompatActivity {
             }
         });
 
-        recommendation_guide = (ImageButton)findViewById(R.id.recommendation_guide);
+        recommendation_guide = (ImageButton) findViewById(R.id.recommendation_guide);
         recommendation_guide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class RecommendationActivity extends AppCompatActivity {
             }
         });
 
-        guide_exit = (ImageButton)findViewById(R.id.guide_exit);
+        guide_exit = (ImageButton) findViewById(R.id.guide_exit);
         guide_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,42 +88,36 @@ public class RecommendationActivity extends AppCompatActivity {
             }
         });
 
-        guide_backpage = (ImageButton)findViewById(R.id.guide_backpage);        // 이전 페이지
-        guide_nextpage = (ImageButton)findViewById(R.id.guide_nextpage);        // 다음 페이지
-        guide_page_txt = (TextView)findViewById(R.id.guide_page_txt);           // 페이지 표시 텍스트뷰
-        guide_page_start = (TextView)findViewById(R.id.guide_page_start);       // START TEXT
+        guide_backpage = (ImageButton) findViewById(R.id.guide_backpage);        // 이전 페이지
+        guide_nextpage = (ImageButton) findViewById(R.id.guide_nextpage);        // 다음 페이지
+        guide_page_txt = (TextView) findViewById(R.id.guide_page_txt);           // 페이지 표시 텍스트뷰
+        guide_page_start = (TextView) findViewById(R.id.guide_page_start);       // START TEXT
 
         guide_nextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(guide_viewpager.getCurrentItem() == 0){
+                if (guide_viewpager.getCurrentItem() == 0) {
                     guide_viewpager.setCurrentItem(1);
                     guide_backpage.setVisibility(View.VISIBLE);
                     guide_page_start.setVisibility(View.GONE);
                     guide_page_txt.setVisibility(View.VISIBLE);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 1){
+                } else if (guide_viewpager.getCurrentItem() == 1) {
                     guide_viewpager.setCurrentItem(2);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 2){
+                } else if (guide_viewpager.getCurrentItem() == 2) {
                     guide_viewpager.setCurrentItem(3);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 3){
+                } else if (guide_viewpager.getCurrentItem() == 3) {
                     guide_viewpager.setCurrentItem(4);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 4){
+                } else if (guide_viewpager.getCurrentItem() == 4) {
                     guide_viewpager.setCurrentItem(5);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 5){
+                } else if (guide_viewpager.getCurrentItem() == 5) {
                     guide_viewpager.setCurrentItem(6);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 6){
+                } else if (guide_viewpager.getCurrentItem() == 6) {
                     guide_viewpager.setCurrentItem(7);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
                     guide_nextpage.setVisibility(View.GONE);
@@ -134,38 +128,31 @@ public class RecommendationActivity extends AppCompatActivity {
         guide_backpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(guide_viewpager.getCurrentItem() == 1){
+                if (guide_viewpager.getCurrentItem() == 1) {
                     guide_viewpager.setCurrentItem(0);
                     guide_backpage.setVisibility(View.GONE);
                     guide_page_start.setVisibility(View.VISIBLE);
                     guide_page_txt.setVisibility(View.GONE);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 2){
+                } else if (guide_viewpager.getCurrentItem() == 2) {
                     guide_viewpager.setCurrentItem(1);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 3){
+                } else if (guide_viewpager.getCurrentItem() == 3) {
                     guide_viewpager.setCurrentItem(2);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 4){
+                } else if (guide_viewpager.getCurrentItem() == 4) {
                     guide_viewpager.setCurrentItem(3);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 5){
+                } else if (guide_viewpager.getCurrentItem() == 5) {
                     guide_viewpager.setCurrentItem(4);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 6){
+                } else if (guide_viewpager.getCurrentItem() == 6) {
                     guide_viewpager.setCurrentItem(5);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 6){
+                } else if (guide_viewpager.getCurrentItem() == 6) {
                     guide_viewpager.setCurrentItem(5);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                }
-                else if(guide_viewpager.getCurrentItem() == 7){
+                } else if (guide_viewpager.getCurrentItem() == 7) {
                     guide_viewpager.setCurrentItem(6);
                     guide_nextpage.setVisibility(View.VISIBLE);
                     guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
@@ -196,27 +183,27 @@ public class RecommendationActivity extends AppCompatActivity {
     }
 
     private void ChangeGuidePage(int mCurrentPosition) {
-        if(mCurrentPosition == 0){
+        if (mCurrentPosition == 0) {
             guide_backpage.setVisibility(View.GONE);
             guide_page_start.setVisibility(View.VISIBLE);
             guide_page_txt.setVisibility(View.GONE);
-        } else if(mCurrentPosition == 1) {
+        } else if (mCurrentPosition == 1) {
             guide_backpage.setVisibility(View.VISIBLE);
             guide_page_start.setVisibility(View.GONE);
             guide_page_txt.setVisibility(View.VISIBLE);
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 2) {
+        } else if (mCurrentPosition == 2) {
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 3) {
+        } else if (mCurrentPosition == 3) {
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 4) {
+        } else if (mCurrentPosition == 4) {
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 5) {
+        } else if (mCurrentPosition == 5) {
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 6) {
+        } else if (mCurrentPosition == 6) {
             guide_nextpage.setVisibility(View.VISIBLE);
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if(mCurrentPosition == 7) {
+        } else if (mCurrentPosition == 7) {
             guide_nextpage.setVisibility(View.GONE);
             guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
         }

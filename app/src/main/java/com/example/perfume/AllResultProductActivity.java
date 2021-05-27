@@ -6,25 +6,41 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 
 import com.example.perfume.adapter.ResultProductAdpater;
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
+import com.example.perfume.data.Hashtag;
+import com.example.perfume.data.Perfume;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AllResultProductActivity extends AppCompatActivity {
+
+    DataService dataService;
+    DataApi dataApi;
+    List<Perfume> perfumes;
 
     ImageButton back_btn;
     ImageButton restart_btn;
     RecyclerView recycler_result;
     ResultProductAdpater adapter;
 
-    String q_1, q_2, q_3, q_4, q_5, q_6, q_7;
+    ArrayList<String> perfumeInfo;
+
     String flavor_1, flavor_2, flavor_3;
 
     TextView result_1_text, result_2_text, result_3_text, result_456_text, result_7_text;
@@ -35,47 +51,33 @@ public class AllResultProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_result_product);
 
-        back_btn = (ImageButton)findViewById(R.id.back_btn);
-        restart_btn = (ImageButton)findViewById(R.id.restart_btn);
-        recycler_result = (RecyclerView)findViewById(R.id.recycler_result);
+        perfumes = new ArrayList<>();
+        perfumeInfo = new ArrayList<>();
+        dataService = new DataService();
+        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
 
-        result_1_text = (TextView)findViewById(R.id.result_1_text);
-        result_2_text = (TextView)findViewById(R.id.result_2_text);
-        result_3_text = (TextView)findViewById(R.id.result_3_text);
-        result_456_text = (TextView)findViewById(R.id.result_456_text);
-        result_7_text = (TextView)findViewById(R.id.result_7_text);
+        back_btn = (ImageButton) findViewById(R.id.back_btn);
+        restart_btn = (ImageButton) findViewById(R.id.restart_btn);
+        recycler_result = (RecyclerView) findViewById(R.id.recycler_result);
+
+        result_1_text = (TextView) findViewById(R.id.result_1_text);
+        result_2_text = (TextView) findViewById(R.id.result_2_text);
+        result_3_text = (TextView) findViewById(R.id.result_3_text);
+        result_456_text = (TextView) findViewById(R.id.result_456_text);
+        //result_7_text = (TextView) findViewById(R.id.result_7_text);
 
         // 테스트 결과 값 데이터 받기
         Intent secondIntent = getIntent();
-        q_1 = secondIntent.getStringExtra("1");
-        q_2 = secondIntent.getStringExtra("2");
-        q_3 = secondIntent.getStringExtra("3");
-        q_4 = secondIntent.getStringExtra("4");
-        q_5 = secondIntent.getStringExtra("5");
-        q_6 = secondIntent.getStringExtra("6");
-        q_7 = secondIntent.getStringExtra("7");
-
-        // 테스트 결과 값에 따른 text 값 변경
-        changeResultText(q_1, q_2, q_3, q_4, q_5, q_6, q_7);
-
-        // 예시
-        ArrayList<Integer> data1 = new ArrayList<>();
-        ArrayList<String> data2 = new ArrayList<>();
-        ArrayList<String> data3 = new ArrayList<>();
-        ArrayList<Integer> data4 = new ArrayList<>();
-
-        // 예시로 8개 추가
-        for(int i = 0; i < 6; i++)
-        {
-            data1.add(R.mipmap.result_produc_img);
-            data2.add("CHANEL");
-            data3.add("넘버5 오드빠르펭");
-            data4.add(R.mipmap.icon_unfull_heart);
+        for(int i = 1; i < 7; i++){
+            perfumeInfo.add(secondIntent.getStringExtra(String.valueOf(i)));
         }
 
-        adapter = new ResultProductAdpater(this, data1, data2, data3, data4);
+        // 테스트 결과 값에 따른 text 값 변경
+        //changeResultText(q_1, q_2, q_3, q_4, q_5, q_6, q_7);
+        changeResultText(perfumeInfo);
+
         recycler_result.setLayoutManager(new LinearLayoutManager(this));
-        recycler_result.setAdapter(adapter);
+        getPerfume(perfumeInfo);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +95,87 @@ public class AllResultProductActivity extends AppCompatActivity {
         });
     }
 
-    private void changeResultText(String q_1, String q_2, String q_3, String q_4, String q_5, String q_6, String q_7) {
-        switch (q_1){
+    public ArrayList<Integer> changeSize(String size){
+        ArrayList<Integer> sizes = new ArrayList<>();
+
+        switch (size) {
+            case "size1":
+                sizes.add(0);
+                sizes.add(15);
+                break;
+            case "size2":
+                sizes.add(15);
+                sizes.add(30);
+                break;
+            case "size3":
+                sizes.add(30);
+                sizes.add(50);
+                break;
+            case "size4":
+                sizes.add(50);
+                sizes.add(75);
+                break;
+            case "size5":
+                sizes.add(75);
+                sizes.add(100);
+                break;
+            case "size6":
+                sizes.add(100);
+                sizes.add(500);
+                break;
+        }
+        return sizes;
+    }
+
+    public int changeConcentration(String concentration){
+        int concentrations = 0;
+
+        switch (concentration) {
+            case "ode_c":
+                concentrations = 1;
+                break;
+            case "ode_d":
+                concentrations = 2;
+                break;
+            case "ode_p":
+                concentrations = 3;
+                break;
+            case "ode_pp":
+                concentrations = 4;
+                break;
+        }
+        return concentrations;
+    }
+
+
+    public void getPerfume(ArrayList<String> perfumeInfos){
+        ArrayList<Integer> sizes = new ArrayList<>();
+        sizes = changeSize(perfumeInfos.get(1));
+        int concentration = changeConcentration(perfumeInfos.get(0));
+        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+
+        dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<List<Perfume>>() {
+            @Override
+            public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
+                perfumes = response.body();
+                if(perfumes.size() > 0) {
+                    adapter = new ResultProductAdpater(getApplicationContext(), perfumes);
+                    recycler_result.setAdapter(adapter);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "검색 결과 없음", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Perfume>> call, Throwable t) {
+                Log.e("연결", t.getMessage());
+            }
+        });
+    }
+
+    private void changeResultText(ArrayList<String> perfumeInfos) { //가격은 String q_7 추가
+        switch (perfumeInfos.get(0)) {
             case "ode_c":
                 result_1_text.setText("오데 코롱");
                 break;
@@ -109,7 +190,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (q_2){
+        switch (perfumeInfos.get(1)) {
             case "size1":
                 result_2_text.setText("0ml ~ 15ml");
                 break;
@@ -130,7 +211,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (q_3){
+        switch (perfumeInfos.get(2)) {
             case "1":
                 result_3_text.setText("포근한, 차분한, 따뜻한, 순수한");
                 break;
@@ -157,7 +238,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (q_4){
+        switch (perfumeInfos.get(3)) {
             case "1":
                 flavor_1 = "Aldehyde";
                 break;
@@ -196,7 +277,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (q_5){
+        switch (perfumeInfos.get(4)) {
             case "1":
                 flavor_2 = "Aldehyde";
                 break;
@@ -235,7 +316,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (q_6){
+        switch (perfumeInfos.get(5)) {
             case "1":
                 flavor_3 = "Aldehyde";
                 break;
@@ -275,8 +356,6 @@ public class AllResultProductActivity extends AppCompatActivity {
         }
 
         result_456_text.setText(flavor_1 + ", " + flavor_2 + ", " + flavor_3);
-
-        // 가격은 아직 못받아옴!
 
     }
 }

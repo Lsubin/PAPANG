@@ -87,45 +87,44 @@ public class Question5 extends Fragment {
                              Bundle savedInstanceState) {
         context = container.getContext();
         v = inflater.inflate(R.layout.fragment_question5, container, false);
-        q5_frame4 = (ImageView)v.findViewById(R.id.q5_frame4);
+        q5_frame4 = (ImageView) v.findViewById(R.id.q5_frame4);
 
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
-        if(((QuestionActivity)QuestionActivity.context).q_state[4] != false) {
+        if (((QuestionActivity) QuestionActivity.context).q_state[4] != false) {
             result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[4]);
             q5_result = String.valueOf(result);
             q5_state = true;
-        }
-        else
+        } else
             result = 0;
 
         // 고른 향료에 따라 이미지 다르게 뿌려주기
-        if(q5_flavor.equals("1"))
+        if (q5_flavor.equals("1"))
             flavor_aldehyde(v, result);
-        if(q5_flavor.equals("2"))
+        if (q5_flavor.equals("2"))
             flavor_animalic(v, result);
-        if(q5_flavor.equals("3"))
+        if (q5_flavor.equals("3"))
             flavor_aromatic(v, result);
-        if(q5_flavor.equals("4"))
+        if (q5_flavor.equals("4"))
             flavor_balsam(v, result);
-        if(q5_flavor.equals("5"))
+        if (q5_flavor.equals("5"))
             flavor_chypre(v, result);
-        if(q5_flavor.equals("6"))
+        if (q5_flavor.equals("6"))
             flavor_citrus(v, result);
-        if(q5_flavor.equals("7"))
+        if (q5_flavor.equals("7"))
             flavor_green(v, result);
-        if(q5_flavor.equals("8"))
+        if (q5_flavor.equals("8"))
             flavor_floral(v, result);
-        if(q5_flavor.equals("9"))
+        if (q5_flavor.equals("9"))
             flavor_fruity(v, result);
-        if(q5_flavor.equals("10"))
+        if (q5_flavor.equals("10"))
             flavor_spicy(v, result);
-        if(q5_flavor.equals("11"))
+        if (q5_flavor.equals("11"))
             flavor_woody(v, result);
-        if(q5_flavor.equals("12"))
+        if (q5_flavor.equals("12"))
             flavor_aquatic(v, result);
-        if(q5_flavor.equals("13"))
+        if (q5_flavor.equals("13"))
             flavor_nutty(v, result);
-        if(q5_flavor.equals("14"))
+        if (q5_flavor.equals("14"))
             flavor_leather(v, result);
 
         return v;
@@ -147,14 +146,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(5);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -176,7 +175,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -188,9 +187,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -209,14 +210,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(2);
         drawables_Num.add(4);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -238,7 +239,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -250,9 +251,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -276,14 +279,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(3);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -305,7 +308,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -317,9 +320,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -343,14 +348,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(3);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -372,7 +377,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -384,9 +389,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -413,14 +420,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(5);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -442,7 +449,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -454,9 +461,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -480,14 +489,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(14);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -509,7 +518,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -521,9 +530,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -547,14 +558,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(3);
         drawables_Num.add(14);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -576,7 +587,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -588,9 +599,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -612,14 +625,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(2);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -641,7 +654,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -653,9 +666,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -680,14 +695,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(3);
         drawables_Num.add(14);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -709,7 +724,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -721,9 +736,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -746,14 +763,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(5);
         drawables_Num.add(12);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -775,7 +792,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -787,9 +804,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -812,14 +831,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(14);
         drawables_Num.add(3);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -841,7 +860,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -853,9 +872,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -865,7 +886,7 @@ public class Question5 extends Fragment {
     }
 
     // 아쿠아틱
-    private void flavor_aquatic(View v, final int result){
+    private void flavor_aquatic(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_aquatic);
         drawables_Num = new ArrayList<>();
 
@@ -877,14 +898,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(3);
         drawables_Num.add(5);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -906,7 +927,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -918,9 +939,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -930,7 +953,7 @@ public class Question5 extends Fragment {
     }
 
     // 너티
-    private void flavor_nutty(View v, final int result){
+    private void flavor_nutty(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_nutty);
         drawables_Num = new ArrayList<>();
 
@@ -942,14 +965,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(4);
         drawables_Num.add(10);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -971,7 +994,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -983,9 +1006,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }
@@ -995,7 +1020,7 @@ public class Question5 extends Fragment {
     }
 
     // 레더
-    private void flavor_leather(View v, final int result){
+    private void flavor_leather(View v, final int result) {
         q5_frame4.setImageResource(R.mipmap.question_5_text_leather);
         drawables_Num = new ArrayList<>();
 
@@ -1008,14 +1033,14 @@ public class Question5 extends Fragment {
         drawables_Num.add(10);
         drawables_Num.add(3);
 
-        add_flavor_grid = (RecyclerView)v.findViewById(R.id.add_flavor_grid);
+        add_flavor_grid = (RecyclerView) v.findViewById(R.id.add_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);
         add_flavor_grid.setLayoutManager(mLayoutManager);
         add_flavor_grid.addItemDecoration(new ItemDecoration(getActivity()));
         flavorAdapter = new FlavorAdapter(v.getContext(), drawables_Num);
         add_flavor_grid.setAdapter(flavorAdapter);
 
-        if(result != 0) {
+        if (result != 0) {
             int num = drawables_Num.indexOf(result);
             flavorAdapter.setDrawable(num);
             q5_state = true;
@@ -1037,7 +1062,7 @@ public class Question5 extends Fragment {
                             q5_position = position;
                             q5_state = true;
                         } else if (q5_state == true && (!num.equals(q5_result))) {
-                            if(result != 0)
+                            if (result != 0)
                                 ((QuestionActivity) QuestionActivity.context).deletePage(4);
                             flavorAdapter.setBackDrawable(q5_position);
                             flavorAdapter.setDrawable(position);
@@ -1049,9 +1074,11 @@ public class Question5 extends Fragment {
                 }
                 return false;
             }
+
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
             }
+
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
             }

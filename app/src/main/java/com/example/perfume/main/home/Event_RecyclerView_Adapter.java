@@ -21,7 +21,7 @@ public class Event_RecyclerView_Adapter extends RecyclerView.Adapter<Event_Recyc
 
     ArrayList<Drawable> event_drawables;          // 상품 이미지
 
-    Event_RecyclerView_Adapter(Context context){
+    Event_RecyclerView_Adapter(Context context) {
         this.context = context;
 
         event_drawables = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Event_RecyclerView_Adapter extends RecyclerView.Adapter<Event_Recyc
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            product_image = (ImageView)itemView.findViewById(R.id.main_event_image);
+            product_image = (ImageView) itemView.findViewById(R.id.main_event_image);
         }
     }
 

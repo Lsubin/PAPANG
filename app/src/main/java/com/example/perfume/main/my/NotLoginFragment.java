@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,12 @@ import android.widget.ImageButton;
 
 import com.example.perfume.R;
 import com.example.perfume.main.my.MyPageFragment;
+import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.user.UserApiClient;
+import com.kakao.sdk.user.model.User;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +25,7 @@ import com.example.perfume.main.my.MyPageFragment;
  * create an instance of this fragment.
  */
 public class NotLoginFragment extends Fragment {
+    View view;
 
     MyPageFragment fragment;
     ImageButton google_btn, naver_btn, kakao_btn;
@@ -66,14 +74,40 @@ public class NotLoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_not_login, container, false);
+        view = inflater.inflate(R.layout.fragment_not_login, container, false);
 
-
-        google_btn = (ImageButton)view.findViewById(R.id.google_btn);
-        naver_btn = (ImageButton)view.findViewById(R.id.naver_btn);
-        kakao_btn = (ImageButton)view.findViewById(R.id.kakao_btn);
+        kakao_btn = (ImageButton) view.findViewById(R.id.kakao_btn);
 
         fragment = new MyPageFragment();
+
+        kakao_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserApiClient.getInstance().loginWithKakaoTalk(view.getContext(), new Function2<OAuthToken, Throwable, Unit>() {
+                    @Override
+                    public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+                        if(throwable != null)
+                            Log.e("로그인 실패", throwable.getMessage());
+                        else
+                            Log.d("로그인", "성공");
+
+                        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+                            @Override
+                            public Unit invoke(User user, Throwable throwable) {
+                                if(throwable != throwable)
+                                    Log.e("사용자 정보 요청 실패", throwable.getMessage());
+                                else
+                                    Log.i("사용자 정보 요청 성공", user.toString());
+                                return null;
+                            }
+                        });
+                        return null;
+                    }
+                });
+
+            }
+        });
+        /*
         // 임시로 로그인 화면 이동!
         google_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +118,7 @@ public class NotLoginFragment extends Fragment {
                         .commit();
             }
         });
+         */
         return view;
     }
 }

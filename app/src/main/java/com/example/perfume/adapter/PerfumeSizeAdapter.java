@@ -15,12 +15,12 @@ import com.example.perfume.search.RecentSearchAdapter;
 
 import java.util.ArrayList;
 
-public class PerfumeSizeAdapter  extends RecyclerView.Adapter<PerfumeSizeAdapter.ViewHolder> {
+public class PerfumeSizeAdapter extends RecyclerView.Adapter<PerfumeSizeAdapter.ViewHolder> {
     Context context;
 
     ArrayList<String> product_sizes;          // 상품 이미지
 
-    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes){
+    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes) {
         this.context = context;
 
         product_sizes = new ArrayList<>();
@@ -53,7 +53,7 @@ public class PerfumeSizeAdapter  extends RecyclerView.Adapter<PerfumeSizeAdapter
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            product_size = (TextView)itemView.findViewById(R.id.product_size);
+            product_size = (TextView) itemView.findViewById(R.id.product_size);
         }
     }
 
