@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="25dp" >
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/join_frame1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintRight_toRightOf="parent">
+
+               <ImageButton
+                   android:id="@+id/btn_back"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/back"
+                   android:background="#00ff0000"
+                   android:layout_marginTop="4.4dp"
+                   app:layout_constraintLeft_toLeftOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"/>
+
+               <TextView
+                   android:id="@+id/text1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumbold"
+                   android:textSize="16sp"
+                   android:textColor="#6557FF"
+                   android:text="파팡"
+                   app:layout_constraintTop_toBottomOf="@id/btn_back"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <TextView
+                   android:id="@+id/text2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumbold"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   android:text="에 오신 것을 환영합니다"
+                   app:layout_constraintTop_toBottomOf="@id/btn_back"
+                   app:layout_constraintLeft_toRightOf="@id/text1"/>
+
+               <TextView
+                   android:id="@+id/text3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:fontFamily="@font/kopubworlddotumbold"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   android:text="파팡 이용을 위해 아래 정보를 입력해주세요."
+                   app:layout_constraintTop_toBottomOf="@id/text2"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <TextView
+                   android:id="@+id/name_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="이름 *"
+                   app:layout_constraintTop_toBottomOf="@id/text3"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/name_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="반드시 실명을 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/name_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+               <TextView
+                   android:id="@+id/nickname_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="닉네임 *"
+                   app:layout_constraintTop_toBottomOf="@id/name_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/nickname_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="닉네임을 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/nickname_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+               <TextView
+                   android:id="@+id/email_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="이메일 *"
+                   app:layout_constraintTop_toBottomOf="@id/nickname_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/email_edit"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:hint="이메일을 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/email_text"
+                   app:layout_constraintLeft_toLeftOf="parent"
+                   app:layout_constraintRight_toLeftOf="@id/check_btn"/>
+
+               <ImageButton
+                   android:id="@+id/check_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/uncheck_btn"
+                   android:background="#00ff0000"
+                   app:layout_constraintRight_toRightOf="parent"
+                   app:layout_constraintTop_toTopOf="@id/email_edit"
+                   app:layout_constraintBottom_toBottomOf="@id/email_edit"
+                   app:layout_constraintLeft_toRightOf="@id/email_edit"/>
+
+               <TextView
+                   android:id="@+id/password_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="비밀번호 *"
+                   app:layout_constraintTop_toBottomOf="@id/email_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/password_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="비밀번호를 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/password_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+               <TextView
+                   android:id="@+id/password_checked_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="비밀번호 확인 *"
+                   app:layout_constraintTop_toBottomOf="@id/password_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/password_checked_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="비밀번호를 다시 한 번 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   android:spinnerMode="dropdown"
+                   app:layout_constraintTop_toBottomOf="@id/password_checked_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+               <TextView
+                   android:id="@+id/gender_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="성별"
+                   app:layout_constraintTop_toBottomOf="@id/password_checked_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <Spinner
+                   android:id="@+id/gender_spinner"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:spinnerMode="dropdown"
+                   style="@style/Widget.AppCompat.Spinner.Underlined"
+                   android:theme="@style/GenderSpinner"
+                   app:layout_constraintTop_toBottomOf="@id/gender_text"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <TextView
+                   android:id="@+id/birthday_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="생년월일"
+                   app:layout_constraintTop_toBottomOf="@id/gender_spinner"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/birthday_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="생년월일을 입력해주세요. ex 19980826"
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/birthday_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+
+               <TextView
+                   android:id="@+id/address_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="14sp"
+                   android:textColor="#000"
+                   android:text="주소"
+                   app:layout_constraintTop_toBottomOf="@id/birthday_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <EditText
+                   android:id="@+id/address_edit"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="주소를 입력해주세요."
+                   android:textSize="14sp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textColor="#000"
+                   app:theme="@style/EditTextStyle"
+                   app:layout_constraintTop_toBottomOf="@id/address_text"
+                   app:layout_constraintLeft_toLeftOf="parent" />
+
+               <TextView
+                   android:id="@+id/agree_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="13sp"
+                   android:textColor="#000"
+                   android:text="SMS 및 Email로 제공하는 마케팅 정보 수신에 동의합니다."
+                   app:layout_constraintRight_toLeftOf="@id/agree_switch"
+                   app:layout_constraintTop_toBottomOf="@id/address_edit"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <Switch
+                   android:id="@+id/agree_switch"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:layout_constraintLeft_toRightOf="@id/agree_text"
+                   app:layout_constraintTop_toTopOf="@id/agree_text"
+                   app:layout_constraintBottom_toBottomOf="@id/agree_text"
+                   app:layout_constraintRight_toRightOf="parent"/>
+
+               <TextView
+                   android:id="@+id/TC1_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="13sp"
+                   android:textColor="#000"
+                   android:text="서비스 이용약관, "
+                   android:layout_marginBottom="60dp"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/agree_text"
+                   app:layout_constraintLeft_toLeftOf="parent"/>
+
+               <TextView
+                   android:id="@+id/TC2_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="13sp"
+                   android:textColor="#000"
+                   android:text="개인정보 수집 및 이용"
+                   app:layout_constraintBottom_toBottomOf="@id/TC1_text"
+                   app:layout_constraintLeft_toRightOf="@id/TC1_text"
+                   app:layout_constraintTop_toTopOf="@id/TC1_text"/>
+
+               <TextView
+                   android:id="@+id/TC3_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/kopubworlddotumedium"
+                   android:textSize="13sp"
+                   android:textColor="#000"
+                   android:text="에 동의합니다."
+                   app:layout_constraintBottom_toBottomOf="@id/TC1_text"
+                   app:layout_constraintLeft_toRightOf="@id/TC2_text"
+                   app:layout_constraintTop_toTopOf="@id/TC1_text"/>
+
+               <ImageButton
+                   android:id="@+id/start_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/unstart_btn"
+                   android:background="#00ff0000"
+                   app:layout_constraintBottom_toBottomOf="@id/TC1_text"
+                   app:layout_constraintRight_toRightOf="parent"
+                   app:layout_constraintTop_toTopOf="@id/TC1_text"/>
+
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

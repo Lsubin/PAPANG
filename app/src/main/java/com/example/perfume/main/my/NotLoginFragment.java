@@ -1,5 +1,6 @@
 package com.example.perfume.main.my;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.example.perfume.JoinActivity;
 import com.example.perfume.R;
 import com.example.perfume.main.my.MyPageFragment;
 import com.kakao.sdk.auth.model.OAuthToken;
@@ -28,7 +30,7 @@ public class NotLoginFragment extends Fragment {
     View view;
 
     MyPageFragment fragment;
-    ImageButton google_btn, naver_btn, kakao_btn;
+    ImageButton goto_join_btn, goto_login_btn, kakao_btn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +78,8 @@ public class NotLoginFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_not_login, container, false);
 
+        goto_join_btn = (ImageButton) view.findViewById(R.id.goto_join_btn);
+        goto_login_btn = (ImageButton) view.findViewById(R.id.goto_login_btn);
         kakao_btn = (ImageButton) view.findViewById(R.id.kakao_btn);
 
         fragment = new MyPageFragment();
@@ -105,6 +109,15 @@ public class NotLoginFragment extends Fragment {
                     }
                 });
 
+            }
+        });
+
+        // 회원가입 화면으로 이동
+        goto_join_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), JoinActivity.class);
+                startActivity(intent);
             }
         });
         /*
