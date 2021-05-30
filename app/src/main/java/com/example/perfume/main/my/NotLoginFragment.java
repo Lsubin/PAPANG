@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import com.example.perfume.JoinActivity;
 import com.example.perfume.LoginActivity;
+import com.example.perfume.PhoneNumberActivity;
 import com.example.perfume.R;
 import com.example.perfume.main.my.MyPageFragment;
 import com.kakao.sdk.auth.model.OAuthToken;
@@ -88,7 +89,7 @@ public class NotLoginFragment extends Fragment {
         goto_join_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), JoinActivity.class);
+                Intent intent = new Intent(getContext(), PhoneNumberActivity.class);
                 startActivity(intent);
             }
         });

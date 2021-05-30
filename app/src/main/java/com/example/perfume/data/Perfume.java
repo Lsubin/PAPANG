@@ -1,5 +1,7 @@
 package com.example.perfume.data;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Perfume {
+public class Perfume implements Serializable {
 
     int perfumeID;          // 향수ID 1-끝까지
     String brand;           // 브랜드 이름

@@ -32,7 +32,7 @@ public class AllResultProductActivity extends AppCompatActivity {
 
     DataService dataService;
     DataApi dataApi;
-    List<Perfume> perfumes;
+    ArrayList<Perfume> perfumes;
 
     ImageButton back_btn;
     ImageButton restart_btn;
@@ -53,8 +53,6 @@ public class AllResultProductActivity extends AppCompatActivity {
 
         perfumes = new ArrayList<>();
         perfumeInfo = new ArrayList<>();
-        dataService = new DataService();
-        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
 
         back_btn = (ImageButton) findViewById(R.id.back_btn);
         restart_btn = (ImageButton) findViewById(R.id.restart_btn);
@@ -68,16 +66,17 @@ public class AllResultProductActivity extends AppCompatActivity {
 
         // 테스트 결과 값 데이터 받기
         Intent secondIntent = getIntent();
-        for(int i = 1; i < 7; i++){
-            perfumeInfo.add(secondIntent.getStringExtra(String.valueOf(i)));
-        }
+        perfumes = (ArrayList<Perfume>)secondIntent.getSerializableExtra("결과");
+        perfumeInfo = secondIntent.getStringArrayListExtra("정보");
 
         // 테스트 결과 값에 따른 text 값 변경
         //changeResultText(q_1, q_2, q_3, q_4, q_5, q_6, q_7);
         changeResultText(perfumeInfo);
 
+        adapter = new ResultProductAdpater(getApplicationContext(), perfumes);
+        recycler_result.setAdapter(adapter);
+
         recycler_result.setLayoutManager(new LinearLayoutManager(this));
-        getPerfume(perfumeInfo);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,85 +90,6 @@ public class AllResultProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecommendationActivity.class);
                 startActivity(intent);
-            }
-        });
-    }
-
-    public ArrayList<Integer> changeSize(String size){
-        ArrayList<Integer> sizes = new ArrayList<>();
-
-        switch (size) {
-            case "size1":
-                sizes.add(0);
-                sizes.add(15);
-                break;
-            case "size2":
-                sizes.add(15);
-                sizes.add(30);
-                break;
-            case "size3":
-                sizes.add(30);
-                sizes.add(50);
-                break;
-            case "size4":
-                sizes.add(50);
-                sizes.add(75);
-                break;
-            case "size5":
-                sizes.add(75);
-                sizes.add(100);
-                break;
-            case "size6":
-                sizes.add(100);
-                sizes.add(500);
-                break;
-        }
-        return sizes;
-    }
-
-    public int changeConcentration(String concentration){
-        int concentrations = 0;
-
-        switch (concentration) {
-            case "ode_c":
-                concentrations = 1;
-                break;
-            case "ode_d":
-                concentrations = 2;
-                break;
-            case "ode_p":
-                concentrations = 3;
-                break;
-            case "ode_pp":
-                concentrations = 4;
-                break;
-        }
-        return concentrations;
-    }
-
-
-    public void getPerfume(ArrayList<String> perfumeInfos){
-        ArrayList<Integer> sizes = new ArrayList<>();
-        sizes = changeSize(perfumeInfos.get(1));
-        int concentration = changeConcentration(perfumeInfos.get(0));
-        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
-
-        dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
-                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<List<Perfume>>() {
-            @Override
-            public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
-                perfumes = response.body();
-                if(perfumes.size() > 0) {
-                    adapter = new ResultProductAdpater(getApplicationContext(), perfumes);
-                    recycler_result.setAdapter(adapter);
-                }
-                else
-                    Toast.makeText(getApplicationContext(), "검색 결과 없음", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<Perfume>> call, Throwable t) {
-                Log.e("연결", t.getMessage());
             }
         });
     }

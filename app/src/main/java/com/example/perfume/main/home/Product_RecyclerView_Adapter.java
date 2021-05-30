@@ -90,9 +90,12 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
 
         public void getImage(final String p_name){
 
-            CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(context,
-                    "ap-northeast-2:d7e581a4-8f28-4fab-8122-a73746bf492e", // 자격 증명 풀 ID
-                    Regions.AP_NORTHEAST_2 // 리전
+
+            // Amazon Cognito 인증 공급자를 초기화합니다
+            CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                    context,
+                    "us-east-2:7241c5b2-3cf6-4a26-99d2-d08b31b32f8b", // 자격 증명 풀 ID
+                    Regions.US_EAST_2 // 리전
             );
 
             TransferNetworkLossHandler.getInstance(context);

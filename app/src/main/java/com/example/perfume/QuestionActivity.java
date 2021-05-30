@@ -6,16 +6,24 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.perfume.adapter.QuestionPagerAdapter;
+import com.example.perfume.adapter.ResultProductAdpater;
 import com.example.perfume.custom.NonSwipeViewPager;
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
 import com.example.perfume.data.Perfume;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -23,6 +31,11 @@ public class QuestionActivity extends AppCompatActivity {
     ImageButton check_Result_btn;
     ImageButton q_back_btn;
     ImageButton guide_btn;
+
+    DataService dataService;
+    DataApi dataApi;
+    ArrayList<Perfume> perfumes;
+    ArrayList<String> perfumeInfos;
 
     int mCurrentPosition;
 
@@ -41,6 +54,9 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         context = this;
+
+        dataService = new DataService();
+        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
 
         questionPager = (NonSwipeViewPager)findViewById(R.id.question_View);
         qAdapter = new QuestionPagerAdapter(getSupportFragmentManager());
@@ -123,20 +139,15 @@ public class QuestionActivity extends AppCompatActivity {
         check_Result_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), q_result[0] + " /  " +
-                        q_result[1] + " / " + q_result[2] + " / " + q_result[3] + " / " +
-                        q_result[4] + " / " + q_result[5], 0).show();
+                perfumeInfos = new ArrayList<>();
+                perfumeInfos.add(q_result[0]);
+                perfumeInfos.add(q_result[1]);
+                perfumeInfos.add(q_result[2]);
+                perfumeInfos.add(q_result[3]);
+                perfumeInfos.add(q_result[4]);
+                perfumeInfos.add(q_result[5]);
 
-                // 임시로 결과 페이지 보기위해성
-                Intent intent = new Intent(getApplicationContext(), AllResultProductActivity.class);
-                intent.putExtra("1",q_result[0]);
-                intent.putExtra("2",q_result[1]);
-                intent.putExtra("3",q_result[2]);
-                intent.putExtra("4",q_result[3]);
-                intent.putExtra("5",q_result[4]);
-                intent.putExtra("6",q_result[5]);
-                //intent.putExtra("7",q_result[6]);
-                startActivity(intent);
+                getPerfume(perfumeInfos);
             }
         });
 
@@ -217,4 +228,89 @@ public class QuestionActivity extends AppCompatActivity {
             q_result[i] = "";
         }
     }
+
+
+    public ArrayList<Integer> changeSize(String size){
+        ArrayList<Integer> sizes = new ArrayList<>();
+
+        switch (size) {
+            case "size1":
+                sizes.add(0);
+                sizes.add(15);
+                break;
+            case "size2":
+                sizes.add(15);
+                sizes.add(30);
+                break;
+            case "size3":
+                sizes.add(30);
+                sizes.add(50);
+                break;
+            case "size4":
+                sizes.add(50);
+                sizes.add(75);
+                break;
+            case "size5":
+                sizes.add(75);
+                sizes.add(100);
+                break;
+            case "size6":
+                sizes.add(100);
+                sizes.add(500);
+                break;
+        }
+        return sizes;
+    }
+
+    public int changeConcentration(String concentration){
+        int concentrations = 0;
+
+        switch (concentration) {
+            case "ode_c":
+                concentrations = 1;
+                break;
+            case "ode_d":
+                concentrations = 2;
+                break;
+            case "ode_p":
+                concentrations = 3;
+                break;
+            case "ode_pp":
+                concentrations = 4;
+                break;
+        }
+        return concentrations;
+    }
+
+
+    public void getPerfume(final ArrayList<String> perfumeInfos){
+        ArrayList<Integer> sizes = new ArrayList<>();
+        sizes = changeSize(perfumeInfos.get(1));
+        int concentration = changeConcentration(perfumeInfos.get(0));
+        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+
+        dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<ArrayList<Perfume>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Perfume>> call, Response<ArrayList<Perfume>> response) {
+                perfumes = response.body();
+                if(perfumes.size() > 0) {
+                    Intent result = new Intent(getApplicationContext(), AllResultProductActivity.class);
+                    result.putExtra("결과", perfumes);
+                    result.putExtra("정보", perfumeInfos);
+                    startActivity(result);
+                }
+                else{
+                    Intent result = new Intent(getApplicationContext(), NoResultActivity.class);
+                    startActivity(result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Perfume>> call, Throwable t) {
+                Log.e("연결", t.getMessage());
+            }
+        });
+    }
+
 }

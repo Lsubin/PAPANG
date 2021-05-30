@@ -381,9 +381,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     public void getImage(){
 
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(getApplicationContext(),
-                "ap-northeast-2:d7e581a4-8f28-4fab-8122-a73746bf492e", // 자격 증명 풀 ID
-                Regions.AP_NORTHEAST_2 // 리전
+        // Amazon Cognito 인증 공급자를 초기화합니다
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                getApplicationContext(),
+                "us-east-2:7241c5b2-3cf6-4a26-99d2-d08b31b32f8b", // 자격 증명 풀 ID
+                Regions.US_EAST_2 // 리전
         );
 
         TransferNetworkLossHandler.getInstance(getApplicationContext());
