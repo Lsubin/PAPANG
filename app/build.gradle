@@ -63,4 +63,7 @@ dependencies {
     // KaKao SDK
     implementation "com.kakao.sdk:v2-user:2.5.1" // 카카오 로그인
     implementation "com.kakao.sdk:v2-link:2.5.1" // 메시지(카카오링크)
+
+    // Jsoup 라이브러리
+    implementation 'org.jsoup:jsoup:1.13.1'
 }

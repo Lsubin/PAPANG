@@ -80,10 +80,19 @@ public class NotLoginFragment extends Fragment {
 
         goto_join_btn = (ImageButton) view.findViewById(R.id.goto_join_btn);
         goto_login_btn = (ImageButton) view.findViewById(R.id.goto_login_btn);
-        kakao_btn = (ImageButton) view.findViewById(R.id.kakao_btn);
 
         fragment = new MyPageFragment();
 
+        // 회원가입 화면으로 이동
+        goto_join_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), JoinActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*
         kakao_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,15 +121,6 @@ public class NotLoginFragment extends Fragment {
             }
         });
 
-        // 회원가입 화면으로 이동
-        goto_join_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), JoinActivity.class);
-                startActivity(intent);
-            }
-        });
-        /*
         // 임시로 로그인 화면 이동!
         google_btn.setOnClickListener(new View.OnClickListener() {
             @Override

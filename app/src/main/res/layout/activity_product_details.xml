@@ -193,7 +193,6 @@
                                 android:fontFamily="@font/kopubworlddotumedium"
                                 android:textSize="12sp"
                                 android:textColor="#000"
-                                android:text="100ml"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintLeft_toRightOf="@id/size_txt"
                                 app:layout_constraintTop_toTopOf="parent"

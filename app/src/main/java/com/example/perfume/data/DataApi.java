@@ -19,9 +19,12 @@ public interface DataApi {
     Call<List<Hashtag>> getFlavorHashtag(@Path("flavor") int flavor,
                                          @Path("flavor2") int flavor2);
 
-    @GET("perfume_recommend//{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}")
+    @GET("perfume_recommend/{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}")
     Call<List<Perfume>> getRecommendationResult(@Path("concentration") int concentration,
                                                 @Path("size1") int size1, @Path("size2") int size2,
                                                 @Path("style") int style, @Path("main") int main,
                                                 @Path("first") int first, @Path("second") int second);
+
+    @GET("price_url/{perfumeID}")
+    Call<Price> getPerfumeURL(@Path("perfumeID") int perfumeID);
 }

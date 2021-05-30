@@ -10,8 +10,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -23,8 +26,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class JoinActivity extends AppCompatActivity {
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
 
-    EditText name_edit, nickname_edit, email_edit, password_edit, password_checked_edit, birthday_edit;
+    EditText name_edit, nickname_edit, email_edit, password_edit, address_edit, password_checked_edit, birthday_edit;
     Spinner gender_spinner;
     Switch agree_switch;
     TextView TC1_text, TC2_text;
@@ -45,6 +49,7 @@ public class JoinActivity extends AppCompatActivity {
         password_edit = (EditText)findViewById(R.id.password_edit);                 // 비밀번호
         password_checked_edit = (EditText)findViewById(R.id.password_checked_edit); // 비밀번호 확인
         birthday_edit = (EditText)findViewById(R.id.birthday_edit);                 // 생년월일
+        address_edit = (EditText)findViewById(R.id.address_edit);
 
         gender_spinner = (Spinner)findViewById(R.id.gender_spinner);                // 성별
         agree_switch = (Switch)findViewById(R.id.agree_switch);                     // 마케팅 수신 동의
@@ -53,6 +58,18 @@ public class JoinActivity extends AppCompatActivity {
 
         check_btn = (ImageButton)findViewById(R.id.check_btn);
         start_btn = (ImageButton)findViewById(R.id.start_btn);
+
+        address_edit.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    Intent address = new Intent(JoinActivity.this, AddressViewActivity.class);
+                    startActivityForResult(address, SEARCH_ADDRESS_ACTIVITY);
+                }
+                return false;
+            }
+        });
+
 
         String[] items = {"남", "여", "성별을 선택해주세요."};
         spinner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items) {
@@ -165,5 +182,20 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch (requestCode) {
+            case SEARCH_ADDRESS_ACTIVITY:
+                if (resultCode == RESULT_OK) {
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        address_edit.setText(data);
+                    }
+                }
+                break;
+        }
     }
 }

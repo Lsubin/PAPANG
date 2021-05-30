@@ -1,5 +1,6 @@
 package com.example.perfume;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,16 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -46,6 +50,7 @@ import com.example.perfume.data.DataService;
 import com.example.perfume.data.Flavor;
 import com.example.perfume.data.Hashtag;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.Price;
 import com.example.perfume.data.SearchPrice;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
@@ -72,6 +77,8 @@ import retrofit2.Retrofit;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
+    public static Context mContext;
+
     Toolbar toolbar;
     ActionBar actionBar;
 
@@ -79,6 +86,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     String path;
     String p_name;
     List<Perfume> r_perfumes;       // 파팡 추천 향수
+    Price r_urls;       // 파팡 URLS
+    ArrayList<String> urls;
     List<Hashtag> hashtags;         // 해시태그
     DataService dataService;
     DataApi dataApi;
@@ -144,6 +153,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
+        mContext = this;
+
         flavor = new Flavor(getApplicationContext());
         decoration = new Product_Decoration();
         Intent intent = getIntent();
@@ -155,6 +166,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_note_1 = (ImageView)findViewById(R.id.detail_note_1);
         detail_note_2 = (ImageView)findViewById(R.id.detail_note_2);
         detail_note_3 = (ImageView)findViewById(R.id.detail_note_3);
+        detail_size = (TextView)findViewById(R.id.detail_size);
 
         mData = new ArrayList<>();
         shop_name = new ArrayList<>();
@@ -186,26 +198,20 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()));
                 detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
                 detail_note_3.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getFirst()));
+                detail_size.setText(r_perfumes.get(0).getSize() + "ml");
 
                 ArrayList<Integer> flavors = new ArrayList<>();
                 getHashtag(r_perfumes.get(0).getMain(), r_perfumes.get(0).getFirst());
+                urls = new ArrayList<>();
 
-                searchPrice = new SearchPrice(ProductDetailsActivity.this, p_name, r_perfumes.get(0).getSize());
-                searchPrice.execute();
-
-                Handler mHandler = new Handler();
-                mHandler.postDelayed(new Runnable()  {
-                    public void run() {
-                        shop_name = searchPrice.shops;
-                        price = searchPrice.lprices;
-                        Product product = new Product(shop_name, price);
-                        mData.add(product);
-
-                        expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
-                        detail_price_item.setAdapter(expandable_adpater);
-                        detail_price_item.setGroupIndicator(null);
+                for(int i = 0; i < r_perfumes.size(); i++){
+                    if(r_perfumes.get(0).getCheck().equals("TRUE"))
+                    {
+                        getURL((r_perfumes.get(0).getPerfumeID()));
+                        break;
                     }
-                }, 500); // 0.5초후
+                }
+
 
                 // 사이즈 받아온걸로 세팅
                 sizes = new ArrayList<>();
@@ -223,6 +229,34 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 Log.e("연결", t.getMessage());
             }
         });
+
+        detail_size_item.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                    if (position >= 0) {
+                        String num = String.valueOf(adapter.getSize(position));
+                        detail_size.setText(num + "ml");
+                        adapter.notifyDataSetChanged();
+                        product_slidinglayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                        }
+                    }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
 
         pd_review_list = (RecyclerView) findViewById(R.id.pd_review_list);
         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -282,6 +316,42 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void getURL(int perfumeID){
+        dataApi.getPerfumeURL(perfumeID).enqueue(new Callback<Price>() {
+            @Override
+            public void onResponse(Call<Price> call, Response<Price> response) {
+                r_urls = response.body();
+                if(!r_urls.getUrl1().equals(""))
+                    urls.add(r_urls.getUrl1());
+                if(!r_urls.getUrl2().equals(""))
+                    urls.add(r_urls.getUrl2());
+                if(!r_urls.getUrl3().equals(""))
+                    urls.add(r_urls.getUrl3());
+
+                searchPrice = new SearchPrice(ProductDetailsActivity.this, urls);
+                searchPrice.execute();
+            }
+
+            @Override
+            public void onFailure(Call<Price> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void setURl(){
+        shop_name = searchPrice.shops;
+        price = searchPrice.prices;
+        Product product = new Product(shop_name, price);
+        mData.add(product);
+
+        expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
+        detail_price_item.setAdapter(expandable_adpater);
+        detail_price_item.setGroupIndicator(null);
+
+        Log.e("뿅", "들어옴");
     }
 
     public void getHashtag(int main, int first) {

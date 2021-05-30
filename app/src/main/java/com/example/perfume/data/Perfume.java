@@ -18,7 +18,7 @@ public class Perfume {
     int main;               // 메인 향료
     int first;              // 추가 향료1
     int second;             // 추가 향료2
-    String url;             // 공식 사이트 주소
+    String check;             // 판매 하는지 안하는지
 
     public int getPerfumeID(){
         return perfumeID;
@@ -56,7 +56,7 @@ public class Perfume {
         return second;
     }
 
-    public String getUrl(){
-        return url;
+    public String getCheck(){
+        return check;
     }
 }

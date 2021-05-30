@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.example.perfume.adapter.QuestionPagerAdapter;
 import com.example.perfume.custom.NonSwipeViewPager;
+import com.example.perfume.data.Perfume;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
 

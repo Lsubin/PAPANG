@@ -47,6 +47,10 @@ public class PerfumeSizeAdapter extends RecyclerView.Adapter<PerfumeSizeAdapter.
         return product_sizes.size();
     }
 
+    public String getSize(int position){
+        return product_sizes.get(position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView product_size;
 
