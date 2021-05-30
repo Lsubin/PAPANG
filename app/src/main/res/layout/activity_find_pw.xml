@@ -78,24 +78,24 @@
 
     <EditText
         android:id="@+id/phone_num_edit"
-        android:layout_width="280dp"
+        android:layout_width="235dp"
         android:layout_height="wrap_content"
-        android:hint="휴대폰 번호를 입력해주세요."
-        android:textSize="14sp"
+        android:inputType="number"
+        android:layout_marginRight="10dp"
         android:fontFamily="@font/kopubworlddotumedium"
+        android:hint="휴대폰 번호를 입력해주세요."
         android:textColor="#000"
-        app:theme="@style/EditTextStyle"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/phone_num_text"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:theme="@style/EditTextStyle" />
 
     <ImageButton
         android:id="@+id/recieve_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/unrecieve_btn"
+        android:src="@mipmap/recieve_btn"
         android:background="#00ff0000"
-        android:layout_marginLeft="15dp"
-        app:layout_constraintLeft_toRightOf="@id/phone_num_edit"
         app:layout_constraintTop_toTopOf="@id/phone_num_edit"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/phone_num_edit"/>
@@ -109,28 +109,64 @@
         android:textSize="14sp"
         android:textColor="#000"
         android:text="인증번호"
+        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/phone_num_edit"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <EditText
-        android:id="@+id/password_edit"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="인증번호를 입력해주세요."
-        android:textSize="14sp"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:textColor="#000"
-        app:theme="@style/EditTextStyle"
-        app:layout_constraintTop_toBottomOf="@id/auth_num_text"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_num_text">
+
+        <EditText
+            android:id="@+id/password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="인증번호를 입력해주세요."
+            android:visibility="invisible"
+            android:textSize="14sp"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:textColor="#000"
+            app:theme="@style/EditTextStyle"
+            app:layout_constraintTop_toBottomOf="@id/auth_num_text"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/timer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/not_btn"
+            android:background="#00fff000"
+            android:textSize="13sp"
+            android:text="3:00"
+            android:fontFamily="@font/kopubworlddotumedium"
+            android:textColor="#6557FF"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="5dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/check_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/not_btn"
+            android:background="#00fff000"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="40dp"
+            android:visibility="invisible"/>
+
+    </FrameLayout>
+
 
     <ImageButton
         android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/next_btn"
+        android:src="@mipmap/unnext_btn"
         android:background="#00ff0000"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 

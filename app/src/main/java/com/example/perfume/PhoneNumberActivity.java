@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,11 +30,17 @@ public class PhoneNumberActivity extends AppCompatActivity {
     ImageButton next_btn;
     TextView auth_num_text;
     ImageView check_image;
+    TextView timer_text;
+
+    // 타이머 관련
+    String time = "0300";
+    CountDownTimer countDownTimer;
 
     boolean state = false;
 
     String phone;
     String message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +52,21 @@ public class PhoneNumberActivity extends AppCompatActivity {
         auth_num_text = (TextView)findViewById(R.id.auth_num_text);
         check_image = (ImageView)findViewById(R.id.check_image);
         next_btn = (ImageButton)findViewById(R.id.next_btn);
+        timer_text = (TextView)findViewById(R.id.timer_text);
 
         recieve_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 phone = phone_num_edit.getText().toString();
-                message = String.valueOf(numberGen(4,2));
-
                 if(phone.length() < 10)
                     Toast.makeText(getApplicationContext(), "전화번호를 확인해주세요", 0).show();
-
                 else {
+
+                    // 타이머 셋팅
+                    CountDownTimer();
+
+                    message = String.valueOf(numberGen(4,2));
+
                     if (ContextCompat.checkSelfPermission(getApplicationContext(),
                             Manifest.permission.SEND_SMS)
                             != PackageManager.PERMISSION_GRANTED) {
@@ -122,6 +133,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
             password_edit.setVisibility(View.VISIBLE);
             auth_num_text.setVisibility(View.VISIBLE);
             check_image.setVisibility(View.VISIBLE);
+            timer_text.setVisibility(View.VISIBLE);
             state = true;
         }
     }
@@ -181,4 +193,50 @@ public class PhoneNumberActivity extends AppCompatActivity {
         return numStr;
     }
 
+    public void CountDownTimer() {
+        long conversionTime = 0;
+
+        // 1000 단위가 1초
+        // 60000 단위가 1분
+
+        String getMin = time.substring(1,2);
+        String getSecond = time.substring(2,4);
+
+        conversionTime = Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
+
+        countDownTimer = new CountDownTimer(conversionTime, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // 분단위
+                long getMin = millisUntilFinished - (millisUntilFinished / (60 * 60 * 1000)) ;
+                String min = String.valueOf(getMin / (60 * 1000)); // 몫
+
+                // 초단위
+                String second = String.valueOf((getMin % (60 * 1000)) / 1000); // 나머지
+
+                // 초가 한자리면 0을 붙인다
+                if (second.length() == 1) {
+                    second = "0" + second;
+                }
+                timer_text.setText(min + ":" + second);
+            }
+
+            @Override
+            public void onFinish() {
+                timer_text.setText("0:00");
+                message = null; // 번호 초기화
+                password_edit.setText("");
+                Toast.makeText(getApplicationContext(), "인증번호가 만료되었습니다. 인증번호 재전송을 눌러주세요.", Toast.LENGTH_LONG).show();
+            }
+        }.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            countDownTimer.cancel();
+        } catch (Exception e) {}
+        countDownTimer = null;
+    }
 }
