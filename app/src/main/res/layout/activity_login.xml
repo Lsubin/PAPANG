@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".LoginActivity">
+
+    <ImageButton
+        android:id="@+id/exit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/exit_btn"
+        android:background="#00ff0000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserratbold"
+        android:textSize="23sp"
+        android:textColor="#000"
+        android:text="LOGIN"
+        app:layout_constraintTop_toBottomOf="@id/exit_btn"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="이메일"
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/email_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이메일을 입력해주세요."
+        android:textSize="14sp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textColor="#000"
+        app:theme="@style/EditTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/email_text"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="비밀번호"
+        app:layout_constraintTop_toBottomOf="@id/email_edit"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/password_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호를 입력해주세요."
+        android:textSize="14sp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textColor="#000"
+        app:theme="@style/EditTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/password_text"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/findID_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디 찾기"
+        android:textSize="14sp"
+        android:textColor="#D0D0D0"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:background="#00ff0000"
+        android:layout_marginLeft="60dp"
+        app:layout_constraintTop_toBottomOf="@id/password_edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line2"/>
+
+    <TextView
+        android:id="@+id/line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:textSize="12sp"
+        android:textColor="#D0D0D0"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/password_edit"
+        app:layout_constraintRight_toLeftOf="@id/findPW_btn"
+        app:layout_constraintLeft_toRightOf="@id/findID_btn"/>
+
+    <Button
+        android:id="@+id/findPW_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 찾기"
+        android:textSize="14sp"
+        android:textColor="#D0D0D0"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:background="#00ff0000"
+        android:layout_marginRight="60dp"
+        app:layout_constraintTop_toTopOf="@id/findID_btn"
+        app:layout_constraintLeft_toRightOf="@id/line2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/unlogin_btn"
+        android:background="#00ff0000"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
