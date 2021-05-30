@@ -88,7 +88,9 @@
 
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlActivated">@color/colorFilter14</item>
+        <item name="colorControlNormal">@color/colorFilter16</item>
         <item name="android:textCursorDrawable">@color/colorFilter14</item>
+        <item name="android:textColor">@color/colorFilter16</item>
     </style>
 
     <style name="GenderSpinner">

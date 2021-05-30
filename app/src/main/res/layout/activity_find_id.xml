@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".FindIdActivity">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/back"
+        android:background="#00ff0000"
+        android:layout_marginTop="4.4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="16sp"
+        android:textColor="#6557FF"
+        android:text="아이디 찾기"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:text="가입하신 휴대폰 번호를 입력해주세요."
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/phone_num_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="휴대폰 확인"
+        app:layout_constraintTop_toBottomOf="@id/text3"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/phone_num_edit"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:hint="휴대폰 번호를 입력해주세요."
+        android:textSize="14sp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textColor="#000"
+        app:theme="@style/EditTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/phone_num_text"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ImageButton
+        android:id="@+id/recieve_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/unrecieve_btn"
+        android:background="#00ff0000"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintLeft_toRightOf="@id/phone_num_edit"
+        app:layout_constraintTop_toTopOf="@id/phone_num_edit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/phone_num_edit"/>
+
+    <TextView
+        android:id="@+id/auth_num_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="인증번호"
+        app:layout_constraintTop_toBottomOf="@id/phone_num_edit"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/password_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="인증번호를 입력해주세요."
+        android:textSize="14sp"
+        android:fontFamily="@font/kopubworlddotumedium"
+        android:textColor="#000"
+        app:theme="@style/EditTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/auth_num_text"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
