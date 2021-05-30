@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.perfume.JoinActivity;
+import com.example.perfume.LoginActivity;
 import com.example.perfume.R;
 import com.example.perfume.main.my.MyPageFragment;
 import com.kakao.sdk.auth.model.OAuthToken;
@@ -92,6 +93,16 @@ public class NotLoginFragment extends Fragment {
             }
         });
 
+        // 로그인 화면으로 이동
+        goto_login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        
+
         /*
         kakao_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +131,6 @@ public class NotLoginFragment extends Fragment {
 
             }
         });
-
         // 임시로 로그인 화면 이동!
         google_btn.setOnClickListener(new View.OnClickListener() {
             @Override

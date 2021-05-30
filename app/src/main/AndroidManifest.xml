@@ -22,6 +22,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
         <activity android:name=".AddressViewActivity"></activity>
+        <activity android:name=".NoResultActivity"></activity>
+        <activity android:name=".PhoneNumberActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
         <activity
             android:name=".review.AllReviewActivity"
@@ -83,5 +86,4 @@
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
             android:enabled="true" />
     </application>
-
 </manifest>
