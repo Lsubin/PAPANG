@@ -2,8 +2,10 @@ package com.example.perfume.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -28,4 +30,11 @@ public interface DataApi {
 
     @GET("price_url/{perfumeID}")
     Call<Price> getPerfumeURL(@Path("perfumeID") int perfumeID);
+
+    @GET("join/{email}")
+    Call<User> getUser(@Path("email") String email);
+
+    @POST("join/user")
+    Call<User> joinUser(@Body Map<String, String> map);
+
 }

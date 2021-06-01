@@ -1,6 +1,8 @@
 package com.example.perfume.main.my;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -10,12 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.perfume.AppSatisfactionActivity;
 import com.example.perfume.EditMyinfoActivity;
 import com.example.perfume.ParticipatedEventActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
+
+import org.w3c.dom.Text;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +36,12 @@ public class MyPageFragment extends Fragment {
     ConstraintLayout touch_add_zone;
     ImageButton btn_findperfume;
     ImageButton btn_eidtmyinfo;
+    TextView user_name_text;
 
+    Context context;
+
+    private String email;
+    private String nickname;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,11 +88,15 @@ public class MyPageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_page, container, false);
+        context = view.getContext();
 
+        user_name_text = (TextView) view.findViewById(R.id.user_name_text);
         touch_event_zone = (ConstraintLayout) view.findViewById(R.id.touch_event_zone);
         touch_add_zone = (ConstraintLayout) view.findViewById(R.id.touch_add_zone);
         btn_findperfume = (ImageButton) view.findViewById(R.id.btn_findperfume);
         btn_eidtmyinfo = (ImageButton) view.findViewById(R.id.btn_editmyinfo);
+
+        checkLogin();
 
         touch_event_zone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,5 +131,13 @@ public class MyPageFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void checkLogin(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
+        email = sharedPreferences.getString("Email","");
+        nickname = sharedPreferences.getString("Nickname","");
+
+        user_name_text.setText(nickname + "님!");
     }
 }

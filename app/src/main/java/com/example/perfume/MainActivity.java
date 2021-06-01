@@ -1,5 +1,6 @@
 package com.example.perfume;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Menu menu;
     BottomNavigationView navView;
     NavController navController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
