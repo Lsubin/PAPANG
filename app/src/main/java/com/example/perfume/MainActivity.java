@@ -1,5 +1,6 @@
 package com.example.perfume;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView navView;
     NavController navController;
 
+    public static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = getApplicationContext();
+
         navView = findViewById(R.id.nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
@@ -69,5 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });*/
+    }
+
+    public void refresh(){
+        this.recreate();
     }
 }

@@ -40,6 +40,7 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
     Context context;
 
     List<Perfume> perfumes;
+    File file;
 
     String path;
 
@@ -90,8 +91,6 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
 
         public void getImage(final String p_name){
 
-
-            // Amazon Cognito 인증 공급자를 초기화합니다
             CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                     context,
                     "us-east-2:7241c5b2-3cf6-4a26-99d2-d08b31b32f8b", // 자격 증명 풀 ID
@@ -108,7 +107,7 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
 
             String key = "resources/perfume_de/" + p_name + ".png";
             path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/papang_images").toString();
-            File file = new File(path);
+            file = new File(path);
             if(!file.exists())
                 file.mkdirs();
 
@@ -129,6 +128,7 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
                                     .fitCenter()
                                     .into(product_image);
                     }
+                    file.delete();
                 }
 
                 @Override

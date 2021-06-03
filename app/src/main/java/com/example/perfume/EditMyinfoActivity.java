@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.User;
+import com.example.perfume.main.my.MyFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,6 +22,8 @@ import retrofit2.Response;
 public class EditMyinfoActivity extends AppCompatActivity {
 
     ImageButton btn_back;
+    Button btn_logout;
+    Button btn_withdrawal;
 
     TextView edit_nickname;
     TextView edit_birth;
@@ -49,7 +53,19 @@ public class EditMyinfoActivity extends AppCompatActivity {
         edit_phone_num = (TextView)findViewById(R.id.edit_phone_num);
         edit_adress = (TextView)findViewById(R.id.edit_adress);
 
+        btn_logout = (Button)findViewById(R.id.btn_logout);
+        btn_withdrawal = (Button)findViewById(R.id.btn_withdrawal);
+
         checkLogin();
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logout();
+                finish();
+                ((MainActivity)MainActivity.mContext).refresh();
+            }
+        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +75,15 @@ public class EditMyinfoActivity extends AppCompatActivity {
         });
     }
 
+
+    private void Logout(){
+        SharedPreferences pref = getSharedPreferences("Info", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("Access", "Logout");
+        editor.remove("Email");
+        editor.remove("Nickname");
+        editor.commit();
+    }
 
     private void checkLogin(){
         SharedPreferences sharedPreferences = getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.

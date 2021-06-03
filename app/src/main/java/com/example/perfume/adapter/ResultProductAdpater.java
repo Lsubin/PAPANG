@@ -40,6 +40,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
     List<Perfume> perfumes;
 
     String path;
+    File file;
 
     public ResultProductAdpater(Context context, List<Perfume> perfumes) {
         this.context = context;
@@ -114,7 +115,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
 
             String key = "resources/perfume_de/" + p_name + ".png";
             path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/papang_images").toString();
-            File file = new File(path);
+            file = new File(path);
             if(!file.exists())
                 file.mkdirs();
 
@@ -135,6 +136,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
                                     .fitCenter()
                                     .into(product_image);
                     }
+                    file.delete();
                 }
 
                 @Override

@@ -1,5 +1,6 @@
 package com.example.perfume.main.my;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -27,9 +28,12 @@ public class MyFragment extends Fragment {
 
     private String access;
 
+    public static Context mContext;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
+        mContext = view.getContext();
 
         checkLogin();
 
@@ -74,5 +78,9 @@ public class MyFragment extends Fragment {
     private void checkLogin(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
         access = sharedPreferences.getString("Access","");
+    }
+
+    public void refreshFragment(){
+        this.refreshFragment();
     }
 }

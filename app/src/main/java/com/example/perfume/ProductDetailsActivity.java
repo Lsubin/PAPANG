@@ -81,6 +81,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     ActionBar actionBar;
+    File file;
 
     Flavor flavor;
     String path;
@@ -398,7 +399,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         String key = "resources/perfume_de/" + p_name + ".png";
         path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/papang_images").toString();
-        File file = new File(path);
+        file = new File(path);
         if(!file.exists())
             file.mkdirs();
 
@@ -420,6 +421,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 .into(product_image);
                     download_file.delete();
                 }
+                file.delete();
             }
 
             @Override

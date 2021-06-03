@@ -34,7 +34,18 @@ public interface DataApi {
     @GET("join/{email}")
     Call<User> getUser(@Path("email") String email);
 
+    @GET("join/search_email/{phone}")
+    Call<User> getEmail(@Path("phone") String phone);
+
     @POST("join/user")
     Call<User> joinUser(@Body Map<String, String> map);
 
+    @POST("join/reset_pw/{email}")
+    Call<User> resetPW(@Path("email") String email, @Body Map<String, String> map);
+
+    @GET("wish/{email}")
+    Call<List<Wish>> getWishList(@Path("email") String email);
+
+    @POST("wish/add")
+    Call<Wish> addWishList(@Body Map<String, String> map);
 }

@@ -72,6 +72,7 @@
         android:textSize="14sp"
         android:fontFamily="@font/kopubworlddotumedium"
         android:textColor="#000"
+        android:inputType="textPassword"
         app:theme="@style/EditTextStyle"
         app:layout_constraintTop_toBottomOf="@id/password_text"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -118,9 +119,10 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageButton
+        android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/unlogin_btn"
+        android:src="@mipmap/login_btn"
         android:background="#00ff0000"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"

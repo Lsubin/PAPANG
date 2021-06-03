@@ -54,7 +54,7 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
-        android:id="@+id/email_edit"
+        android:id="@+id/password_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="새 비밀번호를 입력해주세요."
@@ -74,11 +74,11 @@
         android:textSize="14sp"
         android:textColor="#000"
         android:text="비밀번호 확인"
-        app:layout_constraintTop_toBottomOf="@id/email_edit"
+        app:layout_constraintTop_toBottomOf="@id/password_edit"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
-        android:id="@+id/phone_num_edit"
+        android:id="@+id/password_check_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="비밀번호를 다시 한 번 입력해주세요."

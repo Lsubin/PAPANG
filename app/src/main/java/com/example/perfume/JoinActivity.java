@@ -35,6 +35,7 @@ import com.example.perfume.custom.BottomSheetDialog;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.User;
+import com.example.perfume.main.my.MyFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -300,6 +301,7 @@ public class JoinActivity extends AppCompatActivity {
                     editor.putString("Nickname", nickname_edit.getText().toString()); // key,value 형식으로 저장
                     editor.commit();    //최종 커밋. 커밋을 해야 저장이 된다.
                     Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT).show();
+                    ((MainActivity)MainActivity.mContext).refresh();
                     finish();
                 }
 

@@ -19,14 +19,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
+import com.example.perfume.data.User;
+
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class FindPwActivity extends AppCompatActivity {
+
+    DataService dataService;
+    DataApi dataApi;
 
     ImageButton btn_back;
 
     EditText phone_num_edit;
     EditText password_edit;
+    EditText email_edit;
+
     ImageButton recieve_btn;
     ImageButton next_btn;
     TextView auth_num_text;
@@ -48,6 +61,9 @@ public class FindPwActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_pw);
 
+        dataService = new DataService();
+        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
+
         btn_back = (ImageButton)findViewById(R.id.btn_back);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +73,7 @@ public class FindPwActivity extends AppCompatActivity {
             }
         });
 
+        email_edit = (EditText)findViewById(R.id.email_edit);
         phone_num_edit = (EditText)findViewById(R.id.phone_num_edit);
         password_edit = (EditText)findViewById(R.id.password_edit);
         recieve_btn = (ImageButton)findViewById(R.id.recieve_btn);
@@ -101,13 +118,8 @@ public class FindPwActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(next_btn.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.next_btn).getConstantState())) {
-                    Toast.makeText(getApplicationContext(), "들어옴", Toast.LENGTH_SHORT).show();
-                    Intent join  = new Intent(FindPwActivity.this, ResetPwActivity.class);
-                    startActivity(join);
-                    finish();
+                    checkUser(email_edit.getText().toString(), phone);
                 }
-                else
-                    Toast.makeText(getApplicationContext(), next_btn.getDrawable().getConstantState().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -202,6 +214,24 @@ public class FindPwActivity extends AppCompatActivity {
             }
         }
         return numStr;
+    }
+
+    private void checkUser(final String email, final String phone){
+        dataApi.getUser(email).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Intent reset_pw  = new Intent(FindPwActivity.this, ResetPwActivity.class);
+                reset_pw.putExtra("email", email);
+                startActivity(reset_pw);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "존재하지 않는 이메일입니다.", 0).show();
+                email_edit.requestFocus();
+            }
+        });
     }
 
     public void CountDownTimer() {
