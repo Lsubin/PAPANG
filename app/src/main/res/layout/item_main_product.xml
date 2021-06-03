@@ -21,6 +21,7 @@
             android:fontFamily="@font/kopubworlddotumedium"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="3dp"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/product_image"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -32,6 +33,7 @@
             android:textColor="#000"
             android:fontFamily="@font/kopubworlddotumedium"
             android:layout_marginLeft="3dp"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/company_name"
             app:layout_constraintLeft_toLeftOf="parent"/>
 

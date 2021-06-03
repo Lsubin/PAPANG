@@ -17,6 +17,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +34,9 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.bumptech.glide.Glide;
+import com.example.perfume.AllResultProductActivity;
 import com.example.perfume.AppSatisfactionActivity;
+import com.example.perfume.NoResultActivity;
 import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
@@ -71,9 +74,11 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;      // 당신이 잊지 못할 향수
     RecyclerView recyclerView2;     // 파팡 추천 향수
     RecyclerView recyclerview3;     // 파팡 이벤트
+    RecyclerView recyclerView4;     // 추천 결과 향수
 
     Product_RecyclerView_Adapter adapter;
     Product_RecyclerView_Adapter adapter2;
+    Product_Result_RecyclerView_Adpater adapter3;
     Event_RecyclerView_Adapter event_adapter;
     RecyclerView.LayoutManager mLayoutManager;
     Product_Decoration decoration;
@@ -87,6 +92,10 @@ public class HomeFragment extends Fragment {
     ImageButton btn_satisfaction_bad;
 
     private boolean itemTouch;
+
+    boolean isResult;   // 추천 받았는지
+    ConstraintLayout frame1;
+    ConstraintLayout frame2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -135,6 +144,9 @@ public class HomeFragment extends Fragment {
 
                 adapter2 = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes);
                 recyclerView2.setAdapter(adapter2);
+
+                adapter3 = new Product_Result_RecyclerView_Adpater(root.getContext(), r_perfumes);
+                recyclerView4.setAdapter(adapter3);
             }
 
             @Override
@@ -190,6 +202,11 @@ public class HomeFragment extends Fragment {
         event_adapter = new Event_RecyclerView_Adapter(root.getContext());
         recyclerview3.setAdapter(event_adapter);
 
+        // 추천 받은 향수
+        recyclerView4 = root.findViewById(R.id.main_recyclerview4);
+        mLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView4.setLayoutManager(mLayoutManager);
+        recyclerView4.addItemDecoration(decoration);
 
         // 메거진 뷰페이저 설정
         magazine_viewpager = root.findViewById(R.id.main_magazine_viewpager);
@@ -215,6 +232,21 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        // 추천 결과 없을 때, 있을 때..
+        frame1 = (ConstraintLayout)root.findViewById(R.id.frame1);
+        frame2 = (ConstraintLayout)root.findViewById(R.id.frame2);
+        isResult = false;
+        if(isResult)
+        {
+            frame1.setVisibility(View.INVISIBLE);
+            frame2.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            frame1.setVisibility(View.VISIBLE);
+            frame2.setVisibility(View.INVISIBLE);
+        }
         return root;
     }
 
