@@ -21,6 +21,7 @@ public class Perfume implements Serializable {
     int first;              // 추가 향료1
     int second;             // 추가 향료2
     String check;             // 판매 하는지 안하는지
+    String url;
 
     public int getPerfumeID(){
         return perfumeID;
@@ -61,4 +62,9 @@ public class Perfume implements Serializable {
     public String getCheck(){
         return check;
     }
+
+    public String getUrl(){
+        return url;
+    }
+
 }

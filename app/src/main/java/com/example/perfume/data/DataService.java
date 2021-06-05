@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 
 public class DataService {
 
-    private String BASE_URL = "http://192.168.91.147:8888/"; // TODO REST API 퍼블릭 IP로 변경
+    private String BASE_URL = "http://3.130.237.74:8888/"; // TODO REST API 퍼블릭 IP로 변경
 
     Retrofit retrofitClient =
             new Retrofit.Builder()

@@ -1,13 +1,12 @@
 package com.example.perfume;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.User;
+import com.example.perfume.main.my.MyFragment;
 
 import java.util.regex.Pattern;
 
@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("Nickname", user.getNickname()); // key,value 형식으로 저장
                     editor.commit();    //최종 커밋. 커밋을 해야 저장이 된다.
                     finish();
-                    ((MainActivity)MainActivity.mContext).refresh();
+                    ((MyFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_my)).refresh();
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();

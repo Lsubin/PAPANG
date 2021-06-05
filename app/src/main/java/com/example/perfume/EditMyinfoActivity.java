@@ -63,7 +63,7 @@ public class EditMyinfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Logout();
                 finish();
-                ((MainActivity)MainActivity.mContext).refresh();
+                //((MainActivity)MainActivity.mContext).onResume();
             }
         });
 

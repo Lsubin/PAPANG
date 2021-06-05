@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -50,8 +51,10 @@ import com.example.perfume.data.DataService;
 import com.example.perfume.data.Flavor;
 import com.example.perfume.data.Hashtag;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.PerfumeWish;
 import com.example.perfume.data.Price;
 import com.example.perfume.data.SearchPrice;
+import com.example.perfume.data.Wish;
 import com.example.perfume.main.home.Product_Decoration;
 import com.example.perfume.main.home.Product_RecyclerView_Adapter;
 import com.example.perfume.review.AllReviewActivity;
@@ -63,9 +66,13 @@ import com.example.perfume.review.ReviewWriteActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import iammert.com.expandablelib.ExpandableLayout;
 import lombok.val;
@@ -77,7 +84,7 @@ import retrofit2.Retrofit;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    public static Context mContext;
+    public static Context pContext;
 
     Toolbar toolbar;
     ActionBar actionBar;
@@ -86,6 +93,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     Flavor flavor;
     String path;
     String p_name;
+    String access;
+    String email;
     List<Perfume> r_perfumes;       // 파팡 추천 향수
     Price r_urls;       // 파팡 URLS
     ArrayList<String> urls;
@@ -106,6 +115,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     TextView detail_shop_name;          // 쇼핑몰 이름
     TextView detail_product_name;       // 상품 이름
     TextView detail_size;               // 용량 text
+    TextView wish_count;                // 찜 개수
 
     ImageButton btn_detail_wish;        // 찜 버튼
     ImageButton btn_detail_share;       // 공유 버튼
@@ -154,7 +164,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        mContext = this;
+        pContext = this;
 
         flavor = new Flavor(getApplicationContext());
         decoration = new Product_Decoration();
@@ -168,6 +178,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_note_2 = (ImageView)findViewById(R.id.detail_note_2);
         detail_note_3 = (ImageView)findViewById(R.id.detail_note_3);
         detail_size = (TextView)findViewById(R.id.detail_size);
+        wish_count = (TextView)findViewById(R.id.wish_count);
+        btn_detail_wish = (ImageButton)findViewById(R.id.btn_detail_wish);
+        btn_shop = (ImageButton)findViewById(R.id.btn_shop);
 
         mData = new ArrayList<>();
         shop_name = new ArrayList<>();
@@ -182,7 +195,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_size_item = (RecyclerView) findViewById(R.id.detail_size_item);
         mLayoutManager = new LinearLayoutManager(ProductDetailsActivity.this, LinearLayoutManager.HORIZONTAL, false);
         detail_size_item.setLayoutManager(mLayoutManager);
+        checkLogin();
         getImage();
+        getWishCount();
+        checkWishList();
 
         detail_product_tag = (RecyclerView) findViewById(R.id.detail_product_tag);
         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -309,12 +325,145 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
+        btn_detail_wish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!access.equals("Login"))
+                    Toast.makeText(getApplicationContext(), "로그인 후 이용해 주세요!", 0).show();
+                else if(access.equals("Login") && btn_detail_wish.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.heart_icon).getConstantState())){         // 찜하는 함수
+                    addWishCount();
+                    addWishList();
+                }
+                else if(access.equals("Login") && btn_detail_wish.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.heart_full_icon).getConstantState())){        // 찜 삭제하는 함수
+                    deleteWishCount();
+                    deleteWishList();
+                }
+            }
+        });
+
         // 뒤로가기
         btn_back_detail_page = (ImageButton) findViewById(R.id.btn_back_detail_page);
         btn_back_detail_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btn_shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(r_perfumes.size() > 0) {
+                    Intent shop = new Intent(getApplicationContext(), WebViewActivity.class);
+                    shop.putExtra("url", r_perfumes.get(0).getUrl());
+                    startActivity(shop);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "잠시만 기다려 주세요.", 0).show();
+            }
+        });
+    }
+
+    private void addWishCount(){
+        Map<String, String> map = new HashMap();
+        final int count = Integer.parseInt(wish_count.getText().toString()) + 1;
+        map.put("wish_count", String.valueOf(count));
+        dataApi.addWishCount(p_name, map).enqueue(new Callback<PerfumeWish>() {
+            @Override
+            public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+                wish_count.setText(String.valueOf(count));
+            }
+
+            @Override
+            public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void deleteWishCount(){
+        Map<String, String> map = new HashMap();
+        final int count = Integer.parseInt(wish_count.getText().toString()) - 1;
+        map.put("wish_count", String.valueOf(count));
+        dataApi.deleteWishCount(p_name, map).enqueue(new Callback<PerfumeWish>() {
+            @Override
+            public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+                wish_count.setText(String.valueOf(count));
+            }
+
+            @Override
+            public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    private void checkWishList(){
+        dataApi.getWisPerfume(email, p_name).enqueue(new Callback<Wish>() {
+            @Override
+            public void onResponse(Call<Wish> call, Response<Wish> response) {
+                btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_full_icon));
+            }
+
+            @Override
+            public void onFailure(Call<Wish> call, Throwable t) {
+                Log.e("오류", t.getMessage());
+            }
+        });
+    }
+
+    private void addWishList(){
+        Map<String, String> map = new HashMap();
+        map.put("email", email);
+        map.put("perfumeID", String.valueOf(r_perfumes.get(0).getPerfumeID()));
+        map.put("brand", detail_shop_name.getText().toString());
+        map.put("name", p_name);
+        dataApi.addWishList(map).enqueue(new Callback<Wish>() {
+            @Override
+            public void onResponse(Call<Wish> call, Response<Wish> response) {
+                btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_full_icon));
+                Toast.makeText(ProductDetailsActivity.this, "찜목록 추가!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Wish> call, Throwable t) {
+            }
+        });
+    }
+
+    private void deleteWishList(){
+        dataApi.deleteWish(email, p_name).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_icon));
+                Toast.makeText(ProductDetailsActivity.this, "찜목록 삭제!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void checkLogin(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
+        access = sharedPreferences.getString("Access","");
+        email = sharedPreferences.getString("Email","");
+    }
+
+    public void getWishCount(){
+        dataApi.getPerfumeWish(p_name).enqueue(new Callback<PerfumeWish>() {
+            @Override
+            public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+                PerfumeWish pw = response.body();
+                wish_count.setText(String.valueOf(pw.getWish_count()));
+            }
+
+            @Override
+            public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
             }
         });
     }
@@ -351,8 +500,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
         detail_price_item.setAdapter(expandable_adpater);
         detail_price_item.setGroupIndicator(null);
-
-        Log.e("뿅", "들어옴");
     }
 
     public void getHashtag(int main, int first) {

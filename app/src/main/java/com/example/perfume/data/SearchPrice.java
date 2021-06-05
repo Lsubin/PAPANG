@@ -125,7 +125,7 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void voids) {
-        ((ProductDetailsActivity)ProductDetailsActivity.mContext).setURl();
+        ((ProductDetailsActivity)ProductDetailsActivity.pContext).setURl();
     }
 
     public String checkSite(String url){

@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.perfume.NotificationActivity;
 import com.example.perfume.R;
@@ -25,27 +29,35 @@ public class MyFragment extends Fragment {
     MyPageFragment myPageFragment;
     ImageButton btn_alarm;
     ImageButton btn_setting;
+    FragmentTransaction ft;
 
     private String access;
 
-    public static Context mContext;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public static Context mp_Context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
-        mContext = view.getContext();
+        FragmentManager fragmentManager = getFragmentManager();
+        ft = getFragmentManager().beginTransaction();
+        mp_Context = view.getContext();
 
         checkLogin();
 
         if(access.equals("Login")){
             myPageFragment = new MyPageFragment();
-            getFragmentManager()
+            fragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_layout, myPageFragment)
                     .commit();
         }else{
             notLoginFragment = new NotLoginFragment();
-            getFragmentManager()
+            fragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_layout, notLoginFragment)
                     .commit();
@@ -80,7 +92,8 @@ public class MyFragment extends Fragment {
         access = sharedPreferences.getString("Access","");
     }
 
-    public void refreshFragment(){
-        this.refreshFragment();
+    public void refresh(){
+        ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 }

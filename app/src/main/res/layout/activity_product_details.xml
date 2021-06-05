@@ -76,12 +76,12 @@
                                 app:layout_constraintLeft_toLeftOf="parent"/>
 
                         <TextView
+                                android:id="@+id/wish_count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="8dp"
                                 android:fontFamily="@font/kopubworlddotumedium"
                                 android:textSize="12sp"
-                                android:text="10"
                                 android:textColor="#6557FF"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
