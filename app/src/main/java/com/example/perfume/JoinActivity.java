@@ -301,7 +301,6 @@ public class JoinActivity extends AppCompatActivity {
                     editor.putString("Nickname", nickname_edit.getText().toString()); // key,value 형식으로 저장
                     editor.commit();    //최종 커밋. 커밋을 해야 저장이 된다.
                     Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT).show();
-                    //((MainActivity)MainActivity.mContext).onResume();
                     finish();
                 }
 

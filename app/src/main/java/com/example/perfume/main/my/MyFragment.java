@@ -3,9 +3,7 @@ package com.example.perfume.main.my;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +28,7 @@ public class MyFragment extends Fragment {
     ImageButton btn_alarm;
     ImageButton btn_setting;
     FragmentTransaction ft;
-
+    FragmentManager fragmentManager;
     private String access;
 
     @Override
@@ -43,25 +41,7 @@ public class MyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
-        FragmentManager fragmentManager = getFragmentManager();
-        ft = getFragmentManager().beginTransaction();
         mp_Context = view.getContext();
-
-        checkLogin();
-
-        if(access.equals("Login")){
-            myPageFragment = new MyPageFragment();
-            fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_layout, myPageFragment)
-                    .commit();
-        }else{
-            notLoginFragment = new NotLoginFragment();
-            fragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_layout, notLoginFragment)
-                    .commit();
-        }
 
         btn_alarm = (ImageButton) view.findViewById(R.id.btn_alarm);
         btn_setting = (ImageButton) view.findViewById(R.id.btn_setting);
@@ -92,8 +72,28 @@ public class MyFragment extends Fragment {
         access = sharedPreferences.getString("Access","");
     }
 
-    public void refresh(){
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        fragmentManager = getFragmentManager();
         ft = getFragmentManager().beginTransaction();
-        ft.detach(this).attach(this).commit();
+
+        checkLogin();
+
+        if(access.equals("Login")){
+            myPageFragment = new MyPageFragment();
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, myPageFragment)
+                    .commit();
+        }else{
+            notLoginFragment = new NotLoginFragment();
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, notLoginFragment)
+                    .commit();
+        }
+
     }
 }
