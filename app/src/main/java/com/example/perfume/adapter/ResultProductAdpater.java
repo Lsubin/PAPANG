@@ -1,6 +1,7 @@
 package com.example.perfume.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -10,10 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,23 +33,38 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.bumptech.glide.Glide;
+import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.PerfumeWish;
+import com.example.perfume.data.Wish;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpater.ViewHolder> {
 
     Context context;
-    ArrayList<Integer> product_drawables;          // 상품 이미지
-    ArrayList<String> company_name;                 // 회사 이름
-    ArrayList<String> product_name;                 // 상품 이름
-    List<Perfume> perfumes;
+    ArrayList<String> p_name;
+    ArrayList<String> p_brand;
+
+    DataService dataService;
+    DataApi dataApi;
 
     String path;
     File file;
 
-    public ResultProductAdpater(Context context, List<Perfume> perfumes) {
+    public ResultProductAdpater(Context context, ArrayList<String> name, ArrayList<String> brand) {
         this.context = context;
-        this.perfumes = perfumes;
+        p_name = new ArrayList<>();
+        p_brand = new ArrayList<>();
+        this.p_name = name;
+        this.p_brand = brand;
     }
 
     @NonNull
@@ -59,16 +79,15 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //holder.product_image.setImageResource(perfumes.get(position).get);
-        holder.getImage(perfumes.get(position).getName());
-        holder.product_name.setText(perfumes.get(position).getName());
-        holder.company_name.setText(perfumes.get(position).getBrand());
-        holder.capacity.setText(String.valueOf(perfumes.get(position).getSize()));
-        holder.wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.icon_unfull_heart));
+        holder.getImage(p_name.get(position));
+        holder.product_name.setText(p_name.get(position));
+        holder.company_name.setText(p_brand.get(position));
+        holder.checkWishList(p_name.get(position), p_brand.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return perfumes.size();
+        return p_name.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -77,24 +96,145 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
         TextView company_name;
         TextView product_name;
         ImageView wish_ok;
-        TextView capacity;
+
+        String email;
+        int count = 0;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            dataService = new DataService();
+            dataApi =  dataService.getRetrofitClient().create(DataApi.class);
+            checkLogin();
             product_image = (ImageView) itemView.findViewById(R.id.product_image);
             company_name = (TextView) itemView.findViewById(R.id.company_name);
             product_name = (TextView) itemView.findViewById(R.id.product_name);
             wish_ok = (ImageView) itemView.findViewById(R.id.unWish_btn);
-            capacity = (TextView) itemView.findViewById(R.id.capacity);
 
             wish_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
+                    int position = getAdapterPosition();
+
+                    if (wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.icon_unfull_heart).getConstantState())) {
+                        wish_ok.setImageResource(R.mipmap.heart_full_icon);
+                        getWishCount(p_name.get(position), p_brand.get(position), "ADD");
+                        addWishList(p_brand.get(position), p_name.get(position));
+                    }
+                    else if(wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.heart_full_icon).getConstantState())){
+                        wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
+                        getWishCount(p_name.get(position), p_brand.get(position), "DELETE");
+                        deleteWishList(email, p_brand.get(position), p_name.get(position));
+                    }
                 }
             });
 
         }
+
+        private void checkLogin(){
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
+            email = sharedPreferences.getString("Email","");
+        }
+
+        private void checkWishList(String p_name, String p_brand){
+            dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
+                @Override
+                public void onResponse(Call<Wish> call, Response<Wish> response) {
+                    wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.heart_full_icon));
+                }
+
+                @Override
+                public void onFailure(Call<Wish> call, Throwable t) {
+                    wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.icon_unfull_heart));
+                }
+            });
+        }
+
+        public void getWishCount(final String name, final String brand, final String state){
+            dataApi.getPerfumeWish(name, brand).enqueue(new Callback<PerfumeWish>() {
+                @Override
+                public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+                    PerfumeWish pw = response.body();
+                    count = pw.getWish_count();
+
+                    if(state.equals("ADD"))
+                        addWishCount(count, name, brand);
+                    else if(state.equals("DELETE"))
+                        deleteWishCount(name, brand, count);
+                }
+
+                @Override
+                public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
+                }
+            });
+        }
+
+        private void addWishCount(int wish_count, String p_name, String brand){
+            Map<String, String> map = new HashMap();
+            final int count = wish_count + 1;
+            map.put("wish_count", String.valueOf(count));
+            dataApi.addWishCount(p_name, brand, map).enqueue(new Callback<PerfumeWish>() {
+                @Override
+                public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+                }
+
+                @Override
+                public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
+                }
+            });
+        }
+
+        private void addWishList(String shop_name, String perfume_name){
+            Map<String, String> map = new HashMap();
+            map.put("email", email);
+            map.put("brand", shop_name);
+            map.put("name", perfume_name);
+            dataApi.addWishList(map).enqueue(new Callback<Wish>() {
+                @Override
+                public void onResponse(Call<Wish> call, Response<Wish> response) {
+                    wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.heart_full_icon));
+                    Toast.makeText(context, "찜목록 추가!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<Wish> call, Throwable t) {
+                }
+            });
+        }
+
+
+        private void deleteWishCount(String name, String brand, int wish_count){
+            Map<String, String> map = new HashMap();
+            map.put("wish_count", String.valueOf(wish_count-1));
+            dataApi.deleteWishCount(name, brand, map).enqueue(new Callback<PerfumeWish>() {
+                @Override
+                public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<PerfumeWish> call, Throwable t) {
+
+                }
+            });
+        }
+
+        private void deleteWishList(String email, String brand, String name){
+            dataApi.deleteWish(email, brand, name).enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    Toast.makeText(context, "찜목록 삭제!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+
+                }
+            });
+        }
+
 
         public void getImage(final String p_name){
 
@@ -136,7 +276,6 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
                                     .fitCenter()
                                     .into(product_image);
                     }
-                    file.delete();
                 }
 
                 @Override
@@ -150,6 +289,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
                 }
             });
 
+            file.delete();
         }
     }
 

@@ -10,10 +10,15 @@ import lombok.NoArgsConstructor;
 public class PerfumeWish {
 
     String name;
+    String brand;
     int wish_count;
 
     public String getName(){
         return this.name;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 
     public int getWish_count(){

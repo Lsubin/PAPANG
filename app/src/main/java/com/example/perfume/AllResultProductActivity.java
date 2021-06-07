@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,16 +33,22 @@ public class AllResultProductActivity extends AppCompatActivity {
 
     DataService dataService;
     DataApi dataApi;
-    ArrayList<Perfume> perfumes;
+    ArrayList<String> perfumes;
+    ArrayList<String> p_name;
+    ArrayList<String> p_brand;
+    ArrayList<String> p_id;
 
     ImageButton back_btn;
     ImageButton restart_btn;
     RecyclerView recycler_result;
     ResultProductAdpater adapter;
+    TextView name_text;
 
     ArrayList<String> perfumeInfo;
 
     String flavor_1, flavor_2, flavor_3;
+    String access;
+    String nickname;
 
     TextView result_1_text, result_2_text, result_3_text, result_456_text, result_7_text;
 
@@ -50,6 +57,9 @@ public class AllResultProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_result_product);
+
+        name_text = (TextView)findViewById(R.id.name_text);
+        checkLogin();
 
         perfumes = new ArrayList<>();
         perfumeInfo = new ArrayList<>();
@@ -66,15 +76,13 @@ public class AllResultProductActivity extends AppCompatActivity {
 
         // 테스트 결과 값 데이터 받기
         Intent secondIntent = getIntent();
-        perfumes = (ArrayList<Perfume>)secondIntent.getSerializableExtra("결과");
+        perfumes = (ArrayList<String>)secondIntent.getSerializableExtra("결과");
         perfumeInfo = secondIntent.getStringArrayListExtra("정보");
 
         // 테스트 결과 값에 따른 text 값 변경
         //changeResultText(q_1, q_2, q_3, q_4, q_5, q_6, q_7);
         changeResultText(perfumeInfo);
-
-        adapter = new ResultProductAdpater(getApplicationContext(), perfumes);
-        recycler_result.setAdapter(adapter);
+        setting();
 
         recycler_result.setLayoutManager(new LinearLayoutManager(this));
 
@@ -92,6 +100,48 @@ public class AllResultProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void checkLogin(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
+        access = sharedPreferences.getString("Access","");
+        nickname = sharedPreferences.getString("Nickname","");
+
+        if(access.equals("Login"))
+            name_text.setText(nickname);
+        else
+            name_text.setText("비회원");
+    }
+
+    private void setting(){
+        p_id = new ArrayList<>();
+        p_name = new ArrayList<>();
+        p_brand = new ArrayList<>();
+
+        for(int i = 0; i < perfumes.size(); i++){
+            int index = perfumes.get(i).indexOf(",");
+            int index2 = perfumes.get(i).indexOf(",", index+1);
+            String id = perfumes.get(i).substring(0, index);
+            String name = perfumes.get(i).substring(index+1, index2);
+            String brand = perfumes.get(i).substring(index2+1);
+
+            if(i != 0 && p_name.contains(name)){
+                int position = p_name.indexOf(name);
+                if(!p_brand.get(position).equals(brand)){
+                    p_id.add(id);
+                    p_name.add(name);
+                    p_brand.add(brand);
+                }
+            }
+            else {
+                p_id.add(id);
+                p_name.add(name);
+                p_brand.add(brand);
+            }
+        }
+
+        adapter = new ResultProductAdpater(getApplicationContext(), p_name, p_brand);
+        recycler_result.setAdapter(adapter);
     }
 
     private void changeResultText(ArrayList<String> perfumeInfos) { //가격은 String q_7 추가

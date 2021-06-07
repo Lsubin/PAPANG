@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +18,13 @@ import com.example.perfume.custom.NonSwipeViewPager;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.UserRecommendation;
+import com.example.perfume.data.Wish;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +44,8 @@ public class QuestionActivity extends AppCompatActivity {
 
     int mCurrentPosition;
 
+    String email;
+
     public static Context context;
 
     QuestionPagerAdapter qAdapter;
@@ -54,6 +61,7 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         context = this;
+        checkLogin();
 
         dataService = new DataService();
         dataApi =  dataService.getRetrofitClient().create(DataApi.class);
@@ -282,6 +290,10 @@ public class QuestionActivity extends AppCompatActivity {
         return concentrations;
     }
 
+    private void checkLogin(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
+        email = sharedPreferences.getString("Email","");
+    }
 
     public void getPerfume(final ArrayList<String> perfumeInfos){
         ArrayList<Integer> sizes = new ArrayList<>();
@@ -290,27 +302,90 @@ public class QuestionActivity extends AppCompatActivity {
         Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
 
         dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
-                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<ArrayList<Perfume>>() {
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<ArrayList<String>>() {
             @Override
-            public void onResponse(Call<ArrayList<Perfume>> call, Response<ArrayList<Perfume>> response) {
-                perfumes = response.body();
+            public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
+                ArrayList<String> perfumes = response.body();
                 if(perfumes.size() > 0) {
                     Intent result = new Intent(getApplicationContext(), AllResultProductActivity.class);
                     result.putExtra("결과", perfumes);
                     result.putExtra("정보", perfumeInfos);
+                    if(!email.equals(""))
+                        setUserRecommend();
                     startActivity(result);
+                    finish();
                 }
                 else{
                     Intent result = new Intent(getApplicationContext(), NoResultActivity.class);
                     startActivity(result);
+                    finish();
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Perfume>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<String>> call, Throwable t) {
                 Log.e("연결", t.getMessage());
             }
         });
     }
 
+    private void setUserRecommend(){
+        dataApi.getUserRecommend(email).enqueue(new Callback<UserRecommendation>() {
+            @Override
+            public void onResponse(Call<UserRecommendation> call, Response<UserRecommendation> response) {
+                UserRecommendation ur;
+                ur = response.body();
+                changeRecommend(email);
+            }
+
+            @Override
+            public void onFailure(Call<UserRecommendation> call, Throwable t) {
+                saveRecommend();
+            }
+        });
+    }
+
+    public void changeRecommend(String email){
+        Map<String, String> user_recommend = new HashMap<>();
+        user_recommend.put("email", email);
+        user_recommend.put("concentration", perfumeInfos.get(0));
+        user_recommend.put("size", perfumeInfos.get(1));
+        user_recommend.put("style", perfumeInfos.get(2));
+        user_recommend.put("flavor1", perfumeInfos.get(3));
+        user_recommend.put("flavor2", perfumeInfos.get(4));
+        user_recommend.put("flavor3", perfumeInfos.get(5));
+        dataApi.changeUserRecommend(email, user_recommend).enqueue(new Callback<UserRecommendation>() {
+            @Override
+            public void onResponse(Call<UserRecommendation> call, Response<UserRecommendation> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<UserRecommendation> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void saveRecommend(){
+        Map<String, String> user_recommend = new HashMap<>();
+        user_recommend.put("email", email);
+        user_recommend.put("concentration", perfumeInfos.get(0));
+        user_recommend.put("size", perfumeInfos.get(1));
+        user_recommend.put("style", perfumeInfos.get(2));
+        user_recommend.put("flavor1", perfumeInfos.get(3));
+        user_recommend.put("flavor2", perfumeInfos.get(4));
+        user_recommend.put("flavor3", perfumeInfos.get(5));
+
+        dataApi.addUserRecommend(user_recommend).enqueue(new Callback<UserRecommendation>() {
+            @Override
+            public void onResponse(Call<UserRecommendation> call, Response<UserRecommendation> response) {
+            }
+
+            @Override
+            public void onFailure(Call<UserRecommendation> call, Throwable t) {
+
+            }
+        });
+    }
 }

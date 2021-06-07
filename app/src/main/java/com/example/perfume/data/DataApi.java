@@ -27,7 +27,7 @@ public interface DataApi {
 
     // 향수 추천 결과 받아오는 함수
     @GET("perfume_recommend/{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}")
-    Call<ArrayList<Perfume>> getRecommendationResult(@Path("concentration") int concentration,
+    Call<ArrayList<String>> getRecommendationResult(@Path("concentration") int concentration,
                                                      @Path("size1") int size1, @Path("size2") int size2,
                                                      @Path("style") int style, @Path("main") int main,
                                                      @Path("first") int first, @Path("second") int second);
@@ -61,22 +61,38 @@ public interface DataApi {
     Call<Wish> addWishList(@Body Map<String, String> map);
 
     // 향수 찜 개수 가져오는 함수
-    @GET("perfume_wish/{name}")
-    Call<PerfumeWish> getPerfumeWish(@Path("name") String name);
+    @GET("perfume_wish/{name}/{brand}")
+    Call<PerfumeWish> getPerfumeWish(@Path("name") String name, @Path("brand") String brand);
 
-    @POST("perfume_wish/add_wish/{name}")
-    Call<PerfumeWish> addWishCount(@Path("name") String name, @Body Map<String, String> map);
+    // 향수 검색 결과 가져오는 함수
+    @GET("perfume_wish/search/{word}")
+    Call<List<PerfumeWish>> getSearchPerfume(@Path("word") String word);
 
-    @POST("perfume_wish/delete_wish/{name}")
-    Call<PerfumeWish> deleteWishCount(@Path("name") String name, @Body Map<String, String> map);
+    @POST("perfume_wish/add_wish/{name}/{brand}")
+    Call<PerfumeWish> addWishCount(@Path("name") String name, @Path("brand") String brand, @Body Map<String, String> map);
+
+    @POST("perfume_wish/delete_wish/{name}/{brand}")
+    Call<PerfumeWish> deleteWishCount(@Path("name") String name, @Path("brand") String brand, @Body Map<String, String> map);
 
     // 사용자 찜 목록에서 하나 가져오는 함수
-    @GET("wish/{email}/{name}")
-    Call<Wish> getWisPerfume(@Path("email") String email,
-                                 @Path("name") String name);
+    @GET("wish/{email}/{brand}/{name}")
+    Call<Wish> getWisPerfume(@Path("email") String email, @Path("brand") String brand, @Path("name") String name);
 
     // 사용자 찜 목록에서 삭제하는 함수
-    @POST("wish/delete/{email}/{name}")
-    Call<Integer> deleteWish(@Path("email") String email,
-                             @Path("name") String name);
+    @POST("wish/delete/{email}/{brand}/{name}")
+    Call<Integer> deleteWish(@Path("email") String email, @Path("brand") String brand, @Path("name") String name);
+
+    // 사용자가 추천을 받았었는지 가져오는 함수
+    @GET("user_recommend/{email}")
+    Call<UserRecommendation> getUserRecommend(@Path("email") String email);
+
+    // 사용자 추천 향수에 업로드하는 함수
+    @POST("user_recommend/save")
+    Call<UserRecommendation> addUserRecommend(@Body Map<String, String> map);
+
+    // 사용자 추천 향수에 업로드하는 함수
+    @POST("user_recommend/change_save/{email}")
+    Call<UserRecommendation> changeUserRecommend(@Path("email") String email, @Body Map<String, String> map);
+
+
 }

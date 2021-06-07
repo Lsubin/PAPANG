@@ -12,16 +12,11 @@ import lombok.NoArgsConstructor;
 public class Wish implements Serializable {
 
     String email;
-    int perfumeID;
     String brand;
     String name;
 
     public String getEmail(){
         return this.email;
-    }
-
-    public int getPerfumeID(){
-        return this.perfumeID;
     }
 
     public String getBrand(){

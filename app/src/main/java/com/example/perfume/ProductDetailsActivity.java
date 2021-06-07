@@ -138,7 +138,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
     ArrayList<String> sizes;
-    ArrayList<String> tags;
+    ArrayList<Integer> ids;
 
     LinearLayoutManager mLayoutManager;
     PerfumeSizeAdapter adapter;
@@ -197,8 +197,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_size_item.setLayoutManager(mLayoutManager);
         checkLogin();
         getImage();
-        getWishCount();
-        checkWishList();
 
         detail_product_tag = (RecyclerView) findViewById(R.id.detail_product_tag);
         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -211,6 +209,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 r_perfumes = response.body();
                 detail_shop_name.setText(r_perfumes.get(0).getBrand());         // 브랜드
                 detail_product_name.setText(p_name);
+
+                getWishCount();
+                checkWishList(detail_shop_name.getText().toString());
 
                 detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()));
                 detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
@@ -232,12 +233,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                 // 사이즈 받아온걸로 세팅
                 sizes = new ArrayList<>();
+
                 for(int i = 0; i < r_perfumes.size(); i++){
                     sizes.add(String.valueOf(r_perfumes.get(i).getSize()));
                     Log.e("값", String.valueOf(r_perfumes.get(i).getSize()));
                 }
 
-                adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes);
+                //adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes);
                 detail_size_item.setAdapter(adapter);
             }
 
@@ -336,7 +338,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
                 else if(access.equals("Login") && btn_detail_wish.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.heart_full_icon).getConstantState())){        // 찜 삭제하는 함수
                     deleteWishCount();
-                    deleteWishList();
+                    deleteWishList(detail_shop_name.getText().toString());
                 }
             }
         });
@@ -364,11 +366,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
+    public void setSizeUrl(int perfumeID){
+
+    }
+
     private void addWishCount(){
         Map<String, String> map = new HashMap();
         final int count = Integer.parseInt(wish_count.getText().toString()) + 1;
         map.put("wish_count", String.valueOf(count));
-        dataApi.addWishCount(p_name, map).enqueue(new Callback<PerfumeWish>() {
+        dataApi.addWishCount(p_name, detail_shop_name.getText().toString(), map).enqueue(new Callback<PerfumeWish>() {
             @Override
             public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
                 wish_count.setText(String.valueOf(count));
@@ -385,7 +391,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Map<String, String> map = new HashMap();
         final int count = Integer.parseInt(wish_count.getText().toString()) - 1;
         map.put("wish_count", String.valueOf(count));
-        dataApi.deleteWishCount(p_name, map).enqueue(new Callback<PerfumeWish>() {
+        dataApi.deleteWishCount(p_name, detail_shop_name.getText().toString(), map).enqueue(new Callback<PerfumeWish>() {
             @Override
             public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
                 wish_count.setText(String.valueOf(count));
@@ -399,8 +405,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
 
-    private void checkWishList(){
-        dataApi.getWisPerfume(email, p_name).enqueue(new Callback<Wish>() {
+    private void checkWishList(String p_brand){
+        dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
             @Override
             public void onResponse(Call<Wish> call, Response<Wish> response) {
                 btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_full_icon));
@@ -432,8 +438,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteWishList(){
-        dataApi.deleteWish(email, p_name).enqueue(new Callback<Integer>() {
+    private void deleteWishList(String p_brand){
+        dataApi.deleteWish(email, p_brand, p_name).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_icon));
@@ -454,7 +460,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void getWishCount(){
-        dataApi.getPerfumeWish(p_name).enqueue(new Callback<PerfumeWish>() {
+        dataApi.getPerfumeWish(p_name, detail_shop_name.getText().toString()).enqueue(new Callback<PerfumeWish>() {
             @Override
             public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
                 PerfumeWish pw = response.body();
@@ -521,7 +527,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                adapter2 = new PerfumeSizeAdapter(getApplicationContext(), hashtag);
+                //adapter2 = new PerfumeSizeAdapter(getApplicationContext(), hashtag);
                 detail_product_tag.setAdapter(adapter2);
             }
         }, 1000); // 0.5초후
@@ -568,7 +574,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 .into(product_image);
                     download_file.delete();
                 }
-                file.delete();
             }
 
             @Override
@@ -581,5 +586,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 Log.e("실패", "Unable to download the file.", ex);
             }
         });
+
+        file.delete();
     }
 }

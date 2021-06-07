@@ -18,13 +18,16 @@ import java.util.ArrayList;
 public class PerfumeSizeAdapter extends RecyclerView.Adapter<PerfumeSizeAdapter.ViewHolder> {
     Context context;
 
-    ArrayList<String> product_sizes;          // 상품 이미지
+    ArrayList<String> product_sizes;          // 상품 사이즈
+    ArrayList<Integer> product_ids;          // 상품 ID
 
-    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes) {
+    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes, ArrayList<Integer> ids) {
         this.context = context;
 
         product_sizes = new ArrayList<>();
+        product_ids = new ArrayList<>();
         this.product_sizes = sizes;
+        this.product_ids = ids;
     }
 
     @NonNull

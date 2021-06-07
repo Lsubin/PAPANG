@@ -37,7 +37,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/search_frame2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,26 +48,35 @@
 
         <EditText
             android:id="@+id/search_input"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="36dp"
+            android:layout_marginRight="10dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
             android:background="#F8F8F8"
             android:fontFamily="@font/kopubworlddotumedium"
             android:hint="원하는 향수를 검색하세요"
             android:textColorHint="#A4A4A4"
             android:textSize="13dp"
-            android:drawableLeft="@mipmap/search_icon"
             android:paddingStart="12dp"
-            android:drawablePadding="12dp"
             android:inputType="text"
             android:imeOptions="actionSearch"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="0dp"
+            android:layout_weight="0.15"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/search_icon"
+            android:background="#00fff000"
+            android:layout_marginRight="24dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_frame3"

@@ -1,7 +1,9 @@
 package com.example.perfume.search;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.perfume.R;
 import com.example.perfume.main.home.Event_RecyclerView_Adapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapter.ViewHolder> {
@@ -24,21 +29,67 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
 
     RecentSearchAdapter(Context context) {
         this.context = context;
-
-        search_words = new ArrayList<>();
-        search_words.add("샤넬 넘버 5");
-        search_words.add("딥티크");
+        search_words = getStringArrayPref();
     }
 
     public void allDelete() {
         this.search_words.clear();
+        deleteArrayPref("Search", search_words);
         notifyDataSetChanged();
     }
 
-    public void update() {
-        search_words.add("샤넬 넘버 5");
-        search_words.add("딥티크");
+    public void update(String word){
+        search_words.add(word);
+        setStringArrayPref("Search", search_words);
         notifyDataSetChanged();
+    }
+
+    private void setStringArrayPref(String key, ArrayList values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    private void deleteArrayPref(String key, ArrayList values){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    private ArrayList<String> getStringArrayPref() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = prefs.getString("Search", null);
+        ArrayList<String> words = new ArrayList();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    words.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return words;
     }
 
     @NonNull
@@ -52,7 +103,6 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecentSearchAdapter.ViewHolder holder, int position) {
-
         holder.recent_search_word.setText(search_words.get(position));
     }
 
@@ -70,7 +120,16 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
 
             recent_search_word = (TextView) itemView.findViewById(R.id.recent_search_word);
             delete_recent_search_word = (ImageButton) itemView.findViewById(R.id.delete_recent_search_word);
+
+            delete_recent_search_word.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    search_words.remove(position);
+                    setStringArrayPref("Search", search_words);
+                    notifyDataSetChanged();
+                }
+            });
         }
     }
-
 }

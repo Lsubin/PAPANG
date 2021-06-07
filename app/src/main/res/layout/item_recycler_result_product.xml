@@ -38,33 +38,6 @@
             app:layout_constraintTop_toBottomOf="@id/company_name"
             app:layout_constraintLeft_toRightOf="@id/product_image"/>
 
-    <TextView
-            android:id="@+id/capacity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="35"
-            android:textColor="#6557FF"
-            android:fontFamily="@font/kopubworlddotumedium"
-            android:textSize="12sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="13dp"
-            app:layout_constraintLeft_toRightOf="@id/product_image"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/capacity_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ml"
-        android:textColor="#6557FF"
-        android:fontFamily="@font/kopubworlddotumedium"
-        android:textSize="12sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="2dp"
-        app:layout_constraintLeft_toRightOf="@id/capacity"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-
     <ImageButton
             android:id="@+id/unWish_btn"
             android:layout_width="wrap_content"

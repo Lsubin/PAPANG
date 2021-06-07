@@ -117,8 +117,8 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
-                    getWishCount(wishes.get(position).getName());
-                    deleteWishList(email, wishes.get(position).getName());
+                    getWishCount(wishes.get(position).getName(), wishes.get(position).getBrand());
+                    deleteWishList(email, wishes.get(position).getBrand(), wishes.get(position).getName());
                 }
             });
         }
@@ -128,13 +128,13 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
             email = sharedPreferences.getString("Email","");
         }
 
-        public void getWishCount(final String name){
-            dataApi.getPerfumeWish(name).enqueue(new Callback<PerfumeWish>() {
+        public void getWishCount(final String name, final String brand){
+            dataApi.getPerfumeWish(name, brand).enqueue(new Callback<PerfumeWish>() {
                 @Override
                 public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
                     PerfumeWish pw = response.body();
                     count = pw.getWish_count();
-                    deleteWishCount(name, count);
+                    deleteWishCount(name, brand, count);
                 }
 
                 @Override
@@ -144,10 +144,10 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
             });
         }
 
-        private void deleteWishCount(String name, int wish_count){
+        private void deleteWishCount(String name, String brand, int wish_count){
             Map<String, String> map = new HashMap();
             map.put("wish_count", String.valueOf(wish_count-1));
-            dataApi.deleteWishCount(name, map).enqueue(new Callback<PerfumeWish>() {
+            dataApi.deleteWishCount(name, brand, map).enqueue(new Callback<PerfumeWish>() {
                 @Override
                 public void onResponse(Call<PerfumeWish> call, Response<PerfumeWish> response) {
 
@@ -160,8 +160,8 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
             });
         }
 
-        private void deleteWishList(String email, String name){
-            dataApi.deleteWish(email, name).enqueue(new Callback<Integer>() {
+        private void deleteWishList(String email, String brand, String name){
+            dataApi.deleteWish(email, brand, name).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     Toast.makeText(context, "찜목록 삭제!", Toast.LENGTH_SHORT).show();

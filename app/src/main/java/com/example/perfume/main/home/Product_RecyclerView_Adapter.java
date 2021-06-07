@@ -128,7 +128,6 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
                                     .fitCenter()
                                     .into(product_image);
                     }
-                    file.delete();
                 }
 
                 @Override
@@ -141,7 +140,7 @@ public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_R
                     Log.e("실패", "Unable to download the file.", ex);
                 }
             });
-
+            file.delete();
         }
     }
 }

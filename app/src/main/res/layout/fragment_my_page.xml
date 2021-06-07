@@ -96,6 +96,7 @@
                 android:layout_marginTop="13dp"
                 android:orientation="vertical">
             <ImageView
+                    android:id="@+id/result_never"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/text_tryfindperfume"/>
@@ -109,11 +110,10 @@
         </LinearLayout>
 
         <TextView
-                android:id="@+id/result_1_text"
+                android:id="@+id/result_concentration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                android:text="오 드 뚜왈렛"
                 android:textColor="#fff"
                 android:textSize="13sp"
                 android:fontFamily="@font/kopubworlddotumbold"
@@ -121,11 +121,10 @@
                 android:layout_marginTop="40dp"/>
 
         <TextView
-                android:id="@+id/result_2_text"
+                android:id="@+id/result_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                android:text="100ml"
                 android:textColor="#fff"
                 android:textSize="13sp"
                 android:fontFamily="@font/kopubworlddotumbold"
@@ -139,27 +138,25 @@
                 android:layout_marginTop="10dp">
 
             <TextView
-                    android:id="@+id/result_456_text"
+                    android:id="@+id/result_flavors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"
-                    android:text="Flower, Fruity, None"
                     android:textSize="20sp"
                     android:textColor="#fff"
                     android:fontFamily="@font/montserratbold"
                     android:layout_gravity="center"/>
 
             <TextView
-                    android:id="@+id/result_3_text"
+                    android:id="@+id/result_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"
-                    android:text="발랄한, 귀여운, 사랑스러운"
                     android:textColor="#fff"
                     android:textSize="13sp"
                     android:fontFamily="@font/kopubworlddotumbold"
                     android:layout_marginTop="30dp"
-                    android:layout_alignParentLeft="@id/result_456_text"
+                    android:layout_alignParentLeft="@id/result_flavors"
                     android:layout_gravity="center"/>
 
             <TextView
@@ -167,12 +164,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"
-                    android:text="10만원 ~ 30만원"
                     android:textColor="#fff"
                     android:textSize="13sp"
                     android:fontFamily="@font/kopubworlddotumbold"
                     android:layout_marginTop="50dp"
-                    android:layout_alignParentLeft="@id/result_456_text"
+                    android:layout_alignParentLeft="@id/result_flavors"
                     android:layout_gravity="center"/>
 
         </RelativeLayout>
