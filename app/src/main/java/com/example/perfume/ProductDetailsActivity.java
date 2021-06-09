@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -179,6 +180,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
+
+        // 로딩바 - 화면 터치 막기
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         pContext = this;
 
@@ -665,7 +670,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             {
                 loading_pb.setVisibility(View.INVISIBLE);
                 whole_frame.setVisibility(View.VISIBLE);
-                Log.d("로딩 없애", i +"");
+                whole_frame.setBackground(null);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
         }
     };

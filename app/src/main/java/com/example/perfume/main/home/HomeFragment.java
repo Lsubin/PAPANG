@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -113,6 +114,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
+        // 로딩바 - 화면 터치 막기
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
 
         find_btn = (ImageButton) root.findViewById(R.id.perfume_find_btn);
         find_btn.setOnClickListener(new View.OnClickListener() {
@@ -296,6 +301,8 @@ public class HomeFragment extends Fragment {
             {
                 loading_pb.setVisibility(View.INVISIBLE);
                 whole_frame.setVisibility(View.VISIBLE);
+                whole_frame.setBackground(null);
+                getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
         }
     };
