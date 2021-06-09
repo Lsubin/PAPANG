@@ -101,7 +101,6 @@ public class FindIdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(next_btn.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.next_btn).getConstantState())) {
-                    Toast.makeText(getApplicationContext(), "들어옴", Toast.LENGTH_SHORT).show();
                     Intent found  = new Intent(FindIdActivity.this, FoundEmailActivity.class);
                     found.putExtra("번호", phone);
                     startActivity(found);

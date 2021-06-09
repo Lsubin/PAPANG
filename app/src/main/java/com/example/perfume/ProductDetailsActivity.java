@@ -162,6 +162,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     Boolean isCheckedData = false;
     Boolean isCheckedPrice = false;
     int i  = 0;
+    private boolean itemTouch;
 
     // 뒤로가기 버튼
     @Override
@@ -308,7 +309,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View view, int groupPosition, long l) {
                 expandable_adpater.setListViewHeight(parent, groupPosition);
-                Toast.makeText(getApplicationContext(), "클릭됨", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -375,6 +375,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "잠시만 기다려 주세요.", 0).show();
             }
         });
+
+        detail_price_item.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String url = expandable_adpater.getURL(groupPosition, childPosition);
+                Intent shop = new Intent(getApplicationContext(), WebViewActivity.class);
+                shop.putExtra("url", url);
+                startActivity(shop);
+                return false;
+            }
+        });
     }
 
     private void getInfo() {
@@ -406,13 +417,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
         }
         // 사이즈 받아온걸로 세팅
         sizes = new ArrayList<>();
+        ids = new ArrayList<>();
+        checks = new ArrayList<>();
 
         for(int i = 0; i < r_perfumes.size(); i++){
+            checks.add(r_perfumes.get(i).getCheck());
+            ids.add(r_perfumes.get(i).getPerfumeID());
             sizes.add(String.valueOf(r_perfumes.get(i).getSize()));
             Log.e("값", String.valueOf(r_perfumes.get(i).getSize()));
         }
 
-        //adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes);
+        adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes, ids, checks);
         detail_size_item.setAdapter(adapter);
     }
 
@@ -551,7 +566,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     public void setURl(){
         shop_name = searchPrice.shops;
         price = searchPrice.prices;
-        Product product = new Product(shop_name, price);
+        urls = searchPrice.urls;
+        Product product = new Product(shop_name, price, urls);
         mData = new ArrayList<>();
         mData.add(product);
         //expandable_adpater.clear();

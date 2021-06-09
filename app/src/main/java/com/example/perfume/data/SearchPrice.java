@@ -41,6 +41,7 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
     public ArrayList<String> prices;
     public ArrayList<String> shops;
     Document doc;
+    String price;
 
     public SearchPrice(Context context, ArrayList<String> urls){
         this.context = context;
@@ -66,51 +67,87 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
 
                 switch(site){
                     case "skstoa":
-                        prices.add(doc.select("p.price strong").first().text());
+                        price = doc.select("p.price strong").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("SKMall");
                         break;
                     case "thehyundai":
-                        prices.add(doc.select("em#totItemPrcSpan").first().text());
+                        price = doc.select("em#totItemPrcSpan").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("현대Mall");
                         break;
                     case "ssg":
-                        prices.add(doc.select("em.ssg_price").first().text());
+                        price = doc.select("em.ssg_price").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("SSG");
                         break;
                     case "akmall":
-                        prices.add(doc.select("li.c_price i").first().text());
+                        price = doc.select("li.c_price i").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("AKMall");
                         break;
                     case "galleria":
-                        prices.add(doc.select("div.gds_amt dd").first().text());
+                        price = doc.select("div.gds_amt dd").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("갤러리아");
                         break;
                     case "hmall":
-                        prices.add(doc.select("span.enroll-price").first().text());
+                        price = doc.select("span.enroll-price").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("HMall");
                         break;
                     case "lotteimall":
-                        prices.add(doc.select("span.num").first().text());
+                        price = doc.select("span.num").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("롯데홈쇼핑");
                         break;
                     case "gsshop":
-                        prices.add(doc.select("span.price-definition-ins ins").first().text());
+                        price = doc.select("span.price-definition-ins ins").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("GSSHOP");
                         break;
                     case "naver":
-                        prices.add(doc.select("span._1LY7DqCnwR").first().text());
+                        price = doc.select("span._1LY7DqCnwR").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("네이버쇼핑");
                         break;
                     case "hnsmall":
-                        prices.add(doc.select("span.sellPrice02 em").first().text());
+                        price = doc.select("span.sellPrice02 em").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("HnsMAll");
                         break;
                     case "nsmall":
-                        prices.add(doc.select("em.price").first().text());
+                        price = doc.select("em.price").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("NsMall");
                         break;
                     case "shinsegaetvshopping":
-                        prices.add(doc.select("span._bestPrice").first().text());
+                        price = doc.select("span._bestPrice").first().text();
+                        if(Character.isDigit(price.charAt(price.length()-1)))
+                            price += "원";
+                        prices.add(price);
                         shops.add("신세계홈쇼핑");
                         break;
                     default:

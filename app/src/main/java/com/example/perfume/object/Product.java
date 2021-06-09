@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Product {
     public ArrayList<String> shops;
     public ArrayList<String> prices;
+    public ArrayList<String> urls;
     public Boolean price_tag;
 
     /*
@@ -14,8 +15,13 @@ public class Product {
         prices.add(price);
     }*/
 
-    public Product(ArrayList<String> shop, ArrayList<String> price) {
+    public Product(ArrayList<String> shop, ArrayList<String> price, ArrayList<String> url) {
         shops = shop;
         prices = price;
+        urls = url;
+    }
+
+    public String getUrl(int position){
+        return urls.get(position);
     }
 }

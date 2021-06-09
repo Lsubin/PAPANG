@@ -46,6 +46,10 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
         notifyDataSetChanged();
     }
 
+    public String getURL(int groupPosition, int childPosition){
+        return mProduct.get(groupPosition).urls.get(childPosition);
+    }
+
     @Override
     public Object getGroup(int groupPosition) {
         return mProduct.get(groupPosition);
@@ -132,7 +136,7 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
     }
 
     @Override
