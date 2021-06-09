@@ -229,8 +229,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                         break;
                     }
                 }
-
-
                 // 사이즈 받아온걸로 세팅
                 sizes = new ArrayList<>();
 

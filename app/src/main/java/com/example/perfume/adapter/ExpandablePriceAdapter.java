@@ -77,7 +77,7 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
 
         TextView text = (TextView) view.findViewById(R.id.text);
         ImageView arrow = (ImageView) view.findViewById(R.id.arrow);
-        text.setText("최저가 비교하기");
+        text.setText("가격 비교하기");
         arrow.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.group_indicator));
         return view;
     }
@@ -101,11 +101,12 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
         TextView price_name = (TextView) view.findViewById(R.id.price_name);
         price_name.setText(mProduct.get(groupPosition).prices.get(childPosition));
 
+        /* 삭제
         // 맨 처음에만 최저가 태그 보이게
         TextView price_lower_tag = (TextView) view.findViewById(R.id.price_lower_tag);
         if (childPosition == 0) {
             price_lower_tag.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         // 마지막 아이템 구분선 사라지고 멘트 나오게 하기!
         View line = (View) view.findViewById(R.id.line);

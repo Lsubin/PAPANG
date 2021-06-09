@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="24dp"
                         android:fontFamily="@font/kopubworlddotumedium"
-                        android:text="리뷰 선택"
+                        android:text="리뷰 유형"
                         android:textSize="14sp"
                         android:textColor="#4B4B4B"
                         app:layout_constraintTop_toTopOf="parent"

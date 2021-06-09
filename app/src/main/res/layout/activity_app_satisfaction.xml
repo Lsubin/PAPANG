@@ -36,7 +36,6 @@
             android:text="서비스를 이용하면서 느낀 불편한 점이나 원하는 추가 기능이나 향수 브랜드가 있다면 알려주세요!"
             android:textColor="#545454"
             android:textSize="9sp"
-            android:singleLine="true"
             android:fontFamily="@font/kopubworlddotumedium"
             android:layout_marginTop="5dp"
             app:layout_constraintTop_toBottomOf="@id/text_1"
