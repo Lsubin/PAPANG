@@ -132,7 +132,7 @@ public class Product_Result_RecyclerView_Adpater extends RecyclerView.Adapter<Pr
                     Log.e("실패", "Unable to download the file.", ex);
                 }
             });
-
+            file.delete();
         }
 
     }

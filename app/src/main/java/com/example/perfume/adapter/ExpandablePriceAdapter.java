@@ -41,6 +41,11 @@ public class ExpandablePriceAdapter extends BaseExpandableListAdapter {
         return mProduct.get(groupPosition).shops.size();
     }
 
+    public void clear(){
+        mProduct.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public Object getGroup(int groupPosition) {
         return mProduct.get(groupPosition);

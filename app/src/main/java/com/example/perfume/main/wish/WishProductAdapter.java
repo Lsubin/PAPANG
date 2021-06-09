@@ -89,6 +89,10 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
         return wishes.size();
     }
 
+    public String getName(int position){
+        return wishes.get(position).getName();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView product_image;

@@ -42,6 +42,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.bumptech.glide.Glide;
 import com.example.perfume.adapter.ExpandablePriceAdapter;
+import com.example.perfume.adapter.HashtagAdapter;
 import com.example.perfume.adapter.PerfumeSizeAdapter;
 import com.example.perfume.adapter.ReviewListAdapter;
 import com.example.perfume.adapter.ReviewTabAdapter;
@@ -111,6 +112,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     ImageView detail_note_1;            // 향수 노트 1
     ImageView detail_note_2;            // 향수 노트 2
     ImageView detail_note_3;            // 향수 노트 3
+    ImageView d_text2;
 
     TextView detail_shop_name;          // 쇼핑몰 이름
     TextView detail_product_name;       // 상품 이름
@@ -139,10 +141,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     ArrayList<String> sizes;
     ArrayList<Integer> ids;
+    ArrayList<String> checks;
 
     LinearLayoutManager mLayoutManager;
     PerfumeSizeAdapter adapter;
-    PerfumeSizeAdapter adapter2;
+    HashtagAdapter adapter2;
     Product_Decoration decoration;
     ReviewListAdapter radapter;
     ExpandablePriceAdapter expandable_adpater;
@@ -181,8 +184,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         wish_count = (TextView)findViewById(R.id.wish_count);
         btn_detail_wish = (ImageButton)findViewById(R.id.btn_detail_wish);
         btn_shop = (ImageButton)findViewById(R.id.btn_shop);
+        d_text2 = (ImageView)findViewById(R.id.d_text2);
 
-        mData = new ArrayList<>();
         shop_name = new ArrayList<>();
         price = new ArrayList<>();
 
@@ -213,14 +216,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 getWishCount();
                 checkWishList(detail_shop_name.getText().toString());
 
-                detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()));
+                detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration() - 1));
                 detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
                 detail_note_3.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getFirst()));
                 detail_size.setText(r_perfumes.get(0).getSize() + "ml");
 
                 ArrayList<Integer> flavors = new ArrayList<>();
                 getHashtag(r_perfumes.get(0).getMain(), r_perfumes.get(0).getFirst());
-                urls = new ArrayList<>();
 
                 for(int i = 0; i < r_perfumes.size(); i++){
                     if(r_perfumes.get(0).getCheck().equals("TRUE"))
@@ -231,13 +233,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
                 // 사이즈 받아온걸로 세팅
                 sizes = new ArrayList<>();
+                ids = new ArrayList<>();
+                checks = new ArrayList<>();
 
                 for(int i = 0; i < r_perfumes.size(); i++){
+                    checks.add(r_perfumes.get(i).getCheck());
+                    ids.add(r_perfumes.get(i).getPerfumeID());
                     sizes.add(String.valueOf(r_perfumes.get(i).getSize()));
                     Log.e("값", String.valueOf(r_perfumes.get(i).getSize()));
                 }
 
-                //adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes);
+                adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes, ids, checks);
                 detail_size_item.setAdapter(adapter);
             }
 
@@ -254,6 +260,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     View reV = rv.findChildViewUnder(e.getX(), e.getY());
                     int position = rv.getChildAdapterPosition(reV);
                     if (position >= 0) {
+                        int id = adapter.getID(position);
+                        if(adapter.getCheck(position).equals("TRUE")){
+                            detail_price_item.setVisibility(View.VISIBLE);
+                            getURL(id);
+                        }
+                        else if(adapter.getCheck(position).equals("FALSE"))
+                            detail_price_item.setVisibility(View.GONE);
                         String num = String.valueOf(adapter.getSize(position));
                         detail_size.setText(num + "ml");
                         adapter.notifyDataSetChanged();
@@ -364,10 +377,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
-    public void setSizeUrl(int perfumeID){
-
-    }
-
     private void addWishCount(){
         Map<String, String> map = new HashMap();
         final int count = Integer.parseInt(wish_count.getText().toString()) + 1;
@@ -476,6 +485,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         dataApi.getPerfumeURL(perfumeID).enqueue(new Callback<Price>() {
             @Override
             public void onResponse(Call<Price> call, Response<Price> response) {
+                urls = new ArrayList<>();
                 r_urls = response.body();
                 if(!r_urls.getUrl1().equals(""))
                     urls.add(r_urls.getUrl1());
@@ -499,8 +509,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         shop_name = searchPrice.shops;
         price = searchPrice.prices;
         Product product = new Product(shop_name, price);
+        mData = new ArrayList<>();
         mData.add(product);
-
+        //expandable_adpater.clear();
         expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
         detail_price_item.setAdapter(expandable_adpater);
         detail_price_item.setGroupIndicator(null);
@@ -525,7 +536,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                //adapter2 = new PerfumeSizeAdapter(getApplicationContext(), hashtag);
+                adapter2 = new HashtagAdapter(getApplicationContext(), hashtag);
                 detail_product_tag.setAdapter(adapter2);
             }
         }, 1000); // 0.5초후

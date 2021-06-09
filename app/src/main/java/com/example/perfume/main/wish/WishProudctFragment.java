@@ -1,9 +1,11 @@
 package com.example.perfume.main.wish;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,10 +14,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
@@ -62,6 +66,8 @@ public class WishProudctFragment extends Fragment {
 
     SwipeRefreshLayout mSwipeRefreshLayout;
     FragmentTransaction ft;
+
+    private boolean itemTouch;
 
     public WishProudctFragment() {
         // Required empty public constructor
@@ -143,6 +149,33 @@ public class WishProudctFragment extends Fragment {
         else{
             wishcount_text.setText("0개");
         }
+
+        wish_product_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    String p_name = adapter.getName(rv.getChildAdapterPosition(reV));
+                    Intent gotoDetail = new Intent(context, ProductDetailsActivity.class);
+                    gotoDetail.putExtra("name", p_name);
+                    startActivity(gotoDetail);
+                } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
+                    itemTouch = true;
+                }
+                return false;
+
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
         return view;
     }

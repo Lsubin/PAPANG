@@ -374,6 +374,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/d_frame6"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -408,6 +409,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/d_frame7"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
@@ -500,6 +502,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/d_frame8"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="35dp"

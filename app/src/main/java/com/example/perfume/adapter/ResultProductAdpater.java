@@ -90,6 +90,10 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
         return p_name.size();
     }
 
+    public String getName(int position){
+        return p_name.get(position);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView product_image;

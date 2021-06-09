@@ -20,14 +20,17 @@ public class PerfumeSizeAdapter extends RecyclerView.Adapter<PerfumeSizeAdapter.
 
     ArrayList<String> product_sizes;          // 상품 사이즈
     ArrayList<Integer> product_ids;          // 상품 ID
+    ArrayList<String> product_checks;          // 상품 Check
 
-    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes, ArrayList<Integer> ids) {
+    public PerfumeSizeAdapter(Context context, ArrayList<String> sizes, ArrayList<Integer> ids, ArrayList<String> checks) {
         this.context = context;
 
         product_sizes = new ArrayList<>();
         product_ids = new ArrayList<>();
+        product_checks = new ArrayList<>();
         this.product_sizes = sizes;
         this.product_ids = ids;
+        this.product_checks = checks;
     }
 
     @NonNull
@@ -52,6 +55,14 @@ public class PerfumeSizeAdapter extends RecyclerView.Adapter<PerfumeSizeAdapter.
 
     public String getSize(int position){
         return product_sizes.get(position);
+    }
+
+    public String getCheck(int position){
+        return product_checks.get(position);
+    }
+
+    public int getID(int position){
+        return product_ids.get(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

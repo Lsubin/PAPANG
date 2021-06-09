@@ -1,5 +1,6 @@
 package com.example.perfume;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ public class AllResultProductActivity extends AppCompatActivity {
     String nickname;
 
     TextView result_1_text, result_2_text, result_3_text, result_456_text, result_7_text;
+    private boolean itemTouch;
 
 
     @Override
@@ -142,6 +145,34 @@ public class AllResultProductActivity extends AppCompatActivity {
 
         adapter = new ResultProductAdpater(getApplicationContext(), p_name, p_brand);
         recycler_result.setAdapter(adapter);
+
+        recycler_result.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    String p_name = adapter.getName(rv.getChildAdapterPosition(reV));
+                    Intent gotoDetail = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                    gotoDetail.putExtra("name", p_name);
+                    startActivity(gotoDetail);
+                } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
+                    itemTouch = true;
+                }
+                return false;
+
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
     }
 
     private void changeResultText(ArrayList<String> perfumeInfos) { //가격은 String q_7 추가

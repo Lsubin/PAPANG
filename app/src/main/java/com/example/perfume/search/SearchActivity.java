@@ -1,5 +1,6 @@
 package com.example.perfume.search;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -21,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
 import com.example.perfume.adapter.ResultProductAdpater;
@@ -55,6 +58,7 @@ public class SearchActivity extends AppCompatActivity {
 
     ArrayList<String> p_name;
     ArrayList<String> p_brand;
+    private boolean itemTouch;
 
     ImageButton search_back_btn;                // 뒤로가기 버튼
     EditText search_input;                      // 검색어 입력 창
@@ -184,6 +188,32 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        result_search_item.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    String p_name = result_product_adapter.getName(rv.getChildAdapterPosition(reV));
+                    Intent gotoDetail = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                    gotoDetail.putExtra("name", p_name);
+                    startActivity(gotoDetail);
+                } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
+                    itemTouch = true;
+                }
+                return false;
+
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
     private void getSearchResult(String word){
