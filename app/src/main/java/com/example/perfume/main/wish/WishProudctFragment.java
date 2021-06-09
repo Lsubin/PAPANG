@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,10 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.perfume.ProductDetailsActivity;
@@ -34,6 +38,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
+import static java.lang.Thread.sleep;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,6 +73,12 @@ public class WishProudctFragment extends Fragment {
     FragmentTransaction ft;
 
     private boolean itemTouch;
+    ProgressBar loading_pb;
+    ConstraintLayout whole_frame;
+    Thread thread;
+    int i  = 0;
+    Boolean isCheckedImg = false;
+    Boolean isCheckedData = false;
 
     public WishProudctFragment() {
         // Required empty public constructor
@@ -142,13 +153,34 @@ public class WishProudctFragment extends Fragment {
             }
         });
 
-
         if(access.equals("Login")){
             getWishList();
         }
         else{
             wishcount_text.setText("0개");
         }
+        //로딩
+        loading_pb = (ProgressBar)view.findViewById(R.id.loading_pb);
+        whole_frame = (ConstraintLayout)view.findViewById(R.id.whole_frame);
+
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try{
+                        i++;
+                        sleep(1000);
+                        if(isCheckedData == true && isCheckedImg == true) { // 향수 정보랑 이미지 불러와졌으면
+                            handler.sendEmptyMessage(1);
+                            break;
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }); thread.start();
+
 
         wish_product_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -191,10 +223,11 @@ public class WishProudctFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Wish>> call, Response<List<Wish>> response) {
                 wishes = response.body();
+                isCheckedData = true;
 
                 // 저장 목록 아이템 개수
                 wishcount_text.setText(String.valueOf(wishes.size() + " 개"));
-                adapter = new WishProductAdapter(context, wishes);
+                adapter = new WishProductAdapter(context, wishes, WishProudctFragment.this);
                 wish_product_grid.setAdapter(adapter);
             }
 
@@ -203,5 +236,21 @@ public class WishProudctFragment extends Fragment {
 
             }
         });
+    }
+
+    private Handler handler = new Handler(){
+        public void handleMessage(Message msg){
+            if(msg.what == 1)
+            {
+                loading_pb.setVisibility(View.INVISIBLE);
+                whole_frame.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    // 이미지는 어댑터에서 불러옴, 불러오면 true
+    public boolean setCheckedImg(boolean check)
+    {
+        return isCheckedImg = check;
     }
 }

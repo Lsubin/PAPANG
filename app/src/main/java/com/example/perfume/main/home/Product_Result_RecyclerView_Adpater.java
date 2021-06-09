@@ -35,9 +35,12 @@ public class Product_Result_RecyclerView_Adpater extends RecyclerView.Adapter<Pr
     List<Perfume> perfumes;
     String path;
 
-    public Product_Result_RecyclerView_Adpater(Context context, List<Perfume> perfumes) {
+    HomeFragment homeFragment;
+
+    public Product_Result_RecyclerView_Adpater(Context context, List<Perfume> perfumes, HomeFragment fragment) {
         this.context = context;
         this.perfumes = perfumes;
+        this.homeFragment = fragment;
     }
 
     @NonNull
@@ -133,6 +136,7 @@ public class Product_Result_RecyclerView_Adpater extends RecyclerView.Adapter<Pr
                 }
             });
             file.delete();
+            homeFragment.setCheckedImg2(true);
         }
 
     }

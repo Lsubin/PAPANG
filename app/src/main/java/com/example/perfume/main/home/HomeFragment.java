@@ -5,14 +5,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -63,6 +66,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static java.lang.Thread.sleep;
+
 public class HomeFragment extends Fragment {
     View root;
 
@@ -96,6 +101,14 @@ public class HomeFragment extends Fragment {
     boolean isResult;   // 추천 받았는지
     ConstraintLayout frame1;
     ConstraintLayout frame2;
+
+    ProgressBar loading_pb;
+    ConstraintLayout whole_frame;
+    Thread thread;
+    int i  = 0;
+    Boolean isCheckedImg1 = false;
+    Boolean isCheckedImg2 = false;
+    Boolean isCheckedData = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -135,23 +148,36 @@ public class HomeFragment extends Fragment {
         recyclerView2.setLayoutManager(mLayoutManager);
         recyclerView2.addItemDecoration(decoration);
 
+        loading_pb = (ProgressBar)root.findViewById(R.id.loading_pb);
+        whole_frame = (ConstraintLayout)root.findViewById(R.id.whole_frame);
+
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try{
+                        i++;
+                        sleep(1000);
+                        if(isCheckedData == true && isCheckedImg1 == true && isCheckedImg2 == true) { // 향수 정보랑 이미지 불러와졌으면
+                            handler.sendEmptyMessage(1);
+                            break;
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }); thread.start();
+
         dataApi.selectAll().enqueue(new Callback<List<Perfume>>() {
             @Override
             public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
                 r_perfumes = response.body();
-                adapter = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes);
-                recyclerView.setAdapter(adapter);
-
-                adapter2 = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes);
-                recyclerView2.setAdapter(adapter2);
-
-                adapter3 = new Product_Result_RecyclerView_Adpater(root.getContext(), r_perfumes);
-                recyclerView4.setAdapter(adapter3);
+                isCheckedData = true;
+                getData();
             }
-
             @Override
             public void onFailure(Call<List<Perfume>> call, Throwable t) {
-
                 Log.e("연결", t.getMessage());
             }
         });
@@ -248,6 +274,41 @@ public class HomeFragment extends Fragment {
             frame2.setVisibility(View.INVISIBLE);
         }
         return root;
+
+        // 로딩 중
+
     }
 
+    private void getData() {
+        adapter = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes, HomeFragment.this);
+        recyclerView.setAdapter(adapter);
+
+        adapter2 = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes, HomeFragment.this);
+        recyclerView2.setAdapter(adapter2);
+
+        adapter3 = new Product_Result_RecyclerView_Adpater(root.getContext(), r_perfumes, HomeFragment.this);
+        recyclerView4.setAdapter(adapter3);
+    }
+
+    private Handler handler = new Handler(){
+        public void handleMessage(Message msg){
+            if(msg.what == 1)
+            {
+                loading_pb.setVisibility(View.INVISIBLE);
+                whole_frame.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    // 이미지는 어댑터에서 불러옴, 불러오면 true
+    public boolean setCheckedImg1(boolean check)
+    {
+        return isCheckedImg1 = check;
+    }
+
+    // 결과 이미지
+    public boolean setCheckedImg2(boolean check)
+    {
+        return isCheckedImg2 = check;
+    }
 }

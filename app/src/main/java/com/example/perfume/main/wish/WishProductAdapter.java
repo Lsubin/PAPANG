@@ -60,9 +60,12 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
 
     List<Wish> wishes;
 
-    WishProductAdapter(Context context, List<Wish> wishes) {
+    WishProudctFragment wishProudctFragment;
+
+    WishProductAdapter(Context context, List<Wish> wishes, WishProudctFragment fragment) {
         this.context = context;
         this.wishes = wishes;
+        this.wishProudctFragment = fragment;
     }
 
     @NonNull
@@ -231,6 +234,7 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
                 }
             });
 
+            wishProudctFragment.setCheckedImg(true);
         }
     }
 }

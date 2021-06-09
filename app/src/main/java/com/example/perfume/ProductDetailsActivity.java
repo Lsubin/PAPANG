@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +85,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static java.lang.Thread.sleep;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -151,6 +156,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
     ExpandablePriceAdapter expandable_adpater;
     ExpandableListView detail_price_item;
 
+    ProgressBar loading_pb;
+    ConstraintLayout whole_frame;
+    Thread thread;
+    Boolean isCheckedData = false;
+    Boolean isCheckedPrice = false;
+    int i  = 0;
+
     // 뒤로가기 버튼
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -206,45 +218,33 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_product_tag.setLayoutManager(mLayoutManager);
         detail_product_tag.addItemDecoration(decoration);
 
+        loading_pb = (ProgressBar)findViewById(R.id.loading_pb);
+        whole_frame = (ConstraintLayout)findViewById(R.id.whole_frame);
+
+        // 로딩 중
+        thread = new Thread(new Runnable() {
+            public void run() {
+                while(true){
+                    try{
+                        i++;
+                        sleep(1000);
+                        if(isCheckedData == true && isCheckedPrice == true) { // 향수 정보랑 가격 불러와졌으면
+                            handler.sendEmptyMessage(1);
+                            break;
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }); thread.start();
+
         dataApi.selectName(p_name).enqueue(new Callback<List<Perfume>>() {
             @Override
             public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
                 r_perfumes = response.body();
-                detail_shop_name.setText(r_perfumes.get(0).getBrand());         // 브랜드
-                detail_product_name.setText(p_name);
-
-                getWishCount();
-                checkWishList(detail_shop_name.getText().toString());
-
-                detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration() - 1));
-                detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
-                detail_note_3.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getFirst()));
-                detail_size.setText(r_perfumes.get(0).getSize() + "ml");
-
-                ArrayList<Integer> flavors = new ArrayList<>();
-                getHashtag(r_perfumes.get(0).getMain(), r_perfumes.get(0).getFirst());
-
-                for(int i = 0; i < r_perfumes.size(); i++){
-                    if(r_perfumes.get(0).getCheck().equals("TRUE"))
-                    {
-                        getURL((r_perfumes.get(0).getPerfumeID()));
-                        break;
-                    }
-                }
-                // 사이즈 받아온걸로 세팅
-                sizes = new ArrayList<>();
-                ids = new ArrayList<>();
-                checks = new ArrayList<>();
-
-                for(int i = 0; i < r_perfumes.size(); i++){
-                    checks.add(r_perfumes.get(i).getCheck());
-                    ids.add(r_perfumes.get(i).getPerfumeID());
-                    sizes.add(String.valueOf(r_perfumes.get(i).getSize()));
-                    Log.e("값", String.valueOf(r_perfumes.get(i).getSize()));
-                }
-
-                adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes, ids, checks);
-                detail_size_item.setAdapter(adapter);
+                isCheckedData = true;
+                getInfo();
             }
 
             @Override
@@ -375,6 +375,49 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "잠시만 기다려 주세요.", 0).show();
             }
         });
+    }
+
+    private void getInfo() {
+        detail_shop_name.setText(r_perfumes.get(0).getBrand());         // 브랜드
+        detail_product_name.setText(p_name);
+
+        getWishCount();
+        checkWishList(detail_shop_name.getText().toString());
+
+        detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()));
+        detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
+        detail_note_3.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getFirst()));
+        detail_size.setText(r_perfumes.get(0).getSize() + "ml");
+
+        ArrayList<Integer> flavors = new ArrayList<>();
+        getHashtag(r_perfumes.get(0).getMain(), r_perfumes.get(0).getFirst());
+        urls = new ArrayList<>();
+
+        for(int i = 0; i < r_perfumes.size(); i++){
+            if(r_perfumes.get(0).getCheck().equals("TRUE"))
+            {
+                getURL((r_perfumes.get(0).getPerfumeID()));
+                break;
+            }
+            else {
+                // 가격이 없을 경우에도 가격을 불러왔다고 체크해야함
+                isCheckedPrice = true;
+            }
+        }
+        // 사이즈 받아온걸로 세팅
+        sizes = new ArrayList<>();
+
+        for(int i = 0; i < r_perfumes.size(); i++){
+            sizes.add(String.valueOf(r_perfumes.get(i).getSize()));
+            Log.e("값", String.valueOf(r_perfumes.get(i).getSize()));
+        }
+
+        //adapter = new PerfumeSizeAdapter(getApplicationContext(), sizes);
+        detail_size_item.setAdapter(adapter);
+    }
+
+    public void setSizeUrl(int perfumeID){
+
     }
 
     private void addWishCount(){
@@ -515,6 +558,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
         detail_price_item.setAdapter(expandable_adpater);
         detail_price_item.setGroupIndicator(null);
+        isCheckedPrice = true;
     }
 
     public void getHashtag(int main, int first) {
@@ -598,4 +642,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         file.delete();
     }
+
+    private Handler handler = new Handler(){
+        public void handleMessage(Message msg){
+            if(msg.what == 1)
+            {
+                loading_pb.setVisibility(View.INVISIBLE);
+                whole_frame.setVisibility(View.VISIBLE);
+                Log.d("로딩 없애", i +"");
+            }
+        }
+    };
 }
