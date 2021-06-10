@@ -182,58 +182,8 @@ public class WishProductAdapter extends RecyclerView.Adapter<WishProductAdapter.
         }
 
         public void getImage(final String p_name){
-
-            // Amazon Cognito 인증 공급자를 초기화합니다
-            CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                    context,
-                    "us-east-2:7241c5b2-3cf6-4a26-99d2-d08b31b32f8b", // 자격 증명 풀 ID
-                    Regions.US_EAST_2 // 리전
-            );
-
-            TransferNetworkLossHandler.getInstance(context);
-            AmazonS3Client amazonS3Client = new AmazonS3Client(credentialsProvider, Region.getRegion(Regions.AP_NORTHEAST_2));
-            TransferUtility transferUtility = TransferUtility.builder()
-                    .context(context)
-                    .defaultBucket("papang-bucket")
-                    .s3Client(amazonS3Client)
-                    .build();
-
-            String key = "resources/perfume_de/" + p_name + ".png";
-            path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/papang_images").toString();
-            File file = new File(path);
-            if(!file.exists())
-                file.mkdirs();
-
-            final File download_file = new File(file.getPath() + "/" + p_name + ".png");
-            Log.e("이름", file.getPath());
-
-            TransferObserver downloadObserver = transferUtility.download(key, download_file);
-            // 다운로드 과정을 알 수 있도록 Listener를 추가할 수 있다.
-            downloadObserver.setTransferListener(new TransferListener() {
-                @Override
-                public void onStateChanged(int id, TransferState state) {
-                    if (TransferState.COMPLETED == state) {
-                        // Handle a completed upload.
-                        Bitmap bitmap = BitmapFactory.decodeFile(path + "/" + p_name + ".png");
-                        if(bitmap != null)
-                            Glide.with(context)
-                                    .load(bitmap)
-                                    .fitCenter()
-                                    .into(product_image);
-                    }
-                }
-
-                @Override
-                public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-
-                }
-
-                @Override
-                public void onError(int id, Exception ex) {
-                    Log.e("실패", "Unable to download the file.", ex);
-                }
-            });
-
+            String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name + ".png";
+            Glide.with(context).load(url).into(product_image);
             wishProudctFragment.setCheckedImg(true);
         }
     }

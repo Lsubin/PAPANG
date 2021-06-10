@@ -241,6 +241,12 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
 
 
         public void getImage(final String p_name){
+            String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name + ".png";
+            Glide.with(context).load(url).into(product_image);
+        }
+
+        /*
+        public void getImage(final String p_name){
 
             // Amazon Cognito 인증 공급자를 초기화합니다
             CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
@@ -295,6 +301,7 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
 
             file.delete();
         }
+         */
     }
 
 }

@@ -74,7 +74,10 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -400,7 +403,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         getWishCount();
         checkWishList(detail_shop_name.getText().toString());
 
-        detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()));
+        detail_note_1.setImageDrawable(flavor.concentrations.get(r_perfumes.get(0).getConcentration()-1));
         detail_note_2.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getMain()));
         detail_note_3.setImageDrawable(flavor.flavors.get(r_perfumes.get(0).getFirst()));
         detail_size.setText(r_perfumes.get(0).getSize() + "ml");
@@ -608,60 +611,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void getImage(){
-
-        // Amazon Cognito 인증 공급자를 초기화합니다
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                getApplicationContext(),
-                "us-east-2:7241c5b2-3cf6-4a26-99d2-d08b31b32f8b", // 자격 증명 풀 ID
-                Regions.US_EAST_2 // 리전
-        );
-
-        TransferNetworkLossHandler.getInstance(getApplicationContext());
-        AmazonS3Client amazonS3Client = new AmazonS3Client(credentialsProvider, Region.getRegion(Regions.AP_NORTHEAST_2));
-        TransferUtility transferUtility = TransferUtility.builder()
-                .context(getApplicationContext())
-                .defaultBucket("papang-bucket")
-                .s3Client(amazonS3Client)
-                .build();
-
-        String key = "resources/perfume_de/" + p_name + ".png";
-        path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/papang_images").toString();
-        file = new File(path);
-        if(!file.exists())
-            file.mkdirs();
-
-        final File download_file = new File(file.getPath() + "/" + p_name + ".png");
-        Log.e("이름", file.getPath());
-
-        TransferObserver downloadObserver = transferUtility.download(key, download_file);
-        // 다운로드 과정을 알 수 있도록 Listener를 추가할 수 있다.
-        downloadObserver.setTransferListener(new TransferListener() {
-            @Override
-            public void onStateChanged(int id, TransferState state) {
-                if (TransferState.COMPLETED == state) {
-                    // Handle a completed upload.
-                    Bitmap bitmap = BitmapFactory.decodeFile(path + "/" + p_name + ".png");
-                    if(bitmap != null)
-                        Glide.with(getApplicationContext())
-                                .load(bitmap)
-                                .fitCenter()
-                                .into(product_image);
-                    download_file.delete();
-                }
-            }
-
-            @Override
-            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-
-            }
-
-            @Override
-            public void onError(int id, Exception ex) {
-                Log.e("실패", "Unable to download the file.", ex);
-            }
-        });
-
-        file.delete();
+        String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name + ".png";
+        Glide.with(this).load(url).into(product_image);
     }
 
     private Handler handler = new Handler(){
