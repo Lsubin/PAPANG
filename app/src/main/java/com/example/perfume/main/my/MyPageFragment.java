@@ -271,38 +271,61 @@ public class MyPageFragment extends Fragment {
         switch (ur.getFlavor1()) {
             case 1:
                 flavor_1 = "Aldehyde";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aldehyde_img));
                 break;
             case 2:
                 flavor_1 = "Animalic";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_animal_img));
                 break;
             case 3:
                 flavor_1 = "Aromatic";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aromatic_img));
                 break;
             case 4:
                 flavor_1 = "Balsam";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_balsam_img));
                 break;
             case 5:
                 flavor_1 = "Chypre";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_chypre_img));
                 break;
             case 6:
                 flavor_1 = "Citrus";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_citrus_img));
                 break;
             case 7:
                 flavor_1 = "Green";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_green_img));
                 break;
             case 8:
                 flavor_1 = "Floral";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_floral_img));
                 break;
             case 9:
                 flavor_1 = "Fruity";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_fruity_img));
                 break;
             case 10:
                 flavor_1 = "Spicy";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_spicy_img));
                 break;
             case 11:
                 flavor_1 = "Woody";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_woody_img));
                 break;
             case 12:
+                flavor_1 = "Aquatic";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aquatic_img));
+                break;
+            case 13:
+                flavor_1 = "Nutty";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_nutty_img));
+                break;
+            case 14:
+                flavor_1 = "Leather";
+                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_leather_img));
+                break;
+            case 15:
                 flavor_1 = "None";
                 break;
         }
@@ -342,6 +365,15 @@ public class MyPageFragment extends Fragment {
                 flavor_2 = "Woody";
                 break;
             case 12:
+                flavor_2 = "Aquatic";
+                break;
+            case 13:
+                flavor_2 = "Nutty";
+                break;
+            case 14:
+                flavor_2 = "Leather";
+                break;
+            case 15:
                 flavor_2 = "None";
                 break;
         }
@@ -381,6 +413,15 @@ public class MyPageFragment extends Fragment {
                 flavor_3 = "Woody";
                 break;
             case 12:
+                flavor_3 = "Aquatic";
+                break;
+            case 13:
+                flavor_3 = "Nutty";
+                break;
+            case 14:
+                flavor_3 = "Leather";
+                break;
+            case 15:
                 flavor_3 = "None";
                 break;
         }

@@ -92,6 +92,7 @@ public class Question2 extends Fragment {
         size5 = (ImageButton) v.findViewById(R.id.size_5);
         size6 = (ImageButton) v.findViewById(R.id.size_6);
 
+        /*
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
         if (((QuestionActivity) QuestionActivity.context).q_state[1] != false) {
             String result = ((QuestionActivity) QuestionActivity.context).q_result[1];
@@ -134,7 +135,7 @@ public class Question2 extends Fragment {
                     break;
             }
             ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
-        }
+        }*/
 
         Button.OnClickListener sizeClickListener = new View.OnClickListener() {
             @Override

@@ -26,12 +26,13 @@
 
     <TextView
             android:id="@+id/product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/kopubworlddotumbold"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="30dp"
             android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/company_name"
             app:layout_constraintLeft_toLeftOf="parent"/>

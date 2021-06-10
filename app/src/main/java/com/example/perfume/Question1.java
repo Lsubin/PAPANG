@@ -81,6 +81,7 @@ public class Question1 extends Fragment {
         ode_p = (ImageButton) v.findViewById(R.id.ode_p);        // 오드 퍼퓸
         ode_pp = (ImageButton) v.findViewById(R.id.ode_pp);      // 퍼퓸
 
+        /*
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
         if (((QuestionActivity) QuestionActivity.context).q_state[0] != false) {
             String result = ((QuestionActivity) QuestionActivity.context).q_result[0];
@@ -118,7 +119,7 @@ public class Question1 extends Fragment {
                     q1_result = result;
                     break;
             }
-        }
+        } */
 
         ImageButton.OnClickListener btnClickListener = new ImageButton.OnClickListener() {
             @Override

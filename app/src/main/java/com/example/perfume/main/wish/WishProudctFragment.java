@@ -209,6 +209,19 @@ public class WishProudctFragment extends Fragment {
             }
         });
 
+        wish_product_grid.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                itemTouch = false;
+            }
+        });
+
         return view;
     }
 
