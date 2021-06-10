@@ -187,6 +187,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // 당신이 잊지 못할 향수는?
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -215,6 +216,47 @@ public class HomeFragment extends Fragment {
         });
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                itemTouch = false;
+            }
+        });
+
+        // 파팡 추천 향수
+        recyclerView2.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
+                    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    String p_name = adapter.getName(rv.getChildAdapterPosition(reV));
+                    Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
+                    gotoDetail.putExtra("name", p_name);
+                    startActivity(gotoDetail);
+                } else if (MotionEvent.ACTION_DOWN == e.getAction()) {
+                    itemTouch = true;
+                }
+                return false;
+
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+        recyclerView2.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);

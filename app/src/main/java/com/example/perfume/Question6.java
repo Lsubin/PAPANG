@@ -81,13 +81,14 @@ public class Question6 extends Fragment {
         v = inflater.inflate(R.layout.fragment_question6, container, false);
 
 
+        /*
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
         if (((QuestionActivity) QuestionActivity.context).q_state[5] != false) {
             result = Integer.parseInt(((QuestionActivity) QuestionActivity.context).q_result[5]);
             q6_result = String.valueOf(result);
             q6_state = true;
         } else
-            result = 0;
+            result = 0;  */
 
         init(v);
 

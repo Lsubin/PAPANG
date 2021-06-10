@@ -19,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+            <!--
             <ImageButton
                     android:id="@+id/q_back_btn"
                     android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
                     android:background="#00fff000"
                     android:src="@mipmap/back"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"/> -->
 
             <ImageButton
                     android:id="@+id/guide_btn"

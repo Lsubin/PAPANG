@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class AllResultProductActivity extends AppCompatActivity {
     ArrayList<String> p_brand;
     ArrayList<String> p_id;
 
+    ImageView flavor_img;
     ImageButton back_btn;
     ImageButton restart_btn;
     RecyclerView recycler_result;
@@ -76,6 +78,8 @@ public class AllResultProductActivity extends AppCompatActivity {
         result_3_text = (TextView) findViewById(R.id.result_3_text);
         result_456_text = (TextView) findViewById(R.id.result_456_text);
         //result_7_text = (TextView) findViewById(R.id.result_7_text);
+
+        flavor_img = (ImageView) findViewById(R.id.flavor_img);
 
         // 테스트 결과 값 데이터 받기
         Intent secondIntent = getIntent();
@@ -178,13 +182,13 @@ public class AllResultProductActivity extends AppCompatActivity {
     private void changeResultText(ArrayList<String> perfumeInfos) { //가격은 String q_7 추가
         switch (perfumeInfos.get(0)) {
             case "ode_c":
-                result_1_text.setText("오데 코롱");
+                result_1_text.setText("오 데 코롱");
                 break;
             case "ode_d":
-                result_1_text.setText("오드 뚜왈렛");
+                result_1_text.setText("오 드 뚜왈렛");
                 break;
             case "ode_p":
-                result_1_text.setText("오데 퍼퓸");
+                result_1_text.setText("오 데 퍼퓸");
                 break;
             case "ode_pp":
                 result_1_text.setText("퍼퓸");
@@ -239,41 +243,65 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
+        // 첫번째로 고른 향료 기준으로 이미지 변경!
         switch (perfumeInfos.get(3)) {
             case "1":
                 flavor_1 = "Aldehyde";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aldehyde_img));
                 break;
             case "2":
                 flavor_1 = "Animalic";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_animal_img));
                 break;
             case "3":
                 flavor_1 = "Aromatic";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aromatic_img));
                 break;
             case "4":
                 flavor_1 = "Balsam";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_balsam_img));
                 break;
             case "5":
                 flavor_1 = "Chypre";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_chypre_img));
                 break;
             case "6":
                 flavor_1 = "Citrus";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_citrus_img));
                 break;
             case "7":
                 flavor_1 = "Green";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_green_img));
                 break;
             case "8":
                 flavor_1 = "Floral";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_floral_img));
                 break;
             case "9":
                 flavor_1 = "Fruity";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_fruity_img));
                 break;
             case "10":
                 flavor_1 = "Spicy";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_spicy_img));
                 break;
             case "11":
                 flavor_1 = "Woody";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_woody_img));
                 break;
             case "12":
+                flavor_1 = "Aquatic";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aquatic_img));
+                break;
+            case "13":
+                flavor_1 = "Nutty";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_nutty_img));
+                break;
+            case "14":
+                flavor_1 = "Leather";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_leather_img));
+                break;
+            case "15":
                 flavor_1 = "None";
                 break;
         }
@@ -313,6 +341,15 @@ public class AllResultProductActivity extends AppCompatActivity {
                 flavor_2 = "Woody";
                 break;
             case "12":
+                flavor_2 = "Aquatic";
+                break;
+            case "13":
+                flavor_2 = "Nutty";
+                break;
+            case "14":
+                flavor_2 = "Leather";
+                break;
+            case "15":
                 flavor_2 = "None";
                 break;
         }
@@ -352,6 +389,15 @@ public class AllResultProductActivity extends AppCompatActivity {
                 flavor_3 = "Woody";
                 break;
             case "12":
+                flavor_3 = "Aquatic";
+                break;
+            case "13":
+                flavor_3 = "Nutty";
+                break;
+            case "14":
+                flavor_3 = "Leather";
+                break;
+            case "15":
                 flavor_3 = "None";
                 break;
         }
