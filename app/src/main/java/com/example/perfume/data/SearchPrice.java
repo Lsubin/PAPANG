@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
@@ -154,7 +155,12 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
                         break;
                 }
             }
-        }catch (IOException e){}
+        }catch (IOException e){
+            Log.e("크롤링 오류", e.getMessage().toString());
+        }
+        catch (NullPointerException e){
+            Log.e("크롤링 오류", e.getMessage().toString());
+        }
 
         return null;
     }

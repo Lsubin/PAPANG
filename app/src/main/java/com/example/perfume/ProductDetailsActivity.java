@@ -21,6 +21,7 @@ import android.os.Debug;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -400,6 +401,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
         detail_shop_name.setText(r_perfumes.get(0).getBrand());         // 브랜드
         detail_product_name.setText(p_name);
 
+        if(TextUtils.isEmpty(r_perfumes.get(0).getUrl())) {
+            d_text2.setImageDrawable(getResources().getDrawable(R.mipmap.detail_no_txt));
+            btn_shop.setVisibility(View.INVISIBLE);
+        }
+
         getWishCount();
         checkWishList(detail_shop_name.getText().toString());
 
@@ -575,14 +581,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
         shop_name = searchPrice.shops;
         price = searchPrice.prices;
         urls = searchPrice.urls;
-        Product product = new Product(shop_name, price, urls);
-        mData = new ArrayList<>();
-        mData.add(product);
-        //expandable_adpater.clear();
-        expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
-        detail_price_item.setAdapter(expandable_adpater);
-        detail_price_item.setGroupIndicator(null);
-        isCheckedPrice = true;
+        if(price.size() > 0) {
+            Product product = new Product(shop_name, price, urls);
+            mData = new ArrayList<>();
+            mData.add(product);
+            //expandable_adpater.clear();
+            expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
+            detail_price_item.setAdapter(expandable_adpater);
+            detail_price_item.setGroupIndicator(null);
+            isCheckedPrice = true;
+        }
     }
 
     public void getHashtag(int main, int first) {
