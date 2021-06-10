@@ -84,7 +84,7 @@ public class Product_Result_RecyclerView_Adpater extends RecyclerView.Adapter<Pr
         }
 
         public void getImage(final String p_name){
-            String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name + ".png";
+            String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name.trim() + ".png";
             Glide.with(context).load(url).into(product_image);
             homeFragment.setCheckedImg2(true);
         }

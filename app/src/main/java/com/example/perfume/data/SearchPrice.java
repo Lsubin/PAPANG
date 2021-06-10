@@ -109,7 +109,7 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
                         shops.add("HMall");
                         break;
                     case "lotteimall":
-                        price = doc.select("span.num").first().text();
+                        price = doc.select("strong.final span").first().text();
                         if(Character.isDigit(price.charAt(price.length()-1)))
                             price += "원";
                         prices.add(price);

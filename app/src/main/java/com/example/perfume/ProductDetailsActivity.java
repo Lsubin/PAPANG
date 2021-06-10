@@ -611,7 +611,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void getImage(){
-        String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name + ".png";
+        String url = "https://papang-bucket.s3.ap-northeast-2.amazonaws.com/resources/perfume_de/" + p_name.trim() + ".png";
         Glide.with(this).load(url).into(product_image);
     }
 
