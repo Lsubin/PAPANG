@@ -94,5 +94,8 @@ public interface DataApi {
     @POST("user_recommend/change_save/{email}")
     Call<UserRecommendation> changeUserRecommend(@Path("email") String email, @Body Map<String, String> map);
 
+    // 만족도 추가하는 함수
+    @POST("satisfaction/add")
+    Call<Satisfaction> addSatisfaction(@Body Map<String, String> map);
 
 }

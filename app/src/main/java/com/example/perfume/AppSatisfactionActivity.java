@@ -19,7 +19,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.perfume.data.DataApi;
+import com.example.perfume.data.DataService;
+import com.example.perfume.data.Satisfaction;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AppSatisfactionActivity extends AppCompatActivity {
+
+    DataService dataService;
+    DataApi dataApi;
 
     private Spinner spinner;
     private ArrayAdapter<String> adapter;
@@ -30,6 +44,9 @@ public class AppSatisfactionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_satisfaction);
+
+        dataService = new DataService();
+        dataApi =  dataService.getRetrofitClient().create(DataApi.class);
 
         String[] items = {"향수 브랜드", "향수 추천", "기능", "디자인", "엔지니어링", "기타", "카테고리 선택"};
 
@@ -46,7 +63,10 @@ public class AppSatisfactionActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (edit_content.getText().toString().length() != 0)
-                    btn_submit.setImageResource(R.mipmap.btn_submit);
+                {
+                    if(!spinner.getSelectedItem().toString().equals("카테고리 선택"))
+                        btn_submit.setImageResource(R.mipmap.btn_submit);
+                }
                 else
                     btn_submit.setImageResource(R.mipmap.btn_unsubmit);
             }
@@ -54,6 +74,31 @@ public class AppSatisfactionActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btn_submit.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.btn_submit).getConstantState())){
+                    String type = spinner.getSelectedItem().toString();
+                    String text = edit_content.getText().toString();
+                    Map<String, String> map = new HashMap();
+                    map.put("type", type);
+                    map.put("text", text);
+                    dataApi.addSatisfaction(map).enqueue(new Callback<Satisfaction>() {
+                        @Override
+                        public void onResponse(Call<Satisfaction> call, Response<Satisfaction> response) {
+                            Toast.makeText(AppSatisfactionActivity.this, "좋은 의견 감사합니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Satisfaction> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
         });
 
