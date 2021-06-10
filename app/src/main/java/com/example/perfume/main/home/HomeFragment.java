@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -44,6 +45,8 @@ import com.example.perfume.NoResultActivity;
 import com.example.perfume.ProductDetailsActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
+import com.example.perfume.SettingDetail2Activity;
+import com.example.perfume.SettingDetail3Activity;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.Perfume;
@@ -111,6 +114,9 @@ public class HomeFragment extends Fragment {
     Boolean isCheckedImg2 = false;
     Boolean isCheckedData = false;
 
+    Button tc1_btn;
+    Button tc2_btn;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -134,6 +140,26 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent go_search = new Intent(root.getContext(), SearchActivity.class);
                 startActivity(go_search);
+            }
+        });
+
+        // 이용약관 이동
+        tc1_btn = (Button)root.findViewById(R.id.tc1_btn);
+        tc1_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), SettingDetail2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 개인정보처리방침 이동
+        tc2_btn = (Button)root.findViewById(R.id.tc2_btn);
+        tc2_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), SettingDetail3Activity.class);
+                startActivity(intent);
             }
         });
 

@@ -6,6 +6,7 @@
         android:id="@+id/recommendation_slidinglayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E5E5E5"
         android:gravity="bottom"
         app:umanoDragView="@id/guide_up_pannel"
         app:umanoPanelHeight="0dp"

@@ -43,7 +43,7 @@
         android:id="@+id/user_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="파팡을 통해 다영한 서비스를 이용해 보세요:)"
+        android:text="파팡을 통해 다양한 서비스를 이용해 보세요:)"
         android:textSize="13sp"
         android:textColor="#000"
         android:fontFamily="@font/kopubworlddotumedium"

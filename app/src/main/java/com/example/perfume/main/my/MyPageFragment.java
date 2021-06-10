@@ -181,10 +181,11 @@ public class MyPageFragment extends Fragment {
             public void onResponse(Call<UserRecommendation> call, Response<UserRecommendation> response) {
                 UserRecommendation ur;
                 ur = response.body();
-                style_img.setImageDrawable(getResources().getDrawable(R.mipmap.style_2_img));
+                //style_img.setImageDrawable(getResources().getDrawable(R.mipmap.style_2_img));
                 result_never.setVisibility(View.INVISIBLE);
                 btn_findperfume.setVisibility(View.INVISIBLE);
 
+                style_img.setVisibility(View.VISIBLE);
                 result_concentration.setVisibility(View.VISIBLE);
                 result_size.setVisibility(View.VISIBLE);
                 result_flavors.setVisibility(View.VISIBLE);
