@@ -166,6 +166,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     Thread thread;
     Boolean isCheckedData = false;
     Boolean isCheckedPrice = false;
+    Boolean isCheckedChangedPrice = false;
     int i  = 0;
     private boolean itemTouch;
 
@@ -269,14 +270,24 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 if (e.getAction() == MotionEvent.ACTION_DOWN) {
                     View reV = rv.findChildViewUnder(e.getX(), e.getY());
                     int position = rv.getChildAdapterPosition(reV);
+                    // 로딩바 - 화면 터치 막기
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    isCheckedChangedPrice = false;
                     if (position >= 0) {
+                        loading_pb.setVisibility(View.VISIBLE);
+                        newThread();
+
                         int id = adapter.getID(position);
                         if(adapter.getCheck(position).equals("TRUE")){
                             detail_price_item.setVisibility(View.VISIBLE);
                             getURL(id);
                         }
                         else if(adapter.getCheck(position).equals("FALSE"))
+                        {
                             detail_price_item.setVisibility(View.GONE);
+                            isCheckedChangedPrice = true;
+                        }
                         String num = String.valueOf(adapter.getSize(position));
                         detail_size.setText(num + "ml");
                         adapter.notifyDataSetChanged();
@@ -395,6 +406,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void newThread() {
+        thread = new Thread(new Runnable() {
+        public void run() {
+            while(true){
+                try{
+                    i++;
+                    sleep(1000);
+                    if(isCheckedChangedPrice == true)          // 향수 용량 변경하면
+                    {
+                        handler.sendEmptyMessage(1);
+                        break;
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }); thread.start();
     }
 
     private void getInfo() {
@@ -589,7 +620,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             expandable_adpater = new ExpandablePriceAdapter(getApplicationContext(), mData);
             detail_price_item.setAdapter(expandable_adpater);
             detail_price_item.setGroupIndicator(null);
+            expandable_adpater.notifyDataSetChanged();
+
+            //로딩
             isCheckedPrice = true;
+            isCheckedChangedPrice = true;
+            if(isCheckedChangedPrice == true)
+                //가격 불러오는 동안 리스트 접어버리기
+                expandable_adpater.setListViewHeight(detail_price_item, -1);
         }
     }
 
@@ -628,8 +666,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             if(msg.what == 1)
             {
                 loading_pb.setVisibility(View.INVISIBLE);
-                whole_frame.setVisibility(View.VISIBLE);
-                whole_frame.setBackground(null);
+                //whole_frame.setVisibility(View.VISIBLE);
+                //whole_frame.setBackground(null);
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
         }

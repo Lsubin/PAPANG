@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
+import static java.lang.Thread.sleep;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -85,6 +89,12 @@ public class SearchActivity extends AppCompatActivity {
 
     ResultProductAdpater result_product_adapter;
 
+    ProgressBar loading_pb;
+    Thread thread;
+    Boolean isCheckedData = false;
+    Boolean isCheckedPrice = false;
+    int i  = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +105,7 @@ public class SearchActivity extends AppCompatActivity {
 
         // 키보드 밀림 방지
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        loading_pb = (ProgressBar)findViewById(R.id.loading_pb);
 
         search_frame3 = (ConstraintLayout)findViewById(R.id.search_frame3);
         search_frame4 = (ConstraintLayout)findViewById(R.id.search_frame4);
@@ -145,6 +156,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
         btn_all_delete = (ImageButton)findViewById(R.id.btn_all_delete);
         btn_all_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,10 +193,36 @@ public class SearchActivity extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(search_input.getText().equals(""))
+                if(search_input.getText().toString().equals(""))
                     Toast.makeText(getApplicationContext(), "검색어를 입력해주세요.", 0).show();
                 else
+                {
                     getSearchResult(search_input.getText().toString());
+
+                    loading_pb.setVisibility(View.VISIBLE);
+                    // 로딩바 - 화면 터치 막기
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                    // 로딩 중
+                    thread = new Thread(new Runnable() {
+                        public void run() {
+                            while(true){
+                                try{
+                                    i++;
+                                    sleep(1000);
+                                    if(isCheckedData == true) { // 향수 정보랑 이미지 불러와졌으면
+                                        handler.sendEmptyMessage(1);
+                                        break;
+                                    }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }); thread.start();
+
+                }
             }
         });
 
@@ -260,6 +298,8 @@ public class SearchActivity extends AppCompatActivity {
                 result_product_adapter = new ResultProductAdpater(getApplicationContext(), p_name, p_brand);
                 result_search_item.setAdapter(result_product_adapter);
                 count_txt1.setText(pw.size() + "건");
+
+                isCheckedData = true;
             }
 
             @Override
@@ -267,4 +307,14 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
+
+    private Handler handler = new Handler(){
+        public void handleMessage(Message msg){
+            if(msg.what == 1)
+            {
+                loading_pb.setVisibility(View.INVISIBLE);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            }
+        }
+    };
 }

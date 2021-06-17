@@ -13,17 +13,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/back"
-            android:layout_marginTop="7.5dp"
             android:background="#00ff0000"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="@id/myinfo_text"
+            app:layout_constraintBottom_toBottomOf="@id/myinfo_text"/>
 
     <TextView
+            android:id="@+id/myinfo_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="내정보 수정"
             android:textColor="#000"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="@font/kopubworlddotumbold"
             android:layout_marginLeft="10dp"
             app:layout_constraintTop_toTopOf="parent"
