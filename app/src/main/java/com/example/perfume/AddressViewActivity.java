@@ -42,6 +42,6 @@ public class AddressViewActivity extends AppCompatActivity {
             }
         });
 
-        addressView.loadUrl("http://3.141.11.218:/daum.html");
+        addressView.loadUrl("http://3.130.237.74:/daum.html");
     }
 }
