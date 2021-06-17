@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -72,6 +73,24 @@ public class EditMyinfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btn_withdrawal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataApi.deleteUser(email).enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        Logout();
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
 
@@ -93,12 +112,16 @@ public class EditMyinfoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
-                edit_birth.setText(String.valueOf(user.getBirth()));
-                edit_gender.setText(user.getGender());
                 edit_phone_num.setText(user.getPhone());
-                int index = user.getAddress().indexOf(" ");
-                String address =  user.getAddress().substring(index+1);
-                edit_adress.setText(address);
+                if(!TextUtils.isEmpty(user.getAddress())){
+                    int index = user.getAddress().indexOf(" ");
+                    String address =  user.getAddress().substring(index+1);
+                    edit_adress.setText(address);
+                }
+                if(!TextUtils.isEmpty(String.valueOf(user.getBirth())))
+                    edit_birth.setText(String.valueOf(user.getBirth()));
+                if(!TextUtils.isEmpty(user.getGender()))
+                    edit_gender.setText(user.getGender());
             }
 
             @Override

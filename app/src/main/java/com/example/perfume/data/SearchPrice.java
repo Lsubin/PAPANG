@@ -161,6 +161,9 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
         catch (NullPointerException e){
             Log.e("크롤링 오류", e.getMessage().toString());
         }
+        catch (StringIndexOutOfBoundsException e){
+            Log.e("크롤링 오류", e.getMessage().toString());
+        }
 
         return null;
     }

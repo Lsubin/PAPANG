@@ -12,11 +12,15 @@ import retrofit2.http.Path;
 
 public interface DataApi {
 
-    // 향수 전체 읽어오는 함수
-    @GET("papang_perfume")
-    Call<List<Perfume>> selectAll();
+    // 파팡 추천 향수가져오는 함수
+    @GET("papang_perfume/up")
+    Call<List<Recommendation>> getPerfumeUp();
 
     // 파팡 추천 향수가져오는 함수
+    @GET("papang_perfume/down")
+    Call<List<Recommendation>> getPerfumeDown();
+
+    // 향수 가져오는 함수
     @GET("perfume/recommendation/{name}")
     Call<List<Perfume>> selectName(@Path("name") String name);
 
@@ -47,6 +51,9 @@ public interface DataApi {
     // 사용자 가입하는 함수
     @POST("join/user")
     Call<User> joinUser(@Body Map<String, String> map);
+
+    @POST("join/delete/{email}")
+    Call<Integer> deleteUser(@Path("email") String email);
 
     // 비밀번호 다시 세팅하는 함수
     @POST("join/reset_pw/{email}")

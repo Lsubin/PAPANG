@@ -255,7 +255,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
                 r_perfumes = response.body();
                 isCheckedData = true;
-                getInfo();
+                if(r_perfumes.size() != 0)
+                    getInfo();
             }
 
             @Override
@@ -516,17 +517,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
     private void checkWishList(String p_brand){
-        dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
-            @Override
-            public void onResponse(Call<Wish> call, Response<Wish> response) {
-                btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_full_icon));
-            }
+        if(access.equals("Login")){
+            dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
+                @Override
+                public void onResponse(Call<Wish> call, Response<Wish> response) {
+                    btn_detail_wish.setImageDrawable(getResources().getDrawable(R.mipmap.heart_full_icon));
+                }
 
-            @Override
-            public void onFailure(Call<Wish> call, Throwable t) {
-                Log.e("오류", t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<Wish> call, Throwable t) {
+                    Log.e("오류", t.getMessage());
+                }
+            });
+        }
     }
 
     private void addWishList(){

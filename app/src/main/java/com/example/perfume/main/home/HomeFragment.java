@@ -50,6 +50,7 @@ import com.example.perfume.SettingDetail3Activity;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.Recommendation;
 import com.example.perfume.search.SearchActivity;
 
 import org.json.JSONArray;
@@ -75,7 +76,8 @@ import static java.lang.Thread.sleep;
 public class HomeFragment extends Fragment {
     View root;
 
-    List<Perfume> r_perfumes;       // 파팡 추천 향수
+    List<Recommendation> r_perfumes;       // 당신이 잊지 못할 향수
+    List<Recommendation> y_perfumes;       // 파팡 추천 향수
     DataService dataService;
     DataApi dataApi;
     Retrofit retrofit;
@@ -200,15 +202,15 @@ public class HomeFragment extends Fragment {
             }
         }); thread.start();
 
-        dataApi.selectAll().enqueue(new Callback<List<Perfume>>() {
+        dataApi.getPerfumeUp().enqueue(new Callback<List<Recommendation>>() {
             @Override
-            public void onResponse(Call<List<Perfume>> call, Response<List<Perfume>> response) {
+            public void onResponse(Call<List<Recommendation>> call, Response<List<Recommendation>> response) {
                 r_perfumes = response.body();
                 isCheckedData = true;
-                getData();
+                getPerfumes();
             }
             @Override
-            public void onFailure(Call<List<Perfume>> call, Throwable t) {
+            public void onFailure(Call<List<Recommendation>> call, Throwable t) {
                 Log.e("연결", t.getMessage());
             }
         });
@@ -260,7 +262,7 @@ public class HomeFragment extends Fragment {
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
                 if (MotionEvent.ACTION_UP == e.getAction() && itemTouch) {
                     View reV = rv.findChildViewUnder(e.getX(), e.getY());
-                    String p_name = adapter.getName(rv.getChildAdapterPosition(reV));
+                    String p_name = adapter2.getName(rv.getChildAdapterPosition(reV));
                     Intent gotoDetail = new Intent(root.getContext(), ProductDetailsActivity.class);
                     gotoDetail.putExtra("name", p_name);
                     startActivity(gotoDetail);
@@ -352,11 +354,26 @@ public class HomeFragment extends Fragment {
 
     }
 
+    private void getPerfumes(){
+        dataApi.getPerfumeDown().enqueue(new Callback<List<Recommendation>>() {
+            @Override
+            public void onResponse(Call<List<Recommendation>> call, Response<List<Recommendation>> response) {
+                y_perfumes = response.body();
+                getData();
+            }
+
+            @Override
+            public void onFailure(Call<List<Recommendation>> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void getData() {
         adapter = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes, HomeFragment.this);
         recyclerView.setAdapter(adapter);
 
-        adapter2 = new Product_RecyclerView_Adapter(root.getContext(), r_perfumes, HomeFragment.this);
+        adapter2 = new Product_RecyclerView_Adapter(root.getContext(), y_perfumes, HomeFragment.this);
         recyclerView2.setAdapter(adapter2);
 
         adapter3 = new Product_Result_RecyclerView_Adpater(root.getContext(), r_perfumes, HomeFragment.this);

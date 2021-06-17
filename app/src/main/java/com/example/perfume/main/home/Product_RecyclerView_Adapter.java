@@ -28,6 +28,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.bumptech.glide.Glide;
 import com.example.perfume.R;
 import com.example.perfume.data.Perfume;
+import com.example.perfume.data.Recommendation;
 import com.example.perfume.main.wish.WishProductAdapter;
 
 import java.io.File;
@@ -39,14 +40,14 @@ import java.util.List;
 public class Product_RecyclerView_Adapter extends RecyclerView.Adapter<Product_RecyclerView_Adapter.ViewHolder> {
     Context context;
 
-    List<Perfume> perfumes;
+    List<Recommendation> perfumes;
     File file;
 
     String path;
 
     HomeFragment homeFragment;
 
-    public Product_RecyclerView_Adapter(Context context, List<Perfume> perfumes, HomeFragment homeFragment) {
+    public Product_RecyclerView_Adapter(Context context, List<Recommendation> perfumes, HomeFragment homeFragment) {
         this.context = context;
         this.perfumes = perfumes;
         this.homeFragment = homeFragment;

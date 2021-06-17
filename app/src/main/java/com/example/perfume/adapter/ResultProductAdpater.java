@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -120,16 +121,19 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
                 public void onClick(View view) {
                     int position = getAdapterPosition();
 
-                    if (wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.icon_unfull_heart).getConstantState())) {
-                        wish_ok.setImageResource(R.mipmap.heart_full_icon);
-                        getWishCount(p_name.get(position), p_brand.get(position), "ADD");
-                        addWishList(p_brand.get(position), p_name.get(position));
+                    if(!email.equals("")) {
+                        if (wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.icon_unfull_heart).getConstantState())) {
+                            wish_ok.setImageResource(R.mipmap.heart_full_icon);
+                            getWishCount(p_name.get(position), p_brand.get(position), "ADD");
+                            addWishList(p_brand.get(position), p_name.get(position));
+                        } else if (wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.heart_full_icon).getConstantState())) {
+                            wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
+                            getWishCount(p_name.get(position), p_brand.get(position), "DELETE");
+                            deleteWishList(email, p_brand.get(position), p_name.get(position));
+                        }
                     }
-                    else if(wish_ok.getDrawable().getConstantState().equals(context.getResources().getDrawable(R.mipmap.heart_full_icon).getConstantState())){
-                        wish_ok.setImageResource(R.mipmap.icon_unfull_heart);
-                        getWishCount(p_name.get(position), p_brand.get(position), "DELETE");
-                        deleteWishList(email, p_brand.get(position), p_name.get(position));
-                    }
+                    else
+                        Toast.makeText(context, "로그인 후 이용해주세요", 0).show();
                 }
             });
 
@@ -141,17 +145,21 @@ public class ResultProductAdpater extends RecyclerView.Adapter<ResultProductAdpa
         }
 
         private void checkWishList(String p_name, String p_brand){
-            dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
-                @Override
-                public void onResponse(Call<Wish> call, Response<Wish> response) {
-                    wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.heart_full_icon));
-                }
+            if(!email.equals("")) {
+                dataApi.getWisPerfume(email, p_brand, p_name).enqueue(new Callback<Wish>() {
+                    @Override
+                    public void onResponse(Call<Wish> call, Response<Wish> response) {
+                        wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.heart_full_icon));
+                    }
 
-                @Override
-                public void onFailure(Call<Wish> call, Throwable t) {
-                    wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.icon_unfull_heart));
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Wish> call, Throwable t) {
+                        wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.icon_unfull_heart));
+                    }
+                });
+            }
+            else if(email.equals(""))
+                wish_ok.setImageDrawable(context.getResources().getDrawable(R.mipmap.icon_unfull_heart));
         }
 
         public void getWishCount(final String name, final String brand, final String state){

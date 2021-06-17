@@ -212,7 +212,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:background="@null"
-                    android:text="12102, 경기 남양주시 별내5로 81 (별내동, 남양주 별내 스위첸 아파트)"
                     android:fontFamily="@font/kopubworlddotumedium"
                     android:paddingRight="50dp"
                     android:singleLine="true"
