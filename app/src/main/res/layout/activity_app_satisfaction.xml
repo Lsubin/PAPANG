@@ -54,7 +54,7 @@
     <EditText
             android:id="@+id/edit_content"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:hint="앱에 대한 다양한 의견 남겨주세요!"
             android:textColorHint="#545454"
             android:textColor="#000"

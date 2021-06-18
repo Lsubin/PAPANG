@@ -9,16 +9,20 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.perfume.AllResultProductActivity;
 import com.example.perfume.AppSatisfactionActivity;
 import com.example.perfume.EditMyinfoActivity;
+import com.example.perfume.NoResultActivity;
 import com.example.perfume.ParticipatedEventActivity;
 import com.example.perfume.R;
 import com.example.perfume.RecommendationActivity;
@@ -48,6 +52,7 @@ public class MyPageFragment extends Fragment {
 
     ConstraintLayout touch_event_zone;
     ConstraintLayout touch_add_zone;
+    ConstraintLayout touch_show_result_zone;
     ImageButton btn_findperfume;
     ImageButton btn_eidtmyinfo;
     TextView user_name_text;
@@ -64,6 +69,9 @@ public class MyPageFragment extends Fragment {
 
     private String email;
     private String nickname;
+
+    ArrayList<String> perfumeInfos;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -118,6 +126,7 @@ public class MyPageFragment extends Fragment {
         user_name_text = (TextView) view.findViewById(R.id.user_name_text);
         touch_event_zone = (ConstraintLayout) view.findViewById(R.id.touch_event_zone);
         touch_add_zone = (ConstraintLayout) view.findViewById(R.id.touch_add_zone);
+        touch_show_result_zone = (ConstraintLayout) view.findViewById(R.id.touch_show_result_zone);
         btn_findperfume = (ImageButton) view.findViewById(R.id.btn_findperfume);
         btn_eidtmyinfo = (ImageButton) view.findViewById(R.id.btn_editmyinfo);
 
@@ -162,7 +171,48 @@ public class MyPageFragment extends Fragment {
             }
         });
 
+        touch_show_result_zone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getPerfume(perfumeInfos);
+            }
+        });
         return view;
+    }
+
+    private void getPerfume(final ArrayList<String> perfumeInfos) {
+        ArrayList<Integer> sizes = new ArrayList<>();
+        sizes = changeSize(perfumeInfos.get(1));
+        int concentration = changeConcentration(perfumeInfos.get(0));
+        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+
+        dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<ArrayList<String>>() {
+            @Override
+            public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
+                ArrayList<String> perfumes = response.body();
+                if(perfumes.size() > 0) {
+                    Intent result = new Intent(getContext(), AllResultProductActivity.class);
+                    result.putExtra("결과", perfumes);
+                    result.putExtra("정보", perfumeInfos);
+                    if(!email.equals(""))
+                        setUserRecommend();
+                    startActivity(result);
+                }
+                else{
+                    Intent result = new Intent(getContext(), NoResultActivity.class);
+                    startActivity(result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<String>> call, Throwable t) {
+                Log.e("연결", t.getMessage());
+            }
+        });
+
+
+
     }
 
     private void checkLogin(){
@@ -182,6 +232,7 @@ public class MyPageFragment extends Fragment {
                 UserRecommendation ur;
                 ur = response.body();
                 //style_img.setImageDrawable(getResources().getDrawable(R.mipmap.style_2_img));
+                touch_show_result_zone.setVisibility(View.VISIBLE);
                 result_never.setVisibility(View.INVISIBLE);
                 btn_findperfume.setVisibility(View.INVISIBLE);
 
@@ -192,6 +243,15 @@ public class MyPageFragment extends Fragment {
                 result_style.setVisibility(View.VISIBLE);
 
                 changeResultText(ur);
+
+                // 향수 정보 가져오기
+                perfumeInfos = new ArrayList<>();
+                perfumeInfos.add(ur.getConcentration());
+                perfumeInfos.add(ur.getSize());
+                perfumeInfos.add(Integer.toString(ur.getStyle()));
+                perfumeInfos.add(Integer.toString(ur.getFlavor1()));
+                perfumeInfos.add(Integer.toString(ur.getFlavor2()));
+                perfumeInfos.add(Integer.toString(ur.getFlavor3()));
             }
 
             @Override
@@ -429,5 +489,59 @@ public class MyPageFragment extends Fragment {
 
         result_flavors.setText(flavor_1 + ", " + flavor_2 + ", " + flavor_3);
 
+    }
+
+
+    // 향수 결과 가져오기 위함
+    public ArrayList<Integer> changeSize(String size){
+        ArrayList<Integer> sizes = new ArrayList<>();
+
+        switch (size) {
+            case "size1":
+                sizes.add(0);
+                sizes.add(15);
+                break;
+            case "size2":
+                sizes.add(15);
+                sizes.add(30);
+                break;
+            case "size3":
+                sizes.add(30);
+                sizes.add(50);
+                break;
+            case "size4":
+                sizes.add(50);
+                sizes.add(75);
+                break;
+            case "size5":
+                sizes.add(75);
+                sizes.add(100);
+                break;
+            case "size6":
+                sizes.add(100);
+                sizes.add(500);
+                break;
+        }
+        return sizes;
+    }
+
+    public int changeConcentration(String concentration){
+        int concentrations = 0;
+
+        switch (concentration) {
+            case "ode_c":
+                concentrations = 1;
+                break;
+            case "ode_d":
+                concentrations = 2;
+                break;
+            case "ode_p":
+                concentrations = 3;
+                break;
+            case "ode_pp":
+                concentrations = 4;
+                break;
+        }
+        return concentrations;
     }
 }

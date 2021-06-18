@@ -20,6 +20,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -226,6 +227,47 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        // 키보드 검색
+        search_input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    if(search_input.getText().toString().equals(""))
+                        Toast.makeText(getApplicationContext(), "검색어를 입력해주세요.", 0).show();
+                    else
+                    {
+                        getSearchResult(search_input.getText().toString());
+
+                        loading_pb.setVisibility(View.VISIBLE);
+                        // 로딩바 - 화면 터치 막기
+                        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                        // 로딩 중
+                        thread = new Thread(new Runnable() {
+                            public void run() {
+                                while(true){
+                                    try{
+                                        i++;
+                                        sleep(1000);
+                                        if(isCheckedData == true) { // 향수 정보랑 이미지 불러와졌으면
+                                            handler.sendEmptyMessage(1);
+                                            break;
+                                        }
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }); thread.start();
+
+                    }
+
+                    return true;
+                }
+                return false;
+            }
+        });
 
         result_search_item.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override

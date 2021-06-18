@@ -20,11 +20,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.perfume.ProductDetailsActivity;
+import com.example.perfume.QuestionActivity;
 import com.example.perfume.R;
+import com.example.perfume.RecommendationActivity;
 import com.example.perfume.data.DataApi;
 import com.example.perfume.data.DataService;
 import com.example.perfume.data.Wish;
@@ -72,9 +75,12 @@ public class WishProudctFragment extends Fragment {
     SwipeRefreshLayout mSwipeRefreshLayout;
     FragmentTransaction ft;
 
+    ImageButton find_my_perfume_btn;
+
     private boolean itemTouch;
     ProgressBar loading_pb;
     ConstraintLayout whole_frame;
+    ConstraintLayout whole_frame2;
     Thread thread;
     int i  = 0;
     Boolean isCheckedImg = false;
@@ -121,6 +127,8 @@ public class WishProudctFragment extends Fragment {
         checkLogin();
 
         wishcount_text = (TextView) view.findViewById(R.id.wishcount_text);
+        whole_frame2 = (ConstraintLayout) view.findViewById(R.id.whole_frame2);
+        find_my_perfume_btn = (ImageButton) view.findViewById(R.id.find_my_perfume_btn);
 
         dataService = new DataService();
         dataApi =  dataService.getRetrofitClient().create(DataApi.class);
@@ -152,17 +160,10 @@ public class WishProudctFragment extends Fragment {
                 }, 500);
             }
         });
-
-        if(access.equals("Login")){
-            getWishList();
-        }
-        else{
-            wishcount_text.setText("0개");
-        }
-        //로딩
         loading_pb = (ProgressBar)view.findViewById(R.id.loading_pb);
         whole_frame = (ConstraintLayout)view.findViewById(R.id.whole_frame);
 
+        //로딩
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -180,6 +181,14 @@ public class WishProudctFragment extends Fragment {
                 }
             }
         }); thread.start();
+
+        if(access.equals("Login")){
+            getWishList();
+        }
+        else{
+            wishcount_text.setText("0개");
+            show_noWish();
+        }
 
 
         wish_product_grid.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -225,6 +234,19 @@ public class WishProudctFragment extends Fragment {
         return view;
     }
 
+    private void show_noWish() {
+        loading_pb.setVisibility(View.INVISIBLE);
+        whole_frame2.setVisibility(View.VISIBLE);
+        whole_frame.setVisibility(View.INVISIBLE);
+        find_my_perfume_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), RecommendationActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void checkLogin(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
         access = sharedPreferences.getString("Access","");
@@ -242,6 +264,12 @@ public class WishProudctFragment extends Fragment {
                 wishcount_text.setText(String.valueOf(wishes.size() + " 개"));
                 adapter = new WishProductAdapter(context, wishes, WishProudctFragment.this);
                 wish_product_grid.setAdapter(adapter);
+
+                // 찜 0개 이면 나만의 향수 찾기 화면 보이게
+                if(wishes.size() == 0)
+                {
+                   show_noWish();
+                }
             }
 
             @Override
@@ -257,6 +285,7 @@ public class WishProudctFragment extends Fragment {
             {
                 loading_pb.setVisibility(View.INVISIBLE);
                 whole_frame.setVisibility(View.VISIBLE);
+                whole_frame2.setVisibility(View.INVISIBLE);
             }
         }
     };
@@ -266,4 +295,5 @@ public class WishProudctFragment extends Fragment {
     {
         return isCheckedImg = check;
     }
+
 }
