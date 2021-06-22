@@ -216,10 +216,6 @@ public class JoinActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SettingDetail2Activity.class);
                 startActivity(intent);
                 tc1_checked = true;
-                if(tc1_checked == true && tc2_checked == true)
-                {
-                    start_btn.setImageDrawable(getResources().getDrawable(R.mipmap.start_btn));
-                }
             }
         });
 
@@ -233,10 +229,6 @@ public class JoinActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SettingDetail3Activity.class);
                 startActivity(intent);
                 tc2_checked = true;
-                if(tc1_checked == true && tc2_checked == true)
-                {
-                    start_btn.setImageDrawable(getResources().getDrawable(R.mipmap.start_btn));
-                }
             }
         });
 
@@ -278,6 +270,25 @@ public class JoinActivity extends AppCompatActivity {
         else if(password_state.equals(false)){
             Toast.makeText(getApplicationContext(), "비밀번호 확인을 다시 입력해주세요.", 0).show();
             password_checked_edit.requestFocus();
+        }
+        else if(gender_edit.getText().toString().equals("") || gender_edit.getText().toString().equals("선택안함")){
+            Toast.makeText(getApplicationContext(), "성별을 입력해주세요.", 0).show();
+            gender_edit.requestFocus();
+        }
+        else if(birthday_edit.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "생년월일을 입력해주세요.", 0).show();
+            birthday_edit.requestFocus();
+        }
+        else if(birthday_edit.getText().toString().length() > 0 && birthday_edit.getText().toString().length() != 8){
+            Toast.makeText(getApplicationContext(), "올바른 형식으로 입력해주세요. ex)19980826", 0).show();
+            birthday_edit.requestFocus();
+        }
+        else if(address_edit.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "주소를 입력해주세요.", 0).show();
+            address_edit.requestFocus();
+        }
+        else if(tc1_checked == false || tc2_checked == false){
+            Toast.makeText(getApplicationContext(), "서비스 이용약관, 개인정보 수집 및 이용에 동의해주세요.", 0).show();
         }
         else{
             Map<String, String> user = new HashMap<>();

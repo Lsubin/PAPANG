@@ -2,6 +2,7 @@ package com.example.perfume;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -9,6 +10,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 // 개인정보처리방침
 public class SettingDetail3Activity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class SettingDetail3Activity extends AppCompatActivity {
     private ImageButton btn_back;
     private WebView mWebView; // 웹뷰 선언
     private WebSettings mWebSettings; //웹뷰세팅
+    private ProgressBar loading_pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class SettingDetail3Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+        loading_pb = (ProgressBar) findViewById(R.id.loading_pb);
 
         // 웹뷰 시작
         mWebView = (WebView) findViewById(R.id.webView);
@@ -46,6 +51,21 @@ public class SettingDetail3Activity extends AppCompatActivity {
         mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // 컨텐츠 사이즈 맞추기
         mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
         mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
+
+        mWebView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                //super.onPageStarted(view, url, favicon);
+                loading_pb.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                //super.onPageFinished(view, url);
+                loading_pb.setVisibility(View.INVISIBLE);
+            }
+        });
 
         mWebView.loadUrl("https://www.notion.so/PAPANG-397158d96af34f18ac94e09a093f3289"); // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
     }

@@ -199,6 +199,7 @@
                    android:textSize="14sp"
                    android:fontFamily="@font/kopubworlddotumedium"
                    android:textColor="#000"
+                   android:inputType="textPassword"
                    app:theme="@style/EditTextStyle"
                    app:layout_constraintTop_toBottomOf="@id/password_text"
                    app:layout_constraintLeft_toLeftOf="parent" />
@@ -229,6 +230,7 @@
                        android:layout_height="wrap_content"
                        android:hint="비밀번호를 다시 한 번 입력해주세요."
                        android:textSize="14sp"
+                       android:inputType="textPassword"
                        android:fontFamily="@font/kopubworlddotumedium"
                        android:textColor="#000"
                        app:theme="@style/EditTextStyle"
@@ -290,6 +292,7 @@
                    android:textSize="14sp"
                    android:fontFamily="@font/kopubworlddotumedium"
                    android:textColor="#000"
+                   android:inputType="number"
                    app:theme="@style/EditTextStyle"
                    app:layout_constraintTop_toBottomOf="@id/birthday_text"
                    app:layout_constraintLeft_toLeftOf="parent" />
