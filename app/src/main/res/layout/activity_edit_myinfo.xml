@@ -228,43 +228,6 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-            android:id="@+id/line1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D0D0D0"
-            android:layout_marginTop="30dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_info"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line1">
-
-        <ImageView
-            android:id="@+id/login_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"
-            android:layout_gravity="center"
-            android:src="@mipmap/appicon"
-            android:layout_marginRight="10dp"/>
-
-        <TextView
-            android:id="@+id/text_login_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="파팡을 통해 로그인 하셨습니다."
-            android:textSize="15sp"
-            android:textColor="#000"
-            android:fontFamily="@font/kopubworlddotumedium"/>
-
-    </LinearLayout>
 
     <Button
             android:id="@+id/btn_logout"

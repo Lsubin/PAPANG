@@ -161,7 +161,10 @@ public class QuestionActivity extends AppCompatActivity {
                 perfumeInfos.add(q_result[4]);
                 perfumeInfos.add(q_result[5]);
 
-                getPerfume(perfumeInfos);
+                if(q_result[5].equals("15"))
+                    getPerfumeExclude(perfumeInfos);
+                else
+                    getPerfume(perfumeInfos);
             }
         });
 
@@ -299,6 +302,40 @@ public class QuestionActivity extends AppCompatActivity {
     private void checkLogin(){
         SharedPreferences sharedPreferences = context.getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
         email = sharedPreferences.getString("Email","");
+    }
+
+    public void getPerfumeExclude(final ArrayList<String> perfumeInfos){
+        ArrayList<Integer> sizes = new ArrayList<>();
+        sizes = changeSize(perfumeInfos.get(1));
+        int concentration = changeConcentration(perfumeInfos.get(0));
+        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+
+        dataApi.getExcludeRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4))).enqueue(new Callback<ArrayList<String>>() {
+            @Override
+            public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
+                ArrayList<String> perfumes = response.body();
+                if(perfumes.size() > 0) {
+                    Intent result = new Intent(getApplicationContext(), AllResultProductActivity.class);
+                    result.putExtra("결과", perfumes);
+                    result.putExtra("정보", perfumeInfos);
+                    if(!email.equals(""))
+                        setUserRecommend();
+                    startActivity(result);
+                    finish();
+                }
+                else{
+                    Intent result = new Intent(getApplicationContext(), NoResultActivity.class);
+                    startActivity(result);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<String>> call, Throwable t) {
+                Log.e("연결", t.getMessage());
+            }
+        });
     }
 
     public void getPerfume(final ArrayList<String> perfumeInfos){

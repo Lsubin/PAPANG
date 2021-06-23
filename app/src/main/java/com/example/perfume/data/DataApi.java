@@ -35,6 +35,12 @@ public interface DataApi {
                                                      @Path("size1") int size1, @Path("size2") int size2,
                                                      @Path("style") int style, @Path("main") int main,
                                                      @Path("first") int first, @Path("second") int second);
+    // 향수 추천 결과 받아오는 함수 - 선택안함
+    @GET("perfume_recommend/{concentration}/{size1}/{size2}/{style}/{main}/{first}")
+    Call<ArrayList<String>> getExcludeRecommendationResult(@Path("concentration") int concentration,
+                                                    @Path("size1") int size1, @Path("size2") int size2,
+                                                    @Path("style") int style, @Path("main") int main,
+                                                    @Path("first") int first);
 
     // 최저가 url 가져오는 함수
     @GET("price_url/{perfumeID}")

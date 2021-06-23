@@ -174,10 +174,46 @@ public class MyPageFragment extends Fragment {
         touch_show_result_zone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getPerfume(perfumeInfos);
+
+                if(perfumeInfos.get(5).equals("15"))
+                    getPerfumeExclude(perfumeInfos);
+                else
+                    getPerfume(perfumeInfos);
             }
         });
         return view;
+    }
+
+    public void getPerfumeExclude(final ArrayList<String> perfumeInfos){
+        ArrayList<Integer> sizes = new ArrayList<>();
+        sizes = changeSize(perfumeInfos.get(1));
+        int concentration = changeConcentration(perfumeInfos.get(0));
+        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+
+        dataApi.getExcludeRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
+                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4))).enqueue(new Callback<ArrayList<String>>() {
+            @Override
+            public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
+                ArrayList<String> perfumes = response.body();
+                if(perfumes.size() > 0) {
+                    Intent result = new Intent(context, AllResultProductActivity.class);
+                    result.putExtra("결과", perfumes);
+                    result.putExtra("정보", perfumeInfos);
+                    if(!email.equals(""))
+                        setUserRecommend();
+                    startActivity(result);
+                }
+                else{
+                    Intent result = new Intent(context, NoResultActivity.class);
+                    startActivity(result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<String>> call, Throwable t) {
+                Log.e("연결", t.getMessage());
+            }
+        });
     }
 
     private void getPerfume(final ArrayList<String> perfumeInfos) {
