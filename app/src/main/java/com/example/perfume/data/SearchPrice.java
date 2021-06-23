@@ -171,7 +171,12 @@ public class SearchPrice extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void voids) {
-        ((ProductDetailsActivity)ProductDetailsActivity.pContext).setURl();
+        try{
+            ((ProductDetailsActivity)ProductDetailsActivity.pContext).setURl();
+        } catch(NullPointerException e){
+            Log.e("불러오기 오류", e.getMessage().toString());
+        }
+
     }
 
     public String checkSite(String url){
