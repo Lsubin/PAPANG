@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.perfume">
+    package="com.papang.perfume">
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -26,42 +26,42 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
 
-        <activity android:name=".WebViewActivity"></activity>
-        <activity android:name=".AddressViewActivity" />
-        <activity android:name=".NoResultActivity" />
-        <activity android:name=".ResetPwActivity" />
-        <activity android:name=".FindPwActivity" />
-        <activity android:name=".FoundEmailActivity" />
-        <activity android:name=".FindIdActivity" />
-        <activity android:name=".PhoneNumberActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".JoinActivity" />
+        <activity android:name="com.papang.perfume.WebViewActivity"></activity>
+        <activity android:name="com.papang.perfume.AddressViewActivity" />
+        <activity android:name="com.papang.perfume.NoResultActivity" />
+        <activity android:name="com.papang.perfume.ResetPwActivity" />
+        <activity android:name="com.papang.perfume.FindPwActivity" />
+        <activity android:name="com.papang.perfume.FoundEmailActivity" />
+        <activity android:name="com.papang.perfume.FindIdActivity" />
+        <activity android:name="com.papang.perfume.PhoneNumberActivity" />
+        <activity android:name="com.papang.perfume.LoginActivity" />
+        <activity android:name="com.papang.perfume.JoinActivity" />
         <activity
-            android:name=".review.AllReviewActivity"
+            android:name="com.papang.perfume.review.AllReviewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".review.DetailReviewActivity" />
-        <activity android:name=".review.ReviewWriteActivity" />
-        <activity android:name=".SettingDetail4Activity" />
-        <activity android:name=".SettingDetail3Activity" />
-        <activity android:name=".SettingDetail2Activity" />
-        <activity android:name=".SettingDetail1Activity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".EditMyinfoActivity" />
-        <activity android:name=".NotificationActivity" />
-        <activity android:name=".ParticipatedEventActivity" />
-        <activity android:name=".AllResultProductActivity" />
-        <activity android:name=".search.SearchActivity" />
-        <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".QuestionActivity" />
-        <activity android:name=".AppSatisfactionActivity" />
+        <activity android:name="com.papang.perfume.review.DetailReviewActivity" />
+        <activity android:name="com.papang.perfume.review.ReviewWriteActivity" />
+        <activity android:name="com.papang.perfume.SettingDetail4Activity" />
+        <activity android:name="com.papang.perfume.SettingDetail3Activity" />
+        <activity android:name="com.papang.perfume.SettingDetail2Activity" />
+        <activity android:name="com.papang.perfume.SettingDetail1Activity" />
+        <activity android:name="com.papang.perfume.SettingActivity" />
+        <activity android:name="com.papang.perfume.EditMyinfoActivity" />
+        <activity android:name="com.papang.perfume.NotificationActivity" />
+        <activity android:name="com.papang.perfume.ParticipatedEventActivity" />
+        <activity android:name="com.papang.perfume.AllResultProductActivity" />
+        <activity android:name="com.papang.perfume.search.SearchActivity" />
+        <activity android:name="com.papang.perfume.ProductDetailsActivity" />
+        <activity android:name="com.papang.perfume.QuestionActivity" />
+        <activity android:name="com.papang.perfume.AppSatisfactionActivity" />
         <activity
-            android:name=".RecommendationActivity"
+            android:name="com.papang.perfume.RecommendationActivity"
             android:theme="@style/Transparent" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.papang.perfume.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HomeActivity">
+        <activity android:name="com.papang.perfume.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

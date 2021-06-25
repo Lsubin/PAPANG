@@ -477,7 +477,7 @@
 
                     </com.google.android.material.tabs.TabLayout>
 
-                    <com.example.perfume.custom.WrapHeightViewPager
+                    <com.papang.perfume.custom.WrapHeightViewPager
                             android:id="@+id/review_viewpager"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

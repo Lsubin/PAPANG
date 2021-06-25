@@ -90,7 +90,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/all_review_viewpager"/>
 
-    <com.example.perfume.custom.WrapHeightViewPager
+    <com.papang.perfume.custom.WrapHeightViewPager
             android:id="@+id/all_review_viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
