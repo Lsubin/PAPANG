@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.papang.perfume.Question1;
-import com.papang.perfume.Question2;
-import com.papang.perfume.Question3;
+import com.papang.perfume.recommendation.Question1;
+import com.papang.perfume.recommendation.Question2;
+import com.papang.perfume.recommendation.Question3;
 
 import java.util.ArrayList;
 
@@ -31,8 +31,6 @@ public class QuestionPagerAdapter extends FragmentPagerAdapter {
     public QuestionPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         mData = new ArrayList<>();
-        mData.add(new Question1());
-        mData.add(new Question2());
         mData.add(new Question3());
     }
 

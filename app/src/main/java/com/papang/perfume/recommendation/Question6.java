@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.papang.perfume.ItemDecoration;
+import com.papang.perfume.R;
 import com.papang.perfume.adapter.FlavorAdapter;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class Question6 extends Fragment {
     FlavorAdapter flavorAdapter;
 
     ArrayList<Integer> drawables_Num;
-
+    int index = 3;
     public Boolean q6_state = false;
     public String q6_result;
     public Integer q6_position;
@@ -151,7 +153,7 @@ public class Question6 extends Fragment {
                             q6_result = num;
                             q6_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(5, q6_state, q6_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q6_state, q6_result);
                     }
                 }
                 return false;

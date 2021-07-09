@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.papang.perfume.ItemDecoration;
+import com.papang.perfume.R;
 import com.papang.perfume.adapter.FlavorAdapter;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class Question5 extends Fragment {
     Context context;
     View v;
 
+    int index = 2;
     RecyclerView add_flavor_grid;
     FlavorAdapter flavorAdapter;
 
@@ -183,7 +186,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -247,7 +250,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -316,7 +319,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -385,7 +388,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -457,7 +460,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -526,7 +529,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -595,7 +598,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -662,7 +665,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -732,7 +735,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -800,7 +803,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -868,7 +871,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -935,7 +938,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -1002,7 +1005,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;
@@ -1070,7 +1073,7 @@ public class Question5 extends Fragment {
                             q5_result = num;
                             q5_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(4, q5_state, q5_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q5_state, q5_result);
                     }
                 }
                 return false;

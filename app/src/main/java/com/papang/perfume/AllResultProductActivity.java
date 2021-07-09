@@ -62,7 +62,6 @@ public class AllResultProductActivity extends AppCompatActivity {
         restart_btn = (ImageButton) findViewById(R.id.restart_btn);
         recycler_result = (RecyclerView) findViewById(R.id.recycler_result);
 
-        result_1_text = (TextView) findViewById(R.id.result_1_text);
         result_2_text = (TextView) findViewById(R.id.result_2_text);
         result_3_text = (TextView) findViewById(R.id.result_3_text);
         result_456_text = (TextView) findViewById(R.id.result_456_text);
@@ -182,43 +181,8 @@ public class AllResultProductActivity extends AppCompatActivity {
     }
 
     private void changeResultText(ArrayList<String> perfumeInfos) { //가격은 String q_7 추가
+
         switch (perfumeInfos.get(0)) {
-            case "ode_c":
-                result_1_text.setText("오 데 코롱");
-                break;
-            case "ode_d":
-                result_1_text.setText("오 드 뚜왈렛");
-                break;
-            case "ode_p":
-                result_1_text.setText("오 데 퍼퓸");
-                break;
-            case "ode_pp":
-                result_1_text.setText("퍼퓸");
-                break;
-        }
-
-        switch (perfumeInfos.get(1)) {
-            case "size1":
-                result_2_text.setText("0ml ~ 15ml");
-                break;
-            case "size2":
-                result_2_text.setText("15ml ~ 30ml");
-                break;
-            case "size3":
-                result_2_text.setText("30ml ~ 50ml");
-                break;
-            case "size4":
-                result_2_text.setText("50ml ~ 75ml");
-                break;
-            case "size5":
-                result_2_text.setText("75ml ~ 100ml");
-                break;
-            case "size6":
-                result_2_text.setText("100ml 이상");
-                break;
-        }
-
-        switch (perfumeInfos.get(2)) {
             case "1":
                 result_3_text.setText("포근한, 차분한, 따뜻한, 순수한");
                 break;
@@ -246,7 +210,7 @@ public class AllResultProductActivity extends AppCompatActivity {
         }
 
         // 첫번째로 고른 향료 기준으로 이미지 변경!
-        switch (perfumeInfos.get(3)) {
+        switch (perfumeInfos.get(1)) {
             case "1":
                 flavor_1 = "Aldehyde";
                 flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_aldehyde_img));
@@ -308,7 +272,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (perfumeInfos.get(4)) {
+        switch (perfumeInfos.get(2)) {
             case "1":
                 flavor_2 = "Aldehyde";
                 break;
@@ -356,7 +320,7 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
         }
 
-        switch (perfumeInfos.get(5)) {
+        switch (perfumeInfos.get(3)) {
             case "1":
                 flavor_3 = "Aldehyde";
                 break;
@@ -401,6 +365,18 @@ public class AllResultProductActivity extends AppCompatActivity {
                 break;
             case "15":
                 flavor_3 = "None";
+                break;
+        }
+
+        switch (perfumeInfos.get(4)) {
+            case "size1":
+                result_2_text.setText("0ml ~ 50ml");
+                break;
+            case "size2":
+                result_2_text.setText("0ml ~ 100ml");
+                break;
+            case "size3":
+                result_2_text.setText("100ml 이상");
                 break;
         }
 

@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -12,12 +12,19 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.papang.perfume.AllResultProductActivity;
+import com.papang.perfume.CustomGuideDialog;
+import com.papang.perfume.NoResultActivity;
+import com.papang.perfume.R;
 import com.papang.perfume.adapter.QuestionPagerAdapter;
 import com.papang.perfume.custom.NonSwipeViewPager;
 import com.papang.perfume.data.DataApi;
 import com.papang.perfume.data.DataService;
 import com.papang.perfume.data.Perfume;
 import com.papang.perfume.data.UserRecommendation;
+import com.papang.perfume.recommendation.Question4;
+import com.papang.perfume.recommendation.Question5;
+import com.papang.perfume.recommendation.Question6;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +34,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*
+순서가 3, 4, 5, 6, 2로 수정
+q_state, q_result 다 순서에 맞춰서 수정
+Question3 = q_state, q_result[0], mCurrentPage = 0
+Question4 = q_state, q_result[1], mCurrentPage = 1
+Question5 = q_state, q_result[2], mCurrentPage = 2
+Question6 = q_state, q_result[3], mCurrentPage = 3
+Question2 = q_state, q_result[4], mCurrentPage = 4
+ */
 public class QuestionActivity extends AppCompatActivity {
 
     ImageButton nextQ;
@@ -49,8 +65,8 @@ public class QuestionActivity extends AppCompatActivity {
     NonSwipeViewPager questionPager;
 
     // 각 페이지의 state, result를 저장하는 배열 선언 및 초기화
-    public String[] q_result = new String[8];
-    public Boolean[] q_state = {false, false, false, false, false, false, false, false};
+    public String[] q_result = new String[5];
+    public Boolean[] q_state = {false, false, false, false, false};
 
     // 뒤로가기 키 누를 시
     // 마지막으로 뒤로가기 버튼을 눌렀던 시간 저장
@@ -111,27 +127,36 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 넥스트 버튼이 활성화 된 상태라면
                 if(nextQ.getDrawable().getConstantState().equals(getResources().getDrawable(R.mipmap.nextbtn_c).getConstantState())){
-                    if(mCurrentPosition == 1 && !q_state[mCurrentPosition + 1].equals(false)){
-                        guide_btn.setVisibility(View.GONE);
-                    }
-                    if(mCurrentPosition == 2 && q_state[mCurrentPosition + 1].equals(false)){
+                    if(mCurrentPosition == 0 && !q_state[mCurrentPosition].equals(false)){
                         guide_btn.setVisibility(View.VISIBLE);
-                        Question4 question4 = new Question4(q_result[2]);
+                        Question4 question4 = new Question4(q_result[0]);
                         qAdapter.addPage(question4);
                         qAdapter.notifyDataSetChanged();
                     }
-                    else if(mCurrentPosition == 3 && q_state[mCurrentPosition + 1].equals(false)){
-                        Question5 question5 = new Question5(q_result[3]);
+                    else if(mCurrentPosition == 1 && !q_state[mCurrentPosition].equals(false)){
+                        Question5 question5 = new Question5(q_result[1]);
                         qAdapter.addPage(question5);
                         qAdapter.notifyDataSetChanged();
                     }
+                    else if(mCurrentPosition == 2 && !q_state[mCurrentPosition].equals(false)){
+                        Question6 question6 = new Question6();
+                        qAdapter.addPage(question6);
+                        qAdapter.notifyDataSetChanged();
+                    }
+                    else if(mCurrentPosition == 3 && !q_state[mCurrentPosition].equals(false)){
+                        Question2 question2 = new Question2();
+                        nextQ.setVisibility(View.INVISIBLE);
+                        check_Result_btn.setVisibility(View.VISIBLE);
+                        qAdapter.addPage(question2);
+                        qAdapter.notifyDataSetChanged();
+                    }
+                    /*
                     else if(mCurrentPosition == 4 && q_state[mCurrentPosition + 1].equals(false)){
                         Question6 question6 = new Question6();
                         nextQ.setVisibility(View.INVISIBLE);
                         qAdapter.addPage(question6);
                         qAdapter.notifyDataSetChanged();
                     }
-                    /*
                     else if(mCurrentPosition == 5 && q_state[mCurrentPosition + 1].equals(false)){
                         guide_btn.setVisibility(View.GONE);
                         nextQ.setVisibility(View.INVISIBLE);
@@ -151,14 +176,14 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 perfumeInfos = new ArrayList<>();
-                perfumeInfos.add(q_result[0]);
-                perfumeInfos.add(q_result[1]);
-                perfumeInfos.add(q_result[2]);
-                perfumeInfos.add(q_result[3]);
-                perfumeInfos.add(q_result[4]);
-                perfumeInfos.add(q_result[5]);
+                perfumeInfos.add(q_result[0]);      // 스타일
+                perfumeInfos.add(q_result[1]);      // 메인향료
+                perfumeInfos.add(q_result[2]);      // 추가향료1
+                perfumeInfos.add(q_result[3]);      // 추가향료2
+                perfumeInfos.add(q_result[4]);      // 용령
 
-                if(q_result[5].equals("15"))
+                // 선택안함 클릭했을 때 - 15!
+                if(q_result[3].equals("15"))
                     getPerfumeExclude(perfumeInfos);
                 else
                     getPerfume(perfumeInfos);
@@ -222,10 +247,10 @@ public class QuestionActivity extends AppCompatActivity {
             q_state[index] = state;
             q_result[index] = result;
         }
-        if(state == true && mCurrentPosition == 5){
+        if(state == true && mCurrentPosition == 4){
             check_Result_btn.setVisibility(View.VISIBLE);
         }
-        else if(state == false && mCurrentPosition == 5){
+        else if(state == false && mCurrentPosition == 4){
             check_Result_btn.setVisibility(View.INVISIBLE);
         }
     }
@@ -243,39 +268,27 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 
-
     public ArrayList<Integer> changeSize(String size){
         ArrayList<Integer> sizes = new ArrayList<>();
 
         switch (size) {
             case "size1":
                 sizes.add(0);
-                sizes.add(15);
+                sizes.add(50);
                 break;
             case "size2":
-                sizes.add(15);
-                sizes.add(30);
+                sizes.add(0);
+                sizes.add(100);
                 break;
             case "size3":
-                sizes.add(30);
-                sizes.add(50);
-                break;
-            case "size4":
-                sizes.add(50);
-                sizes.add(75);
-                break;
-            case "size5":
-                sizes.add(75);
-                sizes.add(100);
-                break;
-            case "size6":
-                sizes.add(100);
+                sizes.add(0);
                 sizes.add(500);
                 break;
         }
         return sizes;
     }
 
+    /*
     public int changeConcentration(String concentration){
         int concentrations = 0;
 
@@ -295,6 +308,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
         return concentrations;
     }
+    */
 
     private void checkLogin(){
         SharedPreferences sharedPreferences = context.getSharedPreferences("Info", MODE_PRIVATE);    // test 이름의 기본모드 설정, 만약 test key값이 있다면 해당 값을 불러옴.
@@ -303,12 +317,10 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void getPerfumeExclude(final ArrayList<String> perfumeInfos){
         ArrayList<Integer> sizes = new ArrayList<>();
-        sizes = changeSize(perfumeInfos.get(1));
-        int concentration = changeConcentration(perfumeInfos.get(0));
-        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
-
-        dataApi.getExcludeRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
-                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4))).enqueue(new Callback<ArrayList<String>>() {
+        sizes = changeSize(perfumeInfos.get(4));
+        //int concentration = changeConcentration(perfumeInfos.get(0));
+        dataApi.getExcludeRecommendationResult(Integer.parseInt(perfumeInfos.get(0)), Integer.parseInt(perfumeInfos.get(1)),
+                Integer.parseInt(perfumeInfos.get(2)), sizes.get(0), sizes.get(1)).enqueue(new Callback<ArrayList<String>>() {
             @Override
             public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
                 ArrayList<String> perfumes = response.body();
@@ -337,12 +349,11 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void getPerfume(final ArrayList<String> perfumeInfos){
         ArrayList<Integer> sizes = new ArrayList<>();
-        sizes = changeSize(perfumeInfos.get(1));
-        int concentration = changeConcentration(perfumeInfos.get(0));
-        Log.e("시작" , concentration + " / " + sizes.get(0) + " / " + sizes.get(1) + " / "  + perfumeInfos.get(2) + perfumeInfos.get(3) + perfumeInfos.get(4) + perfumeInfos.get(5));
+        sizes = changeSize(perfumeInfos.get(4));
+        //int concentration = changeConcentration(perfumeInfos.get(0));
 
-        dataApi.getRecommendationResult(concentration, sizes.get(0), sizes.get(1), Integer.parseInt(perfumeInfos.get(2))
-                , Integer.parseInt(perfumeInfos.get(3)), Integer.parseInt(perfumeInfos.get(4)), Integer.parseInt(perfumeInfos.get(5))).enqueue(new Callback<ArrayList<String>>() {
+        dataApi.getRecommendationResult(Integer.parseInt(perfumeInfos.get(0)), Integer.parseInt(perfumeInfos.get(1)),
+                Integer.parseInt(perfumeInfos.get(2)), Integer.parseInt(perfumeInfos.get(3)), sizes.get(0), sizes.get(1)).enqueue(new Callback<ArrayList<String>>() {
             @Override
             public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
                 ArrayList<String> perfumes = response.body();
@@ -388,12 +399,11 @@ public class QuestionActivity extends AppCompatActivity {
     public void changeRecommend(String email){
         Map<String, String> user_recommend = new HashMap<>();
         user_recommend.put("email", email);
-        user_recommend.put("concentration", perfumeInfos.get(0));
-        user_recommend.put("size", perfumeInfos.get(1));
-        user_recommend.put("style", perfumeInfos.get(2));
-        user_recommend.put("flavor1", perfumeInfos.get(3));
-        user_recommend.put("flavor2", perfumeInfos.get(4));
-        user_recommend.put("flavor3", perfumeInfos.get(5));
+        user_recommend.put("style", perfumeInfos.get(0));
+        user_recommend.put("flavor1", perfumeInfos.get(1));
+        user_recommend.put("flavor2", perfumeInfos.get(2));
+        user_recommend.put("flavor3", perfumeInfos.get(3));
+        user_recommend.put("size", perfumeInfos.get(4));
         dataApi.changeUserRecommend(email, user_recommend).enqueue(new Callback<UserRecommendation>() {
             @Override
             public void onResponse(Call<UserRecommendation> call, Response<UserRecommendation> response) {
@@ -410,12 +420,11 @@ public class QuestionActivity extends AppCompatActivity {
     public void saveRecommend(){
         Map<String, String> user_recommend = new HashMap<>();
         user_recommend.put("email", email);
-        user_recommend.put("concentration", perfumeInfos.get(0));
-        user_recommend.put("size", perfumeInfos.get(1));
-        user_recommend.put("style", perfumeInfos.get(2));
-        user_recommend.put("flavor1", perfumeInfos.get(3));
-        user_recommend.put("flavor2", perfumeInfos.get(4));
-        user_recommend.put("flavor3", perfumeInfos.get(5));
+        user_recommend.put("style", perfumeInfos.get(0));
+        user_recommend.put("flavor1", perfumeInfos.get(1));
+        user_recommend.put("flavor2", perfumeInfos.get(2));
+        user_recommend.put("flavor3", perfumeInfos.get(3));
+        user_recommend.put("size", perfumeInfos.get(4));
 
         dataApi.addUserRecommend(user_recommend).enqueue(new Callback<UserRecommendation>() {
             @Override

@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.papang.perfume.ItemDecoration;
+import com.papang.perfume.R;
 import com.papang.perfume.adapter.FlavorAdapter;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class Question4 extends Fragment {
     public String q4_result;
     public Integer q4_position;
     int result;
+    int index = 1;
 
     View v;
 
@@ -173,7 +176,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -240,7 +243,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -308,7 +311,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -373,7 +376,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -441,7 +444,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -509,7 +512,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -577,7 +580,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;
@@ -645,7 +648,7 @@ public class Question4 extends Fragment {
                             q4_result = num;
                             q4_position = position;
                         }
-                        ((QuestionActivity) QuestionActivity.context).nextPage(3, q4_state, q4_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q4_state, q4_result);
                     }
                 }
                 return false;

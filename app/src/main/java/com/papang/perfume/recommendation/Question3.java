@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.papang.perfume.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +34,8 @@ public class Question3 extends Fragment {
     Context context;
     View v;
     String style_name;
+
+    int index = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -212,7 +216,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "1";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_2_btn:
@@ -229,7 +233,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "2";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_3_btn:
@@ -246,7 +250,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "3";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_4_btn:
@@ -263,7 +267,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "4";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_5_btn:
@@ -280,7 +284,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "5";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_6_btn:
@@ -297,7 +301,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "6";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_7_btn:
@@ -314,7 +318,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8));
                         q3_state = true;
                         q3_result = "7";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
 
                     case R.id.style_8_btn:
@@ -331,7 +335,7 @@ public class Question3 extends Fragment {
                         style_8_btn.setImageDrawable(getResources().getDrawable(R.mipmap.style_8_c));
                         q3_state = true;
                         q3_result = "8";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(2, q3_state, q3_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q3_state, q3_result);
                         break;
                 }
             }

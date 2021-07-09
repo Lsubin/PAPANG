@@ -4,7 +4,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   tools:context=".Question5">
+                                                   tools:context=".recommendation.Question5">
 
     <LinearLayout
             android:id="@+id/q5_frame_1"
@@ -40,8 +40,8 @@
                     android:layout_marginRight="16dp"
                     android:layout_centerInParent="true"
                     android:indeterminate="false"
-                    android:max="7"
-                    android:progress="5"
+                    android:max="5"
+                    android:progress="3"
                     android:progressDrawable="@drawable/gradient_progressbar"
                     app:layout_constraintTop_toBottomOf="@id/q5_frame"
                     app:layout_constraintRight_toRightOf="parent"

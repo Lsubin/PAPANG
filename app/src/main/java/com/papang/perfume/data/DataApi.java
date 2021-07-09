@@ -30,17 +30,15 @@ public interface DataApi {
                                          @Path("flavor2") int flavor2);
 
     // 향수 추천 결과 받아오는 함수
-    @GET("perfume_recommend/{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}")
-    Call<ArrayList<String>> getRecommendationResult(@Path("concentration") int concentration,
-                                                     @Path("size1") int size1, @Path("size2") int size2,
-                                                     @Path("style") int style, @Path("main") int main,
-                                                     @Path("first") int first, @Path("second") int second);
+    @GET("perfume_recommend/{style}/{main}/{first}/{second}/{size1}/{size2}")
+    Call<ArrayList<String>> getRecommendationResult(@Path("style") int style, @Path("main") int main,
+                                                    @Path("first") int first, @Path("second") int second,
+                                                    @Path("size1") int size1, @Path("size2") int size2);
     // 향수 추천 결과 받아오는 함수 - 선택안함
-    @GET("perfume_recommend/{concentration}/{size1}/{size2}/{style}/{main}/{first}")
-    Call<ArrayList<String>> getExcludeRecommendationResult(@Path("concentration") int concentration,
-                                                    @Path("size1") int size1, @Path("size2") int size2,
-                                                    @Path("style") int style, @Path("main") int main,
-                                                    @Path("first") int first);
+    @GET("perfume_recommend/{style}/{main}/{first}/{size1}/{size2}")
+    Call<ArrayList<String>> getExcludeRecommendationResult(@Path("style") int style, @Path("main") int main,
+                                                           @Path("first") int first, @Path("size1") int size1,
+                                                           @Path("size2") int size2);
 
     // 최저가 url 가져오는 함수
     @GET("price_url/{perfumeID}")

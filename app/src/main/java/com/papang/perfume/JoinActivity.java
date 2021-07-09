@@ -54,6 +54,8 @@ public class JoinActivity extends AppCompatActivity {
     Pattern pattern;        // 이메일 패턴
 
     String phone;
+    String name;
+
     BottomSheetDialog bottomSheetDialog;
 
     private ArrayAdapter<String> spinner_adapter;
@@ -67,9 +69,11 @@ public class JoinActivity extends AppCompatActivity {
         dataApi =  dataService.getRetrofitClient().create(DataApi.class);
         mContext = this;
 
-        phone = getIntent().getStringExtra("번호");       // 전화번호 받아서 저장
-        Toast.makeText(getApplicationContext(), phone, Toast.LENGTH_SHORT).show();
+        name = getIntent().getStringExtra("name");       // 이름 받아서 저장
+        phone = getIntent().getStringExtra("phone");       // 전화번호 받아서 저장
+
         name_edit = (EditText)findViewById(R.id.name_edit);                         // 이름
+        name_edit.setText(name);
         nickname_edit = (EditText)findViewById(R.id.nickname_edit);                 // 닉네임
         email_edit = (EditText)findViewById(R.id.email_edit);                       // 이메일
         password_edit = (EditText)findViewById(R.id.password_edit);                 // 비밀번호
@@ -186,7 +190,6 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 //Toast.makeText(getApplicationContext(), "체크상태 = " + isChecked, Toast.LENGTH_SHORT).show();
-
             }
         });
 

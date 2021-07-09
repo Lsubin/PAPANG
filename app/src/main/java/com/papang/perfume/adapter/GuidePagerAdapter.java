@@ -22,9 +22,6 @@ public class GuidePagerAdapter extends PagerAdapter {
         this.mContext = context;
         mData = new ArrayList<>();
         mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_1));
-        mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_2));
-        mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_3));
-        mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_4));
         mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_5));
         mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_6));
         mData.add(mContext.getResources().getDrawable(R.mipmap.guide_book_7));

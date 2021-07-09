@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.papang.perfume.adapter.GuidePagerAdapter;
+import com.papang.perfume.recommendation.QuestionActivity;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class RecommendationActivity extends AppCompatActivity {

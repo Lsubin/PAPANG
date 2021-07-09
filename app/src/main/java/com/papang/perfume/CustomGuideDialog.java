@@ -41,10 +41,10 @@ public class CustomGuideDialog {
         guide_img = (ImageView) dlg.findViewById(R.id.guide_img);
 
         if (mCurrentPosition == 0) {
-            guide_img.setImageResource(R.mipmap.guide_book_3_1);
+            guide_img.setImageResource(R.mipmap.guide_img);
         }
         if (mCurrentPosition == 1) {
-            guide_img.setImageResource(R.mipmap.guide_book_4_1);
+            guide_img.setImageResource(R.mipmap.guide_img);
         }
         if (mCurrentPosition == 3) {
             guide_img.setImageResource(R.mipmap.guide_img);
@@ -53,7 +53,7 @@ public class CustomGuideDialog {
             guide_img.setImageResource(R.mipmap.guide_img);
         }
         if (mCurrentPosition == 5) {
-            guide_img.setImageResource(R.mipmap.guide_img);
+            guide_img.setImageResource(R.mipmap.guide_book_4_1);
         }
     }
 

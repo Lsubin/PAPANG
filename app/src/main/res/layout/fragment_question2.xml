@@ -4,7 +4,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   tools:context=".Question2">
+                                                   tools:context=".recommendation.Question2">
 
     <ImageView
             android:id="@+id/q2_frame"
@@ -27,8 +27,8 @@
             android:layout_marginRight="16dp"
             android:layout_centerInParent="true"
             android:indeterminate="false"
-            android:max="7"
-            android:progress="2"
+            android:max="5"
+            android:progress="5"
             android:progressDrawable="@drawable/gradient_progressbar"
             app:layout_constraintTop_toBottomOf="@id/q2_frame"
             app:layout_constraintRight_toRightOf="parent"
@@ -56,10 +56,10 @@
             android:layout_marginLeft="44dp">
 
         <ImageButton
-                android:id="@+id/size_6"
+                android:id="@+id/size_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
+                android:src="@mipmap/btn_size_click"
                 android:background="#00fff000"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -70,71 +70,8 @@
                 android:layout_height="wrap_content"
                 android:text="- 100ml 이상"
                 android:fontFamily="@font/kopubworlddotumedium"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="110dp"
                 android:layout_marginLeft="12dp"
-                app:layout_constraintLeft_toRightOf="@id/size_6"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageButton
-                android:id="@+id/size_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
-                android:background="#00fff000"
-                android:layout_marginTop="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/size_6"/>
-
-        <TextView
-                android:id="@+id/q2_text_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- 75ml"
-                android:layout_marginTop="105dp"
-                android:fontFamily="@font/kopubworlddotumedium"
-                app:layout_constraintStart_toStartOf="@id/q2_text_6"
-                app:layout_constraintLeft_toRightOf="@id/size_5"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageButton
-                android:id="@+id/size_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
-                android:background="#00fff000"
-                android:layout_marginTop="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/size_5"/>
-
-        <TextView
-                android:id="@+id/q2_text_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- 50ml"
-                android:layout_marginTop="165dp"
-                android:fontFamily="@font/kopubworlddotumedium"
-                app:layout_constraintStart_toStartOf="@id/q2_text_6"
-                app:layout_constraintLeft_toRightOf="@id/size_4"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageButton
-                android:id="@+id/size_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
-                android:background="#00fff000"
-                android:layout_marginTop="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/size_4"/>
-
-        <TextView
-                android:id="@+id/q2_text_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- 30ml"
-                android:layout_marginTop="225dp"
-                android:fontFamily="@font/kopubworlddotumedium"
-                app:layout_constraintStart_toStartOf="@id/q2_text_6"
                 app:layout_constraintLeft_toRightOf="@id/size_3"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -142,18 +79,18 @@
                 android:id="@+id/size_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
+                android:src="@mipmap/btn_size_click"
                 android:background="#00fff000"
                 android:layout_marginTop="4dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/size_3"/>
 
         <TextView
-                android:id="@+id/q2_text_2"
+                android:id="@+id/q2_text_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- 15ml"
-                android:layout_marginTop="290dp"
+                android:text="- 50ml"
+                android:layout_marginTop="230dp"
                 android:fontFamily="@font/kopubworlddotumedium"
                 app:layout_constraintStart_toStartOf="@id/q2_text_6"
                 app:layout_constraintLeft_toRightOf="@id/size_2"
@@ -163,21 +100,21 @@
                 android:id="@+id/size_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/btn_size"
+                android:src="@mipmap/btn_size_click"
                 android:background="#00fff000"
                 android:layout_marginTop="4dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/size_2"/>
 
         <TextView
-                android:id="@+id/q2_text_1"
+                android:id="@+id/q2_text_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="- 0ml"
                 android:layout_marginTop="345dp"
                 android:fontFamily="@font/kopubworlddotumedium"
-                app:layout_constraintStart_toStartOf="@id/q2_text_2"
-                app:layout_constraintLeft_toRightOf="@id/size_2"
+                app:layout_constraintStart_toStartOf="@id/q2_text_6"
+                app:layout_constraintLeft_toRightOf="@id/size_1"
                 app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,7 +123,7 @@
             android:id="@+id/q_bottle_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/bottle"
+            android:src="@mipmap/size6"
             android:background="#00fff000"
             android:layout_marginTop="241dp"
             app:layout_constraintLeft_toRightOf="@id/size_bar"

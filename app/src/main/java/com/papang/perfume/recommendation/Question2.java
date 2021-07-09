@@ -1,4 +1,4 @@
-package com.papang.perfume;
+package com.papang.perfume.recommendation;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.papang.perfume.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,14 +25,13 @@ public class Question2 extends Fragment {
     ImageButton size1;
     ImageButton size2;
     ImageButton size3;
-    ImageButton size4;
-    ImageButton size5;
-    ImageButton size6;
 
     ImageView bottle_size;
 
     Boolean q2_state;
     String q2_result;
+
+    int index = 4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,9 +84,10 @@ public class Question2 extends Fragment {
         size1 = (ImageButton) v.findViewById(R.id.size_1);
         size2 = (ImageButton) v.findViewById(R.id.size_2);
         size3 = (ImageButton) v.findViewById(R.id.size_3);
-        size4 = (ImageButton) v.findViewById(R.id.size_4);
-        size5 = (ImageButton) v.findViewById(R.id.size_5);
-        size6 = (ImageButton) v.findViewById(R.id.size_6);
+
+        q2_state = true;
+        q2_result = "size3";
+        ((QuestionActivity) QuestionActivity.context).nextPage(index, q2_state, q2_result);
 
         /*
         // BackBTN을 이용해 뒤로 갔다 온 경우에 원래 값을 설정해야한다.
@@ -137,76 +139,31 @@ public class Question2 extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.size_1:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size1));
+                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size3));
                         size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_unclick));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_unclick));
                         q2_state = true;
                         q2_result = "size1";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q2_state, q2_result);
                         break;
                     case R.id.size_2:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size2));
-                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
                         size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_unclick));
                         q2_state = true;
                         q2_result = "size2";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q2_state, q2_result);
                         break;
                     case R.id.size_3:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size3));
-                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
+                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size6));
+                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
+                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
                         size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
                         q2_state = true;
                         q2_result = "size3";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
-                        break;
-                    case R.id.size_4:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size4));
-                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        q2_state = true;
-                        q2_result = "size4";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
-                        break;
-                    case R.id.size_5:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size5));
-                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        q2_state = true;
-                        q2_result = "size5";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
-                        break;
-                    case R.id.size_6:
-                        bottle_size.setImageDrawable(getResources().getDrawable(R.mipmap.size6));
-                        size1.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size2.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size3.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size4.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size5.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size));
-                        size6.setImageDrawable(getResources().getDrawable(R.mipmap.btn_size_click));
-                        q2_state = true;
-                        q2_result = "size6";
-                        ((QuestionActivity) QuestionActivity.context).nextPage(1, q2_state, q2_result);
+                        ((QuestionActivity) QuestionActivity.context).nextPage(index, q2_state, q2_result);
                         break;
                 }
             }
@@ -215,9 +172,6 @@ public class Question2 extends Fragment {
         size1.setOnClickListener(sizeClickListener);
         size2.setOnClickListener(sizeClickListener);
         size3.setOnClickListener(sizeClickListener);
-        size4.setOnClickListener(sizeClickListener);
-        size5.setOnClickListener(sizeClickListener);
-        size6.setOnClickListener(sizeClickListener);
 
         return v;
     }

@@ -11,4 +11,7 @@
     <string name="menu_perfume">향수</string>
     <string name="menu_theme">테마</string>
     <string name="kakao_app_key">4683cc942997cc8d186c5a3f1b3e9242</string>
+
+    <string name="iamportApiKey">6336739829140985</string>
+    <string name="iamportApiSecretKey">ZvXrz0fdjBQ2WMUcK6EL3vk6Vzu2JeJIJGajHqx11n3XaYaV5OG9j0feAKhjY02IHc1oDyqEWuC7sM2x</string>
 </resources>

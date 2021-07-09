@@ -65,19 +65,6 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
-                    android:id="@+id/result_1_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="오 드 뚜왈렛"
-                    android:textColor="#fff"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/kopubworlddotumbold"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
                     android:id="@+id/result_2_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,8 +73,9 @@
                     android:textSize="13sp"
                     android:fontFamily="@font/kopubworlddotumbold"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="40dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/result_1_text"/>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
 
                 <TextView
