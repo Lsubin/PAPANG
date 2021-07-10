@@ -8,14 +8,15 @@ android {
         applicationId 'com.papang.perfume'
         minSdkVersion 28
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 4 //Google Play Console 업로드 시 구분 버전
+        versionName "1" // // Google Play Store 노출 버전
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
