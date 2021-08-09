@@ -39,23 +39,25 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aquatic));     //아쿠아틱 12번
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nutty));       //너티 13번
         drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_leather));     //레더 14번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope));        //없음 15번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_smoky));       //스모키 15번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope));        //없음 16번
         // click 이미지들 추가
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 16번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 17번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 18번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 19번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 20번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 21번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 22번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 23번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 24번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 25번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 26번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aquatic_click));     //아쿠아틱 27번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nutty_click));       //너티 28번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_leather_click));     //레더 29번
-        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope_click));        //없음 30번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aldehyde_click));    //알데하이드 17번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_animalic_click));    //애니멀릭 18번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aromatic_click));    //아로마틱 19번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_balsam_click));      //발삼 20번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_chypre_click));      //시프레 21번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_citrus_click));      //시트러스 22번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_green_click));       //그린 23번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_floral_click));      //플로럴 24번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_fruity_click));      //프루티 25번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_spicy_click));       //스파이시 26번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_woody_click));       //우디 27번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_aquatic_click));     //아쿠아틱 28번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nutty_click));       //너티 29번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_leather_click));     //레더 30번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_smoky_click));       //스모키 31번
+        drawables.add(mContext.getResources().getDrawable(R.mipmap.flavor_nope_click));        //없음 32번
 
         this.drawables_Num = drawables_Num;
     }
@@ -83,13 +85,13 @@ public class FlavorAdapter extends RecyclerView.Adapter<Holder> {
     // click으로 바꾸는거
     public void setDrawable(int position) {
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num + 15);
+        drawables_Num.set(position, num + 16);
         notifyDataSetChanged();
     }
 
     public void setBackDrawable(int position) {
         int num = drawables_Num.get(position);
-        drawables_Num.set(position, num - 15);
+        drawables_Num.set(position, num - 16);
         notifyDataSetChanged();
     }
 

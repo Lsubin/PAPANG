@@ -611,6 +611,7 @@ public class Question4 extends Fragment {
         drawables_Num.add(10);
         drawables_Num.add(14);
         drawables_Num.add(5);
+        drawables_Num.add(15);
 
         main_flavor_grid = (RecyclerView) v.findViewById(R.id.main_flavor_grid);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(v.getContext(), 3);

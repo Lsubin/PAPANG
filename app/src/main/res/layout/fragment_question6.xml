@@ -23,7 +23,7 @@
                     android:id="@+id/q6_frame1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/question_6"
+                    android:src="@mipmap/question_5"
                     android:background="#00fff000"
                     android:layout_marginTop="38dp"
                     android:layout_marginLeft="16dp"

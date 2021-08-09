@@ -115,6 +115,7 @@ public class Question6 extends Fragment {
         drawables_Num.add(13);
         drawables_Num.add(14);
         drawables_Num.add(15);
+        drawables_Num.add(16);
 
 
         flavor2_grid = (RecyclerView) v.findViewById(R.id.flavor2_grid);

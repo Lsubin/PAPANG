@@ -168,7 +168,7 @@ public class MyPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(perfumeInfos.get(3).equals("15"))
+                if(perfumeInfos.get(3).equals("16"))
                     getPerfumeExclude(perfumeInfos);
                 else
                     getPerfume(perfumeInfos);

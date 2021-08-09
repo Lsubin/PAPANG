@@ -268,6 +268,10 @@ public class AllResultProductActivity extends AppCompatActivity {
                 flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_leather_img));
                 break;
             case "15":
+                flavor_1 = "Smoky";
+                flavor_img.setImageDrawable(getResources().getDrawable(R.mipmap.flavor_smoky_img));
+                break;
+            case "16":
                 flavor_1 = "None";
                 break;
         }
@@ -316,6 +320,9 @@ public class AllResultProductActivity extends AppCompatActivity {
                 flavor_2 = "Leather";
                 break;
             case "15":
+                flavor_2 = "Smoky";
+                break;
+            case "16":
                 flavor_2 = "None";
                 break;
         }
@@ -364,6 +371,9 @@ public class AllResultProductActivity extends AppCompatActivity {
                 flavor_3 = "Leather";
                 break;
             case "15":
+                flavor_2 = "Smoky";
+                break;
+            case "16":
                 flavor_3 = "None";
                 break;
         }

@@ -29,6 +29,8 @@ public class Flavor {
         flavors.add(mContext.getResources().getDrawable(R.mipmap.product_acquatic));     //아쿠아틱 12번
         flavors.add(mContext.getResources().getDrawable(R.mipmap.product_nutty));       //너티 13번
         flavors.add(mContext.getResources().getDrawable(R.mipmap.product_leather));     //레더 14번
+        flavors.add(mContext.getResources().getDrawable(R.mipmap.product_smoky));     //스모키 15번
+
 
         concentrations.add(mContext.getResources().getDrawable(R.mipmap.product_ode_c));
         concentrations.add(mContext.getResources().getDrawable(R.mipmap.product_ode_d));

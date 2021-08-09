@@ -102,25 +102,16 @@ public class RecommendationActivity extends AppCompatActivity {
                     guide_backpage.setVisibility(View.VISIBLE);
                     guide_page_start.setVisibility(View.GONE);
                     guide_page_txt.setVisibility(View.VISIBLE);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 1) {
                     guide_viewpager.setCurrentItem(2);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 2) {
                     guide_viewpager.setCurrentItem(3);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 3) {
                     guide_viewpager.setCurrentItem(4);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 4) {
-                    guide_viewpager.setCurrentItem(5);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 5) {
-                    guide_viewpager.setCurrentItem(6);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 6) {
-                    guide_viewpager.setCurrentItem(7);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                     guide_nextpage.setVisibility(View.GONE);
                 }
             }
@@ -134,29 +125,20 @@ public class RecommendationActivity extends AppCompatActivity {
                     guide_backpage.setVisibility(View.GONE);
                     guide_page_start.setVisibility(View.VISIBLE);
                     guide_page_txt.setVisibility(View.GONE);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 2) {
                     guide_viewpager.setCurrentItem(1);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 3) {
                     guide_viewpager.setCurrentItem(2);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 4) {
                     guide_viewpager.setCurrentItem(3);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 } else if (guide_viewpager.getCurrentItem() == 5) {
                     guide_viewpager.setCurrentItem(4);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 6) {
-                    guide_viewpager.setCurrentItem(5);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 6) {
-                    guide_viewpager.setCurrentItem(5);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-                } else if (guide_viewpager.getCurrentItem() == 7) {
-                    guide_viewpager.setCurrentItem(6);
                     guide_nextpage.setVisibility(View.VISIBLE);
-                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+                    guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
                 }
             }
         });
@@ -192,21 +174,15 @@ public class RecommendationActivity extends AppCompatActivity {
             guide_backpage.setVisibility(View.VISIBLE);
             guide_page_start.setVisibility(View.GONE);
             guide_page_txt.setVisibility(View.VISIBLE);
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
         } else if (mCurrentPosition == 2) {
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
         } else if (mCurrentPosition == 3) {
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if (mCurrentPosition == 4) {
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if (mCurrentPosition == 5) {
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if (mCurrentPosition == 6) {
             guide_nextpage.setVisibility(View.VISIBLE);
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
-        } else if (mCurrentPosition == 7) {
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
+        } else if (mCurrentPosition == 4) {
             guide_nextpage.setVisibility(View.GONE);
-            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 7");
+            guide_page_txt.setText(guide_viewpager.getCurrentItem() + " / 4");
         }
     }
 
