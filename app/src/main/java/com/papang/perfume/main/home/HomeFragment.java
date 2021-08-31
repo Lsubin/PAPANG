@@ -1,6 +1,7 @@
 package com.papang.perfume.main.home;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.papang.perfume.AllMagazineActivity;
 import com.papang.perfume.AppSatisfactionActivity;
 import com.papang.perfume.ProductDetailsActivity;
 import com.papang.perfume.R;
@@ -67,6 +69,7 @@ public class HomeFragment extends Fragment {
 
     ImageButton btn_search;
     ImageButton find_btn;
+    ImageButton magazine_btn;
 
     ImageButton btn_satisfaction_good;
     ImageButton btn_satisfaction_bad;
@@ -95,6 +98,15 @@ public class HomeFragment extends Fragment {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
+        // 매거진 이동
+        magazine_btn = (ImageButton) root.findViewById(R.id.magazine_btn);
+        magazine_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent magazine = new Intent(getContext(), AllMagazineActivity.class);
+                startActivity(magazine);
+            }
+        });
 
         find_btn = (ImageButton) root.findViewById(R.id.perfume_find_btn);
         find_btn.setOnClickListener(new View.OnClickListener() {

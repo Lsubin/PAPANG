@@ -22,7 +22,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
     public MainViewPagerAdapter(Context context) {
         this.mContext = context;
         magazine = new ArrayList<>();
-        magazine.add(mContext.getResources().getDrawable(R.mipmap.magazine_1));
+        magazine.add(mContext.getResources().getDrawable(R.mipmap.magazine1_img));
     }
 
     @NonNull
